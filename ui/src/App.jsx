@@ -1,9 +1,12 @@
 
+import "./App.css";
+import Searchbar from "./components/LandingPage/LandingPage";
+
+
 
 import * as React from "react"
 import { useState,useEffect } from "react";
 //import logo from "./logo.svg";
-//import "./App.css";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
@@ -18,6 +21,7 @@ import SignUpPage from "../Register/SignupPage";
  import apiClient from "../services/apiClient"
 function App() {
   const [count, setCount] = useState(0);
+
   const [appState, setAppState] = useState({})
   const [sessionId, setSessionId] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
@@ -51,6 +55,7 @@ function App() {
 
   return (
     <div className="app">
+    <Searchbar />
       <BrowserRouter>
       {/* <Navbar   handleLogout={handleLogout}
               isLogin={isLogin}
@@ -92,22 +97,9 @@ function App() {
      
       </BrowserRouter>
     
-    
     </div>
   );
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-export default App
-
+export default App;
