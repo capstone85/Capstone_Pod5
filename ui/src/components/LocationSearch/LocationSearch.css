@@ -1,0 +1,38 @@
+.searchbar-div {
+  display: flex;
+  justify-content: left;
+}
+
+.search-btn {
+  font-size: 50px;
+  padding-left: 5px;
+  display: flex;
+}
+
+.searchbar {
+  display: flex;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+input.input {
+  font-size: 30px;
+  background-color: #f2ccc3;
+  border-color: #f2ccc3;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  outline-width: 0;
+  border-width: 0;
+}
+
+input:focus {
+  outline-width: 0;
+}
+
+.search-icon {
+  padding: 10px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
