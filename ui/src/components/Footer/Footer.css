@@ -1,0 +1,22 @@
+.footer {
+  bottom: 0%;
+  position: fixed;
+  padding-bottom: 70px;
+}
+
+hr {
+  background-color: white;
+  height: 1px;
+  border: none;
+}
+
+.about {
+  padding: 20px;
+}
+.terms {
+  padding: 20px;
+}
+
+.dnr {
+  padding: 20px;
+}
