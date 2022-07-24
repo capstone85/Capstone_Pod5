@@ -36,4 +36,9 @@
   max-width: 650px;
   gap: 30px;
   transform: translateX(-130px);
+  color: black;
+}
+
+.shop {
+  text-decoration: none;
 }

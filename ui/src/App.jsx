@@ -1,11 +1,8 @@
-
 import "./App.css";
 import Searchbar from "./components/LandingPage/LandingPage";
 
-
-
-import * as React from "react"
-import { useState,useEffect } from "react";
+import * as React from "react";
+import { useState, useEffect } from "react";
 //import logo from "./logo.svg";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
@@ -18,14 +15,18 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 // import Login from "./Components/Login";
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../Register/SignupPage";
- import apiClient from "../services/apiClient"
+import apiClient from "../services/apiClient";
+import Navbar from "./components/Navbar/Navbar";
+import LandingPage from "./components/LandingPage/LandingPage";
+import NotFound from "./components/NotFound/NotFound";
+
 function App() {
   const [count, setCount] = useState(0);
 
-  const [appState, setAppState] = useState({})
+  const [appState, setAppState] = useState({});
   const [sessionId, setSessionId] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
-  const [ user, setUser ] = useState("hi monica");
+  const [user, setUser] = useState("hi monica");
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
 
@@ -51,55 +52,58 @@ function App() {
     setUser({});
     setError(null);
   };
- 
 
   return (
     <div className="app">
-    <Searchbar />
+      {/* <Navbar /> */}
+      {/* <LandingPage /> */}
       <BrowserRouter>
-      {/* <Navbar   handleLogout={handleLogout}
-              isLogin={isLogin}
-              user={user}
-              setUser={setUser}/> */}
-      <main>
-      <Routes>
-     {/* <Route path="/" element={ <Home />}/> */}
+        <Navbar
+          handleLogout={handleLogout}
+          isLogin={isLogin}
+          user={user}
+          setUser={setUser}
+        />
+        <main>
+          <Routes>
+            {/* landing page route */}
+            <Route path="/" element={<LandingPage />} />
 
-                    {/* isLogin={isLogin}
+            {/* isLogin={isLogin}
                     user={user}
                     setUser={setUser}/>}/> */}
-     {/* <Route path="/AddExercise" element={ <AddExercise appState={appState}/>}/> */}
-     <Route
-                path="/login"
-                element={
-                  <LoginPage
-                    isLogin={isLogin}
-                    user={user}
-                    setUser={setUser}
-                  ></LoginPage>
-                }
-              ></Route>
-                 <Route
-                path="/register"
-                element={
-                  <SignUpPage
-                    user={user}
-                    setUser={setUser}
-                    isLogin={isLogin}
-                  ></SignUpPage>
-                }
-              ></Route>
-    
-        </Routes>
+            {/* <Route path="/AddExercise" element={ <AddExercise appState={appState}/>}/> */}
 
-      </main>
-    
-     
+            {/* login route */}
+            <Route
+              path="/login"
+              element={
+                <LoginPage
+                  isLogin={isLogin}
+                  user={user}
+                  setUser={setUser}
+                ></LoginPage>
+              }
+            ></Route>
+
+            {/* register route */}
+            <Route
+              path="/register"
+              element={
+                <SignUpPage
+                  user={user}
+                  setUser={setUser}
+                  isLogin={isLogin}
+                ></SignUpPage>
+              }
+            ></Route>
+            {/* not found */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
       </BrowserRouter>
-    
     </div>
   );
 }
-
 
 export default App;
