@@ -19,6 +19,7 @@ import apiClient from "../services/apiClient";
 import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -64,6 +65,7 @@ function App() {
           user={user}
           setUser={setUser}
         />
+
         <main>
           <Routes>
             {/* landing page route */}
