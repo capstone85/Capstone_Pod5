@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-//import apiClient from "../services/apiClient";
+import apiClient from "../services/apiClient";
 //import { useAuthContext } from "../context/auth";
 //import MedicalResearch from "../MedicalResearch/MedicalResearch"
 // import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
@@ -18,9 +18,10 @@ export default function Login(props) {
     email: "",
     password: "",
   });
- useEffect(() => {
-    console.log(props.user);
-  }, [props.user]);
+
+  // useEffect(() => {
+  //   console.log(props.user);
+  // }, [props.user]);
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
       if (event.target.value.indexOf("@") === -1) {
@@ -46,20 +47,19 @@ export default function Login(props) {
     };
     //console.log(toSend);
     const { data, error } = await apiClient.loginUser(toSend);
-    console.log(data)
-    console.log(error)
+    console.log(data);
+    console.log(error);
     if (error) {
       setErrors((e) => ({ ...e, form: error }));
     }
     if (data?.user) {
-      apiClient.setToken(data.user.token);
+      apiClient.setToken(data.token);
       //console.log("data", data);
       props.setUser(data.user);
-      navigate("/activity");
+      navigate("/");
     }
     setIsProcessing(false);
   };
- 
 
   return (
     <div className="Login">

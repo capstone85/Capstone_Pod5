@@ -78,7 +78,7 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      navigate("/activity");
+      navigate("/");
     }
     setIsProcessing(false);
   };

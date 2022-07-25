@@ -9,7 +9,6 @@ class ApiClient {
 
   async setToken(token) {
     this.token = token;
-    console.log("token being set in browser storage", token);
     localStorage.setItem(this.tokenName, token);
   }
 
@@ -22,8 +21,6 @@ class ApiClient {
     };
 
     if (this.token) {
-      console.log(typeof this.token);
-      console.log(this.token, "being added to header");
       headers["Authorization"] = `Bearer ${this.token}`;
     }
 
@@ -31,67 +28,10 @@ class ApiClient {
       const res = await axios({ url, method, data, headers });
       return { data: res.data, error: null };
     } catch (error) {
-      //console.error({ errorResponse: error.response });
+      console.error({ errorResponse: error.response });
       const message = error?.response?.data?.error?.message;
       return { data: null, error: message || String(error) };
     }
-  }
-
-  async listActivities(user_id) {
-    return await this.request({
-      endpoint: `activity`,
-      method: `GET`,
-      data: user_id,
-    });
-  }
-
-  async listSleeps(user_id) {
-    return await this.request({
-      endpoint: `sleep`,
-      method: `GET`,
-      data: user_id,
-    });
-  }
-
-  async createSleep(sleep) {
-    return await this.request({
-      endpoint: `sleep`,
-      method: `POST`,
-      data: sleep,
-    });
-  }
-
-  async listExercises(user_id) {
-    return await this.request({
-      endpoint: `exercise`,
-      method: `GET`,
-      data: user_id,
-    });
-  }
-
-  async createExercise(exercise) {
-    return await this.request({
-      endpoint: `exercise`,
-      method: `POST`,
-      data: exercise,
-    });
-  }
-
-  async listNutritions(user_id) {
-    console.log("user_id", user_id);
-    return await this.request({
-      endpoint: `nutrition`,
-      method: `GET`,
-      data: user_id,
-    });
-  }
-
-  async createNutrition(nutrition) {
-    return await this.request({
-      endpoint: `nutrition`,
-      method: `POST`,
-      data: nutrition,
-    });
   }
 
   async fetchUserFromToken() {
