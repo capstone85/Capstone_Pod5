@@ -11,6 +11,7 @@ class User {
       username: user.username,
       first_name: user.first_name,
       last_name: user.last_name,
+      category: user.category,
       created_at: user.created_at,
       updated_at: user.updated_at,
     };
@@ -39,6 +40,7 @@ class User {
       "username",
       "first_name",
       "last_name",
+      "category",
       "password",
     ];
     requiredFields.forEach((field) => {
@@ -65,16 +67,18 @@ class User {
                 username,
                 first_name,
                 last_name,
+                category,
                 password
             )
-            VALUES ($1, $2, $3, $4, $5)
-            RETURNING id, email, username, first_name, last_name, created_at, updated_at;
+            VALUES ($1, $2, $3, $4, $5, $6)
+            RETURNING id, email, username, first_name, last_name, category, created_at, updated_at;
         `,
       [
         lowercasedEmail,
         credentials.username,
         credentials.first_name,
         credentials.last_name,
+        credentials.category,
         hashedPassword,
       ]
     );
