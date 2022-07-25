@@ -16,6 +16,11 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../Register/SignupPage";
 import apiClient from "../services/apiClient";
+import Navbar from "./components/Navbar/Navbar";
+import LandingPage from "./components/LandingPage/LandingPage";
+import NotFound from "./components/NotFound/NotFound";
+import Footer from "./components/Footer/Footer";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -51,20 +56,27 @@ function App() {
 
   return (
     <div className="app">
-      <Searchbar />
+      {/* <Navbar /> */}
+      {/* <LandingPage /> */}
       <BrowserRouter>
-        {/* <Navbar   handleLogout={handleLogout}
-              isLogin={isLogin}
-              user={user}
-              setUser={setUser}/> */}
+        <Navbar
+          handleLogout={handleLogout}
+          isLogin={isLogin}
+          user={user}
+          setUser={setUser}
+        />
+
         <main>
           <Routes>
-            {/* <Route path="/" element={ <Home />}/> */}
+            {/* landing page route */}
+            <Route path="/" element={<LandingPage />} />
 
             {/* isLogin={isLogin}
                     user={user}
                     setUser={setUser}/>}/> */}
             {/* <Route path="/AddExercise" element={ <AddExercise appState={appState}/>}/> */}
+
+            {/* login route */}
             <Route
               path="/login"
               element={
@@ -75,6 +87,8 @@ function App() {
                 ></LoginPage>
               }
             ></Route>
+
+            {/* register route */}
             <Route
               path="/register"
               element={
@@ -85,6 +99,8 @@ function App() {
                 ></SignUpPage>
               }
             ></Route>
+            {/* not found */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </BrowserRouter>
