@@ -21,7 +21,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 import MyAccount from "./components/MyAccount/MyAccount";
-
+import SignUpVendor from "../Register/SignUpVendor";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -103,6 +103,8 @@ function App() {
             ></Route>
             {/* not found */}
             <Route path="*" element={<NotFound />} />
+
+            <Route path="/vendorsignup" element={<SignUpVendor />} />
           </Routes>
         </main>
       </BrowserRouter>
