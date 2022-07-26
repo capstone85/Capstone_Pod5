@@ -11,16 +11,20 @@ export default function SignUp(props) {
   const navigate = useNavigate();
   const [isLoading, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     username: "",
     email: "",
-
+    category: "",
     password: "",
     passwordConfirm: "",
   });
 
+  // function change(src) {
+  //   window.location = src;
+  // }
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -70,6 +74,7 @@ export default function SignUp(props) {
       username: form.username,
       first_name: form.firstName,
       last_name: form.lastName,
+      category: form.category,
       password: form.password,
     });
     if (error) {
@@ -78,7 +83,11 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      navigate("/");
+      if ((form.category == "shopper")) {
+        navigate("/");
+      } else {
+        navigate("/store_page");
+      }
     }
     setIsProcessing(false);
   };
@@ -92,7 +101,31 @@ export default function SignUp(props) {
         <br />
 
         <div className="form">
+          {/* <div>
+            <label htmlFor="category">I am a...</label>
+            <select
+              name="category"
+              id="category"
+              onChange={(e) => change(e.target.value)}
+            >
+              <option value="/">Shopper</option>
+              <option value="/vendorsignup">Vendor</option>
+            </select>
+          </div> */}
           <div className="split-inputs">
+            <div className="input-field">
+              <label htmlFor="category">Are you a vendor or a shopper</label>
+              <input
+                type="category"
+                name="category"
+                placeholder="input category"
+                value={form.category}
+                onChange={handleOnInputChange}
+              />
+              {errors.category && (
+                <span className="error">{errors.category}</span>
+              )}
+            </div>
             <div className="input-field">
               <label htmlFor="email">Email</label>
               <input

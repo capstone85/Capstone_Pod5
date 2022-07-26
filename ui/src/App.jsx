@@ -124,6 +124,7 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
+
             <Route
               path="/store/*"
               element={
@@ -135,6 +136,7 @@ function App() {
                 />
               }
             />
+
           </Routes>
         </main>
       </BrowserRouter>
