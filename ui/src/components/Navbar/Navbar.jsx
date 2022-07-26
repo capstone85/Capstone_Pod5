@@ -47,7 +47,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/login">
+            {/* <Link to="/login"> */}
+            <Link to="/dashboard">
               <PersonOutlineOutlinedIcon />
             </Link>
           </li>

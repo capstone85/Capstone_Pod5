@@ -22,6 +22,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 import MyAccount from "./components/MyAccount/MyAccount";
 import SignUpVendor from "../Register/SignUpVendor";
+import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -59,7 +60,12 @@ function App() {
     <div className="app">
       {/* <Navbar /> */}
       {/* <LandingPage /> */}
-      <MyAccount />
+      {/* <MyAccount
+      // user={user}
+      // isLogin={isLogin}
+      // setUser={setUser}
+      // name={user.name}
+      /> */}
       <BrowserRouter>
         <Navbar
           handleLogout={handleLogout}
@@ -105,6 +111,10 @@ function App() {
             <Route path="*" element={<NotFound />} />
 
             <Route path="/vendorsignup" element={<SignUpVendor />} />
+
+            {/* My account routes */}
+            {/* main page that shows when users go to their account --> page with dashboard */}
+            <Route path="/dashboard" element={<MyAccount />} />
           </Routes>
         </main>
       </BrowserRouter>
