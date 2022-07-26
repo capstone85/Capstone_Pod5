@@ -1,4 +1,4 @@
-const Nutrition = require("../models/nutrition")
+// const Nutrition = require("../models/nutrition")
 const { BadRequestError, NotFoundError, ForbiddenError } = require("../utils/errors")
 
 const authedUserOwnsNutrition = async (req, res, next) => {

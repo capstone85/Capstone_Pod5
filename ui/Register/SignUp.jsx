@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
-import apiClient from "../services/apiClient";
+import apiClient from "../src/services/apiClient";
 
 export default function SignUp(props) {
   useEffect(() => {

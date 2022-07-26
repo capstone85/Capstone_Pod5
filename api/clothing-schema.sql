@@ -9,3 +9,14 @@ CREATE TABLE users (
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at  TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE store (
+    id          SERIAL PRIMARY KEY,
+    name        TEXT NOT NULL,
+    location    TEXT NOT NULL,
+    logo        TEXT NOT NULL,
+    description TEXT NOT NULL,
+    user_id     INT NOT NULL,
+    created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)
