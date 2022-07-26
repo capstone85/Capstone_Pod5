@@ -15,10 +15,12 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 // import Login from "./Components/Login";
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../Register/SignupPage";
-import apiClient from "../services/apiClient";
+import apiClient from "./services/apiClient";
 import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
+import Home from "./components/Home/Home";
+import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
   const [user, setUser] = useState("hi monica");
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
+  const [isFetchingStore, setIsFetchingStore] = useState(false);
+  const [store, setStore] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -54,6 +58,10 @@ function App() {
     setError(null);
   };
 
+  const addStore = (newStore) => {
+    setStore((oldStore) => [newStore, ...oldStore]);
+  };
+
   return (
     <div className="app">
       {/* <Navbar /> */}
@@ -70,6 +78,20 @@ function App() {
           <Routes>
             {/* landing page route */}
             <Route path="/" element={<LandingPage />} />
+
+            <Route path="/home" element={<Home />} />
+
+            <Route
+              path="/store"
+              element={
+                <StorePage
+                  store={store}
+                  addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
 
             {/* isLogin={isLogin}
                     user={user}
@@ -101,6 +123,18 @@ function App() {
             ></Route>
             {/* not found */}
             <Route path="*" element={<NotFound />} />
+
+            <Route
+              path="/store/*"
+              element={
+                <StorePage
+                  store={store}
+                  addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
           </Routes>
         </main>
       </BrowserRouter>
