@@ -20,6 +20,7 @@ import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
+import MyAccount from "./components/MyAccount/MyAccount";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -58,6 +59,7 @@ function App() {
     <div className="app">
       {/* <Navbar /> */}
       {/* <LandingPage /> */}
+      <MyAccount />
       <BrowserRouter>
         <Navbar
           handleLogout={handleLogout}
