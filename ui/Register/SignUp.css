@@ -1,66 +1,66 @@
 .Register .card {
-    min-height: 600px;
-    width: 520px;
-    padding: 24px 36px 0;
-    flex-direction: column;
-  }
-  .Register .card {
-    display: flex;
-    align-items: center;
-  }
-  div,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  ol,
-  p,
-  span,
-  ul {
-    margin: 0;
-  }
-  
-  #root {
-    color: white;
-    --content-width: 800px;
-  }
-  .Register .card .form .input-field input {
-    height: 50px;
-    padding: 0 15px;
-    font-size: 16px;
-    /* border: 1px solid var(--border-color); */
-    border-color: white;
-    width: 100%;
-    background: transparent;
-    color: white;
-  }
-  input {
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
-  }
-  
-  .Register .card .form .btn {
-    height: 70px;
-    color: #fff;
-    font-size: 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 15px;
-  
-  }
-  .btn{
-      background: rgb(113, 195, 113);
-      white-space: nowrap;
-      font-weight: 700;
-      padding: 12px 18px
-  }
+  min-height: 600px;
+
+  width: 520px;
+  padding: 24px 36px 0;
+  flex-direction: column;
+}
+.Register .card {
+  display: flex;
+  align-items: center;
+}
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+span,
+ul {
+  margin: 0;
+}
+
+#root {
+  color: white;
+  --content-width: 800px;
+}
+.Register .card .form .input-field input {
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+  /* border: 1px solid var(--border-color); */
+  border-color: white;
+  width: 100%;
+  background: transparent;
+  color: white;
+}
+input {
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+}
+
+.Register .card .form .btn {
+  height: 70px;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.btn {
+  background: rgb(113, 195, 113);
+  white-space: nowrap;
+  font-weight: 700;
+  padding: 12px 18px;
+}
