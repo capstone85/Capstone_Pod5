@@ -6,7 +6,10 @@ import Footer from "../../Footer/Footer";
 export default function ViewOrdersPage() {
   return (
     <div>
-      <DashboardLinks />
+      <DashboardLinks  handleLogout={props.handleLogout}
+              isLogin={props.isLogin}
+              user={props.user}
+              setUser={props.setUser}/>
       <h1>Orders</h1>
       <Footer />
     </div>
