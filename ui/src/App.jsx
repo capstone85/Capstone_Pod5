@@ -15,10 +15,12 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 // import Login from "./Components/Login";
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../Register/SignupPage";
-import apiClient from "../services/apiClient";
+import apiClient from "./services/apiClient";
 import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
+import Home from "./components/Home/Home";
+import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 import MyAccount from "./components/MyAccount/MyAccount";
 import SignUpVendor from "../Register/SignUpVendor";
@@ -26,6 +28,7 @@ import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
@@ -35,6 +38,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
+  const [isFetchingStore, setIsFetchingStore] = useState(false);
+  const [store, setStore] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -63,6 +68,10 @@ function App() {
     setError(null);
   };
 
+  const addStore = (newStore) => {
+    setStore((oldStore) => [newStore, ...oldStore]);
+  };
+
   return (
     <div className="app">
       {/* <Navbar /> */}
@@ -85,6 +94,20 @@ function App() {
           <Routes>
             {/* landing page route */}
             <Route path="/" element={<LandingPage />} />
+
+            <Route path="/home" element={<Home />} />
+
+            <Route
+              path="/store"
+              element={
+                <StorePage
+                  store={store}
+                  addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
 
             {/* isLogin={isLogin}
                     user={user}
@@ -117,6 +140,7 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
+
             <Route path="/vendorsignup" element={<SignUpVendor />} />
 
             {/* My account routes */}
@@ -126,6 +150,20 @@ function App() {
               element={<MyAccount handleLogout={handleLogout} />}
             />
             <Route path="/orders" element={<ViewOrdersPage />} />
+
+
+            <Route
+              path="/store/*"
+              element={
+                <StorePage
+                  store={store}
+                  addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
+
           </Routes>
         </main>
       </BrowserRouter>

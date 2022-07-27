@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
-import apiClient from "../services/apiClient";
+import apiClient from "../src/services/apiClient";
 
 export default function SignUp(props) {
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function SignUp(props) {
   const navigate = useNavigate();
   const [isLoading, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
- 
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -22,9 +22,9 @@ export default function SignUp(props) {
     passwordConfirm: "",
   });
 
-  function change(src) {
-    window.location = src;
-  }
+  // function change(src) {
+  //   window.location = src;
+  // }
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -60,7 +60,7 @@ export default function SignUp(props) {
   const handleOnSubmit = async () => {
     setIsProcessing(true);
     setErrors((e) => ({ ...e, form: null }));
-     
+
     if (form.passwordConfirm !== form.password) {
       setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
       setIsProcessing(false);
@@ -83,7 +83,11 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      navigate("/");
+      if ((form.category == "shopper")) {
+        navigate("/");
+      } else {
+        navigate("/store_page");
+      }
     }
     setIsProcessing(false);
   };
@@ -97,8 +101,8 @@ export default function SignUp(props) {
         <br />
 
         <div className="form">
-          <div>
-            <label for="categories">I am a...</label>
+          {/* <div>
+            <label htmlFor="category">I am a...</label>
             <select
               name="category"
               id="category"
@@ -107,8 +111,21 @@ export default function SignUp(props) {
               <option value="/">Shopper</option>
               <option value="/vendorsignup">Vendor</option>
             </select>
-          </div>
+          </div> */}
           <div className="split-inputs">
+            <div className="input-field">
+              <label htmlFor="category">Are you a vendor or a shopper</label>
+              <input
+                type="category"
+                name="category"
+                placeholder="input category"
+                value={form.category}
+                onChange={handleOnInputChange}
+              />
+              {errors.category && (
+                <span className="error">{errors.category}</span>
+              )}
+            </div>
             <div className="input-field">
               <label htmlFor="email">Email</label>
               <input

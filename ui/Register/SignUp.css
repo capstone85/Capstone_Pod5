@@ -27,7 +27,8 @@ ul {
   --content-width: 800px;
 }
 .Register .card .form .input-field input {
-  height: 50px;
+
+  height: 40px;
   padding: 0 15px;
   font-size: 16px;
   /* border: 1px solid var(--border-color); */
