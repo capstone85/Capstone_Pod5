@@ -5,14 +5,13 @@ import TextField from "@mui/material/TextField";
 import LocationSearchBar from "../LocationSearch/LocationSearch";
 import Footer from "../Footer/Footer";
 
-// Sets value of search for filtering
-const handleOnSearchBarChange = (value) => {
-  setSearchBar(value);
-};
-
 export default function LandingPage() {
-  const [count, setCount] = useState(0);
   const [searchBar, setSearchBar] = useState(""); // for search results
+
+  // Sets value of search for filtering
+  const handleOnSearchBarChange = (value) => {
+    setSearchBar(value);
+  };
 
   return (
     <div className="landing">
