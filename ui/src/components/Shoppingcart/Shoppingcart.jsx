@@ -49,13 +49,7 @@ export default function ShoppingCart({
   return (
     <div className="ShoppingCart">
       <Navbar />
-      <SubNavbar
-        user={user}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        handleOnSearchInputChange={handleOnSearchInputChange}
-        searchInputValue={searchInputValue}
-      />
+    
       <div className="banner">
         <div className="content">
           <h2>Cart - ({getTotalItemsInCart()}) items</h2>
@@ -109,7 +103,7 @@ export default function ShoppingCart({
           )}
         </div>
       </div>
-      <Footer />
+
     </div>
   )
 }
