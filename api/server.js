@@ -31,23 +31,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// app.get("/", (req, res, next) => {
-//   const a = null;
-//   console.log("fail");
-//   try {
-//     a.map();
-//   } catch (e) {
-//     const newError = new Error("Map failed");
-//     throw newError;
-//   }
-//   res.send("Fail!!");
-// });
-
-// app.post("/", (req, res) => {
-//   console.log(req.body);
-//   res.send({ world: "Hello" });
-// });
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

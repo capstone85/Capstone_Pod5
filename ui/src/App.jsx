@@ -32,12 +32,10 @@ import {
 } from "./utils/cart";
 
 import MyAccount from "./components/MyAccount/MyAccount";
-import SignUpVendor from "../Register/SignUpVendor";
 import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
 
 function App() {
   const [count, setCount] = useState(0);
@@ -169,7 +167,6 @@ function App() {
             ></Route>
             {/* not found */}
             <Route path="*" element={<NotFound />} />
-
 
             {/* My account routes */}
             {/* main page that shows when users go to their account --> page with dashboard */}
