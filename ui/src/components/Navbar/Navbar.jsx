@@ -18,7 +18,6 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ShoppingCart from "../Shoppingcart/Shoppingcart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
-
 export default function Navbar(props) {
   const navigate = useNavigate();
   return (
@@ -26,7 +25,7 @@ export default function Navbar(props) {
       <div className="container">
         {/* logo part */}
         <div className="logo">
-          <Link to="/">&#x1F975;</Link>
+          <Link to="/">🛍</Link>
         </div>
         {/* navbar links */}
         <ul className="links">
