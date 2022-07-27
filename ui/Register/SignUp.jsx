@@ -86,7 +86,7 @@ export default function SignUp(props) {
       if ((form.category == "shopper")) {
         navigate("/");
       } else {
-        navigate("/store_page");
+        navigate("/store");
       }
     }
     setIsProcessing(false);

@@ -15,7 +15,10 @@ export default function MyAccount(props) {
       <main>
         <div className="header">
           <p>My Account </p>
-          <DashboardLinks />
+          <DashboardLinks  handleLogout={props.handleLogout}
+              isLogin={props.isLogin}
+              user={props.user}
+              setUser={props.setUser}/>
           <Dashboard />
           <Footer />
         </div>
