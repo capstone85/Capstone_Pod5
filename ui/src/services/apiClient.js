@@ -34,6 +34,22 @@ class ApiClient {
     }
   }
 
+  async listStores(user_id) {
+    return await this.request({
+      endpoint: `store`,
+      method: `GET`,
+      data: user_id,
+    });
+  }
+
+  async createStore(store) {
+    return await this.request({
+      endpoint: `store`,
+      method: `GET`,
+      data: store,
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }

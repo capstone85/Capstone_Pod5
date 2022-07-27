@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import apiClient from "../services/apiClient";
+import apiClient from "../../ui/src/services/apiClient";
 //import { useAuthContext } from "../context/auth";
 //import MedicalResearch from "../MedicalResearch/MedicalResearch"
 // import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
