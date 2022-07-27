@@ -32,7 +32,7 @@ import {
 } from "./utils/cart";
 
 import MyAccount from "./components/MyAccount/MyAccount";
-import SignUpVendor from "../Register/SignUpVendor";
+//import SignUpVendor from "../Register/SignUpVendor";
 import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage";
 import { useNavigate } from "react-router-dom";
