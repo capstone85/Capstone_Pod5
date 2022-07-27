@@ -22,6 +22,13 @@ import NotFound from "./components/NotFound/NotFound";
 import Home from "./components/Home/Home";
 import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
+import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
+import {
+  removeFromCart,
+  addToCart,
+  getQuantityOfItemInCart,
+  getTotalItemsInCart,
+} from "./utils/cart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,6 +42,26 @@ function App() {
   const [isFetchingStore, setIsFetchingStore] = useState(false);
   const [store, setStore] = useState([]);
 
+  const [activeCategory, setActiveCategory] = useState("All Categories");
+  const [searchInputValue, setSearchInputValue] = useState("");
+  const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [cart, setCart] = useState({});
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleOnRemoveFromCart = (item) => setCart(removeFromCart(cart, item));
+  const handleOnAddToCart = (item) => setCart(addToCart(cart, item));
+  const handleGetItemQuantity = (item) => getQuantityOfItemInCart(cart, item);
+  const handleGetTotalCartItems = () => getTotalItemsInCart(cart);
+
+  const handleOnSearchInputChange = (event) => {
+    setSearchInputValue(event.target.value);
+  };
+
+  const handleOnCheckout = async () => {
+    setIsCheckingOut(true);
+  };
+
   useEffect(() => {
     const fetchUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
@@ -46,7 +73,7 @@ function App() {
       }
     };
 
-    const token = localStorage.getItem("lifetracker_token");
+    const token = localStorage.getItem("clothing_token");
     if (token) {
       apiClient.setToken(token);
       fetchUser();
@@ -124,7 +151,6 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
-
             <Route
               path="/store/*"
               element={
@@ -136,7 +162,28 @@ function App() {
                 />
               }
             />
-
+            <Route
+              path="/shopping-cart"
+              element={
+                <ShoppingCart
+                  user={user}
+                  cart={cart}
+                  error={error}
+                  setUser={setUser}
+                  products={products}
+                  activeCategory={activeCategory}
+                  setActiveCategory={setActiveCategory}
+                  searchInputValue={searchInputValue}
+                  handleOnSearchInputChange={handleOnSearchInputChange}
+                  addToCart={handleOnAddToCart}
+                  removeFromCart={handleOnRemoveFromCart}
+                  getQuantityOfItemInCart={handleGetItemQuantity}
+                  getTotalItemsInCart={handleGetTotalCartItems}
+                  isCheckingOut={isCheckingOut}
+                  handleOnCheckout={handleOnCheckout}
+                />
+              }
+            />
           </Routes>
         </main>
       </BrowserRouter>
