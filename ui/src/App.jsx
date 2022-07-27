@@ -21,7 +21,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 import MyAccount from "./components/MyAccount/MyAccount";
-import SignUpVendor from "../Register/SignUpVendor";
+// import SignUpVendor from "../Register/SignUpVendor";
 import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +43,7 @@ function App() {
         setUser(data.user);
 
         console.log(data.user);
-        console.log(user.username);
+        // console.log(user.username);
       }
       if (error) {
         setError(error);
@@ -117,7 +117,7 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
-            <Route path="/vendorsignup" element={<SignUpVendor />} />
+            {/* <Route path="/vendorsignup" element={<SignUpVendor />} /> */}
 
             {/* My account routes */}
             {/* main page that shows when users go to their account --> page with dashboard */}
