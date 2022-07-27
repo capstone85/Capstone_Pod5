@@ -4,7 +4,7 @@ import axios from "axios";
 import "./SignUp.css";
 import apiClient from "../services/apiClient";
 
-export default function SignUp(props) {
+export default function SignUpVendor(props) {
   useEffect(() => {
     console.log(props.user);
   }, [props.user]);
@@ -22,9 +22,7 @@ export default function SignUp(props) {
     passwordConfirm: "",
   });
 
-  function change(src) {
-    window.location = src;
-  }
+
   const handleOnInputChange = (event) => {
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
@@ -91,23 +89,13 @@ export default function SignUp(props) {
   return (
     <div className="Register">
       <div className="card">
-        <h2>Register</h2>
+        <h2>Register Vendor</h2>
 
         {errors.form && <span className="error">{errors.form}</span>}
         <br />
 
         <div className="form">
-          <div>
-            <label for="categories">I am a...</label>
-            <select
-              name="category"
-              id="category"
-              onChange={(e) => change(e.target.value)}
-            >
-              <option value="/">Shopper</option>
-              <option value="/vendorsignup">Vendor</option>
-            </select>
-          </div>
+          
           <div className="split-inputs">
             <div className="input-field">
               <label htmlFor="email">Email</label>
