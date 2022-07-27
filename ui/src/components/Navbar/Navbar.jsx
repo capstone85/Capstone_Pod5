@@ -14,8 +14,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <div className="navbar">
       <div className="container">
@@ -47,9 +48,16 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/login">
+            {/* <Link to="/login"> */}
+            <Link to="/dashboard">
               <PersonOutlineOutlinedIcon />
             </Link>
+            <DashboardLinks
+              handleLogout={props.handleLogout}
+              isLogin={props.isLogin}
+              user={props.user}
+              setUser={props.setUser}
+            />
           </li>
         </ul>
       </div>
