@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 // icons used
 import SearchIcon from "@mui/icons-material/Search";
@@ -18,6 +19,7 @@ import ShoppingCart from "../Shoppingcart/Shoppingcart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
 export default function Navbar(props) {
+  const navigate = useNavigate();
   return (
     <div className="navbar">
       <div className="container">
@@ -27,6 +29,24 @@ export default function Navbar(props) {
         </div>
         {/* navbar links */}
         <ul className="links">
+          <li>
+            {props.user ? (
+              <button
+                onClick={() => {
+                  props.handleLogout();
+                  navigate("/login");
+                }}
+              >
+                Logout
+              </button>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </>
+            )}
+          </li>
           <div className="shop">
             <li>
               <Link to="/store-page">Shop</Link>
@@ -53,12 +73,13 @@ export default function Navbar(props) {
             <Link to="/dashboard">
               <PersonOutlineOutlinedIcon />
             </Link>
-            <DashboardLinks
-              handleLogout={props.handleLogout}
-              isLogin={props.isLogin}
-              user={props.user}
-              setUser={props.setUser}
-            />
+
+            {/* <DashboardLinks
+                handleLogout={props.handleLogout}
+                isLogin={props.isLogin}
+                user={props.user}
+                setUser={props.setUser}
+              /> */}
           </li>
         </ul>
       </div>

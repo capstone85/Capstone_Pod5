@@ -76,7 +76,7 @@ function App() {
         setUser(data.user);
 
         console.log(data.user);
-        console.log(user.username);
+        // console.log(user.username);
       }
       if (error) {
         setError(error);
@@ -187,6 +187,7 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/shopping-cart"
               element={

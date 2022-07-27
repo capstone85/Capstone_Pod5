@@ -107,7 +107,6 @@ export default function ShoppingCart({
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
