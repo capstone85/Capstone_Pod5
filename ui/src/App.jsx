@@ -32,12 +32,11 @@ import {
 } from "./utils/cart";
 
 import MyAccount from "./components/MyAccount/MyAccount";
-//import SignUpVendor from "../Register/SignUpVendor";
+// import SignUpVendor from "../Register/SignUpVendor";
 import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
 
 function App() {
   const [count, setCount] = useState(0);
@@ -78,7 +77,7 @@ function App() {
         setUser(data.user);
 
         console.log(data.user);
-        console.log(user.username);
+        // console.log(user.username);
       }
       if (error) {
         setError(error);
@@ -170,7 +169,6 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
-
             {/* My account routes */}
             {/* main page that shows when users go to their account --> page with dashboard */}
             <Route
@@ -190,6 +188,7 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/shopping-cart"
               element={

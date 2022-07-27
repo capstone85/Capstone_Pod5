@@ -14,7 +14,7 @@ export default function DashboardLinks(props) {
         <li>
           <Link to="/orders">Orders</Link>
         </li>
-        {props.user ? (
+        {/* {props.user ? (
           <li className="btn">
             <button
               onClick={() => {
@@ -28,10 +28,10 @@ export default function DashboardLinks(props) {
         ) : (
           <>
             <li>
-              <Link to="/login">login</Link>
+              <Link to="/login">Login</Link>
             </li>
           </>
-        )}
+        )} */}
 
         {/* <li>Logout</li> */}
       </ul>
