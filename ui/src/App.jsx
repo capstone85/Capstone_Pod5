@@ -13,6 +13,7 @@ import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 // import Home from "./Components/Home"
 // import Signup from "./Components/Signup";
 // import Login from "./Components/Login";
+import Wishlist from "./components/Wishlist/Wishlist";
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../Register/SignupPage";
 import apiClient from "./services/apiClient";
@@ -167,7 +168,21 @@ function App() {
             ></Route>
             {/* not found */}
             <Route path="*" element={<NotFound />} />
-
+            <Route path="/wishlist" element={<Wishlist    user={user}
+                  cart={cart}
+                  error={error}
+                  setUser={setUser}
+                  products={products}
+                  activeCategory={activeCategory}
+                  setActiveCategory={setActiveCategory}
+                  searchInputValue={searchInputValue}
+                  handleOnSearchInputChange={handleOnSearchInputChange}
+                  addToCart={handleOnAddToCart}
+                  removeFromCart={handleOnRemoveFromCart}
+                  getQuantityOfItemInCart={handleGetItemQuantity}
+                  getTotalItemsInCart={handleGetTotalCartItems}
+                  isCheckingOut={isCheckingOut}
+                  handleOnCheckout={handleOnCheckout}/>} />
             {/* My account routes */}
             {/* main page that shows when users go to their account --> page with dashboard */}
             <Route
