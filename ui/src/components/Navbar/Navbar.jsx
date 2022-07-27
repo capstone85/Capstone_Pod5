@@ -14,7 +14,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import ShoppingCart from "../Shoppingcart/Shoppingcart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
+
 
 export default function Navbar(props) {
   return (
@@ -28,7 +30,7 @@ export default function Navbar(props) {
         <ul className="links">
           <div className="shop">
             <li>
-              <Link to="/store_page">Shop</Link>
+              <Link to="/store-page">Shop</Link>
               {/* <button>Shop</button> */}
             </li>
           </div>
@@ -43,7 +45,7 @@ export default function Navbar(props) {
             </Link>
           </li>
           <li>
-            <Link to="/shopping_cart">
+            <Link to="/shopping-cart">
               <ShoppingCartOutlinedIcon />
             </Link>
           </li>

@@ -1,11 +1,14 @@
-import { useNavigate } from "react-router-dom"
-//import SubNavbar from "../SubNavbar/SubNavbar"
-//import Footer from "../Footer/Footer"
-import Navbar from "../Navbar/Navbar"
-//import codepath from "../../assets/codepath.svg"
-import { formatPrice } from "../../utils/format"
-import { calculateItemSubtotal, calculateTaxesAndFees, calculateTotal } from "../../utils/calculations"
-import "./ShoppingCart.css"
+import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
+import { formatPrice } from "../../utils/format";
+import {
+  calculateItemSubtotal,
+  calculateTaxesAndFees,
+  calculateTotal,
+} from "../../utils/calculations";
+import "./ShoppingCart.css";
+import LoginPage from "../../../Login/LoginPage";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart({
   user,
@@ -21,41 +24,36 @@ export default function ShoppingCart({
   getQuantityOfItemInCart,
   handleOnCheckout,
 }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const productMapping = products.reduce((acc, product) => {
-    acc[product.id] = product
-    return acc
-  }, {})
+    acc[product.id] = product;
+    return acc;
+  }, {});
 
   const cartMapping = Object.keys(cart).reduce((acc, id) => {
-    acc[id] = productMapping[id]
-    return acc
-  }, {})
+    acc[id] = productMapping[id];
+    return acc;
+  }, {});
 
   const subTotal = Object.values(cartMapping).reduce((acc, product) => {
-    return acc + calculateItemSubtotal(product.price, getQuantityOfItemInCart(product))
-  }, 0)
+    return (
+      acc +
+      calculateItemSubtotal(product.price, getQuantityOfItemInCart(product))
+    );
+  }, 0);
 
   const onCheckoutSubmit = async () => {
-    const order = await handleOnCheckout()
+    const order = await handleOnCheckout();
     if (order) {
-      navigate("/orders")
+      navigate("/orders");
     }
-  }
+  };
 
-  const cartHasItems = Boolean(Object.keys(cartMapping).length)
+  const cartHasItems = Boolean(Object.keys(cartMapping).length);
 
   return (
     <div className="ShoppingCart">
-      <Navbar />
-      <SubNavbar
-        user={user}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        handleOnSearchInputChange={handleOnSearchInputChange}
-        searchInputValue={searchInputValue}
-      />
       <div className="banner">
         <div className="content">
           <h2>Cart - ({getTotalItemsInCart()}) items</h2>
@@ -103,15 +101,15 @@ export default function ShoppingCart({
           {user?.email ? (
             <button onClick={onCheckoutSubmit}>Checkout</button>
           ) : (
-            <button className="is-disabled" disabled>
+            <Link to="/login" path={LoginPage}>
               Sign In To Checkout
-            </button>
+            </Link>
           )}
         </div>
       </div>
       <Footer />
     </div>
-  )
+  );
 }
 
 const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
@@ -119,7 +117,7 @@ const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
     <div className="CartItem">
       <div className="item-info">
         <div className="item">
-          <img className="image" src={product.image || codepath} alt="product cover" />
+          <img className="image" src="" alt="product cover" />
           <div className="name-and-price">
             <p className="name">{product.name}</p>
             <p className="price">{formatPrice(product.price)}</p>
@@ -150,5 +148,5 @@ const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
