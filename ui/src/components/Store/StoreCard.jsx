@@ -9,17 +9,17 @@ export default function StoreCard(props) {
       </div>
       <div className="card-stats">
         <div className="cardStat">
-          <p>Duration</p>
-          <span>{props.duration}</span>
+          <p>Location</p>
+          <span>{props.location}</span>
         </div>
         <div className="cardStat">
-          <p>Intensity</p>
-          <span>{props.intensity}</span>
+          <p>Logo</p>
+          <span>{props.logo}</span>
         </div>
       </div>
       <div className="card-meta">
         <small>{props.created_at}</small>
-        <small className="category">{props.category}</small>
+        <small className="category">{props.description}</small>
       </div>
     </div>
   );

@@ -45,7 +45,7 @@ class ApiClient {
   async createStore(store) {
     return await this.request({
       endpoint: `store`,
-      method: `GET`,
+      method: `POST`,
       data: store,
     });
   }
