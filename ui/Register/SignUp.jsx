@@ -16,14 +16,14 @@ export default function SignUp(props) {
     { value: "vendor", text: "Vendor" },
   ];
   const [isLoading, setIsProcessing] = useState(false);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("shopper");
   const [errors, setErrors] = useState({});
 
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    category: "", // bool, isVendor
+    category: "shopper", // bool, isVendor
     password: "",
     passwordConfirm: "",
   });
@@ -32,11 +32,6 @@ export default function SignUp(props) {
     if (event.target.name === "category") {
       console.log(event.target.value);
       setSelected(event.target.value);
-      // if (event.target.value === options[0].value) {
-      //   form.category = "Shopper";
-      // } else if (event.target.value === options[1].value) {
-      //   form.category = "Vendor";
-      // }
     }
 
     if (event.target.name === "email") {
