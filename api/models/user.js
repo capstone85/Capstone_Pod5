@@ -8,7 +8,7 @@ class User {
     return {
       id: user.id,
       email: user.email,
-   
+
       first_name: user.first_name,
       last_name: user.last_name,
       category: user.category,
@@ -37,7 +37,7 @@ class User {
   static async register(credentials) {
     const requiredFields = [
       "email",
-     
+
       "first_name",
       "last_name",
       "category",
@@ -49,11 +49,13 @@ class User {
       }
     });
     if (credentials.email.indexOf("@") <= 0) {
-      throw new BadRequestError("Invalid email.");
+      throw new BadRequestError("Please enter a valid email.");
     }
     const existingUser = await User.fetchUserByEmail(credentials.email);
     if (existingUser) {
-      throw new BadRequestError(`Duplicate email: ${credentials.email}`);
+      throw new BadRequestError(
+        `Email ${credentials.email} is already in use.`
+      );
     }
     const hashedPassword = await bcrypt.hash(
       credentials.password,
@@ -64,7 +66,7 @@ class User {
       `
             INSERT INTO users (
                 email,
-              
+
                 first_name,
                 last_name,
                 category,
@@ -75,7 +77,7 @@ class User {
         `,
       [
         lowercasedEmail,
-       
+
         credentials.first_name,
         credentials.last_name,
         credentials.category,
