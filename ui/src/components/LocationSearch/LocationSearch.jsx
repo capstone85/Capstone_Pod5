@@ -33,7 +33,6 @@ export default function LocationSearchBar(props) {
     }
   }
 
-
   return (
     <div className="searchbar">
       <input
@@ -44,7 +43,7 @@ export default function LocationSearchBar(props) {
       />
 
       <button id="find-me" onClick={geoFindMe}>
-        Click to use Location
+        Find Location
       </button>
       <br />
       <p id="status"></p>

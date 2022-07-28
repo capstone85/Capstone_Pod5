@@ -56,7 +56,7 @@ export default function ShoppingCart({
     <div className="ShoppingCart">
       <div className="banner">
         <div className="content">
-          <h2>Wishlist - ({getTotalItemsInCart()}) items</h2>
+          <h2>Wishlist - {getTotalItemsInCart()} items</h2>
         </div>
       </div>
 
@@ -102,7 +102,7 @@ export default function ShoppingCart({
             <button onClick={onCheckoutSubmit}>Checkout</button>
           ) : (
             <Link to="/shopping-cart" path={LoginPage}>
-           Add to shopping cart
+              Add to shopping cart
             </Link>
           )}
         </div>
