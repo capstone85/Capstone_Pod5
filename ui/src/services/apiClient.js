@@ -34,11 +34,31 @@ class ApiClient {
     }
   }
 
+  async requestNoToken({ endpoint, method = `GET`, data = {} }) {
+    const url = `${this.remoteHostUrl}/${endpoint}`;
+
+    try {
+      const res = await axios({ url, method, data });
+      return { data: res.data, error: null };
+    } catch (error) {
+      console.error({ errorResponse: error.response });
+      const message = error?.response?.data?.error?.message;
+      return { data: null, error: message || String(error) };
+    }
+  }
+
   async listStores(user_id) {
     return await this.request({
       endpoint: `store`,
       method: `GET`,
       data: user_id,
+    });
+  }
+
+  async listAllStores() {
+    return await this.requestNoToken({
+      endpoint: `store/stores`,
+      method: `GET`,
     });
   }
 
