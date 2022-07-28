@@ -8,23 +8,46 @@ export default function SignUp(props) {
   useEffect(() => {
     console.log(props.user);
   }, [props.user]);
+
   const navigate = useNavigate();
+
+  const options = [
+    { value: "shopper", text: "Shopper" },
+    { value: "vendor", text: "Vendor" },
+  ];
   const [isLoading, setIsProcessing] = useState(false);
+  const [selected, setSelected] = useState("");
   const [errors, setErrors] = useState({});
 
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    category: "",
+    category: "", // bool, isVendor
     password: "",
     passwordConfirm: "",
   });
 
-  // function change(src) {
-  //   window.location = src;
-  // }
   const handleOnInputChange = (event) => {
+    if (event.target.name === "category") {
+      console.log(event.target.value);
+      setSelected(event.target.value);
+      // if (event.target.value === options[0].value) {
+      //   form.category = "Shopper";
+      // } else if (event.target.value === options[1].value) {
+      //   form.category = "Vendor";
+      // }
+      setForm([event.target.name, event.target.value]);
+    }
+
+    if (event.target.name === "email") {
+      if (event.target.value.indexOf("@") === -1) {
+        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
+      } else {
+        setErrors((e) => ({ ...e, email: null }));
+      }
+    }
+
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
@@ -43,21 +66,6 @@ export default function SignUp(props) {
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
-      }
-    }
-    if (event.target.name === "email") {
-      if (event.target.value.indexOf("@") === -1) {
-        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
-      } else {
-        setErrors((e) => ({ ...e, email: null }));
-      }
-    }
-
-    if (event.target.name === "category") {
-      if (event.target.value === "Shopper") {
-        form.category = "Shopper";
-      } else {
-        form.category = "Vendor";
       }
     }
 
@@ -89,10 +97,10 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      if (form.category == "shopper") {
-        navigate("/");
-      } else {
+      if (form.category == "vendor") {
         navigate("/store");
+      } else {
+        navigate("/");
       }
     }
     setIsProcessing(false);
@@ -107,32 +115,19 @@ export default function SignUp(props) {
         <br />
 
         <div className="form">
-          {/* <div>
-            <label htmlFor="category">I am a...</label>
-            <select
-              name="category"
-              id="category"
-              onChange={(e) => change(e.target.value)}
-            >
-              <option value="/">Shopper</option>
-              <option value="/vendorsignup">Vendor</option>
-            </select>
-          </div> */}
           <div className="split-inputs">
             <div className="input-field">
               <label htmlFor="category">I am a...</label>
-              <input
-                type="category"
+
+              <select
                 name="category"
-                placeholder="Enter shopper or vendor"
-                value={form.category}
+                value={selected}
                 onChange={handleOnInputChange}
-              />
-              {/* 
-              <select name="category" onChange={handleOnInputChange}>
-                <option value={(form.category="Shopper")}>Shopper</option>
-                <option value={(form.category="Vendor")}>Vendor</option>
-              </select> */}
+              >
+                {/* <option value="">--Choose an option--</option> */}
+                <option value="shopper">Shopper</option>
+                <option value="vendor">Vendor</option>
+              </select>
 
               {errors.category && (
                 <span className="error">{errors.category}</span>
@@ -150,20 +145,6 @@ export default function SignUp(props) {
               />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
-            {/* 
-            <div className="input-field">
-              <label htmlFor="email">username</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="your_username"
-                value={form.username}
-                onChange={handleOnInputChange}
-              />
-              {errors.username && (
-                <span className="error">{errors.username}</span>
-              )}
-            </div> */}
 
             <div className="split-inputs">
               <div className="input-field">
