@@ -15,7 +15,6 @@ export default function SignUp(props) {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
     category: "",
     password: "",
@@ -30,7 +29,7 @@ export default function SignUp(props) {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
           ...e,
-          passwordConfirm: "Password's do not match",
+          passwordConfirm: "Passwords do not match.",
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
@@ -40,7 +39,7 @@ export default function SignUp(props) {
       if (form.password && form.password !== event.target.value) {
         setErrors((e) => ({
           ...e,
-          passwordConfirm: "Password's do not match",
+          passwordConfirm: "Passwords do not match.",
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
@@ -71,7 +70,6 @@ export default function SignUp(props) {
 
     const { data, error } = await apiClient.signUpUser({
       email: form.email,
-      username: form.username,
       first_name: form.firstName,
       last_name: form.lastName,
       category: form.category,
@@ -83,7 +81,7 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      if ((form.category == "shopper")) {
+      if (form.category == "Shopper") {
         navigate("/");
       } else {
         navigate("/store");
@@ -114,30 +112,35 @@ export default function SignUp(props) {
           </div> */}
           <div className="split-inputs">
             <div className="input-field">
-              <label htmlFor="category">Are you a vendor or a shopper</label>
-              <input
+              <label htmlFor="category">I am a...</label>
+              {/* <input
                 type="category"
                 name="category"
                 placeholder="input category"
                 value={form.category}
                 onChange={handleOnInputChange}
-              />
+              /> */}
+              <select name="category" type="category">
+                <option value={(form.category = "Shopper")}>Shopper</option>
+                <option value={(form.category = "Vendor")}>Vendor</option>
+              </select>
               {errors.category && (
                 <span className="error">{errors.category}</span>
               )}
             </div>
+
             <div className="input-field">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
                 name="email"
-                placeholder="jane@doe.io"
+                placeholder="email@email.com"
                 value={form.email}
                 onChange={handleOnInputChange}
               />
               {errors.email && <span className="error">{errors.email}</span>}
             </div>
-
+            {/* 
             <div className="input-field">
               <label htmlFor="email">username</label>
               <input
@@ -150,7 +153,7 @@ export default function SignUp(props) {
               {errors.username && (
                 <span className="error">{errors.username}</span>
               )}
-            </div>
+            </div> */}
 
             <div className="split-inputs">
               <div className="input-field">

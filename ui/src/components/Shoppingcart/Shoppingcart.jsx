@@ -56,7 +56,7 @@ export default function ShoppingCart({
     <div className="ShoppingCart">
       <div className="banner">
         <div className="content">
-          <h2>Cart - ({getTotalItemsInCart()}) items</h2>
+          <h2>Cart - {getTotalItemsInCart()} items</h2>
         </div>
       </div>
 

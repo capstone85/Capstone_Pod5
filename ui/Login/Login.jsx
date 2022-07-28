@@ -40,7 +40,6 @@ export default function Login(props) {
     setErrors((e) => ({ ...e, form: null }));
     const toSend = {
       email: form.email,
-      username: form.username,
       first_name: form.firstName,
       last_name: form.lastName,
       password: form.password,
