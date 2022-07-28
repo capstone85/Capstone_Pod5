@@ -53,6 +53,14 @@ export default function SignUp(props) {
       }
     }
 
+    if (event.target.name === "category") {
+      if (event.target.value === "Shopper") {
+        form.category = "Shopper";
+      } else {
+        form.category = "Vendor";
+      }
+    }
+
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
 
@@ -81,7 +89,7 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      if (form.category == "Shopper") {
+      if (form.category == "shopper") {
         navigate("/");
       } else {
         navigate("/store");
@@ -113,17 +121,19 @@ export default function SignUp(props) {
           <div className="split-inputs">
             <div className="input-field">
               <label htmlFor="category">I am a...</label>
-              {/* <input
+              <input
                 type="category"
                 name="category"
-                placeholder="input category"
+                placeholder="Enter shopper or vendor"
                 value={form.category}
                 onChange={handleOnInputChange}
-              /> */}
-              <select name="category" type="category">
-                <option value={(form.category = "Shopper")}>Shopper</option>
-                <option value={(form.category = "Vendor")}>Vendor</option>
-              </select>
+              />
+              {/* 
+              <select name="category" onChange={handleOnInputChange}>
+                <option value={(form.category="Shopper")}>Shopper</option>
+                <option value={(form.category="Vendor")}>Vendor</option>
+              </select> */}
+
               {errors.category && (
                 <span className="error">{errors.category}</span>
               )}
@@ -134,7 +144,7 @@ export default function SignUp(props) {
               <input
                 type="email"
                 name="email"
-                placeholder="email@email.com"
+                placeholder="user@email.com"
                 value={form.email}
                 onChange={handleOnInputChange}
               />
