@@ -24,7 +24,7 @@ import Home from "./components/Home/Home";
 import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
-
+import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
 import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
 import {
   removeFromCart,
@@ -39,14 +39,13 @@ import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
   const [appState, setAppState] = useState({});
   const [sessionId, setSessionId] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
-  const [ user, setUser ] = useState(null);
+  const [user, setUser] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [isFetchingStore, setIsFetchingStore] = useState(false);
@@ -63,7 +62,7 @@ function App() {
   const handleOnAddToCart = (item) => setCart(addToCart(cart, item));
   const handleGetItemQuantity = (item) => getQuantityOfItemInCart(cart, item);
   const handleGetTotalCartItems = () => getTotalItemsInCart(cart);
-
+  const [shownavbar, setshownavbar] = useState(false);
   const handleOnSearchInputChange = (event) => {
     setSearchInputValue(event.target.value);
   };
@@ -71,7 +70,10 @@ function App() {
   const handleOnCheckout = async () => {
     setIsCheckingOut(true);
   };
-
+  useEffect(() => {
+    setshownavbar(!window.location.pathname.startsWith("/store"));
+    //setshownavbar(true)
+  }, [window.location.pathname]);
   useEffect(() => {
     const fetchUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
@@ -113,32 +115,29 @@ function App() {
       // setUser={setUser}
       // name={user.name}
       /> */}
-      <BrowserRouter>
-        <Navbar
-          handleLogout={handleLogout}
-          isLogin={isLogin}
-          user={user}
-          setUser={setUser}
-        />
 
+      <BrowserRouter>
+        {shownavbar ? (
+          <Navbar
+            handleLogout={handleLogout}
+            isLogin={isLogin}
+            user={user}
+            setUser={setUser}
+          />
+        ) : (
+          <VendorNavbar
+            handleLogout={handleLogout}
+            isLogin={isLogin}
+            user={user}
+            setUser={setUser}
+          />
+        )}
         <main>
           <Routes>
             {/* landing page route */}
             <Route path="/" element={<LandingPage />} />
 
             <Route path="/home" element={<Home />} />
-
-            <Route
-              path="/store"
-              element={
-                <StorePage
-                  store={store}
-                  addStore={addStore}
-                  user={user}
-                  setUser={setUser}
-                />
-              }
-            />
 
             {/* isLogin={isLogin}
                     user={user}
@@ -201,6 +200,17 @@ function App() {
             <Route path="/orders" element={<ViewOrdersPage />} />
 
             <Route
+              path="/store"
+              element={
+                <StorePage
+                  store={store}
+                  addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
+            <Route
               path="/store/*"
               element={
                 <StorePage
@@ -211,7 +221,6 @@ function App() {
                 />
               }
             />
-
             <Route
               path="/shopping-cart"
               element={
