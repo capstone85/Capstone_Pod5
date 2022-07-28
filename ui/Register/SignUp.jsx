@@ -37,7 +37,6 @@ export default function SignUp(props) {
       // } else if (event.target.value === options[1].value) {
       //   form.category = "Vendor";
       // }
-      setForm([event.target.name, event.target.value]);
     }
 
     if (event.target.name === "email") {
