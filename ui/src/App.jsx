@@ -24,7 +24,7 @@ import Home from "./components/Home/Home";
 import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
-
+import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
 import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
 import {
   removeFromCart,
@@ -62,7 +62,7 @@ function App() {
   const handleOnAddToCart = (item) => setCart(addToCart(cart, item));
   const handleGetItemQuantity = (item) => getQuantityOfItemInCart(cart, item);
   const handleGetTotalCartItems = () => getTotalItemsInCart(cart);
-
+  const [shownavbar, setshownavbar] = useState(false);
   const handleOnSearchInputChange = (event) => {
     setSearchInputValue(event.target.value);
   };
@@ -70,7 +70,10 @@ function App() {
   const handleOnCheckout = async () => {
     setIsCheckingOut(true);
   };
-
+  useEffect(() => {
+    setshownavbar(!window.location.pathname.startsWith("/store"));
+    //setshownavbar(true)
+  }, [window.location.pathname]);
   useEffect(() => {
     const fetchUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
@@ -112,14 +115,23 @@ function App() {
       // setUser={setUser}
       // name={user.name}
       /> */}
-      <BrowserRouter>
-        <Navbar
-          handleLogout={handleLogout}
-          isLogin={isLogin}
-          user={user}
-          setUser={setUser}
-        />
 
+      <BrowserRouter>
+        {shownavbar ? (
+          <Navbar
+            handleLogout={handleLogout}
+            isLogin={isLogin}
+            user={user}
+            setUser={setUser}
+          />
+        ) : (
+          <VendorNavbar
+            handleLogout={handleLogout}
+            isLogin={isLogin}
+            user={user}
+            setUser={setUser}
+          />
+        )}
         <main>
           <Routes>
             {/* landing page route */}
@@ -128,18 +140,6 @@ function App() {
             <Route
               path="/store-page"
               element={<Home user={user} store={store} />}
-            />
-
-            <Route
-              path="/store"
-              element={
-                <StorePage
-                  store={store}
-                  addStore={addStore}
-                  user={user}
-                  setUser={setUser}
-                />
-              }
             />
 
             {/* isLogin={isLogin}
@@ -203,6 +203,17 @@ function App() {
             <Route path="/orders" element={<ViewOrdersPage />} />
 
             <Route
+              path="/store"
+              element={
+                <StorePage
+                  store={store}
+                  addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
+            <Route
               path="/store/*"
               element={
                 <StorePage
@@ -213,7 +224,6 @@ function App() {
                 />
               }
             />
-
             <Route
               path="/shopping-cart"
               element={
