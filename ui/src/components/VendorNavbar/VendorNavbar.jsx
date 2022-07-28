@@ -51,7 +51,12 @@ export default function VendorNavbar(props) {
               {/* <button>Shop</button> */}
             </li>
           </div>
-      
+          <div className="addstore">
+            <li>
+              <Link to="/store">Add store</Link>
+              {/* <button>Shop</button> */}
+            </li>
+          </div>
     
         </ul>
       </div>
