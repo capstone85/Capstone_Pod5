@@ -39,14 +39,13 @@ import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
   const [appState, setAppState] = useState({});
   const [sessionId, setSessionId] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
-  const [ user, setUser ] = useState(null);
+  const [user, setUser] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [isFetchingStore, setIsFetchingStore] = useState(false);
@@ -126,7 +125,10 @@ function App() {
             {/* landing page route */}
             <Route path="/" element={<LandingPage />} />
 
-            <Route path="/home" element={<Home />} />
+            <Route
+              path="/store-page"
+              element={<Home user={user} store={store} />}
+            />
 
             <Route
               path="/store"
