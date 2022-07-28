@@ -11,27 +11,27 @@ export default function StoreForm(props) {
   const [form, setForm] = useState({
     name: "",
     location: "",
-    description: "",
     logo: "",
+    description: "",
   });
   const handleOnInputChange = (event) => {
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
+  const handleOnSubmit = async (s) => {
+    s.preventDefault();
     setIsLoading(true);
     const { data, error } = await apiClient.createStore({
       name: form.name,
       location: form.location,
-      description: form.description,
       logo: form.logo,
+      description: form.description,
     });
     if (error) {
       setErrors(error);
     }
     if (data) {
-      setForm({ name: "", location: "", description: "", logo: "" });
-      props.addstore(data.store);
+      setForm({ name: "", location: "", logo: "", description: "" });
+      props.addStore(data.store);
       navigate("/store");
     }
     setIsLoading(false);

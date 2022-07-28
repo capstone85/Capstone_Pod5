@@ -23,6 +23,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Home from "./components/Home/Home";
 import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
+import { AuthContextProvider, useAuthContext } from "./context/auth";
 
 import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
 import {
@@ -38,13 +39,14 @@ import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
+
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
   const [appState, setAppState] = useState({});
   const [sessionId, setSessionId] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
-  const [user, setUser] = useState(null);
+  const [ user, setUser ] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [isFetchingStore, setIsFetchingStore] = useState(false);
@@ -84,7 +86,7 @@ function App() {
       }
     };
 
-    const token = localStorage.getItem("clothing_token");
+    const token = localStorage.getItem("lifetracker_token");
     if (token) {
       apiClient.setToken(token);
       fetchUser();
@@ -168,7 +170,11 @@ function App() {
             ></Route>
             {/* not found */}
             <Route path="*" element={<NotFound />} />
-            <Route path="/wishlist" element={<Wishlist    user={user}
+            <Route
+              path="/wishlist"
+              element={
+                <Wishlist
+                  user={user}
                   cart={cart}
                   error={error}
                   setUser={setUser}
@@ -182,7 +188,10 @@ function App() {
                   getQuantityOfItemInCart={handleGetItemQuantity}
                   getTotalItemsInCart={handleGetTotalCartItems}
                   isCheckingOut={isCheckingOut}
-                  handleOnCheckout={handleOnCheckout}/>} />
+                  handleOnCheckout={handleOnCheckout}
+                />
+              }
+            />
             {/* My account routes */}
             {/* main page that shows when users go to their account --> page with dashboard */}
             <Route
