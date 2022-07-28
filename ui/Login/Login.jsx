@@ -39,6 +39,7 @@ export default function Login(props) {
     setIsProcessing(true);
     setErrors((e) => ({ ...e, form: null }));
     const toSend = {
+      category: form.category,
       email: form.email,
       first_name: form.firstName,
       last_name: form.lastName,
@@ -46,8 +47,8 @@ export default function Login(props) {
     };
     //console.log(toSend);
     const { data, error } = await apiClient.loginUser(toSend);
-    console.log(data);
-    console.log(error);
+    //console.log(data);
+    //console.log(error);
     if (error) {
       setErrors((e) => ({ ...e, form: error }));
     }
@@ -55,7 +56,14 @@ export default function Login(props) {
       apiClient.setToken(data.token);
       //console.log("data", data);
       props.setUser(data.user);
-      navigate("/");
+      // navigate("/");
+      //console.log("user", props.user);
+      //console.log("category", props.user.category);
+      if (data.user.category === "shopper") {
+        navigate("/");
+      } else if (data.user.category === "vendor") {
+        navigate("/store");
+      }
     }
     setIsProcessing(false);
   };
