@@ -39,7 +39,7 @@ export default function Navbar(props) {
               <button
                 onClick={() => {
                   props.handleLogout();
-                  navigate("/");
+                  navigate("/login");
                 }}
               >
                 Logout
