@@ -11,7 +11,6 @@ export default function MyAccount(props) {
   //   console.log(props.user.name);
   return (
     <div className="MyAccount">
-      {/* {props.user.name ? ( */}
       <main>
         <div className="header">
           <p>My Account </p>
@@ -21,13 +20,10 @@ export default function MyAccount(props) {
             user={props.user}
             setUser={props.setUser}
           />
-          <Dashboard />
+          <Dashboard user={props.user} />
           <Footer />
         </div>
       </main>
-      {/* ) : (
-        <LoginPage user={props.user} setUser={props.setUser}></LoginPage>
-      )} */}
     </div>
   );
 }

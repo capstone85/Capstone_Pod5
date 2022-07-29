@@ -35,7 +35,7 @@ export default function Navbar(props) {
         {/* navbar links */}
         <ul className="links">
           <li>
-            {(props.user && showbutton)? (
+            {props.user && showbutton ? (
               <button
                 onClick={() => {
                   props.handleLogout();
@@ -52,6 +52,27 @@ export default function Navbar(props) {
               </>
             )}
           </li>
+          {/* ----------------------- */}
+
+          {/* <li className={props.isLoggedIn ? "login close" : "login"}>
+            <Link to="/login">Login</Link>
+          </li>
+          {props.isLoggedIn ? (
+            <Link to="/register">
+              <li className="secondary btn" onClick={handleOnClick}>
+                <span> Sign out</span>
+              </li>
+            </Link>
+          ) : (
+            <Link to="/register">
+              <li className="secondary btn" onClick={handleOnClick}>
+                <span> Sign Up</span>
+              </li>
+            </Link>
+          )} */}
+
+          {/* ----------------- */}
+
           <div className="shop">
             <li>
               <Link to="/store-page">Shop</Link>
