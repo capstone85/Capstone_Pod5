@@ -9,7 +9,7 @@ export default function StoreOverview(props) {
       <div className="store-overview">
         <div className="header">
           <h3>Overview</h3>
-          <Link className="add-e" to="/store/create">
+          <Link className="add-store" to="/store/create">
             Add Store
           </Link>
         </div>
