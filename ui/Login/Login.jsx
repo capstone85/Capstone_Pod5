@@ -5,8 +5,12 @@ import axios from "axios";
 
 import apiClient from "../../ui/src/services/apiClient";
 import "./Login.css";
+import { relativeTimeRounding } from "moment";
 
 export default function Login(props) {
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
   const navigate = useNavigate();
   const [isLoading, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
@@ -39,6 +43,7 @@ export default function Login(props) {
       last_name: form.lastName,
       password: form.password,
     };
+
     //console.log(toSend);
     const { data, error } = await apiClient.loginUser(toSend);
     //console.log(data);
@@ -70,10 +75,8 @@ export default function Login(props) {
 
       <div className="card">
         <h2>Login to the Portal</h2>
-
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
         <br />
-
         <div className="form">
           <div className="input-field">
             <label htmlFor="email">Email</label>
@@ -101,11 +104,17 @@ export default function Login(props) {
             )}
           </div>
 
-          <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
+          <button
+            className="btn"
+            disabled={isLoading}
+            onClick={
+              handleOnSubmit
+              // refreshPage();
+            }
+          >
             {isLoading ? "Loading..." : "Login"}
           </button>
         </div>
-
         <div className="footer">
           <p>
             Don't have an account? Sign up <Link to="/register">here</Link>

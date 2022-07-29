@@ -1,5 +1,4 @@
 import * as React from "react";
-// import "./ExerciseDetail.css";
 import StoreCard from "./StoreCard";
 import { useParams } from "react-router-dom";
 

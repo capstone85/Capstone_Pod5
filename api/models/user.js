@@ -8,7 +8,6 @@ class User {
     return {
       id: user.id,
       email: user.email,
-
       first_name: user.first_name,
       last_name: user.last_name,
       category: user.category,
@@ -37,7 +36,6 @@ class User {
   static async register(credentials) {
     const requiredFields = [
       "email",
-
       "first_name",
       "last_name",
       "category",
@@ -66,7 +64,6 @@ class User {
       `
             INSERT INTO users (
                 email,
-
                 first_name,
                 last_name,
                 category,
