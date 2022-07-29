@@ -19,17 +19,6 @@ import ShoppingCart from "../Shoppingcart/Shoppingcart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
 export default function Navbar(props) {
-  const handleOnClick = () => {
-    if (props.isLoggedIn) {
-      props.setIsLogin(false);
-    }
-  };
-
-  const handleLoggedClick = () => {
-    if (!props.isLoggedIn) {
-      props.setIsClicked(true);
-    }
-  };
   const navigate = useNavigate();
   console.log(props.isLoggedIn);
   return (

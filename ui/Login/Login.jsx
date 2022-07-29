@@ -8,8 +8,12 @@ import apiClient from "../../ui/src/services/apiClient";
 //import MedicalResearch from "../MedicalResearch/MedicalResearch"
 // import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
 import "./Login.css";
+import { relativeTimeRounding } from "moment";
 
 export default function Login(props) {
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
   const navigate = useNavigate();
   const [isLoading, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
@@ -45,6 +49,7 @@ export default function Login(props) {
       last_name: form.lastName,
       password: form.password,
     };
+
     //console.log(toSend);
     const { data, error } = await apiClient.loginUser(toSend);
     console.log(data);
@@ -98,7 +103,14 @@ export default function Login(props) {
             )}
           </div>
 
-          <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
+          <button
+            className="btn"
+            disabled={isLoading}
+            onClick={
+              handleOnSubmit
+              // refreshPage();
+            }
+          >
             {isLoading ? "Loading..." : "Login"}
           </button>
         </div>
