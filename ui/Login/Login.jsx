@@ -4,9 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import apiClient from "../../ui/src/services/apiClient";
-//import { useAuthContext } from "../context/auth";
-//import MedicalResearch from "../MedicalResearch/MedicalResearch"
-// import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
 import "./Login.css";
 
 export default function Login(props) {
@@ -19,9 +16,6 @@ export default function Login(props) {
     password: "",
   });
 
-  // useEffect(() => {
-  //   console.log(props.user);
-  // }, [props.user]);
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
       if (event.target.value.indexOf("@") === -1) {
@@ -78,7 +72,7 @@ export default function Login(props) {
             <input
               type="email"
               name="email"
-              placeholder="user@gmail.com"
+              placeholder="user@email.com"
               value={form.email}
               onChange={handleOnInputChange}
             />

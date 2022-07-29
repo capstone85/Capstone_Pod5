@@ -23,7 +23,7 @@ export default function SignUp(props) {
     firstName: "",
     lastName: "",
     email: "",
-    category: "shopper", // bool, isVendor
+    category: "shopper",
     password: "",
     passwordConfirm: "",
   });
