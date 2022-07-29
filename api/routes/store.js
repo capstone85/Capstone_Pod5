@@ -43,6 +43,17 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     next(err);
   }
 });
+router.get("/stores", async (req, res, next) => {
+  try {
+    console.log("hello");
+    //return a json response back with one user-owned nutrition
+    //in an oject like { "nutrition": {...}}
+    const stores = await Store.listAllStores();
+    return res.status(200).json({stores});
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get("/:storeId", async (req, res, next) => {
   try {

@@ -8,29 +8,45 @@ export default function SignUp(props) {
   useEffect(() => {
     console.log(props.user);
   }, [props.user]);
+
   const navigate = useNavigate();
+
+  const options = [
+    { value: "shopper", text: "Shopper" },
+    { value: "vendor", text: "Vendor" },
+  ];
   const [isLoading, setIsProcessing] = useState(false);
+  const [selected, setSelected] = useState("shopper");
   const [errors, setErrors] = useState({});
 
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
-    category: "",
+    category: "shopper", // bool, isVendor
     password: "",
     passwordConfirm: "",
   });
 
-  // function change(src) {
-  //   window.location = src;
-  // }
   const handleOnInputChange = (event) => {
+    if (event.target.name === "category") {
+      console.log(event.target.value);
+      setSelected(event.target.value);
+    }
+
+    if (event.target.name === "email") {
+      if (event.target.value.indexOf("@") === -1) {
+        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
+      } else {
+        setErrors((e) => ({ ...e, email: null }));
+      }
+    }
+
     if (event.target.name === "password") {
       if (form.passwordConfirm && form.passwordConfirm !== event.target.value) {
         setErrors((e) => ({
           ...e,
-          passwordConfirm: "Password's do not match",
+          passwordConfirm: "Passwords do not match.",
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
@@ -40,17 +56,10 @@ export default function SignUp(props) {
       if (form.password && form.password !== event.target.value) {
         setErrors((e) => ({
           ...e,
-          passwordConfirm: "Password's do not match",
+          passwordConfirm: "Passwords do not match.",
         }));
       } else {
         setErrors((e) => ({ ...e, passwordConfirm: null }));
-      }
-    }
-    if (event.target.name === "email") {
-      if (event.target.value.indexOf("@") === -1) {
-        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
-      } else {
-        setErrors((e) => ({ ...e, email: null }));
       }
     }
 
@@ -71,7 +80,6 @@ export default function SignUp(props) {
 
     const { data, error } = await apiClient.signUpUser({
       email: form.email,
-      username: form.username,
       first_name: form.firstName,
       last_name: form.lastName,
       category: form.category,
@@ -83,10 +91,10 @@ export default function SignUp(props) {
     if (data?.user) {
       props.setUser(data.user);
       apiClient.setToken(data.user.token);
-      if ((form.category == "shopper")) {
-        navigate("/");
-      } else {
+      if (form.category == "vendor") {
         navigate("/store");
+      } else {
+        navigate("/");
       }
     }
     setIsProcessing(false);
@@ -101,55 +109,35 @@ export default function SignUp(props) {
         <br />
 
         <div className="form">
-          {/* <div>
-            <label htmlFor="category">I am a...</label>
-            <select
-              name="category"
-              id="category"
-              onChange={(e) => change(e.target.value)}
-            >
-              <option value="/">Shopper</option>
-              <option value="/vendorsignup">Vendor</option>
-            </select>
-          </div> */}
           <div className="split-inputs">
             <div className="input-field">
-              <label htmlFor="category">Are you a vendor or a shopper</label>
-              <input
-                type="category"
+              <label htmlFor="category">I am a...</label>
+
+              <select
                 name="category"
-                placeholder="input category"
-                value={form.category}
+                value={selected}
                 onChange={handleOnInputChange}
-              />
+              >
+                {/* <option value="">--Choose an option--</option> */}
+                <option value="shopper">Shopper</option>
+                <option value="vendor">Vendor</option>
+              </select>
+
               {errors.category && (
                 <span className="error">{errors.category}</span>
               )}
             </div>
+
             <div className="input-field">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
                 name="email"
-                placeholder="jane@doe.io"
+                placeholder="user@email.com"
                 value={form.email}
                 onChange={handleOnInputChange}
               />
               {errors.email && <span className="error">{errors.email}</span>}
-            </div>
-
-            <div className="input-field">
-              <label htmlFor="email">username</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="your_username"
-                value={form.username}
-                onChange={handleOnInputChange}
-              />
-              {errors.username && (
-                <span className="error">{errors.username}</span>
-              )}
             </div>
 
             <div className="split-inputs">

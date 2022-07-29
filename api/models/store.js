@@ -17,13 +17,7 @@ class Store {
             VALUES ($1, $2, $3, $4, (SELECT id FROM users WHERE email = $5))
             RETURNING id, name, location, logo, description, user_id, created_at
             `,
-      [
-        store.name,
-        store.location,
-        store.logo,
-        store.description,
-        user.email,
-      ]
+      [store.name, store.location, store.logo, store.description, user.email]
     );
     return results.rows[0];
   }
@@ -69,6 +63,21 @@ class Store {
             ORDER BY s.created_at DESC
             `,
       [user_id]
+    );
+    console.log(results.rows);
+    return results.rows;
+  }
+
+  static async listAllStores() {
+    const results = await db.query(
+      `SELECT  s.id,
+                s.name,
+                s.location,
+                s.logo,
+                s.description,
+                s.created_at 
+        FROM store AS s
+        ORDER BY s.created_at DESC`
     );
     console.log(results.rows);
     return results.rows;
