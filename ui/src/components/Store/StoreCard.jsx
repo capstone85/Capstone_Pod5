@@ -6,12 +6,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
 export default function StoreCard(props) {
   return (
-    <Card sx={{ maxWidth: 500 }} className="store-card">
+    <Card sx={{ maxWidth: 700 }} className="store-card">
       <CardMedia
         component="img"
         height="200"

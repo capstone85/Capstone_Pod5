@@ -47,7 +47,7 @@ export default function StoreFeed(props) {
               location={element.location}
               description={element.description}
               logo={element.logo}
-              form={form}
+              //   form={form}
               created_at={enUSFormatter.format(date)}
             ></StoreCard>
           );
