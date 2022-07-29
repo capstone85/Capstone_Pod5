@@ -1,6 +1,6 @@
 /* gets rid of the white that shows scrolling up */
 * {
-  overflow: hidden; /* or auto */
+  overflow: auto;
 }
 
 /* navbar designing  */
@@ -16,8 +16,8 @@
 }
 /*container inside the navbar for the links*/
 .container {
-  width: 150%;
-  height: 200%;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
 
   display: flex;
@@ -41,8 +41,4 @@
 
 .shop {
   text-decoration: none;
-}
-
-.logo {
-  font-size: 25px;
 }
