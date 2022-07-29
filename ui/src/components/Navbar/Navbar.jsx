@@ -19,7 +19,19 @@ import ShoppingCart from "../Shoppingcart/Shoppingcart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
 export default function Navbar(props) {
+  const handleOnClick = () => {
+    if (props.isLoggedIn) {
+      props.setIsLogin(false);
+    }
+  };
+
+  const handleLoggedClick = () => {
+    if (!props.isLoggedIn) {
+      props.setIsClicked(true);
+    }
+  };
   const navigate = useNavigate();
+  console.log(props.isLoggedIn);
   return (
     <div className="navbar">
       <div className="container">
@@ -30,23 +42,48 @@ export default function Navbar(props) {
         {/* navbar links */}
         <ul className="links">
           <li>
-            {props.user ? (
+            {props.isLoggedIn ? (
               <button
                 onClick={() => {
                   props.handleLogout();
-                  navigate("/login");
+                  navigate("/");
                 }}
               >
                 Logout
               </button>
             ) : (
               <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
+                <button
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  Login
+                </button>
               </>
             )}
           </li>
+          {/* ----------------------- */}
+
+          {/* <li className={props.isLoggedIn ? "login close" : "login"}>
+            <Link to="/login">Login</Link>
+          </li>
+          {props.isLoggedIn ? (
+            <Link to="/register">
+              <li className="secondary btn" onClick={handleOnClick}>
+                <span> Sign out</span>
+              </li>
+            </Link>
+          ) : (
+            <Link to="/register">
+              <li className="secondary btn" onClick={handleOnClick}>
+                <span> Sign Up</span>
+              </li>
+            </Link>
+          )} */}
+
+          {/* ----------------- */}
+
           <div className="shop">
             <li>
               <Link to="/store-page">Shop</Link>

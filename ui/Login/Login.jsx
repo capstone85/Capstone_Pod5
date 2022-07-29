@@ -69,10 +69,8 @@ export default function Login(props) {
 
       <div className="card">
         <h2>Login to the Portal</h2>
-
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
         <br />
-
         <div className="form">
           <div className="input-field">
             <label htmlFor="email">Email</label>
@@ -104,7 +102,6 @@ export default function Login(props) {
             {isLoading ? "Loading..." : "Login"}
           </button>
         </div>
-
         <div className="footer">
           <p>
             Don't have an account? Sign up <Link to="/register">here</Link>

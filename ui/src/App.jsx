@@ -39,18 +39,18 @@ import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
   const [appState, setAppState] = useState({});
   const [sessionId, setSessionId] = useState(null);
-  const [isLogin, setIsLogin] = useState(false);
-  const [ user, setUser ] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [isFetchingStore, setIsFetchingStore] = useState(false);
   const [store, setStore] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
 
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -77,9 +77,10 @@ function App() {
       const { data, error } = await apiClient.fetchUserFromToken();
       if (data) {
         setUser(data.user);
-
-        console.log(data.user);
-        // console.log(user.username);
+        console.log("datauser:", data.user);
+        setIsLoggedIn(true);
+        console.log("user: ", user);
+        console.log(user.username);
       }
       if (error) {
         setError(error);
@@ -92,11 +93,13 @@ function App() {
       fetchUser();
     }
   }, [setUser]);
+
   const handleLogout = async () => {
     await apiClient.logoutUser();
     console.log("logged out");
-    setUser({});
+    setUser([]);
     setError(null);
+    setIsLoggedIn(false);
   };
 
   const addStore = (newStore) => {
@@ -116,7 +119,9 @@ function App() {
       <BrowserRouter>
         <Navbar
           handleLogout={handleLogout}
-          isLogin={isLogin}
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setIsClicked={setIsClicked}
           user={user}
           setUser={setUser}
         />
@@ -150,7 +155,10 @@ function App() {
               path="/login"
               element={
                 <LoginPage
-                  isLogin={isLogin}
+                  isLoggedIn={isLoggedIn}
+                  isClicked={isClicked}
+                  setIsClicked={setIsClicked}
+                  setIsLoggedIn={setIsLoggedIn}
                   user={user}
                   setUser={setUser}
                 ></LoginPage>
@@ -164,7 +172,9 @@ function App() {
                 <SignUpPage
                   user={user}
                   setUser={setUser}
-                  isLogin={isLogin}
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setIsClicked={setIsClicked}
                 ></SignUpPage>
               }
             ></Route>
@@ -174,6 +184,7 @@ function App() {
               path="/wishlist"
               element={
                 <Wishlist
+                  isClicked={isClicked}
                   user={user}
                   cart={cart}
                   error={error}
@@ -196,7 +207,7 @@ function App() {
             {/* main page that shows when users go to their account --> page with dashboard */}
             <Route
               path="/dashboard"
-              element={<MyAccount handleLogout={handleLogout} />}
+              element={<MyAccount handleLogout={handleLogout} user={user} />}
             />
             <Route path="/orders" element={<ViewOrdersPage />} />
 
