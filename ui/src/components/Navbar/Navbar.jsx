@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 // icons used
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -19,7 +19,12 @@ import ShoppingCart from "../Shoppingcart/Shoppingcart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
 export default function Navbar(props) {
+  const [showbutton, setshowbutton] = useState(false);
   const navigate = useNavigate();
+  useEffect(() => {
+    setshowbutton(!window.location.pathname.startsWith("/login"));
+    //setshown(true)
+  }, [window.location.pathname]);
   return (
     <div className="navbar">
       <div className="container">
@@ -30,7 +35,7 @@ export default function Navbar(props) {
         {/* navbar links */}
         <ul className="links">
           <li>
-            {props.user ? (
+            {(props.user && showbutton)? (
               <button
                 onClick={() => {
                   props.handleLogout();
@@ -41,9 +46,9 @@ export default function Navbar(props) {
               </button>
             ) : (
               <>
-                <li>
+                <button>
                   <Link to="/login">Login</Link>
-                </li>
+                </button>
               </>
             )}
           </li>
