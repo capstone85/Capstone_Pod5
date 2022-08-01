@@ -22,7 +22,7 @@ class Product {
     return results.rows[0];
   }
 
-  static async listProductForStore({ store_id, user_id }) {
+  static async fetchProductById(productId) {
     const results = await db.query(
       `
         SELECT  p.id,
@@ -35,8 +35,35 @@ class Product {
         FROM product AS p
             JOIN users AS u ON u.id = p.user_id
             JOIN store AS s ON s.id = p.store_id
-        ORDER BY p.created_at DESC
-        `
+            WHERE p.id = $1
+        `,
+      [productId]
+    );
+    const product = results.rows[0];
+    if (!product) {
+      throw new NotFoundError();
+    }
+    return product;
+  }
+
+  static async listProductForStore({ store_id }) {
+    const results = await db.query(
+      `
+            SELECT  p.id,
+                    p.name,
+                    s.name AS "store_name",
+                    u.email AS "user_email",
+                    p.store_id AS "store_id",
+                    p.user_id AS "user_id",
+                    p.created_at AS "created_at"
+            FROM product AS p
+                JOIN users AS u ON u.id = p.user_id
+                JOIN store AS s ON s.id = p.store_id
+                
+            WHERE p.store_id = $1
+            ORDER BY p.created_at DESC
+            `,
+      [store_id]
     );
     console.log(results.rows);
     return results.rows;
@@ -60,29 +87,6 @@ class Product {
     );
     console.log(results.rows);
     return results.rows;
-  }
-
-  static async fetchProductById(productId) {
-    const results = await db.query(
-      `
-        SELECT  p.id,
-                p.name,
-                s.name AS "store_name",
-                u.email AS "user_email",
-                p.store_id AS "store_id",
-                p.user_id AS "user_id",
-                p.created_at AS "created_at"
-        FROM product AS p
-            JOIN users AS u ON u.id = p.user_id
-            JOIN store AS s ON s.id = p.store_id
-        ORDER BY p.created_at DESC
-        `
-    );
-    const product = results.rows[0];
-    if (!product) {
-      throw new NotFoundError();
-    }
-    return product;
   }
 }
 

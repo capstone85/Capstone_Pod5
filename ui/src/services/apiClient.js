@@ -72,7 +72,7 @@ class ApiClient {
 
   async listProducts(store_id) {
     return await this.request({
-      endpoint: `product`,
+      endpoint: `:storeId/product`,
       method: `GET`,
       data: store_id,
     });
