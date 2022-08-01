@@ -24,6 +24,9 @@ export default function ShoppingCart({
   getQuantityOfItemInCart,
   handleOnCheckout,
 }) {
+  //error message for users that are not signed in
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const productMapping = products.reduce((acc, product) => {

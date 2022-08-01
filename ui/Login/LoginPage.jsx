@@ -33,7 +33,12 @@ export default function LoginPage(props) {
       ) : (
         <Login user={props.user} setUser={props.setUser}></Login>
       )} */}
-      <Login user={props.user} setUser={props.setUser}></Login>
+      <Login
+        user={props.user}
+        setUser={props.setUser}
+        setIsLoggedIn={props.setIsLoggedIn}
+        isLoggedIn={props.isLoggedIn}
+      ></Login>
     </div>
   );
 }

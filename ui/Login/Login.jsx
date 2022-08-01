@@ -49,6 +49,7 @@ export default function Login(props) {
       last_name: form.lastName,
       password: form.password,
     };
+    props.setIsLoggedIn(true);
 
     //console.log(toSend);
     const { data, error } = await apiClient.loginUser(toSend);

@@ -11,19 +11,30 @@ export default function MyAccount(props) {
   //   console.log(props.user.name);
   return (
     <div className="MyAccount">
-      <main>
-        <div className="header">
-          <p>My Account </p>
-          <DashboardLinks
-            handleLogout={props.handleLogout}
-            isLogin={props.isLogin}
-            user={props.user}
-            setUser={props.setUser}
-          />
-          <Dashboard user={props.user} />
-          <Footer />
-        </div>
-      </main>
+      {props.isLoggedIn ? (
+        <main>
+          <div className="header">
+            <p>My Account </p>
+            <DashboardLinks
+              handleLogout={props.handleLogout}
+              isLoggedIn={props.isLoggedIn}
+              user={props.user}
+              setUser={props.setUser}
+            />
+            <Dashboard user={props.user} />
+            <Footer />
+          </div>
+        </main>
+      ) : (
+        <LoginPage
+          isLoggedIn={isLoggedIn}
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          setIsLoggedIn={setIsLoggedIn}
+          user={user}
+          setUser={setUser}
+        />
+      )}
     </div>
   );
 }
