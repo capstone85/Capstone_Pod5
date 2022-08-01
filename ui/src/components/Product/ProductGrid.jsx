@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 export default function ProductGrid(props) {
   let foundSearch = false;
   return (
-    <div className="product-grid-section">
+    <>
       <div className="product-grid">
         {props.products.map((currProduct, idx) => {
           let quantity = 0;
@@ -22,7 +22,7 @@ export default function ProductGrid(props) {
           if (
             currProduct.name
               .toLowerCase()
-              .includes(props.searchBar.toLowerCase())
+              .includes(props.searchbar.toLowerCase())
           ) {
             foundSearch = true;
             return (
@@ -44,13 +44,10 @@ export default function ProductGrid(props) {
             );
           }
         })}
-
-        {!foundSearch ? (
-          <div className="none-found">
-            <h1>No products available.</h1>
-          </div>
-        ) : null}
+        <div className="none-found">
+          {!foundSearch ? <h1>No products available.</h1> : null}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

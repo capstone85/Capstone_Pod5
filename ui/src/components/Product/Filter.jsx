@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./ProductCategories.css";
+import "./Filter.css";
 
 // Renders selector to toggle different categories on product grid
 export default function Selector(props) {
@@ -8,9 +8,7 @@ export default function Selector(props) {
   return (
     <div className="category-menu">
       <button className={buttonClassName} onClick={props.onClick}>
-        <p className={buttonClassName}>
-          {capitalizeFirst(props.label).toUpperCase()}{" "}
-        </p>
+        <li className={buttonClassName}>{capitalizeFirst(props.label)}</li>
       </button>
     </div>
   );

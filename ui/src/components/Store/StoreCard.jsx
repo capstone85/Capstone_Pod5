@@ -38,8 +38,10 @@ export default function StoreCard(props) {
         <hr></hr>
         <Button size="small">Upload merchandise</Button>
         <hr></hr>
-        <Link to="/:storeId/products">
-          <Button size="small">View styles</Button>
+        <Link to="/:storeId" style={{ textDecoration: "none" }}>
+          <Button size="small" className="buttonred">
+            View styles
+          </Button>
         </Link>
       </CardActions>
       {/* ) : ( */}
