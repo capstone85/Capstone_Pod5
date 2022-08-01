@@ -98,6 +98,7 @@ export default function SignUp(props) {
       }
     }
     setIsProcessing(false);
+    props.setIsLoggedIn(true);
   };
 
   return (

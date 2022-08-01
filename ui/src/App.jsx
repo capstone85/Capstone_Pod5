@@ -133,6 +133,7 @@ function App() {
           <VendorNavbar
             handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
             user={user}
             setUser={setUser}
           />

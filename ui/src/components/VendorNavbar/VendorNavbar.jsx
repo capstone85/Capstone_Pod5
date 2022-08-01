@@ -1,63 +1,68 @@
 import * as React from "react";
 import "./VendorNavbar.css";
 import { Link } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
+
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import { useNavigate } from "react-router-dom";
 
 // icons used
-import SearchIcon from "@mui/icons-material/Search";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import ShoppingCart from "../Shoppingcart/Shoppingcart";
-import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 
 export default function VendorNavbar(props) {
   const navigate = useNavigate();
   return (
-    <div className="navbar">
+    <div className="vender">
       <div className="container">
-
-      
-        {/* navbar links */}
-        <ul className="links">
+        {/* logo link */}
+        <div className="logo">
+          <Link to="/store">🛍</Link>
+        </div>
+        {/* vender links */}
+        <ul className="vender-links">
+          {/* login and log out */}
           <li>
-            {props.user ? (
-              <button
+            {props.isLoggedIn ? (
+              <Typography
+                className="logoutButton"
                 onClick={() => {
                   props.handleLogout();
                   navigate("/login");
                 }}
               >
                 Logout
-              </button>
+              </Typography>
             ) : (
               <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
+                <div className="loginButton">
+                  <Link to="/login">
+                    <Typography>Login</Typography>
+                  </Link>
+                </div>
               </>
             )}
           </li>
-          <div className="mystore">
-            <li>
-              <Link to="/store-page">My store</Link>
-              {/* <button>Shop</button> */}
-            </li>
-          </div>
-          <div className="addstore">
-            <li>
-              <Link to="/store">Add store</Link>
-              {/* <button>Shop</button> */}
-            </li>
-          </div>
-    
+
+          {/* stores link */}
+          <li className="store-page">
+            <Link to="/store-page">
+              <Typography>Stores</Typography>
+            </Link>
+          </li>
+
+          {/* myStore link */}
+          <li className="myStores">
+            <Link to="/store">
+              <Typography>My Stores</Typography>
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/vendorAccount">
+              <PersonOutlineOutlinedIcon sx={{ width: 30, height: 30 }} />
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

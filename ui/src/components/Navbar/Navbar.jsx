@@ -48,7 +48,7 @@ export default function Navbar(props) {
   return (
     <div className="navbar">
       <div className="container">
-        {/* logo part */}
+        {/* logo link*/}
         <div className="logo">
           <Link to="/">🛍</Link>
         </div>
@@ -79,6 +79,7 @@ export default function Navbar(props) {
           <li>
             {props.isLoggedIn ? (
               <Typography
+                className="logoutButton"
                 onClick={() => {
                   props.handleLogout();
                   navigate("/login");
