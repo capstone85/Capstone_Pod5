@@ -214,8 +214,11 @@ function App() {
               element={
                 <MyAccount
                   handleLogout={handleLogout}
-                  user={user}
                   isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setIsClicked={setIsClicked}
+                  user={user}
+                  setUser={setUser}
                 />
               }
             />

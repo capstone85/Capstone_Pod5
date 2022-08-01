@@ -5,14 +5,17 @@ import Footer from "../../Footer/Footer";
 
 export default function ViewOrdersPage(props) {
   return (
-    <div>
-      <DashboardLinks
+    <div className="Orders">
+      {/* <DashboardLinks
         handleLogout={props.handleLogout}
         isLogin={props.isLogin}
         user={props.user}
         setUser={props.setUser}
-      />
-      <h1>Orders</h1>
+      /> */}
+      <div className="header">
+        <h2>Orders</h2>
+      </div>
+
       <Footer />
     </div>
   );

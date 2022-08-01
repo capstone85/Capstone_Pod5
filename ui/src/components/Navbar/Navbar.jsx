@@ -46,179 +46,154 @@ export default function Navbar(props) {
   //-------------------
 
   return (
-    <div className="navbar">
-      <div className="container">
-        {/* logo link*/}
-        <div className="logo">
-          <Link to="/">🛍</Link>
-        </div>
+    <div className="nav">
+      <div className="navbar">
+        <div className="container">
+          {/* logo link*/}
+          <div className="logo">
+            <Link to="/">🛍</Link>
+          </div>
 
-        {/* navbar links */}
-        {/* login and logout portion */}
-        <ul className="links">
-          {/* <li>
-            {props.user && showbutton ? (
-              <Typography
-                onClick={() => {
-                  props.handleLogout();
-                  navigate("/login");
-                }}
-              >
-                Logout
-              </Typography>
-            ) : (
-              <>
-                <div className="loginButton">
-                  <Link to="/login">
-                    <Typography>Login</Typography>
-                  </Link>
+          {/* navbar links */}
+          {/* login and logout portion */}
+          <ul className="links">
+            <li>
+              {props.isLoggedIn ? (
+                <div className="logoutButton">
+                  <Typography
+                    className="logoutButton"
+                    onClick={() => {
+                      props.handleLogout();
+                      navigate("/login");
+                    }}
+                  >
+                    Logout
+                  </Typography>
                 </div>
-              </>
-            )}
-          </li> */}
-          <li>
-            {props.isLoggedIn ? (
-              <Typography
-                className="logoutButton"
-                onClick={() => {
-                  props.handleLogout();
-                  navigate("/login");
-                }}
-              >
-                Logout
-              </Typography>
-            ) : (
-              <>
-                <div className="loginButton">
-                  <Link to="/login">
-                    <Typography>Login</Typography>
-                  </Link>
-                </div>
-              </>
-            )}
-          </li>
+              ) : (
+                <>
+                  <div className="loginButton">
+                    <Link to="/login">
+                      <Typography>Login</Typography>
+                    </Link>
+                  </div>
+                </>
+              )}
+            </li>
 
-          {/* store link */}
-          <li className="shop-link">
-            <Link to="/store-page">
-              <Typography>Shop</Typography>
-            </Link>
-          </li>
-
-          {/* search link */}
-          <li>
-            <Tooltip title="Search">
-              <Link to="/search">
-                <SearchIcon />
+            {/* store link */}
+            <li className="shop-link">
+              <Link to="/store-page">
+                <Typography>Shop</Typography>
               </Link>
-            </Tooltip>
-          </li>
+            </li>
 
-          {/* wishlist link --> */}
-          <li>
-            {props.isLoggedIn ? (
-              <Tooltip title="Wishlist">
-                <Link to="/wishlist">
-                  <FavoriteBorderIcon />
+            {/* search link */}
+            <li>
+              <Tooltip title="Search">
+                <Link to="/search">
+                  <SearchIcon />
                 </Link>
               </Tooltip>
-            ) : (
-              <Tooltip title="Must be logged in to view the page">
-                <Link to="/login">
-                  <FavoriteBorderIcon />
+            </li>
+
+            {/* wishlist link --> */}
+            <li>
+              {props.isLoggedIn ? (
+                <Tooltip title="Wishlist">
+                  <Link to="/wishlist">
+                    <FavoriteBorderIcon />
+                  </Link>
+                </Tooltip>
+              ) : (
+                <Tooltip title="Must be logged in to view the page">
+                  <Link to="/login">
+                    <FavoriteBorderIcon />
+                  </Link>
+                </Tooltip>
+              )}
+            </li>
+
+            {/* shopping cart link */}
+            <li>
+              <Tooltip title="Shopping Cart">
+                <Link to="/shopping-cart">
+                  <ShoppingCartOutlinedIcon />
                 </Link>
               </Tooltip>
-            )}
-          </li>
+            </li>
 
-          {/* shopping cart link */}
-          <li>
-            <Tooltip title="Shopping Cart">
-              <Link to="/shopping-cart">
-                <ShoppingCartOutlinedIcon />
-              </Link>
-            </Tooltip>
-          </li>
-
-          {/* My profile portion link that includes dropdowm */}
-          <li>
-            <div>
-              <Tooltip title="Account settings">
-                <Typography
-                  id="basic-button"
-                  aria-controls={open ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
+            {/* My profile portion link that includes dropdowm */}
+            <li>
+              <div className="account">
+                <Tooltip title="Account settings">
+                  <Typography
+                    id="basic-button"
+                    aria-controls={open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    <PersonOutlineOutlinedIcon sx={{ width: 30, height: 30 }} />
+                  </Typography>
+                </Tooltip>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
                 >
-                  <PersonOutlineOutlinedIcon sx={{ width: 30, height: 30 }} />
-                </Typography>
-              </Tooltip>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                {/* dropdown links */}
-                <div className="dropdown-links">
-                  {/* <MenuItem onClick={handleClose}>
-                    <Link to="/register">Sign Up</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/orders">My Orders</Link>
-                  </MenuItem> */}
-
-                  {/* if user is logged in --> should see dashboard, my orders, and log out, otherwise --> should see login and signup */}
-                  {props.isLoggedIn ? (
-                    <>
-                      <MenuItem onClick={handleClose}>
-                        <Typography>
-                          <Link to="/dashboard">Dashboard</Link>
-                        </Typography>
-                      </MenuItem>
-                      <MenuItem onClick={handleClose}>
-                        <Typography>
-                          <Link to="/orders">My Orders</Link>
-                        </Typography>
-                      </MenuItem>
-                      <MenuItem>
-                        <Typography
-                          onClick={() => {
-                            props.handleLogout();
-                            navigate("/login");
-                          }}
-                        >
-                          Logout
-                        </Typography>
-                      </MenuItem>
-                    </>
-                  ) : (
-                    <>
-                      <MenuItem onClick={handleClose}>
-                        <Link to="/register">
-                          <Typography>Sign Up</Typography>
-                        </Link>
-                      </MenuItem>
-                      <MenuItem onClick={handleClose}>
-                        <Link to="/login">
-                          <Typography>Login</Typography>
-                        </Link>
-                      </MenuItem>
-                    </>
-                  )}
-                </div>
-              </Menu>
-            </div>
-          </li>
-        </ul>
+                  {/* dropdown links */}
+                  <div className="dropdown-links">
+                    {/* if user is logged in --> should see dashboard, my orders, and log out, otherwise --> should see login and signup */}
+                    {props.isLoggedIn ? (
+                      <>
+                        <MenuItem onClick={handleClose}>
+                          <Link to="/dashboard">
+                            <Typography>Dashboard</Typography>
+                          </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          <Link to="/orders">
+                            <Typography>My Orders</Typography>
+                          </Link>
+                        </MenuItem>
+                        <MenuItem>
+                          <Typography
+                            onClick={() => {
+                              props.handleLogout();
+                              navigate("/login");
+                            }}
+                          >
+                            Logout
+                          </Typography>
+                        </MenuItem>
+                      </>
+                    ) : (
+                      <>
+                        <MenuItem onClick={handleClose}>
+                          <Link to="/register">
+                            <Typography>Sign Up</Typography>
+                          </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          <Link to="/login">
+                            <Typography>Login</Typography>
+                          </Link>
+                        </MenuItem>
+                      </>
+                    )}
+                  </div>
+                </Menu>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
+      <hr className="nav-line" />
     </div>
   );
 }

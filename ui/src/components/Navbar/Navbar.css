@@ -39,12 +39,21 @@
   color: black;
 }
 
-.links:hover {
+.account:hover {
   cursor: pointer;
+}
+
+.links .logoutButton:hover {
+  cursor: pointer;
+  color: gray;
 }
 
 .shop-link a {
   text-decoration: none;
+}
+
+.shop-link a:hover {
+  color: gray;
 }
 
 .dropdown-links a {
@@ -53,4 +62,8 @@
 
 .loginButton a {
   text-decoration: none;
+}
+
+hr.nav-line {
+  border: 0.1px gray;
 }
