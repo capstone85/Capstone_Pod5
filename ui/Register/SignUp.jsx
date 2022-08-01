@@ -205,12 +205,11 @@ export default function SignUp(props) {
             >
               {isLoading ? "Loading..." : "Create Account"}
             </button>
-          </div>
-
-          <div className="footer">
-            <p>
-              Already have an account? Login <Link to="/login">here</Link>
-            </p>
+            <div className="footer">
+              <p>
+                Already have an account? Login <Link to="/login">here</Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>

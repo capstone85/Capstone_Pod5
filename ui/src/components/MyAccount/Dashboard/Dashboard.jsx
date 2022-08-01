@@ -28,8 +28,9 @@ export default function Dashboard(props) {
       </p>
       <p>
         From your account dashboard you can view your{" "}
-        <Link to="/orders">recent orders</Link>, manage your shipping and
-        billing addresses, and edit your password and account details.
+        <Link to="/orders">recent orders</Link>, manage your{" "}
+        <Link to="/editAccount">shipping and billing addresses</Link>, and{" "}
+        <Link to="/editAccount">edit your password and account details</Link>.
       </p>
     </div>
   );
