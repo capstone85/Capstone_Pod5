@@ -45,13 +45,17 @@ export default function VendorNavbar(props) {
           </li>
           <div className="mystore">
             <li>
-              <Link to="/store-page">Stores Nearby</Link>
+              <Link to="/store-page" style={{ textDecoration: "none" }}>
+                Stores Nearby
+              </Link>
               {/* <button>Shop</button> */}
             </li>
           </div>
           <div className="addstore">
             <li>
-              <Link to="/store">My Stores</Link>
+              <Link to="/store" style={{ textDecoration: "none" }}>
+                My Store
+              </Link>
               {/* <button>Shop</button> */}
             </li>
           </div>

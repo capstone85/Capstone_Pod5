@@ -49,7 +49,7 @@ router.get("/stores", async (req, res, next) => {
     //return a json response back with one user-owned nutrition
     //in an oject like { "nutrition": {...}}
     const stores = await Store.listAllStores();
-    return res.status(200).json({stores});
+    return res.status(200).json({ stores });
   } catch (err) {
     next(err);
   }
@@ -57,8 +57,6 @@ router.get("/stores", async (req, res, next) => {
 
 router.get("/:storeId", async (req, res, next) => {
   try {
-    //return a json response back with one user-owned nutrition
-    //in an oject like { "nutrition": {...}}
     const { storeId } = req.params;
     const store = await Store.fetchStoreById(storeId);
     return res.status(200).json({ store });

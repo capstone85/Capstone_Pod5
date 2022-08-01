@@ -1,17 +1,15 @@
-.search-bar-section {
+.searchbar-section {
   display: flex;
-  justify-content: center;
-  padding-top: 10px;
+  justify-content: left;
+  padding-left: 10px;
 }
 
 .search-btn-emoji {
   font-size: 35px;
-  padding-left: 5px;
   display: flex;
 }
 
-.search-bar {
-  display: flex;
-  border-radius: 30px;
-  padding: 10px;
+.input.input {
+  font-size: 20px;
+  width: 130px;
 }

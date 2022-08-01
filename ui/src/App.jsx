@@ -3,7 +3,6 @@ import Searchbar from "./components/LandingPage/LandingPage";
 
 import * as React from "react";
 import { useState, useEffect } from "react";
-//import logo from "./logo.svg";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
@@ -221,6 +220,8 @@ function App() {
             ></Route>
             {/* not found */}
             <Route path="*" element={<NotFound />} />
+
+            <Route path="/search" element={<NotFound />} />
             <Route
               path="/wishlist"
               element={
@@ -275,7 +276,7 @@ function App() {
               }
             />
             <Route
-              path="/:storeId/products"
+              path="/:storeId"
               element={
                 <ProductsPage
                   products={

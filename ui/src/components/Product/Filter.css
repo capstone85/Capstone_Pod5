@@ -2,11 +2,15 @@ button {
   outline: none;
   background-color: transparent;
   border: none;
-  font: "Segoe UI";
+}
+
+li {
+  float: left;
 }
 
 .category-menu {
-  font: "Segoe UI";
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  width: 200px;
 }
 
 .my-label {
@@ -15,12 +19,10 @@ button {
 
 .my-label:hover {
   font-size: 18px;
-  background-color: rgb(255, 255, 255);
+  text-decoration: underline;
   transition-duration: 0.75s;
-  border-radius: 40px;
 }
 
 .my-label.active {
-  background-color: rgb(255, 255, 255);
-  border-radius: 40px;
+  text-decoration: underline;
 }

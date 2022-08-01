@@ -1,10 +1,13 @@
+/* .product-grid-container {
+  float: right;
+  display: inline;
+  margin-left: 10%;
+} */
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 10px;
-  /* margin-left: 20%; */
-  margin-right: 20%;
-  align-items: center;
+  margin-left: 5%;
   gap: 7px;
 }
 
@@ -25,13 +28,7 @@
   }
 }
 
-.product-grid-section {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .none-found {
-  margin-bottom: 300px;
-  margin-left: 100px;
+  margin-top: 30px;
   width: 500px;
 }

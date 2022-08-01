@@ -35,8 +35,6 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
 router.get("/products", async (req, res, next) => {
   try {
     console.log("hello");
-    //return a json response back with one user-owned nutrition
-    //in an oject like { "nutrition": {...}}
     const products = await Product.listAllProducts();
     return res.status(200).json({ products });
   } catch (err) {
@@ -44,17 +42,14 @@ router.get("/products", async (req, res, next) => {
   }
 });
 
-
 router.get("/:productId", async (req, res, next) => {
-    try {
-      //return a json response back with one user-owned nutrition
-      //in an oject like { "nutrition": {...}}
-      const { productId } = req.params;
-      const product = await Product.fetchProductById(productId);
-      return res.status(200).json({ product });
-    } catch (err) {
-      next(err);
-    }
-  });
+  try {
+    const { productId } = req.params;
+    const product = await Product.fetchProductById(productId);
+    return res.status(200).json({ product });
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
