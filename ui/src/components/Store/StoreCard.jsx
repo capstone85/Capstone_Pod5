@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export default function StoreCard(props) {
   return (
@@ -36,6 +37,10 @@ export default function StoreCard(props) {
         <Button size="small">Edit store info</Button>
         <hr></hr>
         <Button size="small">Upload merchandise</Button>
+        <hr></hr>
+        <Link to="/:storeId/products">
+          <Button size="small">View styles</Button>
+        </Link>
       </CardActions>
       {/* ) : ( */}
       {/* <CardActions>

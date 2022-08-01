@@ -1,0 +1,26 @@
+button {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font: "Segoe UI";
+}
+
+.category-menu {
+  font: "Segoe UI";
+}
+
+.my-label {
+  font-size: 18px;
+}
+
+.my-label:hover {
+  font-size: 18px;
+  background-color: rgb(255, 255, 255);
+  transition-duration: 0.75s;
+  border-radius: 40px;
+}
+
+.my-label.active {
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+}
