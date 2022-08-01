@@ -18,4 +18,14 @@ CREATE TABLE store (
     user_id     INT NOT NULL,
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE product (
+    id          SERIAL PRIMARY KEY,
+    name        TEXT NOT NULL,
+    user_id     INT NOT NULL,
+    store_id    INT NOT NULL,
+    created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (store_id) REFERENCES store(id) ON DELETE CASCADE
 )

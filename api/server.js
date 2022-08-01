@@ -6,6 +6,7 @@ const { PORT } = require("./config");
 const security = require("./middleware/security");
 const authRoutes = require("./routes/auth");
 const storeRoutes = require("./routes/store");
+const productRoutes = require("./routes/product");
 
 const app = express();
 // const port = 5173;
@@ -17,6 +18,7 @@ app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
 app.use("/store", storeRoutes);
+app.use("/product", productRoutes);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());
