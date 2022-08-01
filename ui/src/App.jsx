@@ -38,6 +38,7 @@ import Dashboard from "./components/MyAccount/Dashboard/Dashboard";
 import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import ProductsPage from "./components/Product/ProductsPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -54,18 +55,56 @@ function App() {
 
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchInputValue, setSearchInputValue] = useState("");
+  const [searchbar, setSearchbar] = useState(""); // for search results
   const [products, setProducts] = useState([]);
+  const categories = ["All Categories", "clothing", "accessories", "footwear"];
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState({});
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const currentItems = products.filter((item) => {
+    return item.category == activeCategory;
+  });
 
   const handleOnRemoveFromCart = (item) => setCart(removeFromCart(cart, item));
   const handleOnAddToCart = (item) => setCart(addToCart(cart, item));
   const handleGetItemQuantity = (item) => getQuantityOfItemInCart(cart, item);
   const handleGetTotalCartItems = () => getTotalItemsInCart(cart);
   const [shownavbar, setshownavbar] = useState(false);
+
   const handleOnSearchInputChange = (event) => {
     setSearchInputValue(event.target.value);
+  };
+
+  const handleOnSearchbarChange = (value) => {
+    setSearchbar(value);
+  };
+
+  const handleAddItemToCart = (productId) => {
+    let copyCart = [...cart];
+    let found = false;
+    copyCart.map((item, index) => {
+      if (item.itemId === productId) {
+        copyCart[index].quantity = copyCart[index].quantity + 1;
+        found = true;
+      }
+    });
+    if (!found) {
+      copyCart.push({ itemId: productId, quantity: 1 });
+    }
+    setCart(copyCart);
+  };
+  const handleRemoveItemFromCart = (productId) => {
+    let copyCart = [...cart];
+    copyCart.map((item, index) => {
+      if (item.itemId === productId) {
+        copyCart[index].quantity = copyCart[index].quantity - 1;
+        if (copyCart[index].quantity == 0) {
+          copyCart.splice(index, 1);
+        }
+      }
+    });
+    setCart(copyCart);
   };
 
   const handleOnCheckout = async () => {
@@ -232,6 +271,26 @@ function App() {
                   addStore={addStore}
                   user={user}
                   setUser={setUser}
+                />
+              }
+            />
+            <Route
+              path="/:storeId/products"
+              element={
+                <ProductsPage
+                  products={
+                    activeCategory == "All Categories" ? products : currentItems
+                  }
+                  activeCategory={activeCategory}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  setActiveCategory={setActiveCategory}
+                  handleOnSearchbarChange={handleOnSearchbarChange}
+                  categories={categories}
+                  cart={cart}
+                  setIsFetching={setIsFetching}
+                  searchnar={searchbar}
+                  setSearchbar={setSearchbar}
                 />
               }
             />

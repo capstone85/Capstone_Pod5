@@ -23,8 +23,6 @@ export default function VendorNavbar(props) {
   return (
     <div className="navbar">
       <div className="container">
-
-      
         {/* navbar links */}
         <ul className="links">
           <li>
@@ -47,17 +45,16 @@ export default function VendorNavbar(props) {
           </li>
           <div className="mystore">
             <li>
-              <Link to="/store-page">My store</Link>
+              <Link to="/store-page">Stores Nearby</Link>
               {/* <button>Shop</button> */}
             </li>
           </div>
           <div className="addstore">
             <li>
-              <Link to="/store">Add store</Link>
+              <Link to="/store">My Stores</Link>
               {/* <button>Shop</button> */}
             </li>
           </div>
-    
         </ul>
       </div>
     </div>
