@@ -43,6 +43,7 @@ export default function StoreFeed(props) {
           return (
             <StoreCard
               key={idx}
+              id={element.id}
               name={element.name}
               location={element.location}
               description={element.description}

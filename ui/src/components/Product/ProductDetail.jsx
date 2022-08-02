@@ -21,7 +21,7 @@ export default function ProductDetail(props) {
     async function getInfo() {
       props.setIsFetching(true);
       await axios
-        .get(`http://localhost:3001/store/${productId}`)
+        .get(`http://localhost:5174/product/${productId}`)
         .then((response) => {
           setProduct(response.data.product);
           props.setIsFetching(false);
