@@ -38,7 +38,10 @@ export default function StoreCard(props) {
         <hr></hr>
         <Button size="small">Upload merchandise</Button>
         <hr></hr>
-        <Link to="/:storeId" style={{ textDecoration: "none" }}>
+        <Link
+          to={"/store-page/" + props.name}
+          style={{ textDecoration: "none" }}
+        >
           <Button size="small" className="buttonred">
             View styles
           </Button>
