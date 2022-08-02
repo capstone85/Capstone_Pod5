@@ -2,6 +2,7 @@ import * as React from "react";
 import StoreFeed from "./StoreFeed";
 // import "./ExerciseOverview.css";
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 export default function StoreOverview(props) {
   return (
@@ -19,6 +20,7 @@ export default function StoreOverview(props) {
         </div>
         <hr></hr>
         <StoreFeed store={props.store} user={props.user}></StoreFeed>
+        <Footer />
       </div>
     </div>
   );

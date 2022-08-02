@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import StoreCard from "../Store/StoreCard";
 import StoreOverview from "../Store/StoreOverview";
 import apiClient from "../../services/apiClient";
+import Footer from "../Footer/Footer";
 
 export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
@@ -50,6 +51,7 @@ export default function Home(props) {
           })}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

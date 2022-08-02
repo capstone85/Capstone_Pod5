@@ -2,8 +2,19 @@
   /* width: 96.5vw;
   display: flex;
   flex-direction: column; */
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+  background-color: white;
+  max-height: 300px;
+}
+
+.hero-img {
+  /* width: 96.5vw;
+  display: flex;
+  flex-direction: column; */
+  text-align: center;
+  background-color: white;
+  max-height: 300px;
+  max-width: 300px;
 }
 
 .category {
@@ -29,7 +40,12 @@ ul.categories {
 
 .product-grid-container {
   width: 80%;
-  height: 400px;
+  height: 800px;
   margin-left: auto;
   margin-top: 20px;
+}
+
+.css-wjh20t-MuiPagination-ul {
+  justify-content: center;
+  max-height: 30px;
 }

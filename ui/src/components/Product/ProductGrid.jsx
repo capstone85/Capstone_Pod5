@@ -27,19 +27,19 @@ export default function ProductGrid(props) {
             foundSearch = true;
             return (
               <ProductCard
-                key={idx}
-                category={currProduct.category}
-                description={currProduct.description}
-                showDescription={false}
-                image={currProduct.image}
-                name={currProduct.name}
-                price={currProduct.price}
-                productId={currProduct.id}
-                products={props.products}
-                quantity={quantity}
-                handleAddItemToCart={props.handleAddItemToCart}
-                handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-                setIsFetching={props.setIsFetching}
+                // key={idx}
+                // category={currProduct.category}
+                // description={currProduct.description}
+                // showDescription={false}
+                // image={currProduct.image}
+                // name={currProduct.name}
+                // price={currProduct.price}
+                // productId={currProduct.id}
+                // products={props.products}
+                // quantity={quantity}
+                // handleAddItemToCart={props.handleAddItemToCart}
+                // handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+                // setIsFetching={props.setIsFetching}
               />
             );
           }

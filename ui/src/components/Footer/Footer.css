@@ -1,11 +1,11 @@
 .footer {
   bottom: 0%;
-  position: fixed;
   padding-bottom: 70px;
   color: black;
+  margin-top: 70px;
 }
 
-hr {
+.line {
   background-color: black;
   height: 1px;
   width: 1260px;

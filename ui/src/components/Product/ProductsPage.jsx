@@ -4,23 +4,27 @@ import ProductGrid from "./ProductGrid";
 import SearchBar from "../Search/Searchbar";
 import Selector from "./Filter";
 import Navbar from "../Navbar/Navbar";
-import { Card } from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
 import { sizing } from "@mui/system";
+import Pagination from "@mui/material/Pagination";
 import Footer from "../Footer/Footer";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import ProductCard from "./ProductCard";
 
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
   return (
     <>
-      <Card sx={({ maxHeight: "100px" }, { maxWidth: "35%" })} className="hero">
-        <CardMedia
+      <div className="hero">
+        <img
+          className="hero-img"
           component="img"
-          height="200"
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1024px-H%26M-Logo.svg.png"
+          height="1000"
+          width="900"
+          src="https://fastly.4sqi.net/img/general/600x600/10468357_faxIDY_QLe6j9-OAT9OhRzEIAcem1RMrnAuv1f7dDhs.jpg"
           alt={props.name}
         />
-      </Card>
+      </div>
       <div className="side-container">
         <SearchBar
           handleOnSearchbarChange={props.handleOnSearchbarChange}
@@ -51,8 +55,16 @@ export default function ProductsPage(props) {
           searchbar={props.searchbar}
           store={props.store}
         />
+        <ProductCard />
       </div>
-      <Footer />
+      <div className="pagination">
+        {/* <Pagination count={10} page={page} onChange={handleChange} /> */}
+
+        <Pagination count={3} />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
