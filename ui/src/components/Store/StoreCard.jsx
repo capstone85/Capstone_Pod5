@@ -6,14 +6,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/system";
+import { spacing } from "@mui/system";
 import { Link } from "react-router-dom";
 
 export default function StoreCard(props) {
+  const button = styled(Button)(spacing);
+
   return (
-    <Card sx={{ maxWidth: 700 }} className="store-card">
+    <Card sx={{ maxWidth: 900 }} className="store-card">
       <CardMedia
         component="img"
-        height="200"
+        height="800"
         image={props.logo}
         alt={props.name}
       />
@@ -27,26 +31,30 @@ export default function StoreCard(props) {
         <Typography variant="body2" color="text.secondary">
           📞 Phone Number
         </Typography>
-        <hr></hr>
+        <hr className="store-card-spacing"></hr>
         <Typography variant="body2" color="text.secondary">
           {props.description}
         </Typography>
       </CardContent>
       {/* {props.form.category === "vendor" ? ( */}
-      <CardActions>
-        <Button size="small">Edit store info</Button>
-        <hr></hr>
-        <Button size="small">Upload merchandise</Button>
-        <hr></hr>
-        <Link
-          to={"/store-page/" + props.name}
-          style={{ textDecoration: "none" }}
-        >
-          <Button size="small" className="buttonred">
-            View styles
-          </Button>
-        </Link>
-      </CardActions>
+      <div className="buttons">
+        <CardActions>
+          <div className="store-btn">
+            <Button size="small">Edit store info</Button>
+          </div>
+          <div className="store-btn">
+            <Button size="small">Upload merchandise</Button>
+          </div>
+          <div className="store-btn">
+            <Link
+              to={"/store-page/" + props.id}
+              style={{ textDecoration: "none" }}
+            >
+              <Button size="small">View styles</Button>
+            </Link>
+          </div>
+        </CardActions>
+      </div>
       {/* ) : ( */}
       {/* <CardActions>
           <Button size="small">View styles</Button>

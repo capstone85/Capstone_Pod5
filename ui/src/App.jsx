@@ -24,7 +24,7 @@ import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
 import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
-import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import {
   removeFromCart,
   addToCart,

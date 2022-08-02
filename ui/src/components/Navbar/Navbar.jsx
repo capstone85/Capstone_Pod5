@@ -14,7 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import ShoppingCart from "../Shoppingcart/Shoppingcart";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 import Tooltip from "@mui/material/Tooltip";
 
