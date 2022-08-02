@@ -1,0 +1,35 @@
+.hero {
+  /* width: 96.5vw;
+  display: flex;
+  flex-direction: column; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category {
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  width: 10px;
+}
+
+ul.categories {
+  list-style: none;
+  max-width: 200px;
+}
+
+.side-container {
+  width: 200px;
+  height: 400px;
+  float: left;
+  margin-top: 20px;
+}
+
+.product-grid-container {
+  width: 80%;
+  height: 400px;
+  margin-left: auto;
+  margin-top: 20px;
+}

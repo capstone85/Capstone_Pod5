@@ -70,6 +70,29 @@ class ApiClient {
     });
   }
 
+  async listProducts(store_id) {
+    return await this.request({
+      endpoint: `:storeId/product`,
+      method: `GET`,
+      data: store_id,
+    });
+  }
+
+  async listAllProducts() {
+    return await this.requestNoToken({
+      endpoint: `product/products`,
+      method: `GET`,
+    });
+  }
+
+  async createProduct(product) {
+    return await this.request({
+      endpoint: `product`,
+      method: `POST`,
+      data: product,
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }

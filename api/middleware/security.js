@@ -36,6 +36,12 @@ const requireAuthenticatedUser = (req, res, next) => {
   }
 };
 
+// const requireAuthenticatedStore = (req, res, next) => {
+//   try{
+//     const
+//   }
+// }
+
 module.exports = {
   jwtFrom,
   extractUserFromJwt,

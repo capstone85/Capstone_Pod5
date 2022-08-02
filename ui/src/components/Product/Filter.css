@@ -1,0 +1,28 @@
+button {
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+li {
+  float: left;
+}
+
+.category-menu {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  width: 200px;
+}
+
+.my-label {
+  font-size: 18px;
+}
+
+.my-label:hover {
+  font-size: 18px;
+  text-decoration: underline;
+  transition-duration: 0.75s;
+}
+
+.my-label.active {
+  text-decoration: underline;
+}

@@ -6,12 +6,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { Link } from "react-router-dom";
 
 export default function StoreCard(props) {
   return (
-    <Card sx={{ maxWidth: 500 }} className="store-card">
+    <Card sx={{ maxWidth: 700 }} className="store-card">
       <CardMedia
         component="img"
         height="200"
@@ -38,6 +37,15 @@ export default function StoreCard(props) {
         <Button size="small">Edit store info</Button>
         <hr></hr>
         <Button size="small">Upload merchandise</Button>
+        <hr></hr>
+        <Link
+          to={"/store-page/" + props.name}
+          style={{ textDecoration: "none" }}
+        >
+          <Button size="small" className="buttonred">
+            View styles
+          </Button>
+        </Link>
       </CardActions>
       {/* ) : ( */}
       {/* <CardActions>

@@ -1,0 +1,15 @@
+.searchbar-section {
+  display: flex;
+  justify-content: left;
+  padding-left: 10px;
+}
+
+.search-btn-emoji {
+  font-size: 35px;
+  display: flex;
+}
+
+.input.input {
+  font-size: 20px;
+  width: 130px;
+}

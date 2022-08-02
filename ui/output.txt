@@ -1,0 +1,9 @@
+
+> capstone-pod5@0.0.0 dev
+> vite
+
+
+  VITE v3.0.2  ready in 316 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+  ➜  Network: use --host to expose
