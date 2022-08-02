@@ -2,7 +2,6 @@ import * as React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -51,7 +50,7 @@ export default function Navbar(props) {
         <div className="container">
           {/* logo link*/}
           <div className="logo">
-            <Link to="/">🛍</Link>
+            <Link to="/">🧽</Link>
           </div>
 
           {/* navbar links */}
@@ -193,7 +192,7 @@ export default function Navbar(props) {
           </ul>
         </div>
       </div>
-      <hr className="nav-line" />
+      {/* <hr className="nav-line" /> */}
     </div>
   );
 }

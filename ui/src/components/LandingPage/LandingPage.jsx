@@ -1,6 +1,5 @@
 import "./LandingPage.css";
 import { useState } from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import LocationSearchBar from "../LocationSearch/LocationSearch";
 import Footer from "../Footer/Footer";
