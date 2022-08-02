@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./ProductsPage.css";
 import ProductGrid from "./ProductGrid";
-import SearchBar from "./ProductSearch";
+import SearchBar from "../Search/Searchbar";
 import Selector from "./Filter";
 import Navbar from "../Navbar/Navbar";
 import { Card } from "@mui/material";
