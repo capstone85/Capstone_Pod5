@@ -1,11 +1,12 @@
 .Register .card {
-  display: flex;
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   min-height: 600px;
   width: 520px;
   padding: 24px 36px 0;
   flex-direction: column;
 }
+
 .Register .card {
   display: flex;
   align-items: center;
@@ -51,14 +52,6 @@ input {
   -webkit-rtl-ordering: logical;
 }
 
-.Register .card .form .btn {
-  height: 70px;
-  color: #fff;
-  font-size: 20px;
-  border: none;
-  cursor: pointer;
-  margin-top: 15px;
-}
 .btn {
   background: #acd8aa;
   white-space: nowrap;
@@ -86,4 +79,35 @@ input {
 
 .Register .card .bottomLinks a:hover {
   text-decoration: underline;
+}
+
+.Register .card .form .btn {
+  width: 104%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  background-color: black;
+  margin-bottom: 50px;
+  margin-left: 10px;
+}
+
+.bottomLinks {
+  margin-left: 35px;
+}
+
+.input-field {
+  margin: 10px;
+}
+
+select {
+  background-color: white;
+  color: black;
+  height: 30px;
+  font-size: 16px;
 }
