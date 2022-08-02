@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./ProductsPage.css";
 import ProductGrid from "./ProductGrid";
-import SearchBar from "./ProductSearch";
+import SearchBar from "../Search/Searchbar";
 import Selector from "./Filter";
 import Navbar from "../Navbar/Navbar";
 import { Card } from "@mui/material";
@@ -11,22 +11,6 @@ import Footer from "../Footer/Footer";
 
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
-    // useEffect(async () => {
-    //     try {
-    //       const response = await axios.get("http://localhost:5174/product/products");
-    //       setIsFetching(false);
-    //       if (response.statusText != "OK") {
-    //         setError(response.statusText);
-    //       } else if (response.data.orders.length == 0) {
-    //         setError("Did not find any orders");
-    //       } else {
-    //         setOrders(response.data.orders);
-    //       }
-    //     } catch (err) {
-    //       setError(err);
-    //     }
-    //   }, []);
-
   return (
     <>
       <Card sx={({ maxHeight: "100px" }, { maxWidth: "35%" })} className="hero">

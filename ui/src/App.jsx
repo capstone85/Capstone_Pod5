@@ -38,6 +38,7 @@ import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import ProductsPage from "./components/Product/ProductsPage";
+import SearchPage from "./components/Search/SearchPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -222,7 +223,16 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
-            <Route path="/search" element={<NotFound />} />
+            <Route
+              path="/search"
+              element={
+                <SearchPage
+                  handleOnSearchbarChange={handleOnSearchbarChange}
+                  setSearchBar={setSearchbar}
+                  products={products}
+                />
+              }
+            />
             <Route
               path="/wishlist"
               element={
