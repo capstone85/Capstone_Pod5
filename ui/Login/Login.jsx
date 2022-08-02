@@ -72,7 +72,7 @@ export default function Login(props) {
   return (
     <div className="Login">
       <div className="card">
-        <h2>Login to the Portal</h2>
+        <h2>Login</h2>
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
         <br />
         <div className="form">
@@ -115,7 +115,7 @@ export default function Login(props) {
         </div>
         <div className="bottomLinks">
           <p>
-            Don't have an account? Sign up <Link to="/register">here</Link>
+            Don't have an account? Sign up <Link to="/register">here</Link>.
           </p>
         </div>
       </div>

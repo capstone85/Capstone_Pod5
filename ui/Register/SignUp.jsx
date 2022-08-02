@@ -112,8 +112,7 @@ export default function SignUp(props) {
         <div className="form">
           <div className="split-inputs">
             <div className="input-field">
-              <label htmlFor="category">I am a...</label>
-
+              <label htmlFor="category">I am a... </label>
               <select
                 name="category"
                 value={selected}
@@ -207,7 +206,7 @@ export default function SignUp(props) {
             </button>
             <div className="bottomLinks">
               <p>
-                Already have an account? Login <Link to="/login">here</Link>
+                Already have an account? Login <Link to="/login">here</Link>.
               </p>
             </div>
           </div>
