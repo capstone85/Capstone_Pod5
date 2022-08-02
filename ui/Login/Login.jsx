@@ -9,6 +9,7 @@ import apiClient from "../../ui/src/services/apiClient";
 // import undraw_medical_research from "../../assets/undraw_medical_research_deep_blue.svg"
 import "./Login.css";
 import { relativeTimeRounding } from "moment";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Login(props) {
   // function refreshPage() {
@@ -115,7 +116,7 @@ export default function Login(props) {
               // refreshPage();
             }
           >
-            {isLoading ? "Loading..." : "Login"}
+            {isLoading ? <CircularProgress color="secondary" /> : "Login"}
           </button>
         </div>
         <div className="bottomLinks">
