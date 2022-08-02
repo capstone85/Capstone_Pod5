@@ -7,9 +7,26 @@ import Navbar from "../Navbar/Navbar";
 import { Card } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import { sizing } from "@mui/system";
+import Footer from "../Footer/Footer";
 
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
+    // useEffect(async () => {
+    //     try {
+    //       const response = await axios.get("http://localhost:5174/product/products");
+    //       setIsFetching(false);
+    //       if (response.statusText != "OK") {
+    //         setError(response.statusText);
+    //       } else if (response.data.orders.length == 0) {
+    //         setError("Did not find any orders");
+    //       } else {
+    //         setOrders(response.data.orders);
+    //       }
+    //     } catch (err) {
+    //       setError(err);
+    //     }
+    //   }, []);
+
   return (
     <>
       <Card sx={({ maxHeight: "100px" }, { maxWidth: "35%" })} className="hero">
@@ -51,6 +68,7 @@ export default function ProductsPage(props) {
           store={props.store}
         />
       </div>
+      <Footer />
     </>
   );
 }
