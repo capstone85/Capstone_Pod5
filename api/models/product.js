@@ -46,6 +46,30 @@ class Product {
     return product;
   }
 
+  static async fetchProductByStoreId(storeId) {
+    const results = await db.query(
+      `
+        SELECT  p.id,
+                p.name,
+                s.name AS "store_name",
+                u.email AS "user_email",
+                p.store_id AS "store_id",
+                p.user_id AS "user_id",
+                p.created_at AS "created_at"
+        FROM product AS p
+            JOIN users AS u ON u.id = p.user_id
+            JOIN store AS s ON s.id = p.store_id
+            WHERE p.store_id = $1
+        `,
+      [storeId]
+    );
+    const product = results.rows;
+    if (!product) {
+      throw new NotFoundError();
+    }
+    return results.rows;
+  }
+
   static async listProductForStore({ store_id }) {
     const results = await db.query(
       `

@@ -303,6 +303,7 @@ function App() {
                   setIsFetching={setIsFetching}
                   searchnar={searchbar}
                   setSearchbar={setSearchbar}
+                  store={store}
                 />
               }
             />

@@ -33,7 +33,7 @@ export default function VendorNavbar(props) {
           <Link to="/store">🛍</Link>
         </div>
         {/* vender links */}
-        <ul className="vendor-links">
+        <ul className="vendor-links"/>
           {/* login and log out */}
 
         {/* navbar links */}
@@ -153,4 +153,5 @@ export default function VendorNavbar(props) {
       </div>
     </div>
   );
+  
 }

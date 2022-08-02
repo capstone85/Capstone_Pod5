@@ -52,4 +52,14 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
+router.get("/store/:storeId", async (req, res, next) => {
+  try {
+    const { storeId } = req.params;
+    const product = await Product.fetchProductByStoreId(storeId);
+    return res.status(200).json({ product });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
