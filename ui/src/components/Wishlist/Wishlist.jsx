@@ -24,9 +24,6 @@ export default function ShoppingCart({
   getQuantityOfItemInCart,
   handleOnCheckout,
 }) {
-  //error message for users that are not signed in
-  const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
 
   const productMapping = products.reduce((acc, product) => {
@@ -109,6 +106,7 @@ export default function ShoppingCart({
             </Link>
           )}
         </div>
+        <Footer></Footer>
       </div>
     </div>
   );
