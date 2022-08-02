@@ -128,7 +128,7 @@ ul {
 }
 
 .Login .account-container h3 {
-  transform: translateY(40px) translateX(-6px);
+  transform: translateY(40px) translateX(-1px);
 }
 
 .Login .account-container a {
@@ -137,7 +137,7 @@ ul {
 }
 
 .Login .account-container p {
-  transform: translateY(50px) translateX(25px);
+  transform: translateY(50px) translateX(35px);
 }
 
 .Login .account-container a:hover {

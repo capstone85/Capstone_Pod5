@@ -1,12 +1,16 @@
-.Register .card {
+/* .Register {
+  justify-content: center;
+}
+
+.Register .card { 
   display: flex;
   align-items: center;
   min-height: 600px;
   width: 520px;
   padding: 24px 36px 0;
   flex-direction: column;
-}
-.Register .card {
+} 
+ .Register .card {
   display: flex;
   align-items: center;
 }
@@ -32,7 +36,7 @@ ul {
   height: 40px;
   padding: 0 15px;
   font-size: 16px;
-  /* border: 1px solid var(--border-color); */
+  border: 1px solid var(--border-color);
   border-color: white;
   width: 100%;
   background: transparent;
@@ -59,12 +63,12 @@ input {
   cursor: pointer;
   margin-top: 15px;
 }
-/* .btn {
+.btn {
   background: #acd8aa;
   white-space: nowrap;
   font-weight: 700;
   padding: 12px 18px;
-} */
+}
 
 .Register .card h2 {
   color: black;
@@ -86,4 +90,4 @@ input {
 
 .Register .card .bottomLinks a:hover {
   text-decoration: underline;
-}
+}  */

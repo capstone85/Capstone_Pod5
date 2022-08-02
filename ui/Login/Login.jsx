@@ -164,7 +164,7 @@ export default function Login(props) {
           </Link>
         </div>
       </div>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }
