@@ -65,6 +65,7 @@ export default function ProductsPage(props) {
           shoppingCart={props.shoppingCart}
           setIsFetching={props.setIsFetching}
           searchbar={props.searchbar}
+          store={props.store}
         />
       </div>
       <Footer />

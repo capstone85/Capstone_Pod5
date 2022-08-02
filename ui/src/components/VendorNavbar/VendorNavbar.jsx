@@ -153,4 +153,5 @@ export default function VendorNavbar(props) {
       </div>
     </div>
   );
+  
 }
