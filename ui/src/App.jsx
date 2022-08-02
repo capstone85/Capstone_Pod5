@@ -5,7 +5,14 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
-import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Router,
+  Routes,
+  useParams,
+} from "react-router-dom";
 //import {React} from "react"
 //import { AuthContextProvider, useAuthContext } from "./context/auth";
 // import Navbar from "./Components/Navbar";
@@ -145,6 +152,7 @@ function App() {
   const addStore = (newStore) => {
     setStore((oldStore) => [newStore, ...oldStore]);
   };
+
 
   return (
     <div className="app">
@@ -290,9 +298,9 @@ function App() {
               path="/store-page/:storeId"
               element={
                 <ProductsPage
-                  products={
-                    activeCategory == "All Categories" ? products : currentItems
-                  }
+                  // products={
+                  //   activeCategory == "All Categories" ? products : currentItems
+                  // }
                   activeCategory={activeCategory}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemFromCart={handleRemoveItemFromCart}
@@ -301,7 +309,7 @@ function App() {
                   categories={categories}
                   cart={cart}
                   setIsFetching={setIsFetching}
-                  searchnar={searchbar}
+                  searchbar={searchbar}
                   setSearchbar={setSearchbar}
                   store={store}
                 />
