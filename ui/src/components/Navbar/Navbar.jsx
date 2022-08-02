@@ -176,7 +176,7 @@ export default function Navbar(props) {
                       <>
                         <MenuItem onClick={handleClose}>
                           <Link to="/register">
-                            <Typography>Sign Up</Typography>
+                            <Typography>Register</Typography>
                           </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>

@@ -76,10 +76,6 @@ export default function Login(props) {
 
   return (
     <div className="Login">
-      <div className="media">
-        {/* <img src={undraw_medical_research} alt="medical research" /> */}
-      </div>
-
       <div className="card">
         <h2>Login to the Portal</h2>
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
@@ -122,7 +118,7 @@ export default function Login(props) {
             {isLoading ? "Loading..." : "Login"}
           </button>
         </div>
-        <div className="footer">
+        <div className="bottomLinks">
           <p>
             Don't have an account? Sign up <Link to="/register">here</Link>
           </p>

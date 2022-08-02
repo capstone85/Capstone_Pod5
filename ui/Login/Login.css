@@ -66,3 +66,25 @@ ul {
   cursor: pointer;
   margin-top: 15px;
 }
+
+.Login .card h2 {
+  color: black;
+}
+
+.Login .card .form label {
+  color: black;
+}
+
+.Login .card .bottomLinks {
+  color: black;
+}
+
+.Login .card .bottomLinks a {
+  color: #f48498;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Login .card .bottomLinks a:hover {
+  text-decoration: underline;
+}
