@@ -1,0 +1,59 @@
+.vendor {
+  width: 100%;
+  max-width: 100vw;
+  background: #f2ccc3;
+  height: 54px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 80px;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.vendor-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-left: auto;
+  flex: 1 1;
+  max-width: 650px;
+  gap: 30px;
+  transform: translateX(-130px);
+  color: black;
+}
+
+.store-page a {
+  text-decoration: none;
+}
+
+.myStores a {
+  text-decoration: none;
+}
+
+.vendor-links .vendLogoutButton:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+.vendor-links .store-page:hover {
+  color: gray;
+}
+
+.vendor-links .myStores:hover {
+  color: gray;
+}
+
+.vendor-links .vendorAccount:hover {
+  color: gray;
+}

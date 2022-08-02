@@ -1,1 +1,8 @@
+.body a {
+  text-decoration: none;
+  color: #f48498;
+}
 
+.body {
+  color: black;
+}

@@ -98,6 +98,7 @@ export default function SignUp(props) {
       }
     }
     setIsProcessing(false);
+    props.setIsLoggedIn(true);
   };
 
   return (
@@ -204,12 +205,11 @@ export default function SignUp(props) {
             >
               {isLoading ? "Loading..." : "Create Account"}
             </button>
-          </div>
-
-          <div className="footer">
-            <p>
-              Already have an account? Login <Link to="/login">here</Link>
-            </p>
+            <div className="bottomLinks">
+              <p>
+                Already have an account? Login <Link to="/login">here</Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>

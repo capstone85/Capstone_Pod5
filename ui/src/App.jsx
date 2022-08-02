@@ -171,6 +171,7 @@ function App() {
           <VendorNavbar
             handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
             user={user}
             setUser={setUser}
           />
@@ -242,6 +243,7 @@ function App() {
                   getTotalItemsInCart={handleGetTotalCartItems}
                   isCheckingOut={isCheckingOut}
                   handleOnCheckout={handleOnCheckout}
+                  isLoggedIn={isLoggedIn}
                 />
               }
             />
@@ -249,7 +251,16 @@ function App() {
             {/* main page that shows when users go to their account --> page with dashboard */}
             <Route
               path="/dashboard"
-              element={<MyAccount handleLogout={handleLogout} user={user} />}
+              element={
+                <MyAccount
+                  handleLogout={handleLogout}
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                  setIsClicked={setIsClicked}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
             />
             <Route path="/orders" element={<ViewOrdersPage />} />
 

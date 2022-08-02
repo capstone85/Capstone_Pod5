@@ -1,4 +1,6 @@
 .Register .card {
+  display: flex;
+  align-items: center;
   min-height: 600px;
   width: 520px;
   padding: 24px 36px 0;
@@ -27,7 +29,6 @@ ul {
   --content-width: 800px;
 }
 .Register .card .form .input-field input {
-
   height: 40px;
   padding: 0 15px;
   font-size: 16px;
@@ -59,8 +60,30 @@ input {
   margin-top: 15px;
 }
 .btn {
-  background: rgb(113, 195, 113);
+  background: #acd8aa;
   white-space: nowrap;
   font-weight: 700;
   padding: 12px 18px;
+}
+
+.Register .card h2 {
+  color: black;
+}
+
+.Register .card .form .split-inputs label {
+  color: black;
+}
+
+.Register .card .form .bottomLinks {
+  color: black;
+}
+
+.Register .card .bottomLinks a {
+  color: #f48498;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Register .card .bottomLinks a:hover {
+  text-decoration: underline;
 }

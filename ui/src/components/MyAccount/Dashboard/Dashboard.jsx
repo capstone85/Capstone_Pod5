@@ -1,6 +1,8 @@
 import * as React from "react";
 import "./Dashboard.css";
 import { useEffect } from "react";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export default function Dashboard(props) {
   useEffect(() => {
@@ -9,11 +11,26 @@ export default function Dashboard(props) {
 
   return (
     <div className="body">
-      <p>Hello {props.user ? props.user.first_name : null}</p>
       <p>
-        From your account dashboard you can view your recent orders, manage your
-        shipping and billing addresses, and edit your password and account
-        details.
+        Hello {props.user ? props.user.first_name : null} (not{" "}
+        {props.user.first_name}?{" "}
+        <Link
+          to="/login"
+          className="logoutButton"
+          onClick={() => {
+            props.handleLogout();
+            // navigate("/login");
+          }}
+        >
+          Logout
+        </Link>
+        )
+      </p>
+      <p>
+        From your account dashboard you can view your{" "}
+        <Link to="/orders">recent orders</Link>, manage your{" "}
+        <Link to="/editAccount">shipping and billing addresses</Link>, and{" "}
+        <Link to="/editAccount">edit your password and account details</Link>.
       </p>
     </div>
   );

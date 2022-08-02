@@ -8,22 +8,34 @@ import DashboardLinks from "./DashboardLinks/DashboardLinks";
 import Footer from "../Footer/Footer";
 
 export default function MyAccount(props) {
-  //   console.log(props.user.name);
   return (
     <div className="MyAccount">
-      <main>
-        <div className="header">
-          <p>My Account </p>
-          <DashboardLinks
-            handleLogout={props.handleLogout}
-            isLogin={props.isLogin}
-            user={props.user}
-            setUser={props.setUser}
-          />
-          <Dashboard user={props.user} />
+      {props.isLoggedIn ? (
+        <main>
+          <div className="header">
+            <h2>My Account </h2>
+          </div>
+          {/* <DashboardLinks
+              handleLogout={props.handleLogout}
+              isLoggedIn={props.isLoggedIn}
+              user={props.user}
+              setUser={props.setUser}
+            /> */}
+          <div className="dashboard">
+            <Dashboard user={props.user} handleLogout={props.handleLogout} />
+          </div>
           <Footer />
-        </div>
-      </main>
+        </main>
+      ) : (
+        <LoginPage
+          isLoggedIn={props.isLoggedIn}
+          isClicked={props.isClicked}
+          setIsClicked={props.setIsClicked}
+          setIsLoggedIn={props.setIsLoggedIn}
+          user={props.user}
+          setUser={props.setUser}
+        />
+      )}
     </div>
   );
 }

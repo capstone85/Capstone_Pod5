@@ -39,6 +39,34 @@
   color: black;
 }
 
-.shop {
+.account:hover {
+  cursor: pointer;
+}
+
+.links .logoutButton:hover {
+  cursor: pointer;
+  color: gray;
+}
+
+.links .loginButton:hover {
+  color: gray;
+}
+.shop-link a {
   text-decoration: none;
+}
+
+.shop-link a:hover {
+  color: gray;
+}
+
+.dropdown-links a {
+  text-decoration: none;
+}
+
+.loginButton a {
+  text-decoration: none;
+}
+
+hr.nav-line {
+  border: 0.1px gray;
 }

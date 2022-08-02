@@ -6,6 +6,7 @@ import axios from "axios";
 import apiClient from "../../ui/src/services/apiClient";
 import "./Login.css";
 import { relativeTimeRounding } from "moment";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Login(props) {
   // function refreshPage() {
@@ -43,6 +44,7 @@ export default function Login(props) {
       last_name: form.lastName,
       password: form.password,
     };
+    props.setIsLoggedIn(true);
 
     //console.log(toSend);
     const { data, error } = await apiClient.loginUser(toSend);
@@ -69,10 +71,6 @@ export default function Login(props) {
 
   return (
     <div className="Login">
-      <div className="media">
-        {/* <img src={undraw_medical_research} alt="medical research" /> */}
-      </div>
-
       <div className="card">
         <h2>Login to the Portal</h2>
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
@@ -112,10 +110,10 @@ export default function Login(props) {
               // refreshPage();
             }
           >
-            {isLoading ? "Loading..." : "Login"}
+            {isLoading ? <CircularProgress color="secondary" /> : "Login"}
           </button>
         </div>
-        <div className="footer">
+        <div className="bottomLinks">
           <p>
             Don't have an account? Sign up <Link to="/register">here</Link>
           </p>

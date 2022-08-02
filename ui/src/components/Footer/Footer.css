@@ -2,11 +2,13 @@
   bottom: 0%;
   position: fixed;
   padding-bottom: 70px;
+  color: black;
 }
 
 hr {
-  background-color: white;
+  background-color: black;
   height: 1px;
+  width: 1260px;
   border: none;
 }
 

@@ -106,6 +106,7 @@ export default function ShoppingCart({
             </Link>
           )}
         </div>
+        <Footer></Footer>
       </div>
     </div>
   );
