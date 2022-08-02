@@ -48,6 +48,9 @@
   color: gray;
 }
 
+.links .loginButton:hover {
+  color: gray;
+}
 .shop-link a {
   text-decoration: none;
 }
