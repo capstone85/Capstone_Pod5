@@ -22,7 +22,7 @@ class Product {
       `
                 INSERT INTO product (name, image, description, price, category, store_id)
                 VALUES ($1, $2, $3, $4, $5, $6)
-                RETURNING id, name, description, price, category, store_id, created_at
+                RETURNING id, name, image, description, price, category, store_id, created_at
                 `,
       [
         product.name,

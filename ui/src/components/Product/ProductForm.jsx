@@ -42,7 +42,7 @@ export default function ProductForm(props) {
       name: form.name,
       description: form.description,
       price: form.price,
-      image: form.price,
+      image: form.image,
       category: form.category,
       store_id: storeId,
     });
