@@ -150,7 +150,8 @@ export default function VendorNavbar(props) {
           </li>
 
         </ul>
-        </ul>
+       
+  
       </div>
     </div>
   );
