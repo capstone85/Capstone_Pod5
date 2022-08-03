@@ -5,12 +5,12 @@ import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-// Renders image, name, price, and quantity of products.
-// Buttons allow users to change quantity of products.
+// Renders image, name, price, and category of products.
+// Buttons allow users to add products to wishlist or shopping cart.
 export default function ProductCard(props) {
-  console.log("hello product card");
-  console.log(props.product.name);
-  console.log(props.product.description);
+  // console.log("hello product card");
+  // console.log(props.product.name);
+  // console.log(props.product.description);
   return (
     <div className="product-card">
       <div className="product-tumb">
