@@ -6,8 +6,6 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    //return a json response back with all user-owned nutrition
-    //in an array like { "nutritions": [...]}
     const products = await Product.listProductForStore({
       store_id: req.headers.store_id,
     });
@@ -19,11 +17,7 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
-    //accept a request body with one nutrition key maybe like
-    //{"nutrition": {attributes of nutrition entry}}
-    const { store } = res.locals;
     const product = await Product.createProduct({
-      store,
       product: req.body,
     });
     return res.status(201).json({ product });
