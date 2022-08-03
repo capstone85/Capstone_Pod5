@@ -33,9 +33,9 @@ ul {
 
   color: var(--font-dark);
 }
-#root {
-    --content-width: 800px;
-}
+/* #root {
+  --content-width: 800px;
+} */
 .Login .card .form .input-field input {
   height: 40px;
   padding: 0 15px;
@@ -49,12 +49,12 @@ ul {
 }
 
 .Login .card {
-    min-height: 600px;
-    width: 520px;
-    padding: 24px 36px 0;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
+  min-height: 600px;
+  width: 520px;
+  padding: 24px 36px 0;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 /* sign in button */

@@ -4,7 +4,7 @@
   padding-top: 30px;
   padding-bottom: 70px;
   color: black;
-  transform: translateY(350px);
+  transform: translateY(100vh);
 }
 
 hr {

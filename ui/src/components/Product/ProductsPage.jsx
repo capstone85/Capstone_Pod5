@@ -40,11 +40,11 @@ export default function ProductsPage(props) {
   }, []);
 
   return (
-    <>
-      <Card sx={({ maxHeight: "100px" }, { maxWidth: "35%" })} className="hero">
+    <div className="products-page">
+      <Card sx={({ maxHeight: "200px" }, { maxWidth: "35%" })} className="hero">
         <CardMedia
           component="img"
-          height="200"
+          height="auto"
           image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1024px-H%26M-Logo.svg.png"
           alt={props.name}
         />
@@ -82,6 +82,6 @@ export default function ProductsPage(props) {
         />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
