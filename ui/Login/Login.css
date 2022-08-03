@@ -83,6 +83,7 @@ ul {
 
 .Login .card h2 {
   color: black;
+  font-family: "DM Serif Display", serif;
 }
 
 .Login .card .form label {
@@ -130,6 +131,7 @@ ul {
 
 .Login .account-container h3 {
   transform: translateY(40px) translateX(-1px);
+  font-family: "DM Serif Display", serif;
 }
 
 .Login .account-container a {
@@ -138,7 +140,8 @@ ul {
 }
 
 .Login .account-container p {
-  transform: translateY(50px) translateX(35px);
+  transform: translateY(50px) translateX(20px);
+  /* font-family: "DM Serif Display", serif; */
 }
 
 .Login .account-container a:hover {
