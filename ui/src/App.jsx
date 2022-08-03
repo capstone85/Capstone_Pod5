@@ -3,6 +3,7 @@ import Searchbar from "./components/LandingPage/LandingPage";
 
 import * as React from "react";
 import { useState, useEffect } from "react";
+//import Sidebar from "./components/Sidebar/Sidebar";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
@@ -25,6 +26,7 @@ import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
 import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
 import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
+
 import {
   removeFromCart,
   addToCart,
@@ -60,7 +62,7 @@ function App() {
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState({});
   const [isCheckingOut, setIsCheckingOut] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
   const currentItems = products.filter((item) => {
     return item.category == activeCategory;
   });
@@ -148,16 +150,10 @@ function App() {
 
   return (
     <div className="app">
-      {/* <Navbar /> */}
-      {/* <LandingPage /> */}
-      {/* <MyAccount
-      // user={user}
-      // isLogin={isLogin}
-      // setUser={setUser}
-      // name={user.name}
-      /> */}
+    
 
       <BrowserRouter>
+
         {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
@@ -176,11 +172,12 @@ function App() {
             setUser={setUser}
           />
         )}
+         
         <main>
           <Routes>
             {/* landing page route */}
             <Route path="/" element={<LandingPage />} />
-
+            {/* <Route path="/sidebar" element={<Sidebar />} /> */}
             <Route
               path="/store-page"
               element={<Home user={user} store={store} />}

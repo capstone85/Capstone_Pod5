@@ -13,11 +13,19 @@
   display: flex;
   border-radius: 30px;
   padding: 10px;
-}
 
+}
+.searchbar .searchinput .input{
+  padding: 10px;
+  background-color:rgb(16, 6, 6);
+  border-radius: 30px;
+  width: 200px;
+  color:white;
+ 
+}
 input.input {
   font-size: 30px;
-  background-color: #f2ccc3;
+  /* background-color: white; */
   border-color: #f2ccc3;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   outline-width: 0;

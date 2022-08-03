@@ -2,7 +2,7 @@ import * as React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -96,6 +96,11 @@ export default function Navbar(props) {
                 </Link>
               </Tooltip>
             </li>
+            {/* <li className="sidebar">
+              <Link to="/sidebar">
+                <Typography>Here</Typography>
+              </Link>
+            </li> */}
 
             {/* wishlist link --> */}
             <li>

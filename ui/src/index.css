@@ -6,13 +6,13 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #f2ccc3;
-
+  background-color:white;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
 }
 
 /* body {
@@ -40,4 +40,7 @@ h1 {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+} */
+/* body{
+  background-image: url(" https://cdn.wallpapersafari.com/50/28/Kq6pxW.jpg");
 } */
