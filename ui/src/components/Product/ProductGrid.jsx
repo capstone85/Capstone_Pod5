@@ -7,25 +7,29 @@ export default function ProductGrid(props) {
   let foundSearch = false;
   console.log("hi");
   return (
-    <div>
-      {props.product.map((item, idx) =>
-      <ProductCard
-        // key={idx}
-        // category={currProduct.category}
-        // description={currProduct.description}
-        // showDescription={false}
-        // image={currProduct.image}
-        // name={currProduct.name}
-        // price={currProduct.price}
-        // storeId={curr.id}
-        // products={props.products}
-        // quantity={quantity}
-        handleAddItemToCart={props.handleAddItemToCart}
-        handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-        setIsFetching={props.setIsFetching}
-        product={item}
-      />
-      )}
+    <div className="product-grid">
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      {props.product.map((item, idx) => (
+        <ProductCard
+          // key={idx}
+          // category={currProduct.category}
+          // description={currProduct.description}
+          // showDescription={false}
+          // image={currProduct.image}
+          // name={currProduct.name}
+          // price={currProduct.price}
+          // storeId={curr.id}
+          // products={props.products}
+          // quantity={quantity}
+          handleAddItemToCart={props.handleAddItemToCart}
+          handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+          setIsFetching={props.setIsFetching}
+          product={item}
+        />
+      ))}
     </div>
 
     // <>

@@ -81,7 +81,6 @@ export default function ProductsPage(props) {
           storeId={storeId}
         />
       </div>
-      <ProductCard />
       <Footer />
     </>
   );
