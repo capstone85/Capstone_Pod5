@@ -17,6 +17,15 @@ import axios from "axios";
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
   const [product, setProduct] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("All Categories");
+
+  // const currentItems = product.filter((item) => {
+  //   return item.category == activeCategory;
+  // });
+
+  // activeCategory == "All Categories"
+  //   ? setProduct(product)
+  //   : setProduct(currentItems);
 
   // Extract productId parameter from the url
   let { storeId } = useParams();

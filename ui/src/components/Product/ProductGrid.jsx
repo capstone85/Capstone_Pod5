@@ -8,24 +8,34 @@ export default function ProductGrid(props) {
   console.log("hi");
   return (
     <div className="product-grid">
-      {props.product.map((item, idx) => (
-        <ProductCard
-          // key={idx}
-          category={item.category}
-          description={item.description}
-          // showDescription={false}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-          // storeId={curr.id}
-          // products={props.products}
-          // quantity={quantity}
-          handleAddItemToCart={props.handleAddItemToCart}
-          handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-          setIsFetching={props.setIsFetching}
-          product={item}
-        />
-      ))}
+      {props.product.map((item, idx) => {
+        if (item.name.toLowerCase().includes(props.searchbar.toLowerCase())) {
+          foundSearch = true;
+          return (
+            <ProductCard
+              key={idx}
+              category={item.category}
+              description={item.description}
+              // showDescription={false}
+              image={item.image}
+              name={item.name}
+              price={item.price}
+              // storeId={curr.id}
+              // products={props.products}
+              // quantity={quantity}
+              handleAddItemToCart={props.handleAddItemToCart}
+              handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+              setIsFetching={props.setIsFetching}
+              product={item}
+            />
+          );
+        }
+      })}
+      {!foundSearch ? (
+        <div className="none-found">
+          <h1>No products available.</h1>
+        </div>
+      ) : null}
     </div>
 
     // <>
@@ -41,32 +51,32 @@ export default function ProductGrid(props) {
     //         }
     //       }
 
-    //       if (
-    //         currProduct.name
-    //           .toLowerCase()
-    //           .includes(props.searchbar.toLowerCase())
-    //       ) {
-    //         foundSearch = true;
-    //         console.log("hi" + props.product);
-    //         return (
-    //           <ProductCard
-    //             key={idx}
-    //             category={currProduct.category}
-    //             description={currProduct.description}
-    //             showDescription={false}
-    //             image={currProduct.image}
-    //             name={currProduct.name}
-    //             price={currProduct.price}
-    //             storeId={curr.id}
-    //             products={props.products}
-    //             quantity={quantity}
-    //             handleAddItemToCart={props.handleAddItemToCart}
-    //             handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-    //             setIsFetching={props.setIsFetching}
-    //             product={props.product}
-    //           />
-    //         );
-    //       }
+    // if (
+    //   currProduct.name
+    //     .toLowerCase()
+    //     .includes(props.searchbar.toLowerCase())
+    // ) {
+    //   foundSearch = true;
+    //   console.log("hi" + props.product);
+    //   return (
+    //     <ProductCard
+    //       key={idx}
+    //       category={currProduct.category}
+    //       description={currProduct.description}
+    //       showDescription={false}
+    //       image={currProduct.image}
+    //       name={currProduct.name}
+    //       price={currProduct.price}
+    //       storeId={curr.id}
+    //       products={props.products}
+    //       quantity={quantity}
+    //       handleAddItemToCart={props.handleAddItemToCart}
+    //       handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+    //       setIsFetching={props.setIsFetching}
+    //       product={props.product}
+    //     />
+    //   );
+    // }
     //     })}
     //     <div className="none-found">
     //       {!foundSearch ? <h1>No products available.</h1> : null}
