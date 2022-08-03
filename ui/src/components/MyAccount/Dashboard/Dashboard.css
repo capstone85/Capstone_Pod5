@@ -3,6 +3,9 @@
   color: #f48498;
 }
 
+.body a:hover {
+  text-decoration: underline;
+}
 .body {
   color: black;
 }

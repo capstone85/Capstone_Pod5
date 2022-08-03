@@ -1,13 +1,16 @@
-.Register .card {
-  margin-left: auto;
-  margin-right: auto;
+/* .Register {
+  justify-content: center;
+}
+
+.Register .card { 
+  display: flex;
+  align-items: center;
   min-height: 600px;
   width: 520px;
   padding: 24px 36px 0;
   flex-direction: column;
-}
-
-.Register .card {
+} 
+ .Register .card {
   display: flex;
   align-items: center;
 }
@@ -33,7 +36,7 @@ ul {
   height: 40px;
   padding: 0 15px;
   font-size: 16px;
-  /* border: 1px solid var(--border-color); */
+  border: 1px solid var(--border-color);
   border-color: white;
   width: 100%;
   background: transparent;
@@ -52,6 +55,14 @@ input {
   -webkit-rtl-ordering: logical;
 }
 
+.Register .card .form .btn {
+  height: 70px;
+  color: black;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
 .btn {
   background: #acd8aa;
   white-space: nowrap;
@@ -78,6 +89,140 @@ input {
 }
 
 .Register .card .bottomLinks a:hover {
+  text-decoration: underline;
+}  */
+
+#root {
+  --content-width: 800px;
+}
+
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+span,
+ul {
+  margin: 0;
+  padding: 0;
+  font-family: "Recoleta", sans-serif;
+
+  color: var(--font-dark);
+}
+
+.Register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Recoleta", sans-serif;
+  color: black;
+  height: 100%;
+  width: 100%;
+}
+
+/* your account title */
+.Register .card h2 {
+  color: black;
+}
+
+/* changes size of the input */
+.Register .card .form .input-field input {
+  padding: 0 15px;
+  font-size: 16px;
+  width: 440px;
+  height: 60px;
+
+  /* height: 60px;
+  padding: 0 15px;
+  font-size: 16px;
+  width: 440px;
+  background: transparent;
+
+  border-color: white;
+  box-sizing: border-box; */
+  /* border-bottom: 0.0625rem solid #757575; */
+}
+
+.Register .card {
+  min-height: 600px;
+  width: 520px;
+  padding: 24px 36px 0;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+.Register .card .form .split-inputs .input-field .dropdown-input {
+  /* transform: translateX(170px); */
+  /* padding: 0 15px; */
+  font-size: 16px;
+  width: 440px;
+  height: 60px;
+}
+
+/* visibility button  */
+.Register .card .form .input-field .visibilityButton {
+  transform: translateX(420px) translateY(-40px);
+}
+
+.Register .card .form .input-field .visibilityButton:hover {
+  cursor: pointer;
+}
+
+/* moving the confirm password input higher up */
+.Register .card .form .input-field .confirmPassword {
+  transform: translateY(-30px);
+}
+
+/* create an account button */
+.Register .card .form .btn {
+  /* width: 140px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: #d3d3d3;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  background: black;
+  padding: 12px 18px;
+  /* border-radius: 30px; */
+  transform: translateX(-15px);
+}
+
+/* create an account button hovering */
+.Register .card .form .btn:hover {
+  color: white;
+}
+
+/* already have an account question */
+.Register .card .form .bottomLinks h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transform: translateY(10px); */
+}
+
+/* login here link  */
+.Register .card .form .bottomLinks .loginHere a {
+  color: gray;
+  text-decoration: none;
+}
+
+/* moving the link */
+.Register .card .form .bottomLinks .loginHere p {
+  transform: translateY(5px) translateX(160px);
+}
+
+.Register .card .form .bottomLinks .loginHere a:hover {
+  color: black;
   text-decoration: underline;
 }
 

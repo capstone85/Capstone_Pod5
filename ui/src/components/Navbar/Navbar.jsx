@@ -50,7 +50,7 @@ export default function Navbar(props) {
         <div className="container">
           {/* logo link*/}
           <div className="logo">
-            <Link to="/">🛍</Link>
+            <Link to="/">🧽</Link>
           </div>
 
           {/* navbar links */}
@@ -192,7 +192,7 @@ export default function Navbar(props) {
           </ul>
         </div>
       </div>
-      <hr className="nav-line" />
+      {/* <hr className="nav-line" /> */}
     </div>
   );
 }
