@@ -8,19 +8,15 @@ export default function ProductGrid(props) {
   console.log("hi");
   return (
     <div className="product-grid">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
       {props.product.map((item, idx) => (
         <ProductCard
           // key={idx}
-          // category={currProduct.category}
-          // description={currProduct.description}
+          category={item.category}
+          description={item.description}
           // showDescription={false}
-          // image={currProduct.image}
-          // name={currProduct.name}
-          // price={currProduct.price}
+          image={item.image}
+          name={item.name}
+          price={item.price}
           // storeId={curr.id}
           // products={props.products}
           // quantity={quantity}
