@@ -11,6 +11,7 @@ export default function ProductCard(props) {
   // console.log("hello product card");
   // console.log(props.product.name);
   // console.log(props.product.description);
+  console.log(props.product.image);
   return (
     <div className="product-card">
       <div className="product-tumb">
