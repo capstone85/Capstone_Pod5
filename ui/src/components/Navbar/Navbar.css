@@ -7,12 +7,13 @@
 .navbar {
   width: 100%;
   max-width: 100vw;
-  background: white;
+  background: black;
   height: 54px;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0 80px;
+
 }
 /*container inside the navbar for the links*/
 .container {
@@ -69,4 +70,7 @@
 
 hr.nav-line {
   border: 0.1px gray;
+}
+.links{
+  color:white
 }
