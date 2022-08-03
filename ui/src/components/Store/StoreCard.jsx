@@ -33,9 +33,13 @@ export default function StoreCard(props) {
         </Typography>
         <Typography variant="body2" color="text.secondary">
           ⏰ Store Hours:
-          <p> M-F: 10:00 AM - 8 PM</p>
-          <p> Sat: 10:00 AM - 9 PM</p>
-          <p> Sun: Closed</p>
+          <p>
+            M-F: 10:00 AM - 8 PM
+            <br />
+            Sat: 10:00 AM - 9 PM
+            <br />
+            Sat: 10:00 AM - 9 PM
+          </p>
         </Typography>
         <hr className="store-card-spacing"></hr>
         <Typography variant="body2" color="text.secondary">
