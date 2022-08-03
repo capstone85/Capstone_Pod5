@@ -21,7 +21,7 @@ export default function ProductCard(props) {
         <h4>
           <a href="">{props.product.name}</a>
         </h4>
-        <p>{props.product.description}</p>
+        {/* <p>{props.product.description}</p> */}
         <div class="product-bottom-details">
           <div class="product-price">${props.product.price}</div>
           <div class="product-links">
