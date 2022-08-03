@@ -5,11 +5,13 @@ import ProductCard from "./ProductCard";
 // Iterates over all products and displays their respective product card
 export default function ProductGrid(props) {
   let foundSearch = false;
-  console.log("hi");
   return (
     <div className="product-grid">
       {props.product.map((item, idx) => {
-        if (item.name.toLowerCase().includes(props.searchbar.toLowerCase())) {
+        if (
+          item.name.toLowerCase().includes(props.searchbar.toLowerCase()) ||
+          item.category.toLowerCase().includes(props.searchbar.toLowerCase())
+        ) {
           foundSearch = true;
           return (
             <ProductCard

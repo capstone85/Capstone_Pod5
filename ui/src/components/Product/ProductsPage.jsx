@@ -19,13 +19,20 @@ export default function ProductsPage(props) {
   const [product, setProduct] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All Categories");
 
-  // const currentItems = product.filter((item) => {
-  //   return item.category == activeCategory;
-  // });
+  const categories = ["All Categories", "Clothing", "Accessories", "Footwear"];
 
-  // activeCategory == "All Categories"
-  //   ? setProduct(product)
-  //   : setProduct(currentItems);
+  console.log("products here " + product);
+
+  const currentItems = product.filter((item) => {
+    console.log(item.category);
+    return item.category == activeCategory;
+  });
+
+  console.log(activeCategory);
+  console.log(currentItems);
+  // if (activeCategory != "All Categories") {
+  //   setProduct(product);
+  // }
 
   // Extract productId parameter from the url
   let { storeId } = useParams();
@@ -66,13 +73,13 @@ export default function ProductsPage(props) {
         />
 
         <ul className="categories">
-          {props.categories.map((category, idx) => (
+          {categories.map((category, idx) => (
             <Selector
               key={idx}
-              label={category}
-              isActive={props.selectedCategory == category}
+              category={category}
+              isActive={activeCategory == category}
               onClick={() => {
-                props.setActiveCategory(category);
+                setActiveCategory(category);
               }}
             />
           ))}
@@ -86,7 +93,7 @@ export default function ProductsPage(props) {
           setIsFetching={props.setIsFetching}
           searchbar={props.searchbar}
           store={props.store}
-          product={product}
+          product={activeCategory == "All Categories" ? product : currentItems}
           storeId={storeId}
         />
       </div>

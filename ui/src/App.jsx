@@ -67,7 +67,6 @@ function App() {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchbar, setSearchbar] = useState(""); // for search results
   const [products, setProducts] = useState([]);
-  const categories = ["All Categories", "clothing", "accessories", "footwear"];
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState({});
   const [isCheckingOut, setIsCheckingOut] = useState(false);
@@ -321,7 +320,7 @@ function App() {
                   handleRemoveItemFromCart={handleRemoveItemFromCart}
                   // setActiveCategory={setActiveCategory}
                   handleOnSearchbarChange={handleOnSearchbarChange}
-                  categories={categories}
+                  // categories={categories}
                   cart={cart}
                   setIsFetching={setIsFetching}
                   searchbar={searchbar}
