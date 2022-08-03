@@ -51,22 +51,4 @@ export default function ProductCard(props) {
   /* </Link> */
 }
 
-{
-  /* {props.quantity > 0 ? (
-          <p className="quantity">{props.quantity}</p>
-        ) : null} */
-}
 
-{
-  /* 
-      <div className="item-description">
-        {props.showDescription ? (
-          <>
-            <p>{props.description}</p>
-          </>
-        ) : null}
-      </div> */
-}
-{
-  /* <p className="product-price">${props.price.toFixed(2)}</p> */
-}
