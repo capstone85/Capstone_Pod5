@@ -46,6 +46,8 @@ import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import ProductsPage from "./components/Product/ProductsPage";
 import SearchPage from "./components/Search/SearchPage";
+import StoreNew from "./components/Store/StoreNew";
+import ProductNew from "./components/Product/ProductNew";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -58,6 +60,7 @@ function App() {
   const [error, setError] = useState(null);
   const [isFetchingStore, setIsFetchingStore] = useState(false);
   const [store, setStore] = useState([]);
+  const [product, setProduct] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
   const [activeCategory, setActiveCategory] = useState("All Categories");
@@ -154,6 +157,9 @@ function App() {
     setStore((oldStore) => [newStore, ...oldStore]);
   };
 
+  const addProduct = (newProduct) => {
+    setProducts((oldProduct) => [newProduct, ...oldProduct]);
+  };
 
   return (
     <div className="app">
@@ -293,12 +299,24 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/store/*"
               element={
                 <StorePage
                   store={store}
                   addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
+            <Route
+              path="/store-page/create/*"
+              element={
+                <ProductNew
+                  product={product}
+                  addProduct={addProduct}
                   user={user}
                   setUser={setUser}
                 />
