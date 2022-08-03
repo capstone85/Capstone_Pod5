@@ -225,3 +225,34 @@ ul {
   color: black;
   text-decoration: underline;
 }
+
+.Register .card .form .btn {
+  width: 104%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  background-color: black;
+  margin-bottom: 50px;
+  margin-left: 10px;
+}
+
+.bottomLinks {
+  margin-left: 35px;
+}
+
+.input-field {
+  margin: 10px;
+}
+
+select {
+  background-color: white;
+  color: black;
+  height: 30px;
+  font-size: 16px;
+}

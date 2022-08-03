@@ -39,6 +39,7 @@ export default function Home(props) {
             return (
               <StoreCard
                 key={idx}
+                id={element.id}
                 name={element.name}
                 location={element.location}
                 description={element.description}

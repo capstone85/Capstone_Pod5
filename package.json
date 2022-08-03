@@ -1,12 +1,22 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "material-ui-popup-state": "^4.0.1",
     "react-popup": "^0.11.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.2",
+=======
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.3",
+>>>>>>> 43f70bf13c029d7c30bcea3b816c4e64f5e8cd5a
     "@mui/styled-engine-sc": "^5.8.0",
+    "material-ui-popup-state": "^4.0.1",
+    "react-popup": "^0.11.0",
     "styled-components": "^5.3.5"
   }
 }

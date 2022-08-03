@@ -1,7 +1,6 @@
 .searchbar-section {
   display: flex;
   justify-content: left;
-  padding-left: 10px;
 }
 
 .search-btn-emoji {

@@ -1,4 +1,4 @@
-import "./ProductSearch.css";
+import "./Searchbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function Searchbar(props) {
