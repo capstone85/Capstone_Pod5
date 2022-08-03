@@ -6,6 +6,7 @@
 }
 .landing h1 {
   color: black;
+  font-family: "DM Serif Display", serif;
 }
 .landing .thisdiv {
   padding: 200px 0 50px;

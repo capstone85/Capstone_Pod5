@@ -29,7 +29,7 @@ export default function VendorNavbar(props) {
       <div className="container">
         {/* logo link */}
         <div className="logo">
-          <Link to="/store">🛍</Link>
+          <Link to="/store">🧽</Link>
         </div>
         {/* vender links */}
         <ul className="vendor-links">
@@ -73,7 +73,7 @@ export default function VendorNavbar(props) {
             {/* myStore link */}
             <li>
               <div className="myStores">
-                <Link to="/store/*">
+                <Link to="/store">
                   <Typography>My Stores</Typography>
                 </Link>
               </div>

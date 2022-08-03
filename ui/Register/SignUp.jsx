@@ -28,12 +28,6 @@ export default function SignUp(props) {
 
   //-----------------------------------
 
-  //confirm password visibility
-  const [passwordShowConfirm, setPasswordShowConfirm] = useState(false);
-  const toggleConfirmPassword = () => {
-    setPasswordShowConfirm(!passwordShowConfirm);
-  };
-
   useEffect(() => {
     console.log(props.user);
   }, [props.user]);
