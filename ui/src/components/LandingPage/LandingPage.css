@@ -2,4 +2,30 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 1rem;
+  height: 100%;
+
+  
+}
+.landing h1{
+  color: black; 
+
+}
+.landing .thisdiv{
+  padding: 200px 0 50px;
+}
+/* body{
+ background-image: url("https://t3.ftcdn.net/jpg/03/16/52/70/360_F_316527081_e2tXI5A3Zq9EzyKnFLSYNJXlQGsnTO5y.jpg");
+ background-repeat: no-repeat;
+ 
+ 
+ 
+} */
+
+.landing .thisdiv img{
+align-content: center;
+float:right;
+height: 300px;
+width:500px;
+transform: translateY(-210px) ;
+
 }

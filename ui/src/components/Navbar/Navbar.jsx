@@ -95,6 +95,11 @@ export default function Navbar(props) {
                 </Link>
               </Tooltip>
             </li>
+            {/* <li className="sidebar">
+              <Link to="/sidebar">
+                <Typography>Here</Typography>
+              </Link>
+            </li> */}
 
             {/* wishlist link --> */}
             <li>

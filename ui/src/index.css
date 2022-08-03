@@ -17,6 +17,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
 }
 
 /* body {
@@ -44,4 +45,7 @@ h1 {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+} */
+/* body{
+  background-image: url(" https://cdn.wallpapersafari.com/50/28/Kq6pxW.jpg");
 } */
