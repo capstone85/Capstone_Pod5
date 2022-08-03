@@ -2,7 +2,6 @@ import * as React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
-
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -15,7 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import ShoppingCart from "../Shoppingcart/Shoppingcart";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import DashboardLinks from "../MyAccount/DashboardLinks/DashboardLinks";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -51,7 +50,7 @@ export default function Navbar(props) {
         <div className="container">
           {/* logo link*/}
           <div className="logo">
-            <Link to="/">🛍</Link>
+            <Link to="/">🧽</Link>
           </div>
 
           {/* navbar links */}
@@ -198,7 +197,7 @@ export default function Navbar(props) {
           </ul>
         </div>
       </div>
-      <hr className="nav-line" />
+      {/* <hr className="nav-line" /> */}
     </div>
   );
 }

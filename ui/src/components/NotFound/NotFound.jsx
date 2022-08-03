@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from 'react';
 import "./NotFound.css";
 // import Navbar from "../Navbar/Navbar";
 // import * as React from "react";

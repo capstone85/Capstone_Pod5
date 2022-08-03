@@ -6,7 +6,14 @@ import { useState, useEffect } from "react";
 //import Sidebar from "./components/Sidebar/Sidebar";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
-import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Router,
+  Routes,
+  useParams,
+} from "react-router-dom";
 //import {React} from "react"
 //import { AuthContextProvider, useAuthContext } from "./context/auth";
 // import Navbar from "./Components/Navbar";
@@ -25,8 +32,7 @@ import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
 import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
-import ShoppingCart from "./components/Shoppingcart/Shoppingcart";
-
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import {
   removeFromCart,
   addToCart,
@@ -40,6 +46,7 @@ import ViewOrdersPage from "./components/MyAccount/ViewOrdersPage/ViewOrdersPage
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import ProductsPage from "./components/Product/ProductsPage";
+import SearchPage from "./components/Search/SearchPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -148,6 +155,7 @@ function App() {
     setStore((oldStore) => [newStore, ...oldStore]);
   };
 
+
   return (
     <div className="app">
     
@@ -219,7 +227,16 @@ function App() {
             {/* not found */}
             <Route path="*" element={<NotFound />} />
 
-            <Route path="/search" element={<NotFound />} />
+            <Route
+              path="/search"
+              element={
+                <SearchPage
+                  handleOnSearchbarChange={handleOnSearchbarChange}
+                  setSearchBar={setSearchbar}
+                  products={products}
+                />
+              }
+            />
             <Route
               path="/wishlist"
               element={
@@ -287,9 +304,9 @@ function App() {
               path="/store-page/:storeId"
               element={
                 <ProductsPage
-                  products={
-                    activeCategory == "All Categories" ? products : currentItems
-                  }
+                  // products={
+                  //   activeCategory == "All Categories" ? products : currentItems
+                  // }
                   activeCategory={activeCategory}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemFromCart={handleRemoveItemFromCart}
@@ -298,8 +315,9 @@ function App() {
                   categories={categories}
                   cart={cart}
                   setIsFetching={setIsFetching}
-                  searchnar={searchbar}
+                  searchbar={searchbar}
                   setSearchbar={setSearchbar}
+                  store={store}
                 />
               }
             />

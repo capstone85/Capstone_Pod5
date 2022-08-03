@@ -23,6 +23,12 @@ CREATE TABLE store (
 CREATE TABLE product (
     id          SERIAL PRIMARY KEY,
     name        TEXT NOT NULL,
+    image       TEXT NOT NULL,
+    description TEXT NOT NULL,
+    price       TEXT NOT NULL,
+    category    TEXT NOT NULL,
+    size        TEXT NOT NULL,
+    quantity    TEXT NOT NULL,
     user_id     INT NOT NULL,
     store_id    INT NOT NULL,
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
