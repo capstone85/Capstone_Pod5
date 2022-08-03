@@ -10,25 +10,24 @@ class Checkout {
     };
   }
   static async checkout(credentials) {
-    const requiredFields = ["name", "user_id", "product_id"];
+    const requiredFields = ["user_id", "product_id"];
     requiredFields.forEach((field) => {
       if (!credentials.hasOwnProperty(field)) {
         throw new BadRequestError(`Missing ${field} in request body.`);
       }
     });
-    const result = await db.query(
+    const results = await db.query(
       `
       INSERT INTO checkout (
-            name,
             product_id,
             user_id
         )
-        VALUES($1, $2, $3)
-        RETURNING id, name, product_id, user_id; 
-        `
+        VALUES($1, $2)
+        RETURNING id, product_id, user_id; 
+        `,
+      [checkout.id, checkout.product_id, checkout.user_id]
     );
-    const user = result.rows[0];
-    return this.makeCheckoutForm(user);
+    return results.rows[0];
   }
 
   //   `INSERT INTO checkout (

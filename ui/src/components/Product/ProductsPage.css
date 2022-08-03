@@ -4,6 +4,7 @@
   flex-direction: column; */
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
 }
 
 .category {
@@ -25,6 +26,8 @@ ul.categories {
   height: 400px;
   float: left;
   margin-top: 20px;
+  color: black;
+  margin-left: 20px;
 }
 
 .product-grid-container {
@@ -32,4 +35,5 @@ ul.categories {
   height: 400px;
   margin-left: auto;
   margin-top: 20px;
+  color: black;
 }

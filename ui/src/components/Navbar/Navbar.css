@@ -13,7 +13,6 @@
   flex-direction: row;
   align-items: center;
   padding: 0 80px;
-
 }
 /*container inside the navbar for the links*/
 .container {
@@ -37,7 +36,8 @@
   max-width: 650px;
   gap: 30px;
   transform: translateX(-130px);
-  color: black;
+  color:black;
+  
 }
 
 .account:hover {
@@ -71,6 +71,6 @@
 hr.nav-line {
   border: 0.1px gray;
 }
-.links{
-  color:white
+.links {
+  color: white;
 }

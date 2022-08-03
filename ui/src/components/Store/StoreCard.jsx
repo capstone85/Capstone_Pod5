@@ -14,10 +14,10 @@ export default function StoreCard(props) {
   const button = styled(Button)(spacing);
 
   return (
-    <Card sx={{ maxWidth: 900 }} className="store-card">
+    <Card sx={{ maxWidth: 800 }} className="store-card">
       <CardMedia
         component="img"
-        height="800"
+        height="auto"
         image={props.logo}
         alt={props.name}
       />
@@ -31,6 +31,12 @@ export default function StoreCard(props) {
         <Typography variant="body2" color="text.secondary">
           📞 Phone Number
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+          ⏰ Store Hours:
+          <p> M-F: 10:00 AM - 8 PM</p>
+          <p> Sat: 10:00 AM - 9 PM</p>
+          <p> Sun: Closed</p>
+        </Typography>
         <hr className="store-card-spacing"></hr>
         <Typography variant="body2" color="text.secondary">
           {props.description}
@@ -40,11 +46,18 @@ export default function StoreCard(props) {
       <div className="buttons">
         <CardActions>
           <div className="store-btn">
-            <Button size="small">Edit store info</Button>
+            <Button style={{ color: "#B86B77" }} size="small">
+              Edit store info
+            </Button>
           </div>
           <div className="store-btn">
-            <Link to={"/store-page/create/"+props.id} style={{ textDecoration: "none" }}>
-              <Button size="small">Upload Merchandise</Button>
+            <Link
+              to={"/store-page/create/" + props.id}
+              style={{ textDecoration: "none" }}
+            >
+              <Button style={{ color: "#B86B77" }} size="small">
+                Upload Merchandise
+              </Button>
             </Link>
           </div>
           <div className="store-btn">
@@ -52,7 +65,9 @@ export default function StoreCard(props) {
               to={"/store-page/" + props.id}
               style={{ textDecoration: "none" }}
             >
-              <Button size="small">View styles</Button>
+              <Button style={{ color: "#B86B77" }} size="small">
+                View styles
+              </Button>
             </Link>
           </div>
         </CardActions>

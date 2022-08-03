@@ -1,72 +1,40 @@
 import * as React from "react";
 import "./ProductCard.css";
 import { Link } from "react-router-dom";
+import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 // Renders image, name, price, and quantity of products.
 // Buttons allow users to change quantity of products.
 export default function ProductCard(props) {
   console.log("hello product card");
-  // console.log(props.product.name);
+  console.log(props.product.name);
+  console.log(props.product.description);
   return (
-    // <div className="product-card">
-    //   <h1 className="product-name">product: {props.product.name}</h1>
-
-    //   <div className="buttons">
-    //     <button
-    //       className="remove"
-    //       onClick={() => {
-    //         props.handleRemoveItemFromCart(props.productId);
-    //       }}
-    //     >
-    //       -
-    //     </button>
-    //     <button
-    //       className="add"
-    //       onClick={() => {
-    //         props.handleAddItemToCart(props.productId);
-    //       }}
-    //     >
-    //       +
-    //     </button>
-    //   </div>
-    // </div>
-    <></>
+    <div class="product-card">
+      <div class="product-tumb">
+        <img src={props.product.image} alt={props.product.name} />
+      </div>
+      <div class="product-details">
+        <span class="product-category">{props.product.category}</span>
+        <h4>
+          <a href="">{props.product.name}</a>
+        </h4>
+        <p>{props.product.description}</p>
+        <div class="product-bottom-details">
+          <div class="product-price">${props.product.price}</div>
+          <div class="product-links">
+            <a href="">
+              <FavoriteBorderIcon />
+              {/* <FavoriteBorderIcon onClick={handleOnWishlistAdd} /> */}
+            </a>
+            <a href="">
+              <AddShoppingCartIcon />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
-
-{
-  /* <Link
-          to={"/products/" + props.productId}
-          onClick={() => props.setIsFetching(true)}
-        > */
-}
-{
-  /* <img
-            className="product-image"
-            src={props.image}
-            alt={props.name}
-          ></img> */
-}
-{
-  /* </Link> */
-}
-
-{
-  /* {props.quantity > 0 ? (
-          <p className="quantity">{props.quantity}</p>
-        ) : null} */
-}
-
-{
-  /* 
-      <div className="item-description">
-        {props.showDescription ? (
-          <>
-            <p>{props.description}</p>
-          </>
-        ) : null}
-      </div> */
-}
-{
-  /* <p className="product-price">${props.price.toFixed(2)}</p> */
 }
