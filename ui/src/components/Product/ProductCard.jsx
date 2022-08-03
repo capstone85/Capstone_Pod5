@@ -47,7 +47,7 @@ export default function ProductCard(props) {
           </h4>
           <p>Description</p>
           <div class="product-bottom-details">
-            <div class="product-price">$230.99</div>
+            <div class="product-price">$23.99</div>
             <div class="product-links">
               <a href="">
                 <FavoriteBorderIcon />
