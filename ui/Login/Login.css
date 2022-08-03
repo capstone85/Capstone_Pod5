@@ -4,6 +4,7 @@
   align-items: center;
   font-family: "Recoleta", sans-serif;
   color: black;
+  transform: translateY(50px);
 }
 
 .Login {
