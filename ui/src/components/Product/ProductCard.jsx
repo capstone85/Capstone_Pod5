@@ -12,28 +12,6 @@ export default function ProductCard(props) {
   console.log(props.product.name);
   console.log(props.product.description);
   return (
-    // <div className="product-card">
-    //   <h1 className="product-name">product: {props.product.name}</h1>
-
-    //   <div className="buttons">
-    //     <button
-    //       className="remove"
-    //       onClick={() => {
-    //         props.handleRemoveItemFromCart(props.productId);
-    //       }}
-    //     >
-    //       -
-    //     </button>
-    //     <button
-    //       className="add"
-    //       onClick={() => {
-    //         props.handleAddItemToCart(props.productId);
-    //       }}
-    //     >
-    //       +
-    //     </button>
-    //   </div>
-    // </div>
     <div class="product-card">
       <div class="product-tumb">
         <img src={props.product.image} alt={props.product.name} />
