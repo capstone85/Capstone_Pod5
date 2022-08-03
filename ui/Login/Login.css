@@ -2,15 +2,17 @@
 .Login .card {
   display: flex;
   align-items: center;
+  font-family: "Recoleta", sans-serif;
+  color: black;
 }
 
 .Login {
-  min-height: calc(100vh - var(--navbar-height));
+  /* min-height: calc(100vh - var(--navbar-height)); */
   height: 100%;
-  max-height: calc(100vh - var(--navbar-height));
+  /* max-height: calc(100vh - var(--navbar-height)); */
   width: 100%;
-  max-width: 100vw;
-  background: var(--dark-blue);
+  /* max-width: 100vw; */
+
   justify-content: center;
 }
 a,
@@ -27,7 +29,8 @@ span,
 ul {
   margin: 0;
   padding: 0;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Recoleta", sans-serif;
+
   color: var(--font-dark);
 }
 #root {
@@ -37,10 +40,12 @@ ul {
   height: 40px;
   padding: 0 15px;
   font-size: 16px;
-  width: 100%;
+  width: 440px;
   background: transparent;
   color: var(--pure-white);
   border-color: white;
+  box-sizing: border-box;
+  border-bottom: 0.0625rem solid #757575;
 }
 
 .Login .card {
@@ -51,20 +56,28 @@ ul {
   display: flex;
   align-items: center;
 }
+
+/* sign in button */
 .Login .card .form .btn {
-  width: 104%;
+  width: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  color: #fff;
-  font-size: 20px;
+  height: 60px;
+  color: #d3d3d3;
+  font-size: 16px;
   border: none;
   cursor: pointer;
   margin-top: 15px;
-  background-color: black;
-  margin-bottom: 50px;
-  margin-left: 10px;
+  background: black;
+  padding: 12px 18px;
+  /* border-radius: 30px; */
+  transform: translateX(148px);
+}
+
+/* sign in button hovering */
+.Login .card .form .btn:hover {
+  color: white;
 }
 
 .Login .card h2 {
@@ -88,11 +101,63 @@ ul {
 .Login .card .bottomLinks a:hover {
   text-decoration: underline;
 }
-/* .input {
 
+/* forgot password link */
+.Login .card .form .forgotPassword a {
+  display: flex;
+  display: center;
+  align-items: center;
+  transform: translateX(140px);
+  color: gray;
+  text-decoration: none;
+}
 
+/* forgot password link hover */
+.Login .card .form .forgotPassword a:hover {
+  color: black;
+  text-decoration: underline;
+}
+/* visibility button for password */
+.Login .card .form .input-field .visibilityButton {
+  transform: translateX(400px) translateY(-40px);
+}
+
+/* hovering over the visibility Button */
+.Login .card .form .input-field .visibilityButton:hover {
+  cursor: pointer;
+}
+
+.Login .account-container h3 {
+  transform: translateY(40px) translateX(-1px);
+}
+
+.Login .account-container a {
+  color: gray;
+  text-decoration: none;
+}
+
+.Login .account-container p {
+  transform: translateY(50px) translateX(35px);
+}
+
+.Login .account-container a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* create an account button
+.Login .registerLink a {
+  background: black;
+  color: #d3d3d3;
+  width: 220px;
+  height: 60px;
+  font-size: 16px;
+  border-radius: 30px;
+  transform: translateY(100px) translateX(20px);
+  text-decoration: none;
 } */
 
-.bottomLinks {
-  margin-left: 35px;
-}
+/* create an account button hover
+.Login .registerLink a:hover {
+  color: black;
+} */

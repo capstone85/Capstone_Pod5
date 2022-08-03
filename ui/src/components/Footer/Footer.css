@@ -1,8 +1,9 @@
 .footer {
   bottom: 0%;
-  position: fixed;
+  position: absolute;
   padding-bottom: 70px;
   color: black;
+  transform: translateY(350px);
 }
 
 hr {

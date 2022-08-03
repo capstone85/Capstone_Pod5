@@ -1,17 +1,31 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import apiClient from "../../ui/src/services/apiClient";
 import "./Login.css";
 import { relativeTimeRounding } from "moment";
 import CircularProgress from "@mui/material/CircularProgress";
 
+//styling input boxes
+import TextField from "@mui/material/TextField";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
+import Footer from "../src/components/Footer/Footer";
+{
+  /* <link href="http://fonts.cdnfonts.com/css/recoleta" rel="stylesheet"></link>; */
+}
 export default function Login(props) {
-  // function refreshPage() {
-  //   window.location.reload(false);
-  // }
+  //input boxes
+  //password visibility
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+  //-----------------------------------
+
   const navigate = useNavigate();
   const [isLoading, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
@@ -72,13 +86,17 @@ export default function Login(props) {
   return (
     <div className="Login">
       <div className="card">
-        <h2>Login</h2>
+        <h2>LOG IN</h2>
+        <p>To access your account</p>
         {Boolean(errors.form) && <span className="error">{errors.form}</span>}
         <br />
         <div className="form">
           <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input
+            {/* email address input form */}
+            <TextField
+              id="standard-basic"
+              label="*Email Address"
+              variant="standard"
               type="email"
               name="email"
               placeholder="user@email.com"
@@ -89,19 +107,41 @@ export default function Login(props) {
           </div>
 
           <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
+            {/* password input form */}
+            <TextField
+              id="standard-basic"
+              label="*Password"
+              variant="standard"
+              type={passwordShown ? "text" : "password"}
               name="password"
               placeholder="Password"
               value={form.password}
               onChange={handleOnInputChange}
             />
+            {/* visibility button for password */}
+            <div className="visibilityButton">
+              <button onClick={togglePassword}>
+                {passwordShown ? (
+                  <Visibility></Visibility>
+                ) : (
+                  <VisibilityOff></VisibilityOff>
+                )}
+              </button>
+            </div>
+
             {errors.password && (
               <span className="error">{errors.password}</span>
             )}
           </div>
 
+          {/* forgot password sentence link */}
+          <div className="forgotPassword">
+            <Link to="/forgetPassword">
+              <p>I forgot my password</p>
+            </Link>
+          </div>
+
+          {/* sign in button */}
           <button
             className="btn"
             disabled={isLoading}
@@ -110,13 +150,18 @@ export default function Login(props) {
               // refreshPage();
             }
           >
-            {isLoading ? <CircularProgress color="secondary" /> : "Login"}
+            {/* circular loading icon that should appear when user is waiting after clicking the button */}
+            {isLoading ? <CircularProgress color="secondary" /> : "SIGN IN"}
           </button>
         </div>
-        <div className="bottomLinks">
-          <p>
-            Don't have an account? Sign up <Link to="/register">here</Link>.
-          </p>
+
+        {/* don't have an account portion of the page */}
+
+        <div className="account-container">
+          <h3>DON'T HAVE AN ACCOUNT?</h3>
+          <Link to="/register">
+            <p>CREATE AN ACCOUNT</p>
+          </Link>
         </div>
       </div>
     </div>
