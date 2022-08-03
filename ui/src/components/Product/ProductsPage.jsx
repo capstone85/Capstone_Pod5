@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
-
+import ProductCard from "./ProductCard";
 import axios from "axios";
 
 // Renders header, searchbar, and product grid

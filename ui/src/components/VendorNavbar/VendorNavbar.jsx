@@ -27,18 +27,16 @@ export default function VendorNavbar(props) {
   return (
     <div className="vendor">
       <div className="container">
-
         {/* logo link */}
         <div className="logo">
           <Link to="/store">🛍</Link>
         </div>
         {/* vender links */}
-        <ul className="vendor-links"/>
-          {/* login and log out */}
+        <ul className="vendor-links" />
+        {/* login and log out */}
 
         {/* navbar links */}
         <ul className="links">
-
           <li>
             {props.isLoggedIn ? (
               <div className="vendLogoutButton">
@@ -62,7 +60,6 @@ export default function VendorNavbar(props) {
               </>
             )}
           </li>
-
 
           {/* stores link */}
           <li>
@@ -148,12 +145,8 @@ export default function VendorNavbar(props) {
               </Menu>
             </div>
           </li>
-
         </ul>
-       
-  
       </div>
     </div>
   );
-  
 }

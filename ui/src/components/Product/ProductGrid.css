@@ -9,6 +9,8 @@
   grid-template-columns: repeat(4, 1fr);
   margin-left: 5%;
   gap: 7px;
+  padding: 20px;
+  flex: auto;
 }
 
 @media screen and (min-width: 250px) and (max-width: 500px) {
