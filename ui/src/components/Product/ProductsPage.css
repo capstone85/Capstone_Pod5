@@ -25,6 +25,7 @@ ul.categories {
   height: 400px;
   float: left;
   margin-top: 20px;
+  font: black;
 }
 
 .product-grid-container {
@@ -32,4 +33,9 @@ ul.categories {
   height: 400px;
   margin-left: auto;
   margin-top: 20px;
+  font: black;
 }
+
+/* .css-i4bv87-MuiSvgIcon-root {
+  color: black;
+} */

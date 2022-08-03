@@ -45,7 +45,6 @@ CREATE TABLE shoppingCart (
 
 CREATE TABLE checkout (
     id          SERIAL PRIMARY KEY,
-    name        TEXT NOT NULL,
     user_id     INT NOT NULL,
     product_id  INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,

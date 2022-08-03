@@ -14,10 +14,10 @@ export default function StoreCard(props) {
   const button = styled(Button)(spacing);
 
   return (
-    <Card sx={{ maxWidth: 900 }} className="store-card">
+    <Card sx={{ maxWidth: 1000 }} className="store-card">
       <CardMedia
         component="img"
-        height="800"
+        height="200"
         image={props.logo}
         alt={props.name}
       />
@@ -43,7 +43,10 @@ export default function StoreCard(props) {
             <Button size="small">Edit store info</Button>
           </div>
           <div className="store-btn">
-            <Link to={"/store-page/create/"+props.id} style={{ textDecoration: "none" }}>
+            <Link
+              to={"/store-page/create/" + props.id}
+              style={{ textDecoration: "none" }}
+            >
               <Button size="small">Upload Merchandise</Button>
             </Link>
           </div>

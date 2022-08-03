@@ -62,6 +62,9 @@ class Product {
       `
         SELECT  p.id,
                 p.name,
+                p.description,
+                p.price,
+                p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
                 p.created_at AS "created_at"
