@@ -312,7 +312,7 @@ function App() {
               }
             />
             <Route
-              path="/store-page/create/*"
+              path="/store-page/create/:storeId"
               element={
                 <ProductNew
                   product={product}

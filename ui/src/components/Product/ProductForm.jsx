@@ -14,7 +14,6 @@ export default function ProductForm(props) {
     price: "",
     image: "",
     category: "",
-    color: "",
   });
   const handleOnInputChange = (event) => {
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
@@ -28,9 +27,10 @@ export default function ProductForm(props) {
       price: form.price,
       image: form.price,
       category: form.category,
-      color: form.color,
       store_id: storeId,
     });
+    console.log("this is form name: ", form.name);
+    console.log("this is store id", storeId);
     if (error) {
       setErrors(error);
     }
@@ -41,7 +41,6 @@ export default function ProductForm(props) {
         price: "",
         image: "",
         category: "",
-        color: "",
       });
       props.addProduct(data.product);
       navigate("/store-page");
