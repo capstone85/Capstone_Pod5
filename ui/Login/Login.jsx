@@ -13,9 +13,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import Footer from "../src/components/Footer/Footer";
-{
-  /* <link href="http://fonts.cdnfonts.com/css/recoleta" rel="stylesheet"></link>; */
-}
+
 export default function Login(props) {
   //input boxes
   //password visibility
