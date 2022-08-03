@@ -67,7 +67,7 @@ export default function ProductForm(props) {
   return (
     <div className="product-form">
       <h1>MY PRODUCTS</h1>
-      <hr style={{ transform: "translateY(50px) ", width: "100%" }}></hr>
+      <hr style={{ transform: "translateY(50px) " }}></hr>
       <h2>Add Merchandise</h2>
 
       <form className="inputs">

@@ -27,7 +27,7 @@
 }
 
 .product-form .inputs {
-  transform: translateY(100px) translateX(555px);
+  transform: translateY(100px) translateX(400px);
 }
 
 /* Save button */
@@ -45,7 +45,7 @@
   background: black;
   padding: 12px 18px;
   /* border-radius: 30px; */
-  transform: translateX(730px) translateY(120px);
+  transform: translateX(570px) translateY(120px);
 }
 
 .product-form .save-btn:hover {
