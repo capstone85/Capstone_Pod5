@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ProductForm.css";
 
+import Footer from "../Footer/Footer";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import InputLabel from "@mui/material/InputLabel";
@@ -66,7 +67,7 @@ export default function ProductForm(props) {
   return (
     <div className="product-form">
       <h1>MY PRODUCTS</h1>
-      <hr style={{ transform: "translateY(45px)" }}></hr>
+      <hr style={{ transform: "translateY(50px) ", width: "100%" }}></hr>
       <h2>Add Merchandise</h2>
 
       <form className="inputs">
@@ -81,14 +82,7 @@ export default function ProductForm(props) {
             value={form.name}
             onChange={handleOnInputChange}
           />
-          {/* <label for="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Product name"
-            value={form.name}
-            onChange={handleOnInputChange}
-          /> */}
+
           {errors.name && <span className="error">{errors.name}</span>}
         </div>
         <div className="form-input">
@@ -102,14 +96,7 @@ export default function ProductForm(props) {
             value={form.description}
             onChange={handleOnInputChange}
           />
-          {/* <label for="description">Description</label>
-          <input
-            type="text"
-            name="description"
-            placeholder="Product Description"
-            value={form.description}
-            onChange={handleOnInputChange}
-          /> */}
+
           {errors.description && (
             <span className="error">{errors.description}</span>
           )}
@@ -125,14 +112,7 @@ export default function ProductForm(props) {
             value={form.price}
             onChange={handleOnInputChange}
           />
-          {/* <label for="price">Price</label>
-          <input
-            type="text"
-            name="price"
-            placeholder="price"
-            value={form.price}
-            onChange={handleOnInputChange}
-          /> */}
+
           {errors.price && <span className="error">{errors.price}</span>}
         </div>
         <div className="form-input">
@@ -146,19 +126,16 @@ export default function ProductForm(props) {
             value={form.image}
             onChange={handleOnInputChange}
           />
-          {/* <label for="image">Image</label>
-          <input
-            type="text"
-            name="image"
-            placeholder="image url"
-            value={form.image}
-            onChange={handleOnInputChange}
-          /> */}
+
           {errors.image && <span className="error">{errors.image}</span>}
         </div>
         <div className="form-input">
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="demo-select-small">Category</InputLabel>
+          <FormControl
+            sx={{ m: 1, minWidth: 200 }}
+            size="small"
+            style={{ transform: "translateY(10px) translateX(-10px)" }}
+          >
+            <InputLabel id="demo-select-small">Category*</InputLabel>
             <Select
               labelId="demo-select-small"
               id="demo-select-small"
@@ -169,17 +146,10 @@ export default function ProductForm(props) {
             >
               <MenuItem value="footwear">Footwear</MenuItem>
               <MenuItem value="clothing">Clothing</MenuItem>
-              <MenuItem value="accessory">Accessory</MenuItem>
+              <MenuItem value="accessories">Accessories</MenuItem>
             </Select>
           </FormControl>
-          {/* <label for="category">Category</label>
-          <input
-            type="text"
-            name="category"
-            placeholder="category"
-            value={form.category}
-            onChange={handleOnInputChange}
-          /> */}
+
           {errors.category && <span className="error">{errors.category}</span>}
         </div>
       </form>
@@ -188,8 +158,9 @@ export default function ProductForm(props) {
         disabled={isLoading}
         onClick={handleOnSubmit}
       >
-        {isLoading ? "Loading..." : "Save"}
+        {isLoading ? <CircularProgress color="secondary" /> : "Save"}
       </button>
+      {/* <Footer style={{ transform: "translateY(-500px)" }}></Footer> */}
     </div>
   );
 }
