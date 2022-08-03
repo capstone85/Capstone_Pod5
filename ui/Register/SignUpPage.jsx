@@ -3,7 +3,7 @@ import "./SignUpPage.css";
 import SignUp from "./SignUp";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../src/components/Footer/Footer";
+// import Footer from "../src/components/Footer/Footer";
 
 export default function SignUpPage(props) {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function SignUpPage(props) {
           setIsLoggedIn={props.setIsLoggedIn}
         ></SignUp>
       }
-      <Footer />
+      {/* <Footer></Footer> */}
     </div>
   );
 }
