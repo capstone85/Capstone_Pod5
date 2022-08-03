@@ -3,6 +3,7 @@ import Searchbar from "./components/LandingPage/LandingPage";
 
 import * as React from "react";
 import { useState, useEffect } from "react";
+//import Sidebar from "./components/Sidebar/Sidebar";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
 import {
@@ -46,6 +47,8 @@ import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import ProductsPage from "./components/Product/ProductsPage";
 import SearchPage from "./components/Search/SearchPage";
+import StoreNew from "./components/Store/StoreNew";
+import ProductNew from "./components/Product/ProductNew";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -58,6 +61,7 @@ function App() {
   const [error, setError] = useState(null);
   const [isFetchingStore, setIsFetchingStore] = useState(false);
   const [store, setStore] = useState([]);
+  const [product, setProduct] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
   const [activeCategory, setActiveCategory] = useState("All Categories");
@@ -68,7 +72,7 @@ function App() {
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState({});
   const [isCheckingOut, setIsCheckingOut] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
   const currentItems = products.filter((item) => {
     return item.category == activeCategory;
   });
@@ -154,19 +158,16 @@ function App() {
     setStore((oldStore) => [newStore, ...oldStore]);
   };
 
+  const addProduct = (newProduct) => {
+    setProducts((oldProduct) => [newProduct, ...oldProduct]);
+  };
 
   return (
     <div className="app">
-      {/* <Navbar /> */}
-      {/* <LandingPage /> */}
-      {/* <MyAccount
-      // user={user}
-      // isLogin={isLogin}
-      // setUser={setUser}
-      // name={user.name}
-      /> */}
+    
 
       <BrowserRouter>
+
         {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
@@ -185,11 +186,12 @@ function App() {
             setUser={setUser}
           />
         )}
+         
         <main>
           <Routes>
             {/* landing page route */}
             <Route path="/" element={<LandingPage />} />
-
+            {/* <Route path="/sidebar" element={<Sidebar />} /> */}
             <Route
               path="/store-page"
               element={<Home user={user} store={store} />}
@@ -293,12 +295,24 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/store/*"
               element={
                 <StorePage
                   store={store}
                   addStore={addStore}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
+            <Route
+              path="/store-page/create/:storeId"
+              element={
+                <ProductNew
+                  product={product}
+                  addProduct={addProduct}
                   user={user}
                   setUser={setUser}
                 />

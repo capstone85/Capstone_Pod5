@@ -27,12 +27,10 @@ CREATE TABLE product (
     description TEXT NOT NULL,
     price       TEXT NOT NULL,
     category    TEXT NOT NULL,
-    size        TEXT NOT NULL,
-    quantity    TEXT NOT NULL,
-    user_id     INT NOT NULL,
+    size        TEXT,
+    quantity    TEXT,
     store_id    INT NOT NULL,
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (store_id) REFERENCES store(id) ON DELETE CASCADE
 );
 

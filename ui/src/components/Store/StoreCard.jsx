@@ -43,7 +43,9 @@ export default function StoreCard(props) {
             <Button size="small">Edit store info</Button>
           </div>
           <div className="store-btn">
-            <Button size="small">Upload merchandise</Button>
+            <Link to={"/store-page/create/"+props.id} style={{ textDecoration: "none" }}>
+              <Button size="small">Upload Merchandise</Button>
+            </Link>
           </div>
           <div className="store-btn">
             <Link
