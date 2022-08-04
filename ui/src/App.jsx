@@ -186,7 +186,15 @@ function App() {
             {/* <Route path="/sidebar" element={<Sidebar />} /> */}
             <Route
               path="/store-page"
-              element={<Home user={user} store={store} />}
+              element={
+                <Home
+                  user={user}
+                  store={store}
+                  addToCart={handleOnAddToCart}
+                  removeFromCart={handleOnRemoveFromCart}
+                  getQuantityOfItemInCart={handleGetItemQuantity}
+                />
+              }
             />
 
             {/* isLogin={isLogin}
@@ -239,6 +247,7 @@ function App() {
               path="/wishlist"
               element={
                 <Wishlist
+                  setIsFetching={setIsFetching}
                   isClicked={isClicked}
                   user={user}
                   cart={cart}

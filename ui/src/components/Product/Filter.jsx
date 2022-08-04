@@ -8,7 +8,7 @@ export default function Selector(props) {
   return (
     <div className="category-menu">
       <button className={buttonClassName} onClick={props.onClick}>
-        <li className={buttonClassName}>{props.category}</li>
+        <li className={buttonClassName}>{capitalizeFirst(props.category)}</li>
       </button>
     </div>
   );

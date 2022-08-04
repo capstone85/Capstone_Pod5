@@ -8,7 +8,6 @@ const authRoutes = require("./routes/auth");
 const storeRoutes = require("./routes/store");
 const productRoutes = require("./routes/product");
 const checkoutRoutes = require("./routes/checkout");
-const wishlistRoutes = require("./routes/wishlist");
 
 const app = express();
 // const port = 5173;
@@ -22,7 +21,6 @@ app.use("/auth", authRoutes);
 app.use("/store", storeRoutes);
 app.use("/product", productRoutes);
 app.use("/checkout", checkoutRoutes);
-app.use("/wishlist", wishlistRoutes);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());

@@ -92,7 +92,7 @@ input {
   text-decoration: underline;
 }  */
 
-#root {
+/* #root {
   --content-width: 800px;
 }
 
@@ -113,7 +113,7 @@ ul {
   font-family: "Recoleta", sans-serif;
 
   color: var(--font-dark);
-}
+} */
 
 .Register {
   display: flex;

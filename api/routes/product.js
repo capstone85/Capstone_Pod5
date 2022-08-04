@@ -26,6 +26,16 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   }
 });
 
+router.get("/wishlist", async (req, res, next) => {
+  try {
+    console.log("wishlist");
+    const product = await Product.listAllWishlist();
+    return res.status(200).json({ product });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/products", async (req, res, next) => {
   try {
     console.log("hello");
@@ -46,10 +56,21 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
+
 router.get("/store/:storeId", async (req, res, next) => {
   try {
     const { storeId } = req.params;
     const product = await Product.fetchProductByStoreId(storeId);
+    return res.status(200).json({ product });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/wishlist/:productId", async (req, res, next) => {
+  try {
+    const { productId } = req.params;
+    const product = await Product.addToWishlist(productId);
     return res.status(200).json({ product });
   } catch (err) {
     next(err);

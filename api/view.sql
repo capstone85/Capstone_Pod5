@@ -1,0 +1,3 @@
+SELECT * FROM users LIMIT 3;
+SELECT * FROM store LIMIT 3;
+SELECT * FROM product LIMIT 3;
