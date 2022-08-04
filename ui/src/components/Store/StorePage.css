@@ -1,4 +1,7 @@
-/* .banner {
-  color: black;
-  background-color: red;
-} */
+.store-page .banner h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "DM Serif Display", serif;
+  transform: translateY(20px);
+}

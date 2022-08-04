@@ -5,13 +5,15 @@ import { Routes, Route } from "react-router-dom";
 import StoreOverview from "./StoreOverview";
 import StoreNew from "./StoreNew";
 import StoreDetail from "./StoreDetail";
+import "./StorePage.css";
 
+//My Stores page (vendor)
 export default function StorePage(props) {
   return (
     <div className="store-page">
       <main>
         <div className="banner">
-          <h1>My Stores</h1>
+          <h1>MY STORES</h1>
         </div>
         <Routes>
           <Route

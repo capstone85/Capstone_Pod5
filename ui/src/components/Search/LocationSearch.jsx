@@ -36,13 +36,15 @@ export default function LocationSearchBar(props) {
   return (
     <div className="searchbar">
       <div className="searchinput">
-      <input
-        placeholder="Enter zipcode"
-        className="input"
-        value={props.searchBar}
-        onChange={(event) => props.handleOnSearchBarChange(event.target.value)}
-      />
-</div>
+        <input
+          placeholder="Enter Zipcode"
+          className="input"
+          value={props.searchBar}
+          onChange={(event) =>
+            props.handleOnSearchBarChange(event.target.value)
+          }
+        />
+      </div>
       <button id="find-me" onClick={geoFindMe}>
         Find Location
       </button>

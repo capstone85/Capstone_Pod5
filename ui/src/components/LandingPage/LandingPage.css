@@ -1,16 +1,14 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 1rem;
   height: 100%;
-
-  
 }
-.landing h1{
-  color: black; 
-
+.landing h1 {
+  color: black;
+  font-family: "DM Serif Display", serif;
 }
-.landing .thisdiv{
+.landing .thisdiv {
   padding: 200px 0 50px;
 }
 /* body{
@@ -21,11 +19,10 @@
  
 } */
 
-.landing .thisdiv img{
-align-content: center;
-float:right;
-height: 300px;
-width:500px;
-transform: translateY(-210px) ;
-
+.landing .thisdiv img {
+  align-content: center;
+  float: right;
+  height: 300px;
+  width: 500px;
+  transform: translateY(-210px);
 }

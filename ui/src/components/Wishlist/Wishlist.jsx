@@ -73,7 +73,7 @@ export default function Wishlist(props) {
       </div>
 
       <div className="content">
-        <div className="cart-items">
+        <div className="wishlist-items">
           <div className="items-list">
             {!cartHasItems ? (
               <div className="card">

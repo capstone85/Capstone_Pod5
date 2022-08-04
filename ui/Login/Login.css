@@ -4,6 +4,7 @@
   align-items: center;
   font-family: "Recoleta", sans-serif;
   color: black;
+  transform: translateY(50px);
 }
 
 .Login {
@@ -33,9 +34,9 @@ ul {
 
   color: var(--font-dark);
 }
-#root {
-    --content-width: 800px;
-}
+/* #root {
+  --content-width: 800px;
+} */
 .Login .card .form .input-field input {
   height: 40px;
   padding: 0 15px;
@@ -49,12 +50,12 @@ ul {
 }
 
 .Login .card {
-    min-height: 600px;
-    width: 520px;
-    padding: 24px 36px 0;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
+  min-height: 600px;
+  width: 520px;
+  padding: 24px 36px 0;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 /* sign in button */
@@ -82,6 +83,7 @@ ul {
 
 .Login .card h2 {
   color: black;
+  font-family: "DM Serif Display", serif;
 }
 
 .Login .card .form label {
@@ -129,6 +131,7 @@ ul {
 
 .Login .account-container h3 {
   transform: translateY(40px) translateX(-1px);
+  font-family: "DM Serif Display", serif;
 }
 
 .Login .account-container a {
@@ -137,7 +140,8 @@ ul {
 }
 
 .Login .account-container p {
-  transform: translateY(50px) translateX(35px);
+  transform: translateY(50px) translateX(20px);
+  /* font-family: "DM Serif Display", serif; */
 }
 
 .Login .account-container a:hover {

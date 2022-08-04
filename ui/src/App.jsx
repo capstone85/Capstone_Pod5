@@ -64,18 +64,13 @@ function App() {
   const [product, setProduct] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
-  const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchbar, setSearchbar] = useState(""); // for search results
   const [products, setProducts] = useState([]);
-  const categories = ["All Categories", "clothing", "accessories", "footwear"];
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState({});
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const currentItems = products.filter((item) => {
-    return item.category == activeCategory;
-  });
 
   const handleOnRemoveFromCart = (item) => setCart(removeFromCart(cart, item));
   const handleOnAddToCart = (item) => setCart(addToCart(cart, item));
@@ -251,8 +246,6 @@ function App() {
                   error={error}
                   setUser={setUser}
                   products={products}
-                  activeCategory={activeCategory}
-                  setActiveCategory={setActiveCategory}
                   searchInputValue={searchInputValue}
                   handleOnSearchInputChange={handleOnSearchInputChange}
                   addToCart={handleOnAddToCart}
@@ -323,12 +316,12 @@ function App() {
                   // products={
                   //   activeCategory == "All Categories" ? products : currentItems
                   // }
-                  activeCategory={activeCategory}
+                  // activeCategory={activeCategory}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemFromCart={handleRemoveItemFromCart}
-                  setActiveCategory={setActiveCategory}
+                  // setActiveCategory={setActiveCategory}
                   handleOnSearchbarChange={handleOnSearchbarChange}
-                  categories={categories}
+                  // categories={categories}
                   cart={cart}
                   setIsFetching={setIsFetching}
                   searchbar={searchbar}
@@ -346,8 +339,6 @@ function App() {
                   error={error}
                   setUser={setUser}
                   products={products}
-                  activeCategory={activeCategory}
-                  setActiveCategory={setActiveCategory}
                   searchInputValue={searchInputValue}
                   handleOnSearchInputChange={handleOnSearchInputChange}
                   addToCart={handleOnAddToCart}
