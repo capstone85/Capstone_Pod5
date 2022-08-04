@@ -20,6 +20,9 @@ class ApiClient {
       user_id: data,
     };
 
+    if (!this.token) {
+      this.token = localStorage.getItem(this.tokenName);
+    }
     if (this.token) {
       headers["Authorization"] = `Bearer ${this.token}`;
     }
@@ -93,18 +96,12 @@ class ApiClient {
     });
   }
 
-  async addWishlist(product_id) {
+  async addToWishlist(product_id) {
+    console.log("this is product id", product_id);
     return await this.request({
-      endpoint: `product/wishlist/` + product_id,
-      method: `GET`,
-      data: product_id,
-    });
-  }
-
-  async listAllWishlist() {
-    return await this.request({
-      endpoint: `product/wishlist`,
-      method: `GET`,
+      endpoint: `wishlist`,
+      method: `POST`,
+      data: { product_id: product_id },
     });
   }
 

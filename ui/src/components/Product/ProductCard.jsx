@@ -15,14 +15,18 @@ export default function ProductCard(props) {
   console.log(props.product.description);
   console.log(props.product.id);
 
-  const [isClicked, setIsClicked] = useState(false);
-  useEffect(() => {
-    const addToWishlist = async () => {
-      const { data, error } = await apiClient.addWishlist(props.product.id);
-      setIsClicked(false);
-    };
-    addToWishlist();
-  }, [isClicked]);
+  // const [isClicked, setIsClicked] = useState(false);
+  // useEffect(() => {
+  //   const addTolist = async () => {
+  //     console.log("isClicked");
+  //     const { data, error } = await apiClient.addToWishlist(props.product.id);
+  //     console.log("data in add to list", data);
+  //     setIsClicked(false);
+  //   };
+  //   addTolist();
+  //   console.log("data in add to list");
+  // }, [isClicked]);
+
   // const addToWishlist = async () => {
   //   const { data, error } = await apiClient.addWishlist(props.product.id);
   // };
@@ -46,7 +50,9 @@ export default function ProductCard(props) {
           <div className="product-links">
             <a href="">
               {/* <FavoriteBorderIcon /> */}
-              <FavoriteBorderIcon onClick={() => setIsClicked(true)} />
+              <FavoriteBorderIcon
+                onClick={() => apiClient.addToWishlist(props.product.id)}
+              />
             </a>
             <a href="">
               <AddShoppingCartIcon />
