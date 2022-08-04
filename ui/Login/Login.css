@@ -33,9 +33,9 @@ ul {
 
   color: var(--font-dark);
 }
-#root {
+/* #root {
     --content-width: 800px;
-}
+} */
 .Login .card .form .input-field input {
   height: 40px;
   padding: 0 15px;

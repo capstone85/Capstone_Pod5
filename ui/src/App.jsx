@@ -164,10 +164,7 @@ function App() {
 
   return (
     <div className="app">
-    
-
       <BrowserRouter>
-
         {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
@@ -186,7 +183,7 @@ function App() {
             setUser={setUser}
           />
         )}
-         
+
         <main>
           <Routes>
             {/* landing page route */}
@@ -194,7 +191,15 @@ function App() {
             {/* <Route path="/sidebar" element={<Sidebar />} /> */}
             <Route
               path="/store-page"
-              element={<Home user={user} store={store} />}
+              element={
+                <Home
+                  user={user}
+                  store={store}
+                  addToCart={handleOnAddToCart}
+                  removeFromCart={handleOnRemoveFromCart}
+                  getQuantityOfItemInCart={handleGetItemQuantity}
+                />
+              }
             />
 
             {/* isLogin={isLogin}

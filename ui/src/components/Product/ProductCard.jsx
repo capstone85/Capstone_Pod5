@@ -33,25 +33,25 @@ export default function ProductCard(props) {
     //     </button>
     //   </div>
     // </div>
-    <div class="product-card">
-      <div class="product-tumb">
+    <div className="product-card">
+      <div className="product-tumb">
         <img src={props.product.image} alt="" />
       </div>
-      <div class="product-details">
-        <span class="product-category">{props.product.category}</span>
+      <div className="product-details">
+        <span className="product-category">{props.product.category}</span>
         <h4>
           <a href="">{props.product.name}</a>
         </h4>
         <p>{props.product.description}</p>
-        <div class="product-bottom-details">
-          <div class="product-price">{props.product.price}</div>
-          <div class="product-links">
+        <div className="product-bottom-details">
+          <div className="product-price">{props.product.price}</div>
+          <div className="product-links">
             <a href="">
               <FavoriteBorderIcon />
               {/* <FavoriteBorderIcon onClick={handleOnWishlistAdd} /> */}
             </a>
             <a href="">
-              <ShoppingCartOutlined />
+              <ShoppingCartOutlined onClick={props.addToCart} />
             </a>
           </div>
         </div>
