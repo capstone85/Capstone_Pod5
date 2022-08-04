@@ -13,20 +13,18 @@
   display: flex;
   border-radius: 30px;
   padding: 10px;
-
 }
-.searchbar .searchinput .input{
+.searchbar .searchinput .input {
   padding: 10px;
-  background-color:rgb(16, 6, 6);
+  background-color: white;
   border-radius: 30px;
   width: 200px;
-  color:white;
- 
+  /* color: white; */
 }
 input.input {
   font-size: 30px;
   /* background-color: white; */
-  border-color: #f2ccc3;
+  border-color: white;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   outline-width: 0;
   border-width: 0;

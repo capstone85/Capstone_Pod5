@@ -22,7 +22,7 @@ class Product {
       `
                 INSERT INTO product (name, image, description, price, category, store_id)
                 VALUES ($1, $2, $3, $4, $5, $6)
-                RETURNING id, name, description, price, category, store_id, created_at
+                RETURNING id, name, image, description, price, category, store_id, created_at
                 `,
       [
         product.name,
@@ -41,6 +41,10 @@ class Product {
       `
         SELECT  p.id,
                 p.name,
+                p.description,
+                p.price,
+                p.image,
+                p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
                 p.created_at AS "created_at"
@@ -64,6 +68,7 @@ class Product {
                 p.name,
                 p.description,
                 p.price,
+                p.image,
                 p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
@@ -86,6 +91,10 @@ class Product {
       `
             SELECT  p.id,
                     p.name,
+                    p.description,
+                    p.price,
+                    p.image,
+                    p.category,
                     s.name AS "store_name",
                     p.store_id AS "store_id",
                     p.created_at AS "created_at"
@@ -106,6 +115,10 @@ class Product {
       `
         SELECT  p.id,
                 p.name,
+                p.description,
+                p.price,
+                p.image,
+                p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
                 p.created_at AS "created_at"

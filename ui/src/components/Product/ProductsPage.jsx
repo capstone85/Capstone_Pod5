@@ -17,6 +17,22 @@ import axios from "axios";
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
   const [product, setProduct] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("All Categories");
+
+  const categories = ["All Categories", "Clothing", "Accessories", "Footwear"];
+
+  console.log("products here " + product);
+
+  const currentItems = product.filter((item) => {
+    console.log(item.category);
+    return item.category == activeCategory;
+  });
+
+  console.log(activeCategory);
+  console.log(currentItems);
+  // if (activeCategory != "All Categories") {
+  //   setProduct(product);
+  // }
 
   // Extract productId parameter from the url
   let { storeId } = useParams();
@@ -40,11 +56,11 @@ export default function ProductsPage(props) {
   }, []);
 
   return (
-    <>
-      <Card sx={({ maxHeight: "100px" }, { maxWidth: "35%" })} className="hero">
+    <div className="products-page">
+      <Card sx={({ maxHeight: "200px" }, { maxWidth: "35%" })} className="hero">
         <CardMedia
           component="img"
-          height="200"
+          height="auto"
           image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1024px-H%26M-Logo.svg.png"
           alt={props.name}
         />
@@ -57,13 +73,13 @@ export default function ProductsPage(props) {
         />
 
         <ul className="categories">
-          {props.categories.map((category, idx) => (
+          {categories.map((category, idx) => (
             <Selector
               key={idx}
-              label={category}
-              isActive={props.selectedCategory == category}
+              category={category}
+              isActive={activeCategory == category}
               onClick={() => {
-                props.setActiveCategory(category);
+                setActiveCategory(category);
               }}
             />
           ))}
@@ -77,11 +93,11 @@ export default function ProductsPage(props) {
           setIsFetching={props.setIsFetching}
           searchbar={props.searchbar}
           store={props.store}
-          product={product}
+          product={activeCategory == "All Categories" ? product : currentItems}
           storeId={storeId}
         />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

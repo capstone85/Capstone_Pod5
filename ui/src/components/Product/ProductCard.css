@@ -13,7 +13,7 @@ a {
   text-decoration: none;
 }
 .product-card {
-  width: 380px;
+  width: 300px;
   position: relative;
   box-shadow: 0 2px 7px #dfdfdf;
   margin: 50px auto;
@@ -35,7 +35,7 @@ a {
 }
 
 .product-details {
-  padding: 20px;
+  padding: 15px;
 }
 
 .product-category {
@@ -58,12 +58,12 @@ a {
 }
 
 .product-details h4 a:hover {
-  color: #fbb72c;
+  color: #b86b77;
 }
 
 .product-details p {
   font-size: 15px;
-  line-height: 22px;
+  line-height: 1px;
   margin-bottom: 18px;
   color: #999;
 }
@@ -81,7 +81,7 @@ a {
 
 .product-price {
   font-size: 18px;
-  color: #fbb72c;
+  color: #b86b77;
   font-weight: 600;
 }
 
@@ -99,14 +99,14 @@ a {
 
 .product-links a {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 15px;
   color: #e1e1e1;
   transition: 0.3s;
   font-size: 17px;
 }
 
 .product-links a:hover {
-  color: #fbb72c;
+  color: #b86b77;
 }
 
 /* .element-image {

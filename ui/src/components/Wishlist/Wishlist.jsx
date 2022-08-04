@@ -15,8 +15,6 @@ export default function ShoppingCart({
   cart,
   products,
   getTotalItemsInCart,
-  activeCategory,
-  setActiveCategory,
   handleOnSearchInputChange,
   searchInputValue,
   addToCart,
@@ -53,7 +51,7 @@ export default function ShoppingCart({
   const cartHasItems = Boolean(Object.keys(cartMapping).length);
 
   return (
-    <div className="ShoppingCart">
+    <div className="Wishlist">
       <div className="banner">
         <div className="content">
           <h2>Wishlist - {getTotalItemsInCart()} items</h2>
@@ -61,7 +59,7 @@ export default function ShoppingCart({
       </div>
 
       <div className="content">
-        <div className="cart-items">
+        <div className="wishlist-items">
           <div className="items-list">
             {!cartHasItems ? (
               <div className="card">

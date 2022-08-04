@@ -128,6 +128,7 @@ ul {
 /* your account title */
 .Register .card h2 {
   color: black;
+  font-family: "DM Serif Display", serif;
 }
 
 /* changes size of the input */
