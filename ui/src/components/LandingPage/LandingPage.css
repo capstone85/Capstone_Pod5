@@ -7,6 +7,7 @@
 .landing h1 {
   color: black;
   font-family: "DM Serif Display", serif;
+  transform: translateX(100px);
 }
 .landing .thisdiv {
   padding: 200px 0 50px;
@@ -24,5 +25,5 @@
   float: right;
   height: 300px;
   width: 500px;
-  transform: translateY(-210px);
+  transform: translateY(-210px) translateX(-50px);
 }

@@ -1,0 +1,7 @@
+.home .banner h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Serif Display", serif;
+  transform: translateY(30px);
+}

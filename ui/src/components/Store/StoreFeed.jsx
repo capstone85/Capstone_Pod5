@@ -31,7 +31,7 @@ export default function StoreFeed(props) {
     fetchStores();
   }, []);
   return (
-    <div className="store-feed" style={{ transform: "translateY(20px)" }}>
+    <div className="store-feed" style={{ transform: "translateY(-23px)" }}>
       {store.length === 0 ? (
         <div className="empty">
           <h2>Nothing here yet.</h2>

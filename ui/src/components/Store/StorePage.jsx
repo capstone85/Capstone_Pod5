@@ -6,6 +6,7 @@ import StoreOverview from "./StoreOverview";
 import StoreNew from "./StoreNew";
 import StoreDetail from "./StoreDetail";
 import "./StorePage.css";
+import Footer from "../Footer/Footer";
 
 //My Stores page (vendor)
 export default function StorePage(props) {
@@ -35,6 +36,7 @@ export default function StorePage(props) {
           ></Route>
         </Routes>
       </main>
+      <Footer></Footer>
     </div>
   );
 }
