@@ -12,9 +12,10 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NotFound from "../NotFound/NotFound";
+import ProductCard from "../Product/ProductCard";
 
 export default function Wishlist(props) {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(undefined);
 
   useEffect(() => {
     // Makes axios get request to get individual product info
@@ -26,7 +27,7 @@ export default function Wishlist(props) {
           console.log("data" + response.data.product);
           setProduct(response.data.product);
           props.setIsFetching(false);
-          console.log("products: " + product[1].name);
+          console.log("products: " + product[0].id);
         })
         .catch((error) => {
           <NotFound />;
@@ -35,7 +36,7 @@ export default function Wishlist(props) {
     getInfo();
   }, []);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // const productMapping = products.reduce((acc, product) => {
   //   acc[product.id] = product;
@@ -65,7 +66,17 @@ export default function Wishlist(props) {
 
   return (
     <div className="wishlist">
-      <h2>{product[1].name}</h2>
+      {product ? (
+        product.map((element, idx) => {
+          // const date = new Date(element.created_at);
+          // const enUSFormatter = new Intl.DateTimeFormat("en-US");
+          return <h2>{element.name}</h2>;
+        })
+      ) : (
+        <div className="empty">
+          <h2>Nothing here yet.</h2>
+        </div>
+      )}
       {/* <div className="banner">
         <div className="content">
           <h2>Wishlist - {getTotalItemsInCart()} items</h2>

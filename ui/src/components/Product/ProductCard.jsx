@@ -13,9 +13,9 @@ export default function ProductCard(props) {
   console.log(props.product.name);
   console.log(props.product.description);
   console.log(props.product.id);
-  const addToWishlist = async () => {
-    const { data, error } = await apiClient.addWishlist(props.product.id);
-  };
+  // const addToWishlist = async () => {
+  //   const { data, error } = await apiClient.addWishlist(props.product.id);
+  // };
   // console.log("hello product card");
   // console.log(props.product.name);
   // console.log(props.product.description);
@@ -36,7 +36,7 @@ export default function ProductCard(props) {
           <div className="product-links">
             <a href="">
               {/* <FavoriteBorderIcon /> */}
-              <FavoriteBorderIcon onClick={addToWishlist(props.product.id)} />
+              <FavoriteBorderIcon onClick={apiClient.addWishlist(props.product.id)} />
             </a>
             <a href="">
               <AddShoppingCartIcon />
