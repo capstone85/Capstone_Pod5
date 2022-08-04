@@ -1,17 +1,8 @@
 #root {
-<<<<<<< HEAD
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-  max-height: 100%;
-
-  
-=======
   /* max-width: 1280px; */
   margin: 0 auto;
   padding: 1rem;
   height: 100%;
->>>>>>> d5e401218d4e17c8f81d3abd48ebeb1865b67a7a
 }
 .landing h1 {
   color: black;
