@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import StoreCard from "../Store/StoreCard";
 import StoreOverview from "../Store/StoreOverview";
 import apiClient from "../../services/apiClient";
+import Footer from "../Footer/Footer";
 
 export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
@@ -32,7 +33,8 @@ export default function Home(props) {
     <div className="home">
       <main>
         <div className="banner">
-          <h1>Stores Near You</h1>
+          <h1>STORES NEAR YOU</h1>
+          <hr style={{ transform: "translateY(60px) ", width: "1530px" }}></hr>
           {store.map((element, idx) => {
             const date = new Date(element.created_at);
             const enUSFormatter = new Intl.DateTimeFormat("en-US");
@@ -50,6 +52,7 @@ export default function Home(props) {
           })}
         </div>
       </main>
+      <Footer></Footer>
     </div>
   );
 }
