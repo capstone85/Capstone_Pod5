@@ -25,10 +25,11 @@ CREATE TABLE product (
     name        TEXT NOT NULL,
     image       TEXT NOT NULL,
     description TEXT NOT NULL,
-    price       TEXT NOT NULL,
+    price       INT NOT NULL,
     category    TEXT NOT NULL,
     size        TEXT,
     quantity    TEXT,
+    wishlist    BOOLEAN DEFAULT FALSE,
     store_id    INT NOT NULL,
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (store_id) REFERENCES store(id) ON DELETE CASCADE

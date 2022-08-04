@@ -19,7 +19,7 @@ export default function ProductsPage(props) {
   const [product, setProduct] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All Categories");
 
-  const categories = ["All Categories", "Clothing", "Accessories", "Footwear"];
+  const categories = ["All Categories", "clothing", "accessories", "footwear"];
 
   console.log("products here " + product);
 

@@ -254,6 +254,7 @@ function App() {
               path="/wishlist"
               element={
                 <Wishlist
+                  setIsFetching={setIsFetching}
                   isClicked={isClicked}
                   user={user}
                   cart={cart}

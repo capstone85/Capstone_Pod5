@@ -1,12 +1,10 @@
 .footer {
   bottom: 0%;
-  position: fixed;
-  margin-top: auto;
-
-  /* padding-top: 30px; */
-  /* padding-bottom: 70px; */
+  position: absolute;
+  padding-top: 30px;
+  padding-bottom: 70px;
   color: black;
-  /* transform: translateY(50vh); */
+  transform: translateY(100vh);
 }
 
 hr {
