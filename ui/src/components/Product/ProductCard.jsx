@@ -5,6 +5,7 @@ import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import apiClient from "../../services/apiClient";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useState, useEffect } from "react";
 
 // Renders image, name, price, and category of products.
 // Buttons allow users to add products to wishlist or shopping cart.
@@ -13,6 +14,15 @@ export default function ProductCard(props) {
   console.log(props.product.name);
   console.log(props.product.description);
   console.log(props.product.id);
+
+  const [isClicked, setIsClicked] = useState(false);
+  useEffect(() => {
+    const addToWishlist = async () => {
+      const { data, error } = await apiClient.addWishlist(props.product.id);
+      setIsClicked(false);
+    };
+    addToWishlist();
+  }, [isClicked]);
   // const addToWishlist = async () => {
   //   const { data, error } = await apiClient.addWishlist(props.product.id);
   // };
@@ -36,7 +46,7 @@ export default function ProductCard(props) {
           <div className="product-links">
             <a href="">
               {/* <FavoriteBorderIcon /> */}
-              <FavoriteBorderIcon onClick={apiClient.addWishlist(props.product.id)} />
+              <FavoriteBorderIcon onClick={() => setIsClicked(true)} />
             </a>
             <a href="">
               <AddShoppingCartIcon />
