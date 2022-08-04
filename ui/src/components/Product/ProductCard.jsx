@@ -3,6 +3,7 @@ import "./ProductCard.css";
 import { Link } from "react-router-dom";
 import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import apiClient from "../../services/apiClient";
 
 // Renders image, name, price, and quantity of products.
 // Buttons allow users to change quantity of products.
@@ -10,6 +11,10 @@ export default function ProductCard(props) {
   console.log("hello product card");
   console.log(props.product.name);
   console.log(props.product.description);
+  console.log(props.product.id);
+  const addToWishlist = async () => {
+    const { data, error } = await apiClient.addWishlist(props.product.id);
+  };
   return (
     <div class="product-card">
       <div class="product-tumb">
@@ -25,8 +30,8 @@ export default function ProductCard(props) {
           <div class="product-price">{props.product.price}</div>
           <div class="product-links">
             <a href="">
-              <FavoriteBorderIcon />
-              {/* <FavoriteBorderIcon onClick={handleOnWishlistAdd} /> */}
+              {/* <FavoriteBorderIcon /> */}
+              <FavoriteBorderIcon onClick={addToWishlist(props.product.id)} />
             </a>
             <a href="">
               <ShoppingCartOutlined />

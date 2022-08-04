@@ -93,6 +93,21 @@ class ApiClient {
     });
   }
 
+  async addWishlist(product_id) {
+    return await this.request({
+      endpoint: `product/wishlist/` + product_id,
+      method: `GET`,
+      data: product_id,
+    });
+  }
+
+  async listAllWishlist() {
+    return await this.request({
+      endpoint: `product/wishlist`,
+      method: `GET`,
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }

@@ -105,7 +105,7 @@ export default function Navbar(props) {
             <li>
               {props.isLoggedIn ? (
                 <Tooltip title="Wishlist">
-                  <Link to="/wishlist">
+                  <Link to={"/wishlist/"}>
                     <FavoriteBorderIcon />
                   </Link>
                 </Tooltip>

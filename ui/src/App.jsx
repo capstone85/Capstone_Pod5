@@ -164,10 +164,7 @@ function App() {
 
   return (
     <div className="app">
-    
-
       <BrowserRouter>
-
         {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
@@ -186,7 +183,7 @@ function App() {
             setUser={setUser}
           />
         )}
-         
+
         <main>
           <Routes>
             {/* landing page route */}
@@ -247,6 +244,7 @@ function App() {
               path="/wishlist"
               element={
                 <Wishlist
+                  setIsFetching={setIsFetching}
                   isClicked={isClicked}
                   user={user}
                   cart={cart}
