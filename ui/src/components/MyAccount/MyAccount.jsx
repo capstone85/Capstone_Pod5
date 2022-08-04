@@ -13,7 +13,10 @@ export default function MyAccount(props) {
       {props.isLoggedIn ? (
         <main>
           <div className="header">
-            <h2>My Account </h2>
+            <h1>MY ACCOUNT</h1>
+            <hr
+              style={{ transform: "translateY(30px) ", width: "1530px" }}
+            ></hr>
           </div>
           {/* <DashboardLinks
               handleLogout={props.handleLogout}

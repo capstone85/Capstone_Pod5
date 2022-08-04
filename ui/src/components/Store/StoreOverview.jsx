@@ -14,7 +14,7 @@ export default function StoreOverview(props) {
           {/* <h3>Overview</h3> */}
           <button
             style={{
-              border: " 1px solid",
+              // border: " 1px solid",
               transform: "translateX(1100px) translateY(5px)",
             }}
           >
@@ -27,7 +27,7 @@ export default function StoreOverview(props) {
             </Link>
           </button>
         </div>
-        <hr style={{ transform: "translateY(10px)" }}></hr>
+        <hr style={{ transform: "translateY(36px)", width: "1530px" }}></hr>
         <StoreFeed store={props.store} user={props.user}></StoreFeed>
       </div>
     </div>
