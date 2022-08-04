@@ -1,18 +1,12 @@
-
 .footer {
   bottom: 0%;
   position: fixed;
   margin-top: auto;
- 
+
   /* padding-top: 30px; */
   /* padding-bottom: 70px; */
   color: black;
-<<<<<<< HEAD
-  /* transform: translateY(350px); */
-
-=======
-  transform: translateY(100vh);
->>>>>>> d5e401218d4e17c8f81d3abd48ebeb1865b67a7a
+  /* transform: translateY(50vh); */
 }
 
 hr {

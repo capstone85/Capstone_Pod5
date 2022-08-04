@@ -17,7 +17,7 @@ export default function StoreCard(props) {
     <Card sx={{ maxWidth: 800 }} className="store-card">
       <CardMedia
         component="img"
-        height="auto"
+        height="300"
         image={props.logo}
         alt={props.name}
       />
