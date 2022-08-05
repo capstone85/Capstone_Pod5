@@ -62,13 +62,13 @@ export default function VendorNavbar(props) {
             </li>
 
             {/* stores link */}
-            <li>
+            {/* <li>
               <div className="store-page">
                 <Link to="/store-page">
                   <Typography>Stores</Typography>
                 </Link>
               </div>
-            </li>
+            </li> */}
 
             {/* myStore link */}
             <li>

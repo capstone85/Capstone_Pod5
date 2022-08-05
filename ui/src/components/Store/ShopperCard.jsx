@@ -56,7 +56,7 @@ export default function ShopperCard(props) {
               style={{ textDecoration: "none" }}
             >
               <Button style={{ color: "#B86B77" }} size="small">
-                View styles
+                View products
               </Button>
             </Link>
           </div>

@@ -1,7 +1,33 @@
 .Wishlist {
   color: black;
+  align-items: center;
 }
 
 .Wishlist .banner .content h2 {
   color: black;
 }
+ul{
+    list-style: none;   
+}
+.wishlist-details img {
+    width: 200px;
+    height: 220px;
+    border-radius: 5px;
+   align-self: center;
+  }
+ /* .wishlist-details p{
+    text-align: center;
+  } */
+
+  .wishlist-details{
+  
+        margin: auto;
+        width: 50%;
+       
+        padding: 10px;
+     
+  }
+  .wishlist-details {
+    text-align: center;
+  
+  }

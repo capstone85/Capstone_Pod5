@@ -25,6 +25,7 @@ class Wishlist {
                 w.user_id AS "user_id",
                 p.name AS "product_name",
                 p.price AS "product_price",
+                p.image AS "product_image",
                 p.category AS "product_category",
                 p.store_id AS "store_id",
                 p.description AS "product_description",
