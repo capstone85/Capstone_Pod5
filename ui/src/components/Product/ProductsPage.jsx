@@ -17,6 +17,7 @@ import axios from "axios";
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
   const [product, setProduct] = useState([]);
+  const [store, setStore] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All Categories");
 
   const categories = ["All Categories", "clothing", "accessories", "footwear"];
@@ -55,13 +56,34 @@ export default function ProductsPage(props) {
     getInfo();
   }, []);
 
+  useEffect(() => {
+    // Makes axios get request to get individual product info
+    async function getInfoStore() {
+      props.setIsFetching(true);
+      await axios
+        .get(`http://localhost:5174/store/${storeId}`)
+        .then((response) => {
+          console.log(response.data.store);
+          setStore(response.data.store);
+          props.setIsFetching(false);
+          console.log("stores:" + store[0].name);
+        })
+        .catch((error) => {
+          <NotFound />;
+        });
+    }
+    getInfoStore();
+  }, []);
+
+  console.log("store info: ", store);
+
   return (
     <div className="products-page">
       <Card sx={({ maxHeight: "200px" }, { maxWidth: "35%" })} className="hero">
         <CardMedia
           component="img"
           height="auto"
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1024px-H%26M-Logo.svg.png"
+          image={store.logo}
           alt={props.name}
         />
       </Card>

@@ -26,9 +26,9 @@ export default function ProductGrid(props) {
               // products={props.products}
               // quantity={quantity}
               //  addToCart={() => addToCart(product)}
-              addToCart={props.handleAddItemToCart}
-              handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-              setIsFetching={props.setIsFetching}
+              // addToCart={props.handleAddItemToCart}
+              // handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+              // setIsFetching={props.setIsFetching}
               product={item}
             />
           );

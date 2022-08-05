@@ -1,5 +1,5 @@
 .searchbar-section {
-  display: flex;
+  display: block;
   justify-content: left;
 }
 
@@ -13,4 +13,12 @@
   width: 130px;
   background-color: white;
   color: black;
+}
+
+.product-grid {
+display: flex;
+}
+
+.categories{
+  
 }
