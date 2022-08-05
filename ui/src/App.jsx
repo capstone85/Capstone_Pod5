@@ -161,12 +161,14 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-      <GeneralNavbar  handleLogout={handleLogout}
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-            setIsClicked={setIsClicked}
-            user={user}
-            setUser={setUser}/>
+        <GeneralNavbar
+          handleLogout={handleLogout}
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setIsClicked={setIsClicked}
+          user={user}
+          setUser={setUser}
+        />
         {/* {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
