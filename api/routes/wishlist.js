@@ -17,4 +17,18 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   }
 });
 
+router.get(
+  "/:userId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+      const products = await Wishlist.fetchWishlistByUserId(userId);
+      return res.status(200).json({ products });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 module.exports = router;

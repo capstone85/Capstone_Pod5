@@ -105,6 +105,14 @@ class ApiClient {
     });
   }
 
+  async listAllWishlist(userId) {
+    return await this.request({
+      endpoint: `wishlist/${userId}`,
+      method: `GET`,
+      data: userId,
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }

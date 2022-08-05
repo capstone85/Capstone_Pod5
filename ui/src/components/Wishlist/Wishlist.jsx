@@ -13,28 +13,54 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NotFound from "../NotFound/NotFound";
 import ProductCard from "../Product/ProductCard";
+import apiClient from "../../services/apiClient";
 
 export default function Wishlist(props) {
-  const [product, setProduct] = useState(undefined);
+  const [isFetching, setIsFetching] = useState(false);
+  const [product, setProduct] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Makes axios get request to get individual product info
-    async function getInfo() {
-      props.setIsFetching(true);
-      await axios
-        .get(`http://localhost:5174/product/wishlist`)
-        .then((response) => {
-          console.log("data" + response.data.product);
-          setProduct(response.data.product);
-          props.setIsFetching(false);
-          console.log("products: " + product[0].id);
-        })
-        .catch((error) => {
-          <NotFound />;
-        });
-    }
-    getInfo();
+    const fetchProducts = async () => {
+      if (!(Object.keys(props.user).length === 0)) {
+        setIsFetching(true);
+        console.log("users.", props.user);
+
+        const { data, error } = await apiClient.listAllWishlist(props.user.id);
+        if (error) {
+          setError(error);
+        }
+        if (data) {
+          console.log("data", data);
+          console.log(data.products);
+          console.log(data.products[0].product_name);
+          setProduct(data.products);
+        }
+        setIsFetching(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
+
+  // useEffect(() => {
+  //   // Makes axios get request to get individual product info
+  //   async function getInfo() {
+  //     props.setIsFetching(true);
+  //     await axios
+  //       .get(`http://localhost:5174/product/wishlist`)
+  //       .then((response) => {
+  //         console.log("data" + response.data.product);
+  //         setProduct(response.data.product);
+  //         props.setIsFetching(false);
+  //         console.log("products: " + product[0].id);
+  //       })
+  //       .catch((error) => {
+  //         <NotFound />;
+  //       });
+  //   }
+  //   getInfo();
+  // }, []);
 
   // const navigate = useNavigate();
 
@@ -66,17 +92,25 @@ export default function Wishlist(props) {
 
   return (
     <div className="wishlist">
-      {product ? (
+      {product.map((element, idx) => {
+        return <h2>{element.product_name}</h2>;
+      })}
+      {/* {/* {product ? (
         product.map((element, idx) => {
           // const date = new Date(element.created_at);
           // const enUSFormatter = new Intl.DateTimeFormat("en-US");
           return <h2>{element.name}</h2>;
-        })
-      ) : (
+        }) */}
+      {/* {product.length === 0 ? (
         <div className="empty">
           <h2>Nothing here yet.</h2>
         </div>
-      )}
+      ) : (
+        product.map((element, idx) => {
+          return <h2>{element.name}</h2>;
+        })
+      )} */}
+      {/*  )} */}
       {/* <div className="banner">
         <div className="content">
           <h2>Wishlist - {getTotalItemsInCart()} items</h2>

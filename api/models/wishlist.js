@@ -20,22 +20,22 @@ class Wishlist {
   static async fetchWishlistByUserId(userId) {
     const results = await db.query(
       `
-        SELECT w.id
+        SELECT  w.id,
+                w.product_id AS "product_id",
+                w.user_id AS "user_id",
                 p.name AS "product_name",
                 p.price AS "product_price",
                 p.category AS "product_category",
+                p.store_id AS "store_id",
                 p.description AS "product_description",
-                s.name AS "store_name",
                 u.email AS "user_email",
-                w.product_id AS "product_id",
-                w.user_id AS "user_id",
-                w.store_id AS "store_id",
-                p.created_at AS "created_at"
-        FROM product AS p
+                s.name AS "store_name"
+        FROM wishlist AS w
             JOIN users AS u ON u.id = w.user_id
             JOIN product AS p ON p.id = w.product_id
-            JOIN store AS s ON s.id = w.store_id
-            WHERE p.user_id = $1
+            JOIN store AS s ON s.id = p.store_id
+        WHERE w.user_id = $1
+        ORDER BY p.store_id DESC
         `,
       [userId]
     );
