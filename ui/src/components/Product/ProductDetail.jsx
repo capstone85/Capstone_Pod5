@@ -40,31 +40,33 @@ export default function ProductDetail(props) {
         <h1>Loading...</h1>
       </div>
     );
-  } else {
-    const currItem = props.shoppingCart.find((item) => {
-      return item.itemId == productId;
-    });
-
-    if (typeof currItem != "undefined") {
-      quantity = currItem.quantity;
-    }
-
-    return (
-      <>
-        <div className="product-detail">
-          <ProductView
-            product={product}
-            productId={productId}
-            quantity={quantity}
-            handleAddItemToCart={props.handleAddItemToCart}
-            handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-            setIsFetching={props.setIsFetching}
-          />
-        </div>
-        <div className="footer">
-          <Footer />
-        </div>
-      </>
-    );
   }
+  // } else {
+  //   const currItem = props.shoppingCart.find((item) => {
+  //     return item.itemId == productId;
+  //   });
+
+  if (typeof currItem != "undefined") {
+    quantity = currItem.quantity;
+  }
+
+  return (
+    <>
+      <div className="product-detail">
+        <ProductView
+          product={product}
+          // name={product.name}
+          // description={product.description}
+          productId={productId}
+          quantity={quantity}
+          handleAddItemToCart={props.handleAddItemToCart}
+          handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+          setIsFetching={props.setIsFetching}
+        />
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
+    </>
+  );
 }

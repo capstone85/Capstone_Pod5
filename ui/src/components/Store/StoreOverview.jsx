@@ -2,6 +2,7 @@ import * as React from "react";
 import StoreFeed from "./StoreFeed";
 // import "./ExerciseOverview.css";
 import { Link } from "react-router-dom";
+import { flexbox } from "@mui/system";
 
 //My Stores page (vendor)
 export default function StoreOverview(props) {
@@ -15,6 +16,7 @@ export default function StoreOverview(props) {
           <button
             style={{
               // border: " 1px solid",
+
               transform: "translateX(1100px) translateY(5px)",
             }}
           >

@@ -35,9 +35,8 @@
   flex: 1 1;
   max-width: 650px;
   gap: 30px;
-  transform: translateX(-130px);
-  color:black;
-  
+  transform: translateX(-1-0px);
+  color: black;
 }
 
 .account:hover {

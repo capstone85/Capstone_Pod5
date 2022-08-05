@@ -170,6 +170,7 @@ function App() {
           user={user}
           setUser={setUser}
         />
+
         {/* {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
@@ -200,7 +201,7 @@ function App() {
                 <Home
                   user={user}
                   store={store}
-                  addToCart={ handleAddItemToCart}
+                  addToCart={handleAddItemToCart}
                   removeFromCart={handleOnRemoveFromCart}
                   getQuantityOfItemInCart={handleGetItemQuantity}
                 />
@@ -363,6 +364,8 @@ function App() {
                   products={products}
                   user={user}
                   store={store}
+                  isFetching={isFetching}
+                  setIsFetching={setIsFetching}
                   // handleOnCheckoutFormChange={handleOnCheckoutFormChange}
                   // handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                   // handleOnToggle={handleOnToggle}
@@ -383,7 +386,7 @@ function App() {
                   products={products}
                   searchInputValue={searchInputValue}
                   handleOnSearchInputChange={handleOnSearchInputChange}
-                  addToCart={ handleAddItemToCart}
+                  addToCart={handleAddItemToCart}
                   removeFromCart={handleOnRemoveFromCart}
                   getQuantityOfItemInCart={handleGetItemQuantity}
                   getTotalItemsInCart={handleGetTotalCartItems}

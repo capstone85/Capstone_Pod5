@@ -6,6 +6,7 @@ import "./ProductForm.css";
 
 import Footer from "../Footer/Footer";
 import CircularProgress from "@mui/material/CircularProgress";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -67,7 +68,7 @@ export default function ProductForm(props) {
   return (
     <div className="product-form">
       <h1>MY PRODUCTS</h1>
-      <hr style={{ transform: "translateY(50px) " }}></hr>
+      <hr style={{ transform: "translateY(60px)", width: "1530px" }}></hr>
       <h2>Add Merchandise</h2>
 
       <form className="inputs">
@@ -102,7 +103,11 @@ export default function ProductForm(props) {
           )}
         </div>
         <div className="form-input">
+          <AttachMoneyIcon
+            style={{ transform: "translateY(22px) translateX(-20px)" }}
+          ></AttachMoneyIcon>
           <TextField
+            style={{ transform: "translateX(-23px)" }}
             id="standard-basic"
             label="Price*"
             variant="standard"
@@ -112,7 +117,6 @@ export default function ProductForm(props) {
             value={form.price}
             onChange={handleOnInputChange}
           />
-
           {errors.price && <span className="error">{errors.price}</span>}
         </div>
         <div className="form-input">

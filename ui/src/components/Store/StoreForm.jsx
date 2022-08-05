@@ -42,7 +42,7 @@ export default function StoreForm(props) {
   };
   return (
     <div className="store-form">
-      <hr style={{ transform: "translateY(40px)" }}></hr>
+      <hr style={{ transform: "translateY(60px)", width: "1530px" }}></hr>
       <h2>Add Store</h2>
 
       <form className="inputs">

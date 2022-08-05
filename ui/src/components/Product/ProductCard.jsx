@@ -11,10 +11,10 @@ import { useState, useEffect } from "react";
 // Renders image, name, price, and category of products.
 // Buttons allow users to add products to wishlist or shopping cart.
 export default function ProductCard(props) {
-  console.log("hello product card");
-  console.log(props.product.name);
-  console.log(props.product.description);
-  console.log(props.product.id);
+  // console.log("hello product card");
+  // console.log(props.product.name);
+  // console.log(props.product.description);
+  // console.log(props.product.id);
 
   // const [isClicked, setIsClicked] = useState(false);
   // useEffect(() => {
@@ -52,7 +52,9 @@ export default function ProductCard(props) {
       <div className="product-details">
         <span className="product-category">{props.product.category}</span>
         <h4>
+          {/* <Link to={"/products/" + props.product.id}>{props.product.name}</Link> */}
           <a href="#" onClick={on}>
+            {console.log("Product Name: ", props.product.name)}
             {props.product.name}
           </a>
         </h4>
