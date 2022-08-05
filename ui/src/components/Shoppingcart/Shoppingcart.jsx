@@ -9,50 +9,75 @@ import {
 import "./ShoppingCart.css";
 import LoginPage from "../../../Login/LoginPage";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import apiClient from "../../services/apiClient";
 
-export default function ShoppingCart({
-  user,
-  cart,
-  products,
-  getTotalItemsInCart,
-  handleOnSearchInputChange,
-  searchInputValue,
-  addToCart,
-  removeFromCart,
-  getQuantityOfItemInCart,
-  handleOnCheckout,
-}) {
-  const navigate = useNavigate();
+export default function ShoppingCart(props) {
+  //fetch data from shopping cart table
+  const [isFetching, setIsFetching] = useState(false);
+  const [product, setProduct] = useState([]);
+  const [error, setError] = useState(null);
 
-  const productMapping = products.reduce((acc, product) => {
-    acc[product.id] = product;
-    return acc;
-  }, {});
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (!(Object.keys(props.user).length === 0)) {
+        setIsFetching(true);
+        console.log("users.", props.user);
 
-  const cartMapping = Object.keys(cart).reduce((acc, id) => {
-    acc[id] = productMapping[id];
-    return acc;
-  }, {});
+        const { data, error } = await apiClient.listAllShoppingCart(
+          props.user.id
+        );
+        if (error) {
+          setError(error);
+        }
+        if (data) {
+          console.log("data", data);
+          console.log(data.products);
+          console.log(data.products[0].product_name);
+          setProduct(data.products);
+        }
+        setIsFetching(false);
+      }
+    };
 
-  const subTotal = Object.values(cartMapping).reduce((acc, product) => {
-    return (
-      acc +
-      calculateItemSubtotal(product.price, getQuantityOfItemInCart(product))
-    );
-  }, 0);
+    fetchProducts();
+  }, []);
 
-  const onCheckoutSubmit = async () => {
-    const order = await handleOnCheckout();
-    if (order) {
-      navigate("/orders");
-    }
-  };
+  // const navigate = useNavigate();
 
-  const cartHasItems = Boolean(Object.keys(cartMapping).length);
+  // const productMapping = products.reduce((acc, product) => {
+  //   acc[product.id] = product;
+  //   return acc;
+  // }, {});
+
+  // const cartMapping = Object.keys(cart).reduce((acc, id) => {
+  //   acc[id] = productMapping[id];
+  //   return acc;
+  // }, {});
+
+  // const subTotal = Object.values(cartMapping).reduce((acc, product) => {
+  //   return (
+  //     acc +
+  //     calculateItemSubtotal(product.price, getQuantityOfItemInCart(product))
+  //   );
+  // }, 0);
+
+  // const onCheckoutSubmit = async () => {
+  //   const order = await handleOnCheckout();
+  //   if (order) {
+  //     navigate("/orders");
+  //   }
+  // };
+
+  // const cartHasItems = Boolean(Object.keys(cartMapping).length);
 
   return (
     <div className="ShoppingCart">
-      <div className="banner">
+      {product.map((element, idx) => {
+        return <h2>{element.product_name}</h2>;
+      })}
+      {/* <div className="banner">
         <div className="content">
           <h2>Cart - {getTotalItemsInCart()} items</h2>
         </div>
@@ -105,46 +130,46 @@ export default function ShoppingCart({
           )}
         </div>
         <Footer></Footer>
-      </div>
+      </div> */}
     </div>
   );
 }
 
-const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
-  return (
-    <div className="CartItem">
-      <div className="item-info">
-        <div className="item">
-          <img className="image" src="" alt="product cover" />
-          <div className="name-and-price">
-            <p className="name">{product.name}</p>
-            <p className="price">{formatPrice(product.price)}</p>
-          </div>
+// const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
+//   return (
+//     <div className="CartItem">
+//       <div className="item-info">
+//         <div className="item">
+//           <img className="image" src="" alt="product cover" />
+//           <div className="name-and-price">
+//             <p className="name">{product.name}</p>
+//             <p className="price">{formatPrice(product.price)}</p>
+//           </div>
 
-          <div className="actions">
-            <div className="buttons">
-              <button onClick={addToCart}>
-                <i className="material-icons">add</i>
-              </button>
-              <span>{quantity}</span>
-              <button onClick={removeFromCart}>
-                <i className="material-icons">remove</i>
-              </button>
-            </div>
+//           <div className="actions">
+//             <div className="buttons">
+//               <button onClick={addToCart}>
+//                 <i className="material-icons">add</i>
+//               </button>
+//               <span>{quantity}</span>
+//               <button onClick={removeFromCart}>
+//                 <i className="material-icons">remove</i>
+//               </button>
+//             </div>
 
-            <div className="trash">
-              <button onClick={removeFromCart}>
-                <i className="material-icons">delete</i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="item-subtotals">
-        <div className="subtotals">
-          <span>{formatPrice(quantity * product.price)}</span>
-        </div>
-      </div>
-    </div>
-  );
-};
+//             <div className="trash">
+//               <button onClick={removeFromCart}>
+//                 <i className="material-icons">delete</i>
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//       <div className="item-subtotals">
+//         <div className="subtotals">
+//           <span>{formatPrice(quantity * product.price)}</span>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };

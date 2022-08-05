@@ -55,7 +55,9 @@ export default function ProductCard(props) {
               />
             </a>
             <a href="">
-              <AddShoppingCartIcon />
+              <AddShoppingCartIcon
+                onClick={() => apiClient.addToShoppingCart(props.product.id)}
+              />
             </a>
           </div>
         </div>

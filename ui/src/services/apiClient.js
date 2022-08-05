@@ -113,6 +113,22 @@ class ApiClient {
     });
   }
 
+  async addToShoppingCart(product_id) {
+    return await this.request({
+      endpoint: `shoppingCart`,
+      method: `POST`,
+      data: { product_id: product_id },
+    });
+  }
+
+  async listAllShoppingCart(userId) {
+    return await this.request({
+      endpoint: `shoppingCart/${userId}`,
+      method: `GET`,
+      data: userId,
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }
