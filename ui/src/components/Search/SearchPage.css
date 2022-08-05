@@ -6,3 +6,7 @@
 .searchbar {
   justify-content: center;
 }
+
+.categories{
+  display: flex;
+}

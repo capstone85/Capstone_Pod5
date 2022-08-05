@@ -1,5 +1,5 @@
 .searchbar-section {
-  display: flex;
+  display: block;
   justify-content: left;
 }
 
@@ -17,4 +17,8 @@
 
 .product-grid {
 display: flex;
+}
+
+.categories{
+  
 }
