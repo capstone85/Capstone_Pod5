@@ -8,6 +8,7 @@ import StoreOverview from "../Store/StoreOverview";
 import apiClient from "../../services/apiClient";
 import Footer from "../Footer/Footer";
 
+import ShopperCard from "../Store/ShopperCard";
 export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [store, setStore] = useState([]);
@@ -38,7 +39,8 @@ export default function Home(props) {
           {store.map((element, idx) => {
             const date = new Date(element.created_at);
             const enUSFormatter = new Intl.DateTimeFormat("en-US");
-            return (
+            const isVendor = props.user?.category === "vendor";
+            return isVendor ? (
               <StoreCard
                 key={idx}
                 id={element.id}
@@ -48,6 +50,16 @@ export default function Home(props) {
                 logo={element.logo}
                 created_at={enUSFormatter.format(date)}
               ></StoreCard>
+            ) : (
+              <ShopperCard
+                key={idx}
+                id={element.id}
+                name={element.name}
+                location={element.location}
+                description={element.description}
+                logo={element.logo}
+                created_at={enUSFormatter.format(date)}
+              />
             );
           })}
         </div>

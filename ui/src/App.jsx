@@ -197,7 +197,7 @@ function App() {
                 <Home
                   user={user}
                   store={store}
-                  addToCart={handleOnAddToCart}
+                  addToCart={ handleAddItemToCart}
                   removeFromCart={handleOnRemoveFromCart}
                   getQuantityOfItemInCart={handleGetItemQuantity}
                 />
@@ -356,7 +356,7 @@ function App() {
                   products={products}
                   searchInputValue={searchInputValue}
                   handleOnSearchInputChange={handleOnSearchInputChange}
-                  addToCart={handleOnAddToCart}
+                  addToCart={ handleAddItemToCart}
                   removeFromCart={handleOnRemoveFromCart}
                   getQuantityOfItemInCart={handleGetItemQuantity}
                   getTotalItemsInCart={handleGetTotalCartItems}

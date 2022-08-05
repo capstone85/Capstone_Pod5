@@ -1,0 +1,24 @@
+.store-card {
+    /* margin: 50px; */
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(120px);
+  }
+  
+  .store-card-spacing {
+    color: white;
+    background-color: white;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .store-btn {
+    color: black;
+    /* margin-left: 20x; */
+    margin-right: 40px;
+  }
+  

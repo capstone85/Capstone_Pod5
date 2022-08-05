@@ -15,6 +15,8 @@ export default function ShoppingCart({
   cart,
   products,
   getTotalItemsInCart,
+  activeCategory,
+  setActiveCategory,
   handleOnSearchInputChange,
   searchInputValue,
   addToCart,

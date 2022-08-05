@@ -11,7 +11,8 @@ export default function StoreDetail(props) {
         if (element.id == storeId) {
           const date = new Date(element.created_at);
           const enUSFormatter = new Intl.DateTimeFormat("en-US");
-          return (
+          const isVendor = props.user?.category === "vendor";
+          return isVendor ? (
             <StoreCard
               key={idx}
               id={element.id}
@@ -21,6 +22,16 @@ export default function StoreDetail(props) {
               logo={element.logo}
               created_at={enUSFormatter.format(date)}
             ></StoreCard>
+          ) : (
+            <ShopperCard
+              key={idx}
+              id={element.id}
+              name={element.name}
+              location={element.location}
+              description={element.description}
+              logo={element.logo}
+              created_at={enUSFormatter.format(date)}
+            />
           );
         }
       })}
