@@ -20,6 +20,15 @@ export default function ProductCard(props) {
   // console.log(props.product.name);
   // console.log(props.product.description);
   console.log(props.product.image);
+
+  //popup functions for the products
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -28,7 +37,9 @@ export default function ProductCard(props) {
       <div className="product-details">
         <span className="product-category">{props.product.category}</span>
         <h4>
-          <a href="">{props.product.name}</a>
+          <a href="#" onClick={on}>
+            {props.product.name}
+          </a>
         </h4>
         {/* <p>{props.product.description}</p> */}
         <div className="product-bottom-details">
@@ -36,12 +47,36 @@ export default function ProductCard(props) {
           <div className="product-links">
             <a href="">
               {/* <FavoriteBorderIcon /> */}
-              <FavoriteBorderIcon onClick={apiClient.addWishlist(props.product.id)} />
+              <FavoriteBorderIcon
+                onClick={apiClient.addWishlist(props.product.id)}
+              />
             </a>
             <a href="">
               <AddShoppingCartIcon />
             </a>
           </div>
+        </div>
+      </div>
+
+      <div id="overlay" onClick={off}>
+        <div className="text">
+          <h2
+            style={{
+              transform: "translateX(250px) translateY(30px)",
+            }}
+          >
+            {props.product.name}
+          </h2>
+          <img src={props.product.image}></img>
+          <div
+            className="overlay-price"
+            style={{
+              transform: "translateY(-220px) translateX(245px)",
+            }}
+          >
+            ${props.product.price}
+          </div>
+          <p>{props.product.description}</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import "./ProductView.css";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "./ProductCard";
 
 // Renders product card with product description
 export default function ProductView({
