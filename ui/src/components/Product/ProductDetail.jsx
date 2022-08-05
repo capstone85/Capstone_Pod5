@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import NotFound from "../NotFound/NotFound";
-import ProductView from "../ProductView/ProductView";
+import ProductView from "./ProductView";
 import Footer from "../Footer/Footer";
 
 // Fetches data from API, renders loading page, retrieves product description

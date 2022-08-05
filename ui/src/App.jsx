@@ -34,6 +34,7 @@ import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
 import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import ProductDetail from "./components/Product/ProductDetail";
 import {
   removeFromCart,
   addToCart,
@@ -315,6 +316,7 @@ function App() {
                 />
               }
             />
+            {/* creating a new product for specific store  */}
             <Route
               path="/store-page/create/:storeId"
               element={
@@ -326,6 +328,7 @@ function App() {
                 />
               }
             />
+            {/* product page for specific store  */}
             <Route
               path="/store-page/:storeId"
               element={
@@ -347,6 +350,28 @@ function App() {
                 />
               }
             />
+
+            {/* Specific product based on id */}
+            <Route
+              path="/products/:productId"
+              element={
+                <ProductDetail
+                  //  handleAddItemToCart={handleAddItemToCart}
+                  //  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  //  shoppingCart={shoppingCart}
+                  //  isOpen={isOpen}
+                  products={products}
+                  user={user}
+                  store={store}
+                  // handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                  // handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                  // handleOnToggle={handleOnToggle}
+                  // checkoutForm={checkoutForm}
+                  // subtotal={subtotal}
+                  // cartSize={shoppingCart.length}
+                />
+              }
+            ></Route>
             <Route
               path="/shopping-cart"
               element={
