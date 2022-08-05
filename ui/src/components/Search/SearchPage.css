@@ -6,3 +6,9 @@
 .searchbar {
   justify-content: center;
 }
+
+.categoryList {
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
