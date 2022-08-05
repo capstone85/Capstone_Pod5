@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 //import Sidebar from "./components/Sidebar/Sidebar";
 //import Button from "@mui/material/Button";
 //import Container from "@mui/material/Container";
+
 import {
   BrowserRouter,
   Link,
@@ -50,7 +51,7 @@ import ProductsPage from "./components/Product/ProductsPage";
 import SearchPage from "./components/Search/SearchPage";
 import StoreNew from "./components/Store/StoreNew";
 import ProductNew from "./components/Product/ProductNew";
-
+import GeneralNavbar from "./components/GeneralNavbar/GeneralNavbar";
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
@@ -117,10 +118,10 @@ function App() {
   const handleOnCheckout = async () => {
     setIsCheckingOut(true);
   };
-  useEffect(() => {
-    setshownavbar(!window.location.pathname.startsWith("/store"));
-    //setshownavbar(true)
-  }, [window.location.pathname]);
+  // useEffect(() => {
+  //   setshownavbar(!window.location.pathname.startsWith("/store"));
+  //   //setshownavbar(true)
+  // }, [window.location.pathname]);
   useEffect(() => {
     const fetchUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken();
@@ -161,7 +162,15 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        {shownavbar ? (
+        <GeneralNavbar
+          handleLogout={handleLogout}
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setIsClicked={setIsClicked}
+          user={user}
+          setUser={setUser}
+        />
+        {/* {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
@@ -178,7 +187,7 @@ function App() {
             user={user}
             setUser={setUser}
           />
-        )}
+        )} */}
 
         <main>
           <Routes>
@@ -191,7 +200,7 @@ function App() {
                 <Home
                   user={user}
                   store={store}
-                  addToCart={handleOnAddToCart}
+                  addToCart={ handleAddItemToCart}
                   removeFromCart={handleOnRemoveFromCart}
                   getQuantityOfItemInCart={handleGetItemQuantity}
                 />
@@ -374,7 +383,7 @@ function App() {
                   products={products}
                   searchInputValue={searchInputValue}
                   handleOnSearchInputChange={handleOnSearchInputChange}
-                  addToCart={handleOnAddToCart}
+                  addToCart={ handleAddItemToCart}
                   removeFromCart={handleOnRemoveFromCart}
                   getQuantityOfItemInCart={handleGetItemQuantity}
                   getTotalItemsInCart={handleGetTotalCartItems}
