@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import apiClient from "../../services/apiClient";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ClearIcon from "@mui/icons-material/Clear";
 
 export default function ShoppingCart(props) {
   //fetch data from shopping cart table
@@ -73,11 +75,50 @@ export default function ShoppingCart(props) {
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
 
   return (
-    <div className="ShoppingCart">
-      {product.map((element, idx) => {
-        return <h2>{element.product_name}</h2>;
-      })}
-      {/* <div className="banner">
+    <div className="cart-page">
+      <div className="banner">
+        <h1>Shopping Bag</h1>
+      </div>
+      <ul className="shopping-cart">
+        {product.map((element, idx) => {
+          return (
+            <div className="item">
+              <div className="buttons">
+                <span className="delete-btn">
+                  <ClearIcon />
+                </span>
+                <span className="like-btn">
+                  <FavoriteBorderIcon />
+                </span>
+              </div>
+              <div className="image">
+                <img src="" alt="" />
+              </div>
+              <div className="description">
+                <span>{element.product_name}</span>
+                <span>Store</span>
+                <span>Color</span>
+              </div>
+
+              <div className="quantity">
+                <button className="plus-btn" type="button" name="button">
+                  {/* <img src="" alt="plus-btn" /> */}+
+                </button>
+                {/* <input type="text" name="name" value="1" /> */}
+                <button className="minus-btn" type="button" name="button">
+                  {/* <img src="" alt="minus-btn" /> */}-
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+{
+  /* <div className="banner">
         <div className="content">
           <h2>Cart - {getTotalItemsInCart()} items</h2>
         </div>
@@ -130,9 +171,7 @@ export default function ShoppingCart(props) {
           )}
         </div>
         <Footer></Footer>
-      </div> */}
-    </div>
-  );
+      </div> */
 }
 
 // const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
