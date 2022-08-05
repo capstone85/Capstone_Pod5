@@ -93,18 +93,20 @@ export default function Wishlist(props) {
   return (
     <div className="wishlist">
       {product.map((element, idx) => {
+       
         return (
-       
-             <div className="wishlist-details">
-          
-        <img src={element.product_image} alt={element.product_name} />
-   
-            <p> {element.product_name} {element.product_price}</p>
-   
+          <div className="wishlist-details">
+            
+            <img src={element.product_image} alt={element.product_name} />
+
+            <p>
+              {" "}
+              {element.product_name} ${element.product_price}
+            </p>
+            <br></br>
           </div>
-       
         
-          );
+        );
       })}
       {/* {/* {product ? (
         product.map((element, idx) => {
