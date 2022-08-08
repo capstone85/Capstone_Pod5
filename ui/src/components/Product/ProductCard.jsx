@@ -49,17 +49,17 @@ export default function ProductCard(props) {
         <div className="product-bottom-details">
           <div className="product-price">${props.product.price}</div>
           <div className="product-links">
-            <a href="">
+            <button>
               {/* <FavoriteBorderIcon /> */}
               <FavoriteBorderIcon
                 onClick={() => apiClient.addToWishlist(props.product.id)}
               />
-            </a>
-            <a href="">
+            </button>
+            <button>
               <AddShoppingCartIcon
                 onClick={() => apiClient.addToShoppingCart(props.product.id)}
               />
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ class ShoppingCart {
                   w.product_id AS "product_id",
                   w.user_id AS "user_id",
                   p.name AS "product_name",
+                  p.image AS "product_image",
                   p.price AS "product_price",
                   p.category AS "product_category",
                   p.store_id AS "store_id",
@@ -42,28 +43,6 @@ class ShoppingCart {
     if (!shoppingCart) {
       throw new NotFoundError();
     }
-    return results.rows;
-  }
-
-  static async deleteShoppingCartByUserId(userId) {
-    const results = await db.query(
-      `
-            DELETE FROM shoppingCart
-                WHERE shoppingCart.user_id = $1
-            `,
-      [userId]
-    );
-    return results.rows;
-  }
-
-  static async deleteShoppingCartByProductId(productId) {
-    const results = await db.query(
-      `
-            DELETE FROM shoppingCart
-                WHERE shoppingCart.product_id = $1
-        `,
-      [productId]
-    );
     return results.rows;
   }
 }

@@ -1,33 +1,185 @@
-.Wishlist {
-  color: black;
+.banner h1 {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  font-family: "DM Serif Display", serif;
+  transform: translateY(30px);
 }
 
-.Wishlist .banner .content h2 {
+.wishlist {
+  width: 600px;
+  height: auto;
+  margin: 80px auto;
+  background: #ffffff;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  height: 60px;
+  border-bottom: 1px solid #e1e8ee;
+  padding: 20px 30px;
+  color: #5e6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+}
+
+.item:nth-child(3) {
+  border-top: 1px solid #e1e8ee;
+  border-bottom: 1px solid #e1e8ee;
+}
+
+.buttons {
+  /* position: relative; */
+  padding-top: 30px;
   color: black;
+  /* margin-right: 60px; */
+  /* display: flex; */
 }
-ul{
-    list-style: none;   
+
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  cursor: pointer;
+  width: 18px;
+  height: 17px;
 }
-.wishlist-details img {
-    width: 200px;
-    height: 220px;
-    border-radius: 5px;
-   align-self: center;
-  }
- /* .wishlist-details p{
-    text-align: center;
+
+.like-btn {
+  margin-left: 60px;
+}
+
+/* .like-btn {
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    width: 60px;
+    height: 60px;
+    background-size: 2900%;
+    background-repeat: no-repeat;
+    color: black;
   } */
 
-  .wishlist-details{
-  
-        margin: auto;
-        width: 50%;
-       
-        padding: 10px;
-     
+.is-active {
+  animation-name: animate;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+
+.image {
+  margin-left: 40px;
+  width: 100px;
+}
+
+.product-img {
+  max-width: 90px;
+  max-height: 90px;
+  width: auto;
+  height: auto;
+}
+
+.description {
+  padding-top: 10px;
+  margin-right: 20px;
+  width: 100px;
+  color: #43484d;
+}
+
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #43484d;
+  font-weight: 400;
+}
+.price {
+  margin-top: 20px;
+  width: 80px;
+}
+
+.description span:first-child {
+  margin-bottom: 5px;
+  color: #86939e;
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #43484d;
+}
+
+@keyframes animate {
+  0% {
+    background-position: left;
   }
-  .wishlist-details {
-    text-align: center;
-  
+  50% {
+    background-position: right;
   }
+  100% {
+    background-position: right;
+  }
+}
+
+.add-to-cart {
+  padding-top: 20px;
+  /* margin-right: 20px; */
+}
+.add-to-cart button {
+  display: inline-block;
+  margin-left: 15px;
+  color: #43484d;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.add-to-cart button:hover {
+  color: #b86b77;
+  cursor: pointer;
+}
+
+/* .add-to-cart input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484d;
+  font-weight: 300;
+} */
+
+/* button[class*="btn"] {
+  width: 30px;
+  height: 30px;
+  background-color: #e1e8ee;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+} */
+
+.add-to-cart-btn {
+  margin-bottom: 3px;
+  color: black;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+button:focus,
+input:focus {
+  outline: 0;
+}
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484d;
+  font-weight: 300;
+}
