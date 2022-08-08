@@ -129,6 +129,15 @@ class ApiClient {
     });
   }
 
+  async listProduct(productId) {
+    console.log("list product in apiclient is called", productId.productId);
+    return await this.request({
+      endpoint: `product/${productId.productId}`,
+      method: `GET`,
+      data: { productId: productId.productId },
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }

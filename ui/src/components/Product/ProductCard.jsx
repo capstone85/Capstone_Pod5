@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./ProductCard.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import apiClient from "../../services/apiClient";
@@ -34,7 +34,8 @@ export default function ProductCard(props) {
   // console.log("hello product card");
   // console.log(props.product.name);
   // console.log(props.product.description);
-  console.log(props.product.image);
+  // console.log(props.product.image);
+  let navigate = useNavigate();
 
   //popup functions for the products
   function on() {
@@ -44,6 +45,8 @@ export default function ProductCard(props) {
   function off() {
     document.getElementById("overlay").style.display = "none";
   }
+
+  console.log("Key: ", props.product.id);
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -53,7 +56,12 @@ export default function ProductCard(props) {
         <span className="product-category">{props.product.category}</span>
         <h4>
           {/* <Link to={"/products/" + props.product.id}>{props.product.name}</Link> */}
-          <a href="#" onClick={on}>
+          <a
+            href="#"
+            onClick={() => {
+              navigate("/products/" + props.product.id);
+            }}
+          >
             {console.log("Product Name: ", props.product.name)}
             {props.product.name}
           </a>

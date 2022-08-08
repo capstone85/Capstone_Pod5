@@ -56,6 +56,7 @@ class Product {
       [productId]
     );
     const product = results.rows[0];
+    console.log("product found in db (models page) ", product);
     if (!product) {
       throw new NotFoundError();
     }

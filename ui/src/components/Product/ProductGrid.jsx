@@ -15,7 +15,7 @@ export default function ProductGrid(props) {
   // }
   return (
     <div className="product-grid">
-      {props.product.map((item, idx) => {
+      {props.product.map((item) => {
         if (
           item.name.toLowerCase().includes(props.searchbar.toLowerCase()) ||
           item.category.toLowerCase().includes(props.searchbar.toLowerCase())
@@ -24,13 +24,13 @@ export default function ProductGrid(props) {
           return (
             <div>
               <ProductCard
-                key={idx}
-                category={item.category}
-                description={item.description}
+                key={item.id}
+                // category={item.category}
+                // description={item.description}
                 // showDescription={false}
-                image={item.image}
-                name={item.name}
-                price={item.price}
+                // image={item.image}
+                // name={item.name}
+                // price={item.price}
                 // storeId={curr.id}
                 // products={props.products}
                 // quantity={quantity}

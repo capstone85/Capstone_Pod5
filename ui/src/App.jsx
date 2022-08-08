@@ -52,6 +52,7 @@ import SearchPage from "./components/Search/SearchPage";
 import StoreNew from "./components/Store/StoreNew";
 import ProductNew from "./components/Product/ProductNew";
 import GeneralNavbar from "./components/GeneralNavbar/GeneralNavbar";
+import ProductView from "./components/Product/ProductView";
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
@@ -356,7 +357,7 @@ function App() {
             <Route
               path="/products/:productId"
               element={
-                <ProductDetail
+                <ProductView
                   //  handleAddItemToCart={handleAddItemToCart}
                   //  handleRemoveItemFromCart={handleRemoveItemFromCart}
                   //  shoppingCart={shoppingCart}
