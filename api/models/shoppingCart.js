@@ -1,25 +1,24 @@
 const db = require("../db");
 const { BadRequestError, NotFoundError } = require("../utils/errors");
 
-
 class ShoppingCart {
-    static async createShoppingCart({ productId, email }) {
-      console.log("Shopping Cart model ", productId, email);
-      const results = await db.query(
-        `
+  static async createShoppingCart({ productId, email }) {
+    console.log("Shopping Cart model ", productId, email);
+    const results = await db.query(
+      `
               INSERT INTO shoppingCart (product_id, user_id)
               VALUES($1, (SELECT id FROM users WHERE email = $2))
               RETURNING id, product_id, user_id
           `,
-        [productId, email]
-      );
-  
-      return results.rows[0];
-    }
-  
-    static async fetchShoppingCartByUserId(userId) {
-      const results = await db.query(
-        `
+      [productId, email]
+    );
+
+    return results.rows[0];
+  }
+
+  static async fetchShoppingCartByUserId(userId) {
+    const results = await db.query(
+      `
           SELECT  w.id,
                   w.product_id AS "product_id",
                   w.user_id AS "user_id",
@@ -37,15 +36,36 @@ class ShoppingCart {
           WHERE w.user_id = $1
           ORDER BY p.store_id DESC
           `,
-        [userId]
-      );
-      const shoppingCart = results.rows;
-      if (!shoppingCart) {
-        throw new NotFoundError();
-      }
-      return results.rows;
+      [userId]
+    );
+    const shoppingCart = results.rows;
+    if (!shoppingCart) {
+      throw new NotFoundError();
     }
+    return results.rows;
   }
-  
-  module.exports = ShoppingCart;
-  
+
+  static async deleteShoppingCartByUserId(userId) {
+    const results = await db.query(
+      `
+            DELETE FROM shoppingCart
+                WHERE shoppingCart.user_id = $1
+            `,
+      [userId]
+    );
+    return results.rows;
+  }
+
+  static async deleteShoppingCartByProductId(productId) {
+    const results = await db.query(
+      `
+            DELETE FROM shoppingCart
+                WHERE shoppingCart.product_id = $1
+        `,
+      [productId]
+    );
+    return results.rows;
+  }
+}
+
+module.exports = ShoppingCart;

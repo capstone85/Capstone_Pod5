@@ -29,6 +29,7 @@ export default function SearchPage(props) {
   }, []);
 
   let foundSearch = false;
+  
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const categoriesList = [
     "All Categories",
@@ -36,6 +37,12 @@ export default function SearchPage(props) {
     "accessories",
     "footwear",
   ];
+
+  const currentItems = product.filter((item) => {
+    console.log(item.category);
+    return item.category == activeCategory;
+  });
+
   return (
     <>
       <h1 className="page-head">Search for stores or styles.</h1>
@@ -43,7 +50,7 @@ export default function SearchPage(props) {
         <SearchBar
           handleOnSearchbarChange={props.handleOnSearchbarChange}
           setSearchBar={props.setSearchbar}
-          products={props.products}
+          product={product}
         />
       </div>
       <div className="category">

@@ -129,6 +129,15 @@ class ApiClient {
     });
   }
 
+  async addToCheckout(product_id) {
+    console.log("this is product id", product_id);
+    return await this.request({
+      endpoint: `checkout`,
+      method: `POST`,
+      data: { product_id: product_id },
+    });
+  }
+
   async fetchUserFromToken() {
     return await this.request({ endpoint: `auth/me`, method: `GET` });
   }
