@@ -1,3 +1,5 @@
+/* * * * NOT USED * * * */
+
 import "./ProductDetail.css";
 
 import * as React from "react";

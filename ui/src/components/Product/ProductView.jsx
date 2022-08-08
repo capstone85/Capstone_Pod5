@@ -1,3 +1,5 @@
+/* * * * NOT USED * * * */
+
 import "./ProductView.css";
 import ProductCard from "../ProductCard/ProductCard";
 
