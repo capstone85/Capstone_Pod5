@@ -14,18 +14,20 @@ import { useState, useEffect } from "react";
 import apiClient from "../../services/apiClient";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ClearIcon from "@mui/icons-material/Clear";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function ShoppingCart(props) {
   //fetch data from shopping cart table
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
+  let sutotal = 0;
+  let taxes = 0;
 
   useEffect(() => {
     const fetchProducts = async () => {
       if (!(Object.keys(props.user).length === 0)) {
         setIsFetching(true);
-        console.log("users.", props.user);
 
         const { data, error } = await apiClient.listAllShoppingCart(
           props.user.id
@@ -34,9 +36,8 @@ export default function ShoppingCart(props) {
           setError(error);
         }
         if (data) {
-          console.log("data", data);
-          console.log(data.products);
-          console.log(data.products[0].product_name);
+          // console.log("data", data);
+          // console.log("This is data.products" + data.products);
           setProduct(data.products);
         }
         setIsFetching(false);
@@ -73,47 +74,89 @@ export default function ShoppingCart(props) {
   // };
 
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
-
+  const [btnClass, setBtnClass] = useState(false);
   return (
-    <div className="cart-page">
-      <div className="banner">
-        <h1>Shopping Bag</h1>
+    <>
+      <div className="cart-banner">
+        <h1>Cart</h1>
       </div>
-      <ul className="shopping-cart">
-        {product.map((element, idx) => {
-          return (
-            <div className="item">
-              <div className="buttons">
-                <span className="delete-btn">
-                  <ClearIcon />
-                </span>
-                <span className="like-btn">
-                  <FavoriteBorderIcon />
-                </span>
-              </div>
-              <div className="image">
-                <img src="" alt="" />
-              </div>
-              <div className="description">
-                <span>{element.product_name}</span>
-                <span>Store</span>
-                <span>Color</span>
-              </div>
+      <div className="cart-page">
+        <div className="shopping-cart">
+          {product.map((item, idx) => {
+            // console.log(item.product_image);
+            return (
+              <div className="item" key={idx}>
+                <div className="buttons">
+                  <span className="delete-btn">
+                    <ClearIcon />
+                  </span>
+                  <span
+                    className="like-btn"
+                    onClick={() => {
+                      btnClass ? setBtnClass(false) : setBtnClass(true);
+                    }}
+                  >
+                    {" "}
+                    {btnClass ? (
+                      <FavoriteIcon style={{ color: "#B86B77" }} />
+                    ) : (
+                      <FavoriteBorderIcon />
+                    )}
+                    {/* <FavoriteBorderIcon /> */}
+                  </span>
+                </div>
+                <div className="image">
+                  <img
+                    className="product-img"
+                    src={item.product_image}
+                    alt={item.product_name}
+                  />
+                </div>
+                <div className="description">
+                  <span className="store">{item.store_name}</span>
+                  <span className="name">{item.product_name}</span>
+                </div>
+                <span className="price">${item.product_price}</span>
+                <div className="quantity">
+                  <span> Quantity: 1 </span>
+                  <button className="minus-btn" type="button" name="button">
+                    {/* <img src="" alt="plus-btn" /> */}-
+                  </button>
+                  {/* <input type="text" name="name" value="1" /> */}
 
-              <div className="quantity">
-                <button className="plus-btn" type="button" name="button">
-                  {/* <img src="" alt="plus-btn" /> */}+
-                </button>
-                {/* <input type="text" name="name" value="1" /> */}
-                <button className="minus-btn" type="button" name="button">
-                  {/* <img src="" alt="minus-btn" /> */}-
-                </button>
+                  <button className="plus-btn" type="button" name="button">
+                    {/* <img src="" alt="minus-btn" /> */}+
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </ul>
-    </div>
+            );
+          })}
+        </div>
+        <div className="shopping-cart-totals">
+          <h1>Totals</h1>
+          <table className="labels">
+            <tbody>
+              <tr>
+                <td className="subtotal">SUBTOTAL</td>
+                <td>$65.00</td>
+              </tr>
+              <tr>
+                <td className="delivery">DELIVERY FEE</td>
+                <td>$10.00</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr className="checkout-hr"></hr>
+          <div className="total">
+            <span className="total-label">TOTAL</span>
+            <span className="total-price">$75.00</span>
+          </div>
+          <div className="checkout-btn-wrapper">
+            <button className="checkout-btn">PROCEED TO CHECKOUT</button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
