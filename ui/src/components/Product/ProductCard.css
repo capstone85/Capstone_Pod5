@@ -9,6 +9,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
 a {
   text-decoration: none;
 }
@@ -97,7 +98,7 @@ a {
   text-align: right;
 }
 
-.product-links a {
+.product-links button {
   display: inline-block;
   margin-left: 15px;
   color: #e1e1e1;
@@ -105,8 +106,9 @@ a {
   font-size: 17px;
 }
 
-.product-links a:hover {
+.product-links button:hover {
   color: #b86b77;
+  cursor: pointer;
 }
 
 /* .element-image {

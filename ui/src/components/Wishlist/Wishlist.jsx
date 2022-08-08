@@ -14,6 +14,10 @@ import axios from "axios";
 import NotFound from "../NotFound/NotFound";
 import ProductCard from "../Product/ProductCard";
 import apiClient from "../../services/apiClient";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ClearIcon from "@mui/icons-material/Clear";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 export default function Wishlist(props) {
   const [isFetching, setIsFetching] = useState(false);
@@ -24,17 +28,17 @@ export default function Wishlist(props) {
     const fetchProducts = async () => {
       if (!(Object.keys(props.user).length === 0)) {
         setIsFetching(true);
-        console.log("users.", props.user);
 
         const { data, error } = await apiClient.listAllWishlist(props.user.id);
         if (error) {
           setError(error);
         }
         if (data) {
-          console.log("data", data);
-          console.log(data.products);
-          console.log(data.products[0].product_name);
           setProduct(data.products);
+          // window.localStorage.setItem(
+          //   "Products",
+          //   JSON.stringify(data.products)
+          // );
         }
         setIsFetching(false);
       }
@@ -90,96 +94,85 @@ export default function Wishlist(props) {
 
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
 
-  return (
-    <div className="wishlist">
-      {product.map((element, idx) => {
-       
-        return (
-          <div className="wishlist-details">
-            
-            <img src={element.product_image} alt={element.product_name} />
+  // return (
+  //   <div className="wishlist">
+  //     {product.map((element, idx) => {
 
-            <p>
-              {" "}
-              {element.product_name} ${element.product_price}
-            </p>
-            <br></br>
-          </div>
-        
-        );
-      })}
-      {/* {/* {product ? (
-        product.map((element, idx) => {
-          // const date = new Date(element.created_at);
-          // const enUSFormatter = new Intl.DateTimeFormat("en-US");
-          return <h2>{element.name}</h2>;
-        }) */}
-      {/* {product.length === 0 ? (
-        <div className="empty">
-          <h2>Nothing here yet.</h2>
+  //       return (
+  //         <div className="wishlist-details">
+
+  //           <img src={element.product_image} alt={element.product_name} />
+
+  //           <p>
+  //             {" "}
+  //             {element.product_name} ${element.product_price}
+  //           </p>
+  //           <br></br>
+  //         </div>
+
+  //       );
+  //     })}
+  const [btnClass, setBtnClass] = useState(true);
+
+  if (!isFetching) {
+    // const cart = JSON.parse(localStorage.getItem("Products"));
+    // console.log("this is cart " + cart);
+    return (
+      <div className="wishlist-page">
+        <div className="banner">
+          <h1>Wishlist</h1>
         </div>
-      ) : (
-        product.map((element, idx) => {
-          return <h2>{element.name}</h2>;
-        })
-      )} */}
-      {/*  )} */}
-      {/* <div className="banner">
-        <div className="content">
-          <h2>Wishlist - {getTotalItemsInCart()} items</h2>
+        <div className="wishlist">
+          {product.map((item, idx) => {
+            return (
+              <div className="item" key={idx}>
+                <div className="buttons">
+                  <span className="delete-btn">
+                    <ClearIcon />
+                  </span>
+                  <span
+                    className="like-btn"
+                    onClick={() => {
+                      btnClass ? setBtnClass(false) : setBtnClass(true);
+                    }}
+                  >
+                    {" "}
+                    {btnClass ? (
+                      <FavoriteIcon style={{ color: "#B86B77" }} />
+                    ) : (
+                      <FavoriteBorderIcon />
+                    )}
+                    {/* <FavoriteBorderIcon /> */}
+                  </span>
+                </div>
+                <div className="image">
+                  <img
+                    className="product-img"
+                    src={item.product_image}
+                    alt={item.product_name}
+                  />
+                </div>
+                <div className="description">
+                  <span className="store">{item.store_name}</span>
+                  <span className="name">{item.product_name}</span>
+                </div>
+                <span className="price">${item.product_price}</span>
+                <div className="add-to-cart">
+                  <button>
+                    <AddShoppingCartIcon
+                      onClick={() =>
+                        apiClient.addToShoppingCart(item.product_id)
+                      }
+                    />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      <div className="content">
-        <div className="wishlist-items">
-          <div className="items-list">
-            {!cartHasItems ? (
-              <div className="card">
-                <p>Nothing in your wishlist yet.</p>
-              </div>
-            ) : null}
-            {Object.values(cartMapping).map((product) => (
-              <CartItem
-                key={product.id}
-                product={product}
-                quantity={getQuantityOfItemInCart(product)}
-                addToCart={() => addToCart(product)}
-                removeFromCart={() => removeFromCart(product)}
-              />
-            ))}
-          </div>
-        </div>
-
-        {cartHasItems ? (
-          <div className="receipt">
-            <div className="receipt-subtotal">
-              <span className="label">Subtotal</span>
-              <span>{formatPrice(subTotal)}</span>
-            </div>
-            <div className="receipt-taxes">
-              <span className="label">Taxes and Fees</span>
-              <span>{formatPrice(calculateTaxesAndFees(subTotal))}</span>
-            </div>
-            <div className="receipt-total">
-              <span className="label">Total</span>
-              <span>{formatPrice(calculateTotal(subTotal))}</span>
-            </div>
-          </div>
-        ) : null}
-
-        <div className="checkout">
-          {user?.email ? (
-            <button onClick={onCheckoutSubmit}>Checkout</button>
-          ) : (
-            <Link to="/shopping-cart" path={LoginPage}>
-              Add to shopping cart
-            </Link>
-          )}
-        </div>
-        <Footer></Footer>
-      </div> */}
-    </div>
-  );
+    );
+  }
 }
 
 // const CartItem = ({ product, quantity, addToCart, removeFromCart }) => {
