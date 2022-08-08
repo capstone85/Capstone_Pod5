@@ -37,15 +37,6 @@ export default function ProductCard(props) {
   // console.log(props.product.image);
   let navigate = useNavigate();
 
-  //popup functions for the products
-  function on() {
-    document.getElementById("overlay").style.display = "block";
-  }
-
-  function off() {
-    document.getElementById("overlay").style.display = "none";
-  }
-
   console.log("Key: ", props.product.id);
   return (
     <div className="product-card">
@@ -82,28 +73,6 @@ export default function ProductCard(props) {
               />
             </a>
           </div>
-        </div>
-      </div>
-
-      <div id="overlay" onClick={off}>
-        <div className="text">
-          <h2
-            style={{
-              transform: "translateX(250px) translateY(30px)",
-            }}
-          >
-            {props.product.name}
-          </h2>
-          <img src={props.product.image}></img>
-          <div
-            className="overlay-price"
-            style={{
-              transform: "translateY(-220px) translateX(245px)",
-            }}
-          >
-            ${props.product.price}
-          </div>
-          <p>{props.product.description}</p>
         </div>
       </div>
     </div>
