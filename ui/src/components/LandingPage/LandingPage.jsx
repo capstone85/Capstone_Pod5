@@ -14,20 +14,24 @@ export default function LandingPage() {
 
   return (
     <div className="landing">
-      <div className="thisdiv">
+      <div className="landing-text">
         <h1>Shop styles from stores near you.</h1>
         <h1>Enter your location to get started.</h1>
-        <img
-          src="https://t3.ftcdn.net/jpg/03/16/52/70/360_F_316527081_e2tXI5A3Zq9EzyKnFLSYNJXlQGsnTO5y.jpg"
-          alt="bags"
-        />
-      </div>
+        <div className="landing-image">
+          <img
+            src="https://t3.ftcdn.net/jpg/03/16/52/70/360_F_316527081_e2tXI5A3Zq9EzyKnFLSYNJXlQGsnTO5y.jpg"
+            alt="bags"
+          />
+        </div>
+        <div className="location-searchbar">
+          <LocationSearchBar
+            handleOnSearchBarChange={handleOnSearchBarChange}
+            setSearchBar={setSearchBar}
+          />
+        </div>
 
-      <LocationSearchBar
-        handleOnSearchBarChange={handleOnSearchBarChange}
-        setSearchBar={setSearchBar}
-      />
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }
