@@ -17,7 +17,7 @@ export default function StoreCard(props) {
     <Card sx={{ maxWidth: 900 }} className="store-card">
       <CardMedia
         component="img"
-        height="400"
+        height="350"
         image={props.logo}
         alt={props.name}
       />
@@ -34,7 +34,7 @@ export default function StoreCard(props) {
         <Typography variant="body2" color="text.secondary">
           ⏰ Store Hours:
           <p>
-            M-F: 10:00 AM - 8 PM
+            Mon-Fri: 10:00 AM - 8 PM
             <br />
             Sat: 10:00 AM - 9 PM
             <br />

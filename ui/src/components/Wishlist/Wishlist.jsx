@@ -45,7 +45,7 @@ export default function Wishlist(props) {
     };
 
     fetchProducts();
-  }, []);
+  }, [props.user]);
 
   // useEffect(() => {
   //   // Makes axios get request to get individual product info
@@ -127,9 +127,6 @@ export default function Wishlist(props) {
             return (
               <div className="item" key={idx}>
                 <div className="buttons">
-                  <span className="delete-btn">
-                    <ClearIcon />
-                  </span>
                   <span
                     className="like-btn"
                     onClick={() => {

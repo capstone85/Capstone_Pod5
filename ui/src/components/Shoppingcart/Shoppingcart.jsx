@@ -45,7 +45,7 @@ export default function ShoppingCart(props) {
     };
 
     fetchProducts();
-  }, []);
+  }, [props.user]);
 
   // const navigate = useNavigate();
 
@@ -84,6 +84,8 @@ export default function ShoppingCart(props) {
         <div className="shopping-cart">
           {product.map((item, idx) => {
             // console.log(item.product_image);
+            // query: if product in cart, check if its in the wishlist.
+            // if product is in BOTH, then make heart red
             return (
               <div className="item" key={idx}>
                 <div className="buttons">

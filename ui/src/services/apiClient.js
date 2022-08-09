@@ -130,7 +130,9 @@ class ApiClient {
   }
 
   async fetchUserFromToken() {
-    return await this.request({ endpoint: `auth/me`, method: `GET` });
+    const res = await this.request({ endpoint: `auth/me`, method: `GET` });
+    console.log(res);
+    return res;
   }
 
   async loginUser(credentials) {
