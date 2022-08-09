@@ -7,8 +7,16 @@
   justify-content: center;
 }
 
+.category{
+  display: inline;
+}
+
 .categoryList {
   display: flex;
-  width: 70%;
-  margin: auto;
+  justify-content: center;
+}
+
+.product-gridSearch {
+  display: flex;
+  flex-wrap: wrap;
 }
