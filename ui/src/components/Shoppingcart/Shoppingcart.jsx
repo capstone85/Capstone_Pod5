@@ -22,8 +22,9 @@ export default function ShoppingCart(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
-  let sutotal = 0;
-  let taxes = 0;
+  let subtotal = 0;
+  let deliveryFee = 10;
+  let taxeRate = 1.08;
 
   const navigate = useNavigate();
 
@@ -168,6 +169,7 @@ export default function ShoppingCart(props) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
