@@ -7,12 +7,16 @@
   margin-bottom: 30px;
 }
 
+.shopper-card-image {
+  max-height: 450px;
+}
+
 .store-card-spacing {
   color: white;
   background-color: white;
 }
 
-.buttons {
+.shopper-card-buttons {
   display: flex;
   justify-content: space-evenly;
 }

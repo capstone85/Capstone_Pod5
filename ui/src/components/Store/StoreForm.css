@@ -19,7 +19,7 @@
 }
 
 .store-form .inputs .form-input {
-  transform: translateY(100px) translateX(420px);
+  transform: translateY(100px) translateX(550px);
 }
 
 .store-form .save-btn {
@@ -36,7 +36,7 @@
   background: black;
   padding: 12px 18px;
   /* border-radius: 30px; */
-  transform: translateX(590px) translateY(120px);
+  transform: translateX(730px) translateY(120px);
 }
 
 .store-form .save-btn:hover {

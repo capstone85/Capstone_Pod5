@@ -129,29 +129,28 @@ class ApiClient {
     });
   }
 
-  async addToCheckout(confirmation, product_id) {
+  async listProduct(productId) {
+    console.log("list product in apiclient is called", productId.productId);
+    return await this.request({
+      endpoint: `product/${productId.productId}`,
+      method: `GET`,
+      data: { productId: productId.productId },
+    });
+  }
+
+  async addToCheckout(order_id, product_id) {
     console.log("this is product id", product_id);
     console.log("this is confirmation ", confirmation);
     return await this.request({
       endpoint: `checkout`,
       method: `POST`,
-      data: { confirmation: confirmation, product_id: product_id },
-    });
-  }
+      data: { order_id, product_id: product_id },
 
-  async listCheckoutByOrderId(orderId) {
-    console.log("THIS IS ORDER ID ", orderId);
-    return await this.request({
-      endpoint: `checkout/${orderId}`,
-      method: `GET`,
-      data: orderId,
     });
   }
 
   async fetchUserFromToken() {
-    const res = await this.request({ endpoint: `auth/me`, method: `GET` });
-    console.log(res);
-    return res;
+    return await this.request({ endpoint: `auth/me`, method: `GET` });
   }
 
   async loginUser(credentials) {

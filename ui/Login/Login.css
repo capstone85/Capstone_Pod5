@@ -35,11 +35,7 @@ ul {
   color: var(--font-dark);
 }
 /* #root {
-<<<<<<< HEAD
     --content-width: 800px;
-=======
-  --content-width: 800px;
->>>>>>> d5e401218d4e17c8f81d3abd48ebeb1865b67a7a
 } */
 .Login .card .form .input-field input {
   height: 40px;

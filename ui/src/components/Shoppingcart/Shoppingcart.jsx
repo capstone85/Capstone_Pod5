@@ -22,8 +22,13 @@ export default function ShoppingCart(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
-  let sutotal = 0;
-  let taxes = 0;
+  let subtotal = 0;
+  let deliveryFee = 10;
+  let taxRate = 1.08;
+
+  function getTotal(subtotal, taxRate, deliveryFee) {
+    return subtotal * taxRate + deliveryFee;
+  }
 
   const navigate = useNavigate();
 
@@ -85,7 +90,20 @@ export default function ShoppingCart(props) {
       </div>
       <div className="cart-page">
         <div className="shopping-cart">
+          {product[0] == null ? (
+            <div className="empty-cart-message">
+              Nothing in your cart yet.{" "}
+              <button
+                onClick={() => {
+                  navigate("/store-page");
+                }}
+              >
+                Start shopping now!
+              </button>
+            </div>
+          ) : null}
           {product.map((item, idx) => {
+            subtotal += item.product_price;
             // console.log(item.product_image);
             // query: if product in cart, check if its in the wishlist.
             // if product is in BOTH, then make heart red
@@ -143,31 +161,40 @@ export default function ShoppingCart(props) {
             <tbody>
               <tr>
                 <td className="subtotal">SUBTOTAL</td>
-                <td>$65.00</td>
+                <td>${subtotal}</td>
               </tr>
               <tr>
                 <td className="delivery">DELIVERY FEE</td>
-                <td>$10.00</td>
+                <td>${deliveryFee}</td>
               </tr>
             </tbody>
           </table>
           <hr className="checkout-hr"></hr>
           <div className="total">
             <span className="total-label">TOTAL</span>
-            <span className="total-price">$75.00</span>
+            {product.length === 0 ? (
+              <span className="total-price">$0</span>
+            ) : (
+              <span className="total-price">
+                ${getTotal(subtotal, taxRate, deliveryFee).toFixed(2)}
+              </span>
+            )}
           </div>
           <div className="checkout-btn-wrapper">
-            <button
-              className="checkout-btn"
-              onClick={() => {
-                navigate("/checkout");
-              }}
-            >
-              PROCEED TO CHECKOUT
-            </button>
+            {product.length === 0 ? null : (
+              <button
+                className="checkout-btn"
+                onClick={() => {
+                  navigate("/checkout");
+                }}
+              >
+                PROCEED TO CHECKOUT
+              </button>
+            )}
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

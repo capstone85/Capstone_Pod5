@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./ProductCard.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import apiClient from "../../services/apiClient";
@@ -13,10 +13,10 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 // Renders image, name, price, and category of products.
 // Buttons allow users to add products to wishlist or shopping cart.
 export default function ProductCard(props) {
-  console.log("hello product card");
-  console.log(props.product.name);
-  console.log(props.product.description);
-  console.log(props.product.id);
+  // console.log("hello product card");
+  // console.log(props.product.name);
+  // console.log(props.product.description);
+  // console.log(props.product.id);
 
   // const [isClicked, setIsClicked] = useState(false);
   // useEffect(() => {
@@ -35,6 +35,11 @@ export default function ProductCard(props) {
   // };
   // console.log("hello product card");
   // console.log(props.product.name);
+  // console.log(props.product.description);
+  // console.log(props.product.image);
+  let navigate = useNavigate();
+
+  console.log("Key: ", props.product.id);
 
   const [btnClass, setBtnClass] = useState(false);
   return (
@@ -45,7 +50,16 @@ export default function ProductCard(props) {
       <div className="product-details">
         <span className="product-category">{props.product.category}</span>
         <h4>
-          <a href="">{props.product.name}</a>
+          {/* <Link to={"/products/" + props.product.id}>{props.product.name}</Link> */}
+          <a
+            href="#"
+            onClick={() => {
+              navigate("/products/" + props.product.id);
+            }}
+          >
+            {console.log("Product Name: ", props.product.name)}
+            {props.product.name}
+          </a>
         </h4>
         {/* <p>{props.product.description}</p> */}
         <div className="product-bottom-details">

@@ -88,43 +88,6 @@ input {
   font-weight: bold;
 }
 
-.Register .card .bottomLinks a:hover {
-  text-decoration: underline;
-}  */
-
-/* #root {
-  --content-width: 800px;
-}
-
-a,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ol,
-p,
-span,
-ul {
-  margin: 0;
-  padding: 0;
-  font-family: "Recoleta", sans-serif;
-
-  color: var(--font-dark);
-} */
-
-.Register {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Recoleta", sans-serif;
-  color: black;
-  height: 100%;
-  width: 100%;
-}
-
 /* your account title */
 .Register .card h2 {
   color: black;

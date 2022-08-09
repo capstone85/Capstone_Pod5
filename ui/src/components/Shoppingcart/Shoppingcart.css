@@ -46,6 +46,17 @@
   background-color: rgb(245, 245, 245);
 }
 
+.empty-cart-message button {
+  background-color: transparent;
+  color: #b86b77;
+  border: none;
+  font-size: 16px;
+}
+
+.empty-cart-message {
+  margin: 20px;
+}
+
 .subtotal {
   padding-right: 100px;
 }
