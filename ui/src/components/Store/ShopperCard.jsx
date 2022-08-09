@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/system";
 import { spacing } from "@mui/system";
 import { Link } from "react-router-dom";
+import "./ShopperCard.css";
 
 export default function ShopperCard(props) {
   const button = styled(Button)(spacing);
@@ -16,8 +17,9 @@ export default function ShopperCard(props) {
   return (
     <Card sx={{ maxHeight: 800, maxWidth: 900 }} className="store-card">
       <CardMedia
+        className="shopper-card-image"
         component="img"
-        height="350"
+        height="auto"
         image={props.logo}
         alt={props.name}
       />
