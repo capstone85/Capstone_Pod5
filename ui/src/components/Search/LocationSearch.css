@@ -30,6 +30,14 @@ input.input {
   border-width: 0;
 }
 
+#find-me {
+  background-color: #f6cfca;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+}
+
 input:focus {
   outline-width: 0;
 }

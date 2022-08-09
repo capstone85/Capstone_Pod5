@@ -105,6 +105,8 @@ a {
   color: #e1e1e1;
   transition: 0.3s;
   font-size: 17px;
+  border: none;
+  background-color: transparent;
 }
 
 .product-links button:hover {

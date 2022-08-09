@@ -90,6 +90,18 @@ export default function ShoppingCart(props) {
       </div>
       <div className="cart-page">
         <div className="shopping-cart">
+          {product[0] == null ? (
+            <div className="empty-cart-message">
+              Nothing in your cart yet.{" "}
+              <button
+                onClick={() => {
+                  navigate("/store-page");
+                }}
+              >
+                Start shopping now!
+              </button>
+            </div>
+          ) : null}
           {product.map((item, idx) => {
             subtotal += item.product_price;
             // console.log(item.product_image);
@@ -160,19 +172,25 @@ export default function ShoppingCart(props) {
           <hr className="checkout-hr"></hr>
           <div className="total">
             <span className="total-label">TOTAL</span>
-            <span className="total-price">
-              ${getTotal(subtotal, taxRate, deliveryFee).toFixed(2)}
-            </span>
+            {product.length === 0 ? (
+              <span className="total-price">$0</span>
+            ) : (
+              <span className="total-price">
+                ${getTotal(subtotal, taxRate, deliveryFee).toFixed(2)}
+              </span>
+            )}
           </div>
           <div className="checkout-btn-wrapper">
-            <button
-              className="checkout-btn"
-              onClick={() => {
-                navigate("/checkout");
-              }}
-            >
-              PROCEED TO CHECKOUT
-            </button>
+            {product.length === 0 ? null : (
+              <button
+                className="checkout-btn"
+                onClick={() => {
+                  navigate("/checkout");
+                }}
+              >
+                PROCEED TO CHECKOUT
+              </button>
+            )}
           </div>
         </div>
       </div>
