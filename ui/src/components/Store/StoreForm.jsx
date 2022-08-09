@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 //input boxes
 import TextField from "@mui/material/TextField";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 // add store page form
 export default function StoreForm(props) {
   const navigate = useNavigate();
@@ -141,7 +143,7 @@ export default function StoreForm(props) {
         disabled={isLoading}
         onClick={handleOnSubmit}
       >
-        {isLoading ? "Loading..." : "Save"}
+        {isLoading ? <CircularProgress color="secondary" /> : "Save"}
       </button>
     </div>
   );

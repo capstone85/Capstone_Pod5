@@ -11,6 +11,8 @@ import NotFound from "../NotFound/NotFound";
 import ProductView from "./ProductView";
 import Footer from "../Footer/Footer";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 // Fetches data from API, renders loading page, retrieves product description
 export default function ProductDetail(props) {
   const [product, setProduct] = useState("");
@@ -39,7 +41,9 @@ export default function ProductDetail(props) {
   if (props.isFetching) {
     return (
       <div className="loading">
-        <h1>Loading...</h1>
+        <h1>
+          <CircularProgress color="secondary" />
+        </h1>
       </div>
     );
   }
