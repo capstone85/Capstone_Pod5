@@ -47,7 +47,6 @@ import ProductsPage from "./components/Product/ProductsPage";
 import SearchPage from "./components/Search/SearchPage";
 import StoreNew from "./components/Store/StoreNew";
 import ProductNew from "./components/Product/ProductNew";
-import GeneralNavbar from "./components/GeneralNavbar/GeneralNavbar";
 import ProductView from "./components/Product/ProductView";
 import Navbar from "./components/Navbar";
 function App() {
