@@ -7,6 +7,10 @@
   margin-bottom: 50px;
 }
 
+.store-card-image {
+  max-height: 450px;
+}
+
 .store-card-spacing {
   color: white;
   background-color: white;

@@ -7,26 +7,33 @@
   flex-wrap: nowrap;
 } */
 
+.landing {
+  display: flex;
+
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .landing h1 {
   color: black;
   font-family: "DM Serif Display", serif;
   transform: translateX(100px);
 }
-.landing .thisdiv {
+.landing .landing-text {
+  float: left;
   padding: 200px 0 50px;
 }
-/* body{
- background-image: url("https://t3.ftcdn.net/jpg/03/16/52/70/360_F_316527081_e2tXI5A3Zq9EzyKnFLSYNJXlQGsnTO5y.jpg");
- background-repeat: no-repeat;
- 
- 
- 
-} */
 
-.landing .thisdiv img {
+.landing .landing-image {
   align-content: center;
   float: right;
   height: 300px;
   width: 500px;
+  margin-right: 200px;
   transform: translateY(-210px) translateX(-50px);
+}
+
+.location-searchbar {
+  margin-top: 60px;
+  margin-right: 20px;
 }
