@@ -2,12 +2,16 @@ import "./Checkout.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import apiClient from "../../services/apiClient";
+import { useNavigate } from "react-router-dom";
+import Confirmation from "../Confirmation/Confirmation";
 
 export default function Checkout(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   const [order, setOrder] = useState([]);
+  const [confirmation, setConfirmation] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,11 +36,14 @@ export default function Checkout(props) {
     fetchProducts();
   }, [props.user]);
 
-  var confirmation = {
-    random: Math.ceil(Math.random() * 10000),
-  };
+  var confirmationNum = Math.ceil(Math.random() * 100000);
 
-  console.log(confirmation);
+  const checkoutProducts = async () => {
+    product.map((item) => {
+      console.log("ITEM", item);
+      apiClient.addToCheckout(confirmationNum, item.product_id);
+    });
+  };
 
   return (
     <>
@@ -62,14 +69,12 @@ export default function Checkout(props) {
               </div>
             );
           })}
+
           <button
             className="checkout-btn"
             onClick={() => {
-              {
-                product.map((item) => {
-                  apiClient.addToCheckout(confirmation, item.product_id);
-                });
-              }
+              checkoutProducts();
+              navigate("/confirmation/" + confirmationNum);
             }}
           >
             PLACE ORDER
