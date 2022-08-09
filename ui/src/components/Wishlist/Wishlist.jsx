@@ -118,56 +118,12 @@ export default function Wishlist(props) {
     // const cart = JSON.parse(localStorage.getItem("Products"));
     // console.log("this is cart " + cart);
     return (
-<<<<<<< HEAD
-      <div className="wishlist-page">
-        <div className="banner">
-          <h1>WISHLIST</h1>
-        </div>
-        <hr style={{ transform: "translateY(59px)", width: "1560px" }}></hr>
-        <div className="wishlist">
-          {product.map((item, idx) => {
-            return (
-              <div className="item" key={idx}>
-                <div className="buttons">
-                  <span
-                    className="like-btn"
-                    onClick={() => {
-                      btnClass ? setBtnClass(false) : setBtnClass(true);
-                    }}
-                  >
-                    {" "}
-                    {btnClass ? (
-                      <FavoriteIcon style={{ color: "#B86B77" }} />
-                    ) : (
-                      <FavoriteBorderIcon />
-                    )}
-                    {/* <FavoriteBorderIcon /> */}
-                  </span>
-                </div>
-                <div className="image">
-                  <img
-                    className="product-img"
-                    src={item.product_image}
-                    alt={item.product_name}
-                  />
-                </div>
-                <div className="description">
-                  <span className="store">{item.store_name}</span>
-                  <span className="name">{item.product_name}</span>
-                </div>
-                <span className="price">${item.product_price}</span>
-                <div className="add-to-cart">
-                  <button>
-                    <AddShoppingCartIcon
-                      onClick={() =>
-                        apiClient.addToShoppingCart(item.product_id)
-                      }
-=======
       <>
         <div className="wishlist-page">
           <div className="banner">
-            <h1>Wishlist</h1>
+            <h1>WISHLIST</h1>
           </div>
+          <hr style={{ transform: "translateY(60px)", width: "1530px" }}></hr>
           <div className="wishlist">
             {product.map((item, idx) => {
               return (
@@ -193,7 +149,6 @@ export default function Wishlist(props) {
                       className="product-img"
                       src={item.product_image}
                       alt={item.product_name}
->>>>>>> 8d46d705dd25a7874a6d545c25a97b125574de9a
                     />
                   </div>
                   <div className="description">

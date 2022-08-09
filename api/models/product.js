@@ -144,6 +144,7 @@ class Product {
       WHERE id = ${productId}
     `
     );
+
     return results.rows;
   }
 

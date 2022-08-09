@@ -79,17 +79,20 @@ export default function ShoppingCart(props) {
 
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
   const [btnClass, setBtnClass] = useState(false);
+
   return (
     <>
       <div className="cart-banner">
         <h1>CART</h1>
       </div>
+      <hr style={{ transform: "translateY(60px)", width: "1530px" }}></hr>
       <div className="cart-page">
         <div className="shopping-cart">
           {product.map((item, idx) => {
             // console.log(item.product_image);
             // query: if product in cart, check if its in the wishlist.
             // if product is in BOTH, then make heart red
+
             return (
               <div className="item" key={idx}>
                 <div className="buttons">

@@ -8,6 +8,11 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState, useEffect } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+
+// //toast alert
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
 //import { addToWishlist } from "../../../../api/models/product";
 
 // Renders image, name, price, and category of products.
@@ -42,6 +47,19 @@ export default function ProductCard(props) {
   console.log("Key: ", props.product.id);
 
   const [btnClass, setBtnClass] = useState(false);
+
+  //notify function for the toast popup
+  // const notify = () =>
+  //   toast("🦄 Wow so easy!", {
+  //     position: "top-center",
+  //     autoClose: 5000,
+  //     hideProgressBar: true,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -71,6 +89,20 @@ export default function ProductCard(props) {
                 btnClass ? setBtnClass(false) : setBtnClass(true);
               }}
             >
+              {/* <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              /> */}
+              {/* <Alert variant="outlined" severity="info">
+                This is an info alert — check it out!
+              </Alert> */}
               {/* <FavoriteBorderIcon /> */}
               {btnClass ? (
                 <FavoriteIcon style={{ color: "#B86B77" }} />
@@ -83,6 +115,20 @@ export default function ProductCard(props) {
                 onClick={() => apiClient.addToShoppingCart(props.product.id)}
               />
             </button>
+            {/* <div>
+              <button onClick={notify}>Notify!</button>
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+            </div> */}
           </div>
         </div>
       </div>
