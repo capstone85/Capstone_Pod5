@@ -129,12 +129,13 @@ class ApiClient {
     });
   }
 
-  async addToCheckout(product_id) {
+  async addToCheckout(order_id, product_id) {
     console.log("this is product id", product_id);
+    console.log("this is order id: ", order_id);
     return await this.request({
       endpoint: `checkout`,
       method: `POST`,
-      data: { product_id: product_id },
+      data: { order_id, product_id: product_id },
     });
   }
 

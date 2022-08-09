@@ -15,6 +15,7 @@ import apiClient from "../../services/apiClient";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Checkout from "../Checkout/Checkout";
 
 export default function ShoppingCart(props) {
   //fetch data from shopping cart table
@@ -23,6 +24,8 @@ export default function ShoppingCart(props) {
   const [error, setError] = useState(null);
   let sutotal = 0;
   let taxes = 0;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -154,7 +157,14 @@ export default function ShoppingCart(props) {
             <span className="total-price">$75.00</span>
           </div>
           <div className="checkout-btn-wrapper">
-            <button className="checkout-btn">PROCEED TO CHECKOUT</button>
+            <button
+              className="checkout-btn"
+              onClick={() => {
+                navigate("/checkout");
+              }}
+            >
+              PROCEED TO CHECKOUT
+            </button>
           </div>
         </div>
       </div>
