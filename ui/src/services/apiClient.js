@@ -145,6 +145,7 @@ class ApiClient {
       endpoint: `checkout`,
       method: `POST`,
       data: { order_id, product_id: product_id },
+
     });
   }
 
