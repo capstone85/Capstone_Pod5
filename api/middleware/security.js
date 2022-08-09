@@ -12,6 +12,7 @@ const jwtFrom = ({ headers }) => {
   return undefined;
 };
 
+// storing user in res.local.users
 const extractUserFromJwt = (req, res, next) => {
   try {
     const token = jwtFrom(req);
