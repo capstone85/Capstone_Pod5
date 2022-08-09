@@ -25,7 +25,7 @@ export default function VendorNavbar(props) {
     setAnchorEl(null);
   };
   return (
-    <div className="vendor">
+    <div className="vendor navbar">
       <div className="container">
         {/* logo link */}
         <div className="logo">

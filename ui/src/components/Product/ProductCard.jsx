@@ -6,6 +6,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import apiClient from "../../services/apiClient";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState, useEffect } from "react";
+import ClearIcon from "@mui/icons-material/Clear";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 //import { addToWishlist } from "../../../../api/models/product";
 
 // Renders image, name, price, and category of products.
@@ -33,8 +35,8 @@ export default function ProductCard(props) {
   // };
   // console.log("hello product card");
   // console.log(props.product.name);
-  // console.log(props.product.description);
-  console.log(props.product.image);
+
+  const [btnClass, setBtnClass] = useState(false);
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -49,11 +51,18 @@ export default function ProductCard(props) {
         <div className="product-bottom-details">
           <div className="product-price">${props.product.price}</div>
           <div className="product-links">
-            <button>
+            <button
+              onClick={() => {
+                apiClient.addToWishlist(props.product.id);
+                btnClass ? setBtnClass(false) : setBtnClass(true);
+              }}
+            >
               {/* <FavoriteBorderIcon /> */}
-              <FavoriteBorderIcon
-                onClick={() => apiClient.addToWishlist(props.product.id)}
-              />
+              {btnClass ? (
+                <FavoriteIcon style={{ color: "#B86B77" }} />
+              ) : (
+                <FavoriteBorderIcon />
+              )}
             </button>
             <button>
               <AddShoppingCartIcon

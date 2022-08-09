@@ -28,9 +28,9 @@ export default function StoreFeed(props) {
     };
 
     fetchStores();
-  }, []);
+  }, [props.user]);
   return (
-    <div className="store-feed" style={{ transform: "translateY(-23px)" }}>
+    <div className="store-feed" style={{ transform: "translateY(-10px)" }}>
       {store.length === 0 ? (
         <div className="empty">
           <h2>Nothing here yet.</h2>
@@ -40,27 +40,27 @@ export default function StoreFeed(props) {
           const date = new Date(element.created_at);
           const enUSFormatter = new Intl.DateTimeFormat("en-US");
           const isVendor = props.user?.category === "vendor";
-            return isVendor ? (
-              <StoreCard
-                key={idx}
-                id={element.id}
-                name={element.name}
-                location={element.location}
-                description={element.description}
-                logo={element.logo}
-                created_at={enUSFormatter.format(date)}
-              ></StoreCard>
-            ) : (
-              <ShopperCard
-                key={idx}
-                id={element.id}
-                name={element.name}
-                location={element.location}
-                description={element.description}
-                logo={element.logo}
-                created_at={enUSFormatter.format(date)}
-              />
-            );
+          return isVendor ? (
+            <StoreCard
+              key={idx}
+              id={element.id}
+              name={element.name}
+              location={element.location}
+              description={element.description}
+              logo={element.logo}
+              created_at={enUSFormatter.format(date)}
+            ></StoreCard>
+          ) : (
+            <ShopperCard
+              key={idx}
+              id={element.id}
+              name={element.name}
+              location={element.location}
+              description={element.description}
+              logo={element.logo}
+              created_at={enUSFormatter.format(date)}
+            />
+          );
         })
       )}
     </div>
