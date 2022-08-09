@@ -81,7 +81,7 @@ export default function ShoppingCart(props) {
   return (
     <>
       <div className="cart-banner">
-        <h1>Cart</h1>
+        <h1>CART</h1>
       </div>
       <div className="cart-page">
         <div className="shopping-cart">

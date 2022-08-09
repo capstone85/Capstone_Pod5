@@ -120,8 +120,9 @@ export default function Wishlist(props) {
     return (
       <div className="wishlist-page">
         <div className="banner">
-          <h1>Wishlist</h1>
+          <h1>WISHLIST</h1>
         </div>
+        <hr style={{ transform: "translateY(59px)", width: "1560px" }}></hr>
         <div className="wishlist">
           {product.map((item, idx) => {
             return (
