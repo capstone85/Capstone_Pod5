@@ -1,3 +1,18 @@
 /* .content {
   color: black;
 } */
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  margin-top: 40px;
+  margin-right: 50px;
+}
+
+.add-store {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  padding: 1em;
+  border-radius: 5px;
+}

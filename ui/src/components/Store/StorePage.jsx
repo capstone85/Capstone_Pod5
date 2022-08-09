@@ -12,10 +12,10 @@ import Footer from "../Footer/Footer";
 export default function StorePage(props) {
   return (
     <div className="store-page">
-      <main>
-        <div className="banner">
-          <h1>MY STORES</h1>
-        </div>
+      <div className="banner">
+        <h1>MY STORES</h1>
+      </div>
+      <div className="store-routes">
         <Routes>
           <Route
             path="/"
@@ -35,8 +35,8 @@ export default function StorePage(props) {
             element={<StoreDetail store={props.store}></StoreDetail>}
           ></Route>
         </Routes>
-      </main>
-      <Footer></Footer>
+      </div>
+      <Footer />
     </div>
   );
 }

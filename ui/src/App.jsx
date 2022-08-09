@@ -17,22 +17,18 @@ import {
 } from "react-router-dom";
 //import {React} from "react"
 //import { AuthContextProvider, useAuthContext } from "./context/auth";
-// import Navbar from "./Components/Navbar";
-// import Home from "./Components/Home"
-// import Signup from "./Components/Signup";
-// import Login from "./Components/Login";
 import Wishlist from "./components/Wishlist/Wishlist";
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../Register/SignupPage";
 import apiClient from "./services/apiClient";
-import Navbar from "./components/Navbar/Navbar";
+import ShopperNavbar from "./components/Navbar/ShopperNavbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import Home from "./components/Home/Home";
 import StorePage from "./components/Store/StorePage";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
-import VendorNavbar from "./components/VendorNavbar/VendorNavbar";
+import VendorNavbar from "./components/Navbar/VendorNavbar";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import {
   removeFromCart,
@@ -50,7 +46,7 @@ import ProductsPage from "./components/Product/ProductsPage";
 import SearchPage from "./components/Search/SearchPage";
 import StoreNew from "./components/Store/StoreNew";
 import ProductNew from "./components/Product/ProductNew";
-import GeneralNavbar from "./components/GeneralNavbar/GeneralNavbar";
+import Navbar from "./components/Navbar";
 function App() {
   const [count, setCount] = useState(0);
   // const navigate = useNavigate();
@@ -91,8 +87,9 @@ function App() {
     let copyCart = [...cart];
     let found = false;
     copyCart.map((item, index) => {
+      // find item in DB, if exists, increment, if it doesn't exist, create
       if (item.itemId === productId) {
-        copyCart[index].quantity = copyCart[index].quantity + 1;
+        copyCart[index].quantity += 1;
         found = true;
       }
     });
@@ -101,9 +98,12 @@ function App() {
     }
     setCart(copyCart);
   };
+
   const handleRemoveItemFromCart = (productId) => {
     let copyCart = [...cart];
     copyCart.map((item, index) => {
+      // find item in DB, if doesn't exist = error, if exists and q = 1, delete.
+      // if exists, decrement.
       if (item.itemId === productId) {
         copyCart[index].quantity = copyCart[index].quantity - 1;
         if (copyCart[index].quantity == 0) {
@@ -136,6 +136,7 @@ function App() {
     };
 
     const token = localStorage.getItem("lifetracker_token");
+    console.log("TOKEN" + token);
     if (token) {
       apiClient.setToken(token);
       fetchUser();
@@ -159,17 +160,17 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <BrowserRouter>
-        <GeneralNavbar
-          handleLogout={handleLogout}
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          setIsClicked={setIsClicked}
-          user={user}
-          setUser={setUser}
-        />
-        {/* {shownavbar ? (
+    <BrowserRouter>
+      {/* <h1>{user?.email}</h1> */}
+      <Navbar
+        handleLogout={handleLogout}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setIsClicked={setIsClicked}
+        user={user}
+        setUser={setUser}
+      />
+      {/* {shownavbar ? (
           <Navbar
             handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
@@ -188,189 +189,188 @@ function App() {
           />
         )} */}
 
-        <main>
-          <Routes>
-            {/* landing page route */}
-            <Route path="/" element={<LandingPage />} />
-            {/* <Route path="/sidebar" element={<Sidebar />} /> */}
-            <Route
-              path="/store-page"
-              element={
-                <Home
-                  user={user}
-                  store={store}
-                  addToCart={handleAddItemToCart}
-                  removeFromCart={handleOnRemoveFromCart}
-                  getQuantityOfItemInCart={handleGetItemQuantity}
-                />
-              }
-            />
+      <main>
+        <Routes>
+          {/* landing page route */}
+          <Route path="/" element={<LandingPage />} />
+          {/* <Route path="/sidebar" element={<Sidebar />} /> */}
+          <Route
+            path="/store-page"
+            element={
+              <Home
+                user={user}
+                store={store}
+                addToCart={handleAddItemToCart}
+                removeFromCart={handleOnRemoveFromCart}
+                getQuantityOfItemInCart={handleGetItemQuantity}
+              />
+            }
+          />
 
-            {/* isLogin={isLogin}
+          {/* isLogin={isLogin}
                     user={user}
                     setUser={setUser}/>}/> */}
-            {/* <Route path="/AddExercise" element={ <AddExercise appState={appState}/>}/> */}
+          {/* <Route path="/AddExercise" element={ <AddExercise appState={appState}/>}/> */}
 
-            {/* login route */}
-            <Route
-              path="/login"
-              element={
-                <LoginPage
-                  isLoggedIn={isLoggedIn}
-                  isClicked={isClicked}
-                  setIsClicked={setIsClicked}
-                  setIsLoggedIn={setIsLoggedIn}
-                  user={user}
-                  setUser={setUser}
-                ></LoginPage>
-              }
-            ></Route>
+          {/* login route */}
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                isLoggedIn={isLoggedIn}
+                isClicked={isClicked}
+                setIsClicked={setIsClicked}
+                setIsLoggedIn={setIsLoggedIn}
+                user={user}
+                setUser={setUser}
+              ></LoginPage>
+            }
+          ></Route>
 
-            {/* register route */}
-            <Route
-              path="/register"
-              element={
-                <SignUpPage
-                  user={user}
-                  setUser={setUser}
-                  isLoggedIn={isLoggedIn}
-                  setIsLoggedIn={setIsLoggedIn}
-                  setIsClicked={setIsClicked}
-                ></SignUpPage>
-              }
-            ></Route>
-            {/* not found */}
-            <Route path="*" element={<NotFound />} />
+          {/* register route */}
+          <Route
+            path="/register"
+            element={
+              <SignUpPage
+                user={user}
+                setUser={setUser}
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                setIsClicked={setIsClicked}
+              ></SignUpPage>
+            }
+          ></Route>
+          {/* not found */}
+          <Route path="*" element={<NotFound />} />
 
-            <Route
-              path="/search"
-              element={
-                <SearchPage
-                  handleOnSearchbarChange={handleOnSearchbarChange}
-                  setSearchBar={setSearchbar}
-                  products={products}
-                />
-              }
-            />
-            <Route
-              path="/wishlist"
-              element={
-                <Wishlist
-                  setIsFetching={setIsFetching}
-                  isClicked={isClicked}
-                  user={user}
-                  cart={cart}
-                  error={error}
-                  setUser={setUser}
-                  products={products}
-                  searchInputValue={searchInputValue}
-                  handleOnSearchInputChange={handleOnSearchInputChange}
-                  addToCart={handleOnAddToCart}
-                  removeFromCart={handleOnRemoveFromCart}
-                  getQuantityOfItemInCart={handleGetItemQuantity}
-                  getTotalItemsInCart={handleGetTotalCartItems}
-                  isCheckingOut={isCheckingOut}
-                  handleOnCheckout={handleOnCheckout}
-                  isLoggedIn={isLoggedIn}
-                />
-              }
-            />
-            {/* My account routes */}
-            {/* main page that shows when users go to their account --> page with dashboard */}
-            <Route
-              path="/dashboard"
-              element={
-                <MyAccount
-                  handleLogout={handleLogout}
-                  isLoggedIn={isLoggedIn}
-                  setIsLoggedIn={setIsLoggedIn}
-                  setIsClicked={setIsClicked}
-                  user={user}
-                  setUser={setUser}
-                />
-              }
-            />
-            <Route path="/orders" element={<ViewOrdersPage />} />
+          <Route
+            path="/search"
+            element={
+              <SearchPage
+                handleOnSearchbarChange={handleOnSearchbarChange}
+                setSearchBar={setSearchbar}
+                products={products}
+              />
+            }
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <Wishlist
+                setIsFetching={setIsFetching}
+                isClicked={isClicked}
+                user={user}
+                cart={cart}
+                error={error}
+                setUser={setUser}
+                products={products}
+                searchInputValue={searchInputValue}
+                handleOnSearchInputChange={handleOnSearchInputChange}
+                addToCart={handleOnAddToCart}
+                removeFromCart={handleOnRemoveFromCart}
+                getQuantityOfItemInCart={handleGetItemQuantity}
+                getTotalItemsInCart={handleGetTotalCartItems}
+                isCheckingOut={isCheckingOut}
+                handleOnCheckout={handleOnCheckout}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+          {/* My account routes */}
+          {/* main page that shows when users go to their account --> page with dashboard */}
+          <Route
+            path="/dashboard"
+            element={
+              <MyAccount
+                handleLogout={handleLogout}
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                setIsClicked={setIsClicked}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
+          <Route path="/orders" element={<ViewOrdersPage />} />
 
-            <Route
-              path="/store"
-              element={
-                <StorePage
-                  store={store}
-                  addStore={addStore}
-                  user={user}
-                  setUser={setUser}
-                />
-              }
-            />
+          <Route
+            path="/store"
+            element={
+              <StorePage
+                store={store}
+                addStore={addStore}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
 
-            <Route
-              path="/store/*"
-              element={
-                <StorePage
-                  store={store}
-                  addStore={addStore}
-                  user={user}
-                  setUser={setUser}
-                />
-              }
-            />
-            <Route
-              path="/store-page/create/:storeId"
-              element={
-                <ProductNew
-                  product={product}
-                  addProduct={addProduct}
-                  user={user}
-                  setUser={setUser}
-                />
-              }
-            />
-            <Route
-              path="/store-page/:storeId"
-              element={
-                <ProductsPage
-                  // products={
-                  //   activeCategory == "All Categories" ? products : currentItems
-                  // }
-                  // activeCategory={activeCategory}
-                  handleAddItemToCart={handleAddItemToCart}
-                  handleRemoveItemFromCart={handleRemoveItemFromCart}
-                  // setActiveCategory={setActiveCategory}
-                  handleOnSearchbarChange={handleOnSearchbarChange}
-                  // categories={categories}
-                  cart={cart}
-                  setIsFetching={setIsFetching}
-                  searchbar={searchbar}
-                  setSearchbar={setSearchbar}
-                  store={store}
-                />
-              }
-            />
-            <Route
-              path="/shopping-cart"
-              element={
-                <ShoppingCart
-                  user={user}
-                  cart={cart}
-                  error={error}
-                  setUser={setUser}
-                  products={products}
-                  searchInputValue={searchInputValue}
-                  handleOnSearchInputChange={handleOnSearchInputChange}
-                  addToCart={handleAddItemToCart}
-                  removeFromCart={handleOnRemoveFromCart}
-                  getQuantityOfItemInCart={handleGetItemQuantity}
-                  getTotalItemsInCart={handleGetTotalCartItems}
-                  isCheckingOut={isCheckingOut}
-                  handleOnCheckout={handleOnCheckout}
-                />
-              }
-            />
-          </Routes>
-        </main>
-      </BrowserRouter>
-    </div>
+          <Route
+            path="/store/*"
+            element={
+              <StorePage
+                store={store}
+                addStore={addStore}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
+          <Route
+            path="/store-page/create/:storeId"
+            element={
+              <ProductNew
+                product={product}
+                addProduct={addProduct}
+                user={user}
+                setUser={setUser}
+              />
+            }
+          />
+          <Route
+            path="/store-page/:storeId"
+            element={
+              <ProductsPage
+                // products={
+                //   activeCategory == "All Categories" ? products : currentItems
+                // }
+                // activeCategory={activeCategory}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                // setActiveCategory={setActiveCategory}
+                handleOnSearchbarChange={handleOnSearchbarChange}
+                // categories={categories}
+                cart={cart}
+                setIsFetching={setIsFetching}
+                searchbar={searchbar}
+                setSearchbar={setSearchbar}
+                store={store}
+              />
+            }
+          />
+          <Route
+            path="/shopping-cart"
+            element={
+              <ShoppingCart
+                user={user}
+                cart={cart}
+                error={error}
+                setUser={setUser}
+                products={products}
+                searchInputValue={searchInputValue}
+                handleOnSearchInputChange={handleOnSearchInputChange}
+                addToCart={handleAddItemToCart}
+                removeFromCart={handleOnRemoveFromCart}
+                getQuantityOfItemInCart={handleGetItemQuantity}
+                getTotalItemsInCart={handleGetTotalCartItems}
+                isCheckingOut={isCheckingOut}
+                handleOnCheckout={handleOnCheckout}
+              />
+            }
+          />
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
 }
 
