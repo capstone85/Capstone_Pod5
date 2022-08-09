@@ -41,18 +41,24 @@ export default function Checkout(props) {
   return (
     <>
       <div className="checkout-banner">
-        <h1>Checkout</h1>
+        <h1>CHECKOUT</h1>
       </div>
       <div className="checkout">
         <div className="delivery-details">{/* delivery forms */}</div>
         <div className="your-order">
           {/* your order information */}
-          <h2>Your Order</h2>
+          <h2 style={{ margin: "10px", transform: "translateX(-10px)" }}>
+            Your Order
+          </h2>
+          <div className="order-header">
+            <p>PRODUCT</p>
+            <p>TOTAL</p>
+          </div>
           {product.map((item) => {
             return (
               <div className="product-orders">
                 <p>{item.product_name}</p>
-                <p>{item.product_price}</p>
+                <p>${item.product_price}</p>
               </div>
             );
           })}
@@ -66,7 +72,7 @@ export default function Checkout(props) {
               }
             }}
           >
-            CHECKOUT
+            PLACE ORDER
           </button>
         </div>
       </div>

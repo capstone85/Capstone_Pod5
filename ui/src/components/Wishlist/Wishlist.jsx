@@ -157,7 +157,7 @@ export default function Wishlist(props) {
                   </div>
                   <span className="price">${item.product_price}</span>
                   <div className="add-to-cart">
-                    <button>
+                    <button style={{ background: "none", border: "none" }}>
                       <AddShoppingCartIcon
                         onClick={() =>
                           apiClient.addToShoppingCart(item.product_id)
