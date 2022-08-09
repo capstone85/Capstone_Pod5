@@ -47,6 +47,9 @@ CREATE TABLE checkout (
     id          SERIAL PRIMARY KEY,
     user_id     INT NOT NULL,
     product_id  INT NOT NULL,
+    order_id    INT DEFAULT 0,
+    total       TEXT NOT NULL,
+    -- created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
 );
@@ -65,4 +68,3 @@ CREATE TABLE orders (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (checkout_id) REFERENCES checkout(id) ON DELETE CASCADE
 )
-

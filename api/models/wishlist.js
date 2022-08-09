@@ -46,6 +46,17 @@ class Wishlist {
     }
     return results.rows;
   }
+
+  static async deleteCheckoutByProductId(productId) {
+    const results = await db.query(
+      `
+            DELETE FROM checkout
+                WHERE checkout.product_id = $1
+        `,
+      [productId]
+    );
+    return results.rows;
+  }
 }
 
 module.exports = Wishlist;

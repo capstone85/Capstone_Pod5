@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Router, Routes } from "react-router-dom";
 
 export default function LocationSearchBar(props) {
+
   function geoFindMe() {
     const status = document.querySelector("#status");
     const mapLink = document.querySelector("#map-link");
@@ -36,15 +37,16 @@ export default function LocationSearchBar(props) {
   return (
     <div className="searchbar">
       <div className="searchinput">
+        {/* Search input */}
         <input
-          placeholder="Enter Zipcode"
+          placeholder="Enter your location"
           className="input"
           value={props.searchBar}
-          onChange={(event) =>
-            props.handleOnSearchBarChange(event.target.value)
-          }
+          type="text"
         />
       </div>
+
+
       <button id="find-me" onClick={geoFindMe}>
         Find Location
       </button>

@@ -4,9 +4,15 @@ const security = require("../middleware/security");
 const permissions = require("../middleware/permissions");
 const router = express.Router();
 
-router.post("/", async (req, res, next) => {
+router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
   try {
-    const checkout = await Checkout.checkout(req.body);
+    const { email } = res.locals.user;
+    const checkout = await Checkout.createCheckoutOrder({
+      productId: req.body.product_id,
+      email,
+      checkout: req.body,
+    });
+    return res.status(201).json({ checkout });
   } catch (err) {
     next(err);
   }
