@@ -8,8 +8,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import NotFound from "../NotFound/NotFound";
-import ProductView from "../ProductView/ProductView";
+import ProductView from "./ProductView";
 import Footer from "../Footer/Footer";
+
+import CircularProgress from "@mui/material/CircularProgress";
 
 // Fetches data from API, renders loading page, retrieves product description
 export default function ProductDetail(props) {
@@ -39,34 +41,36 @@ export default function ProductDetail(props) {
   if (props.isFetching) {
     return (
       <div className="loading">
-        <h1>Loading...</h1>
+        <h1>
+          <CircularProgress color="secondary" />
+        </h1>
       </div>
     );
-  } else {
-    const currItem = props.shoppingCart.find((item) => {
-      return item.itemId == productId;
-    });
-
-    if (typeof currItem != "undefined") {
-      quantity = currItem.quantity;
-    }
-
-    return (
-      <>
-        <div className="product-detail">
-          <ProductView
-            product={product}
-            productId={productId}
-            quantity={quantity}
-            handleAddItemToCart={props.handleAddItemToCart}
-            handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-            setIsFetching={props.setIsFetching}
-          />
-        </div>
-        <div className="footer">
-          <Footer />
-        </div>
-      </>
-    );
   }
+  // } else {
+  //   const currItem = props.shoppingCart.find((item) => {
+  //     return item.itemId == productId;
+  //   });
+
+  if (typeof currItem != "undefined") {
+    quantity = currItem.quantity;
+  }
+
+  return (
+    <>
+      <div className="product-detail">
+        <ProductView
+          product={product}
+          // name={product.name}
+          // description={product.description}
+          productId={productId}
+          quantity={quantity}
+          handleAddItemToCart={props.handleAddItemToCart}
+          handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+          setIsFetching={props.setIsFetching}
+        />
+      </div>
+      <Footer />
+    </>
+  );
 }

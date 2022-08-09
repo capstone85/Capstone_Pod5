@@ -30,7 +30,11 @@ import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
 import VendorNavbar from "./components/Navbar/VendorNavbar";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+
+import ProductDetail from "./components/Product/ProductDetail";
+
 import Checkout from "./components/Checkout/Checkout";
+
 import {
   removeFromCart,
   addToCart,
@@ -47,6 +51,7 @@ import ProductsPage from "./components/Product/ProductsPage";
 import SearchPage from "./components/Search/SearchPage";
 import StoreNew from "./components/Store/StoreNew";
 import ProductNew from "./components/Product/ProductNew";
+import ProductView from "./components/Product/ProductView";
 import Navbar from "./components/Navbar";
 function App() {
   const [count, setCount] = useState(0);
@@ -317,6 +322,7 @@ function App() {
               />
             }
           />
+          {/* creating a new product for specific store  */}
           <Route
             path="/store-page/create/:storeId"
             element={
@@ -328,6 +334,7 @@ function App() {
               />
             }
           />
+          {/* product page for specific store  */}
           <Route
             path="/store-page/:storeId"
             element={
@@ -349,6 +356,30 @@ function App() {
               />
             }
           />
+
+          {/* Specific product based on id */}
+          <Route
+            path="/products/:productId"
+            element={
+              <ProductView
+                //  handleAddItemToCart={handleAddItemToCart}
+                //  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                //  shoppingCart={shoppingCart}
+                //  isOpen={isOpen}
+                products={products}
+                user={user}
+                store={store}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+                // handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                // handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                // handleOnToggle={handleOnToggle}
+                // checkoutForm={checkoutForm}
+                // subtotal={subtotal}
+                // cartSize={shoppingCart.length}
+              />
+            }
+          ></Route>
           <Route
             path="/shopping-cart"
             element={
@@ -373,6 +404,7 @@ function App() {
         </Routes>
       </main>
     </BrowserRouter>
+    // </div>
   );
 }
 

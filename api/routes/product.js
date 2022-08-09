@@ -56,7 +56,6 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-
 router.get("/store/:storeId", async (req, res, next) => {
   try {
     const { storeId } = req.params;

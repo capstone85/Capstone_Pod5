@@ -168,8 +168,8 @@ export default function ShoppingCart(props) {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }

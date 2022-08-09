@@ -1,8 +1,74 @@
-.product-view {
+.product-view-page {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin: auto;
-  flex-direction: column;
+  /* margin: auto; */
+  /* flex-direction: row; */
+}
+.product-view-page .productDescription {
+  display: inline-block;
+}
+
+/* image */
+.product-view-page .image {
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  text-decoration: none;
+  transform: translateY(100px);
+}
+.product-view-page .product-image {
+  height: auto;
+  width: 400px;
+  text-decoration: none;
+  /* height: 450px;
+  width: 450px;
+  transform: translateY(50px) translateX(130px);
+  display: flex; */
+  /* float: left;
+  width: 200px;
+  height: 200px;
+  object-fit: scale-down; */
+  /* object-fit: cover; */
+}
+
+/* product name  */
+.product-view-page .name {
+  font-family: "DM Serif Display", serif;
+  margin-bottom: 20px;
+}
+
+/* product price */
+.product-view-page .price {
+  margin-bottom: 10px;
+}
+
+/* store name */
+/* .product-view-page .storeName {
+  transform: translateX(-30px) translateY(-60px);
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+} */
+
+/* product description */
+.product-view-page .description {
+  color: gray;
+}
+
+/* category  */
+.product-view-page .category {
+  font-size: 16px;
+  transform: translateY(265px) translateX(-498px);
+}
+
+/* add to cart button */
+.product-view-page .addToCartButton {
+  transform: translateY(190px) translateX(-300px);
+}
+
+.product-view-page .waitlistButton {
+  transform: translateY(-120px);
 }

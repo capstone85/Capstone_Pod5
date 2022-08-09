@@ -46,8 +46,9 @@ export default function ProductsPage(props) {
         .then((response) => {
           console.log(response.data.product);
           setProduct(response.data.product);
+
           props.setIsFetching(false);
-          console.log("products:" + product[0].name);
+          //console.log("products:" + product);
         })
         .catch((error) => {
           <NotFound />;
