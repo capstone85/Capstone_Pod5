@@ -129,20 +129,8 @@ class ApiClient {
     });
   }
 
-  async addToCheckout(order_id, product_id) {
-    console.log("this is product id", product_id);
-    console.log("this is order id: ", order_id);
-    return await this.request({
-      endpoint: `checkout`,
-      method: `POST`,
-      data: { order_id, product_id: product_id },
-    });
-  }
-
   async fetchUserFromToken() {
-    const res = await this.request({ endpoint: `auth/me`, method: `GET` });
-    console.log(res);
-    return res;
+    return await this.request({ endpoint: `auth/me`, method: `GET` });
   }
 
   async loginUser(credentials) {
