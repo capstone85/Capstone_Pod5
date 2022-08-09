@@ -3,7 +3,7 @@ import "./ProductsPage.css";
 import ProductGrid from "./ProductGrid";
 import SearchBar from "../Search/Searchbar";
 import Selector from "./Filter";
-import Navbar from "../Navbar/Navbar";
+import ShopperNavbar from "../Navbar/ShopperNavbar";
 import { Card } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import { sizing } from "@mui/system";

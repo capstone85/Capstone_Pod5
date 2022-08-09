@@ -113,7 +113,7 @@ export default function SignUp(props) {
     }
     if (data?.user) {
       props.setUser(data.user);
-      apiClient.setToken(data.user.token);
+      apiClient.setToken(data.token);
       if (form.category == "vendor") {
         navigate("/store");
       } else {
