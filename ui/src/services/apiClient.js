@@ -129,13 +129,14 @@ class ApiClient {
     });
   }
 
-
   async listProduct(productId) {
     console.log("list product in apiclient is called", productId.productId);
     return await this.request({
       endpoint: `product/${productId.productId}`,
       method: `GET`,
       data: { productId: productId.productId },
+    });
+  }
 
   async addToCheckout(order_id, product_id) {
     console.log("this is product id", product_id);
@@ -149,9 +150,7 @@ class ApiClient {
   }
 
   async fetchUserFromToken() {
-    const res = await this.request({ endpoint: `auth/me`, method: `GET` });
-    console.log(res);
-    return res;
+    return await this.request({ endpoint: `auth/me`, method: `GET` });
   }
 
   async loginUser(credentials) {

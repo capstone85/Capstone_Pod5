@@ -1,16 +1,19 @@
 .footer {
   bottom: 0%;
-  position: absolute;
-  padding-top: 30px;
+  /* position: absolute; */
+  /* padding-top: 50px; */
   padding-bottom: 70px;
+  background-color: white;
   color: black;
-  transform: translateY(100vh);
+  transform: translateY(45vh);
+  /* height: 200px; */
+  /* padding: top; */
 }
 
 hr {
   background-color: black;
   height: 1px;
-  width: 1260px;
+  width: 100vh;
   border: none;
 }
 

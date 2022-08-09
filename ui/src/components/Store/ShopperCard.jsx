@@ -14,7 +14,7 @@ export default function ShopperCard(props) {
   const button = styled(Button)(spacing);
 
   return (
-    <Card sx={{ maxWidth: 900 }} className="store-card">
+    <Card sx={{ maxHeight: 800, maxWidth: 900 }} className="store-card">
       <CardMedia
         component="img"
         height="350"
@@ -47,7 +47,7 @@ export default function ShopperCard(props) {
         </Typography>
       </CardContent>
       {/* {props.form.category === "vendor" ? ( */}
-      <div className="buttons">
+      <div className="shopper-card-buttons">
         <CardActions>
           <div className="store-btn">
             <Link

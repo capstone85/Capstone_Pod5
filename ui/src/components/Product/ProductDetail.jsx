@@ -70,9 +70,7 @@ export default function ProductDetail(props) {
           setIsFetching={props.setIsFetching}
         />
       </div>
-      <div className="footer">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }
