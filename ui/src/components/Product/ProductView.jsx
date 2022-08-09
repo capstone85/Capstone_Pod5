@@ -65,7 +65,7 @@ export default function ProductView() {
               <b style={{ color: "black" }}>Style from </b> {store_name}
             </p>
 
-            <p className="description">{description}</p>
+            <p className="Product-Description">{description}</p>
           </div>
 
           <div className="addToCartButton">

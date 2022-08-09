@@ -22,6 +22,9 @@ import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+//badge for the shopping cart icon
+import Badge from "@mui/material/Badge";
+
 export default function ShopperNavbar(props) {
   const [showbutton, setshowbutton] = useState(false);
   const navigate = useNavigate();
@@ -127,7 +130,9 @@ export default function ShopperNavbar(props) {
         <li>
           <Tooltip title="Shopping Cart">
             <Link to="/shopping-cart">
+              {/* <Badge color="info" badgeContent={5}> */}
               <ShoppingCartOutlinedIcon />
+              {/* </Badge> */}
             </Link>
           </Tooltip>
         </li>

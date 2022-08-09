@@ -223,7 +223,10 @@ export default function SignUp(props) {
               />
               {/* visibility button for password */}
               <div className="visibilityButton">
-                <button onClick={togglePassword}>
+                <button
+                  onClick={togglePassword}
+                  style={{ background: "none", border: "none" }}
+                >
                   {passwordShown ? (
                     <Visibility></Visibility>
                   ) : (
