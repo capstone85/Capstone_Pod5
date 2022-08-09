@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 //input boxes
 import TextField from "@mui/material/TextField";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 // add store page form
 export default function StoreForm(props) {
   const navigate = useNavigate();
@@ -42,7 +44,7 @@ export default function StoreForm(props) {
   };
   return (
     <div className="store-form">
-      <hr style={{ transform: "translateY(40px)" }}></hr>
+      <hr style={{ transform: "translateY(60px)", width: "1530px" }}></hr>
       <h2>Add Store</h2>
 
       <form className="inputs">
@@ -141,7 +143,7 @@ export default function StoreForm(props) {
         disabled={isLoading}
         onClick={handleOnSubmit}
       >
-        {isLoading ? "Loading..." : "Save"}
+        {isLoading ? <CircularProgress color="secondary" /> : "Save"}
       </button>
     </div>
   );

@@ -30,7 +30,7 @@
   flex: 1 1;
   max-width: 650px;
   gap: 30px;
-  transform: translateX(-130px);
+  transform: translateX(-5px);
   color: black;
 }
 

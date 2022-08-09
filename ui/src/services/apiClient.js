@@ -129,6 +129,14 @@ class ApiClient {
     });
   }
 
+
+  async listProduct(productId) {
+    console.log("list product in apiclient is called", productId.productId);
+    return await this.request({
+      endpoint: `product/${productId.productId}`,
+      method: `GET`,
+      data: { productId: productId.productId },
+
   async addToCheckout(order_id, product_id) {
     console.log("this is product id", product_id);
     console.log("this is order id: ", order_id);
@@ -136,6 +144,7 @@ class ApiClient {
       endpoint: `checkout`,
       method: `POST`,
       data: { order_id, product_id: product_id },
+
     });
   }
 
