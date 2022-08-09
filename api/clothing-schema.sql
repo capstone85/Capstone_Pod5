@@ -48,7 +48,6 @@ CREATE TABLE checkout (
     user_id     INT NOT NULL,
     product_id  INT NOT NULL,
     order_id    INT DEFAULT 0,
-    total       TEXT NOT NULL,
     -- created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
@@ -61,10 +60,3 @@ CREATE TABLE wishlist (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
 );
-
-CREATE TABLE orders (
-    user_id     INT NOT NULL,
-    checkout_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (checkout_id) REFERENCES checkout(id) ON DELETE CASCADE
-)
