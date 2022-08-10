@@ -146,6 +146,7 @@ class Product {
     `,
       [userId, productId]
     );
+
     return results.rows;
   }
 

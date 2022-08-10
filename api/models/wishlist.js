@@ -72,8 +72,8 @@ class Wishlist {
   static async deleteCheckoutByProductId(productId) {
     const results = await db.query(
       `
-            DELETE FROM checkout
-                WHERE checkout.product_id = $1
+            DELETE FROM wishlist
+                WHERE wishlist.product_id = $1
         `,
       [productId]
     );

@@ -10,12 +10,27 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     const checkout = await Checkout.createCheckoutOrder({
       productId: req.body.product_id,
       email,
-      checkout: req.body,
+      confirmation: req.body.confirmation,
     });
     return res.status(201).json({ checkout });
   } catch (err) {
     next(err);
   }
 });
+
+router.get(
+  "/:orderId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { orderId } = req.params;
+      const products = await Checkout.fetchCheckoutByOrderId(orderId);
+      return res.status(200).json({ products });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 
 module.exports = router;

@@ -30,11 +30,10 @@ import Footer from "./components/Footer/Footer";
 import { AuthContextProvider, useAuthContext } from "./context/auth";
 import VendorNavbar from "./components/Navbar/VendorNavbar";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-
+import Confirmation from "./components/Confirmation/Confirmation";
 import ProductDetail from "./components/Product/ProductDetail";
 
 import Checkout from "./components/Checkout/Checkout";
-
 import {
   removeFromCart,
   addToCart,
@@ -401,6 +400,11 @@ function App() {
             }
           />
           <Route path="/checkout" element={<Checkout user={user} />}></Route>
+
+          <Route
+            path="/confirmation/:confirmation"
+            element={<Confirmation user={user} />}
+          ></Route>
         </Routes>
       </main>
     </BrowserRouter>
