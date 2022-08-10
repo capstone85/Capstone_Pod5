@@ -69,6 +69,26 @@ class ShoppingCart {
     }
     return results.rows;
   }
+
+  static async deleteShoppingCart(user_id) {
+    const results = await db.query(
+      `
+        DELETE FROM shoppingCart
+        WHERE shoppingCart.user_id = $1
+        `,
+      [user_id]
+    );
+  }
+
+  static async deleteShoppingCartByProductId(product_id) {
+    const results = await db.query(
+      `
+        DELETE FROM shoppingCart
+        WHERE shoppingCart.product_id = $1
+        `,
+      [product_id]
+    );
+  }
 }
 
 module.exports = ShoppingCart;

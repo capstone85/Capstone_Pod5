@@ -120,6 +120,19 @@ class ApiClient {
       method: `GET`,
     });
   }
+  async deleteShoppingCart(userId) {
+    return await this.request({
+      endpoint: `shoppingCart/${userId}`,
+      method: `DELETE`,
+    });
+  }
+
+  async deleteShoppingCartByProductId(productId) {
+    return await this.request({
+      endpoint: `shoppingCart/product/${productId}`,
+      method: `DELETE`,
+    });
+  }
 
   async addToShoppingCart(product_id) {
     return await this.request({
@@ -153,6 +166,14 @@ class ApiClient {
       endpoint: `checkout`,
       method: `POST`,
       data: { confirmation: confirmation, product_id: product_id },
+    });
+  }
+
+  async listCheckoutByOrderId(orderId) {
+    return await this.request({
+      endpoint: `checkout/${orderId}`,
+      method: `GET`,
+      data: orderId,
     });
   }
 

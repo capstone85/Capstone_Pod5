@@ -74,6 +74,7 @@ export default function Checkout(props) {
             className="checkout-btn"
             onClick={() => {
               checkoutProducts();
+              apiClient.deleteShoppingCart(props.user.id);
               navigate("/confirmation/" + confirmationNum);
             }}
           >
