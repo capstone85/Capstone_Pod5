@@ -29,7 +29,9 @@ export default function VendorNavbar(props) {
       <div className="container">
         {/* logo link */}
         <div className="logo">
-          <Link to="/store">🧽</Link>
+          <Link to="/store" style={{ color: "white" }}>
+            CLASSY BABES
+          </Link>
         </div>
         {/* vender links */}
         <ul className="vendor-links">

@@ -51,7 +51,9 @@ export default function ShopperNavbar(props) {
     <div className="navbar shopper">
       {/* logo link*/}
       <div className="logo">
-        <Link to="/">🧽</Link>
+        <Link to="/" style={{ color: "white" }}>
+          CLASSY BABES
+        </Link>
       </div>
 
       {/* navbar links */}
