@@ -32,7 +32,7 @@ ul.categories {
 
 .product-grid-container {
   width: 80%;
-  height: 400px;
+  height: auto;
   margin-left: auto;
   margin-top: 20px;
   color: black;
