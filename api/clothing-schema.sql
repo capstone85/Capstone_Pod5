@@ -13,6 +13,7 @@ CREATE TABLE store (
     id          SERIAL PRIMARY KEY,
     name        TEXT NOT NULL,
     location    TEXT NOT NULL,
+    zipcode INT NOT NULL,
     logo        TEXT NOT NULL,
     description TEXT NOT NULL,
     user_id     INT NOT NULL,

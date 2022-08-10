@@ -17,6 +17,7 @@ export default function StoreForm(props) {
   const [form, setForm] = useState({
     name: "",
     location: "",
+    zipcode: "",
     logo: "",
     description: "",
   });
@@ -29,6 +30,7 @@ export default function StoreForm(props) {
     const { data, error } = await apiClient.createStore({
       name: form.name,
       location: form.location,
+      zipcode: form.zipcode,
       logo: form.logo,
       description: form.description,
     });
@@ -36,7 +38,13 @@ export default function StoreForm(props) {
       setErrors(error);
     }
     if (data) {
-      setForm({ name: "", location: "", logo: "", description: "" });
+      setForm({
+        name: "",
+        location: "",
+        zipcode: "",
+        logo: "",
+        description: "",
+      });
       props.addStore(data.store);
       navigate("/store");
     }
@@ -80,6 +88,7 @@ export default function StoreForm(props) {
             value={form.location}
             onChange={handleOnInputChange}
           />
+        
           {/* <label for="location">Location</label>
           <input
             type="text"
@@ -89,6 +98,18 @@ export default function StoreForm(props) {
             onChange={handleOnInputChange}
           /> */}
           {errors.location && <span className="error">{errors.location}</span>}
+        </div>
+        <div className="form-input">
+        <TextField
+            id="standard-basic"
+            label="Store zipcode*"
+            variant="standard"
+            type="integer"
+            name="zipcode"
+            placeholder="Store zipcode"
+            value={form.zipcode}
+            onChange={handleOnInputChange}
+          />
         </div>
         <div className="split-form-input">
           <div className="form-input">
