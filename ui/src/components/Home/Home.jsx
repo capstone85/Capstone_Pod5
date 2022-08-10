@@ -22,7 +22,6 @@ export default function Home(props) {
         setError(error);
       }
       if (data) {
-        console.log("data", data);
         setStore(data.stores);
       }
       setIsFetching(false);

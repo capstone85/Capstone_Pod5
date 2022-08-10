@@ -14,7 +14,7 @@ import ShopperNavbar from "./ShopperNavbar";
 export default function Navbar(props) {
   const isVendor = props.user?.category === "vendor";
   useEffect(() => {
-    console.log(props.user);
+    // console.log(props.user);
   }, [props.user]);
   return isVendor ? (
     <VendorNavbar

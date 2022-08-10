@@ -15,14 +15,14 @@ export default function ProductGrid(props) {
   // }
   return (
     <div className="product-grid">
-      {props.product.map((item) => {
+      {props.product.map((item, idx) => {
         if (
           item.name.toLowerCase().includes(props.searchbar.toLowerCase()) ||
           item.category.toLowerCase().includes(props.searchbar.toLowerCase())
         ) {
           foundSearch = true;
           return (
-            <div>
+            <div key={idx}>
               <ProductCard
                 key={item.id}
                 // category={item.category}
@@ -34,7 +34,6 @@ export default function ProductGrid(props) {
                 // storeId={curr.id}
                 // products={props.products}
                 // quantity={quantity}
-                //  addToCart={() => addToCart(product)}
                 addToCart={props.handleAddItemToCart}
                 handleRemoveItemFromCart={props.handleRemoveItemFromCart}
                 setIsFetching={props.setIsFetching}
@@ -97,30 +96,5 @@ export default function ProductGrid(props) {
     // ) {
     //   foundSearch = true;
     //   console.log("hi" + props.product);
-    //   return (
-    //     <ProductCard
-    //       key={idx}
-    //       category={currProduct.category}
-    //       description={currProduct.description}
-    //       showDescription={false}
-    //       image={currProduct.image}
-    //       name={currProduct.name}
-    //       price={currProduct.price}
-    //       storeId={curr.id}
-    //       products={props.products}
-    //       quantity={quantity}
-    //       handleAddItemToCart={props.handleAddItemToCart}
-    //       handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-    //       setIsFetching={props.setIsFetching}
-    //       product={props.product}
-    //     />
-    //   );
-    // }
-    //     })}
-    //     <div className="none-found">
-    //       {!foundSearch ? <h1>No products available.</h1> : null}
-    //     </div>
-    //   </div>
-    // </>
   );
 }
