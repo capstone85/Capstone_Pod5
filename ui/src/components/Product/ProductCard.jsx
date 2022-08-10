@@ -96,8 +96,11 @@ export default function ProductCard(props) {
             <button
               onClick={async () => {
                 const a = await apiClient.checkIfInCart(props.product.id);
-                const isInCart = a.data.isInCart;
+                console.log("THIS IS A", a);
+                const isInCart = a.data.isInShoppingCart;
+                console.log("THIS IS A", isInCart);
                 if (isInCart) {
+                  // intsead of null, call apiClient.incrementQuantity
                   null;
                 } else {
                   setBtnClassCart(true);
