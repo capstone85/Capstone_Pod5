@@ -114,7 +114,9 @@ export default function ShoppingCart(props) {
               <div className="item" key={idx}>
                 <div className="buttons">
                   <span className="delete-btn">
-                    <ClearIcon />
+                    <ClearIcon
+                      onClick={() => apiClient.removeFromCart(item.product_id)}
+                    />
                   </span>
                   <span
                     className="like-btn"
