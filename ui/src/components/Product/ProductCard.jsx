@@ -36,18 +36,9 @@ export default function ProductCard(props) {
   // };
   // console.log("hello product card");
   // console.log(props.product.name);
-  const isInWishlist = false;
-
-  async () => {
-    const a = await apiClient.checkIfInWishlist(props.product.id);
-    isInWishlist = a.data.isInWishlist;
-  };
-
   const [btnClass, setBtnClass] = useState(false);
 
   let navigate = useNavigate();
-
-  console.log("Key: ", props.product.id);
 
   //notify function for the toast popup
   // const notify = () =>
@@ -60,10 +51,6 @@ export default function ProductCard(props) {
   //     draggable: true,
   //     progress: undefined,
   //   });
-  if (isInWishlist) {
-    setBtnClass(true);
-  }
-
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -88,6 +75,8 @@ export default function ProductCard(props) {
           <div className="product-links">
             <button
               onClick={async () => {
+                const a = await apiClient.checkIfInWishlist(props.product.id);
+                const isInWishlist = a.data.isInWishlist;
                 if (isInWishlist) {
                   null;
                 } else {
