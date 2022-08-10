@@ -36,7 +36,8 @@ export default function ProductCard(props) {
   // };
   // console.log("hello product card");
   // console.log(props.product.name);
-  const [btnClass, setBtnClass] = useState(false);
+  const [btnClassWishlist, setBtnClassWishlist] = useState(false);
+  const [btnClassCart, setBtnClassCart] = useState(false);
 
   let navigate = useNavigate();
 
@@ -80,22 +81,36 @@ export default function ProductCard(props) {
                 if (isInWishlist) {
                   null;
                 } else {
-                  setBtnClass(true);
+                  setBtnClassWishlist(true);
                   apiClient.addToWishlist(props.product.id);
                 }
               }}
             >
               {/* <FavoriteBorderIcon /> */}
-              {btnClass ? (
+              {btnClassWishlist ? (
                 <FavoriteIcon style={{ color: "#B86B77" }} />
               ) : (
                 <FavoriteBorderIcon />
               )}
             </button>
-            <button>
-              <AddShoppingCartIcon
-                onClick={() => apiClient.addToShoppingCart(props.product.id)}
-              />
+            <button
+              onClick={async () => {
+                const a = await apiClient.checkIfInCart(props.product.id);
+                const isInCart = a.data.isInCart;
+                if (isInCart) {
+                  null;
+                } else {
+                  setBtnClassCart(true);
+                  apiClient.addToShoppingCart(props.product.id);
+                }
+              }}
+            >
+              {/* <FavoriteBorderIcon /> */}
+              {btnClassCart ? (
+                <AddShoppingCartIcon style={{ color: "#B86B77" }} />
+              ) : (
+                <AddShoppingCartIcon />
+              )}
             </button>
           </div>
         </div>

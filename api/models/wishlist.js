@@ -69,7 +69,7 @@ class Wishlist {
     }
   }
 
-  static async deleteCheckoutByProductId(productId) {
+  static async deleteWishlistByProductId(productId) {
     const results = await db.query(
       `
             DELETE FROM wishlist
