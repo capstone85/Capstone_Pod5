@@ -22,6 +22,7 @@ export default function ShoppingCart(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
+
   let subtotal = 0;
   let deliveryFee = 10;
   let taxRate = 1.08;
@@ -83,6 +84,7 @@ export default function ShoppingCart(props) {
 
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
   const [btnClass, setBtnClass] = useState(false);
+  const deleted = false;
 
   return (
     <>
@@ -113,13 +115,28 @@ export default function ShoppingCart(props) {
             return (
               <div className="item" key={idx}>
                 <div className="buttons">
-                  <span className="delete-btn">
+                  <span
+                    className="delete-btn"
+                    onClick={() => {
+                      apiClient.removeFromCart(item.product_id);
+                      window.location.href = "";
+                    }}
+                  >
                     <ClearIcon />
                   </span>
                   <span
                     className="like-btn"
-                    onClick={() => {
-                      btnClass ? setBtnClass(false) : setBtnClass(true);
+                    onClick={async () => {
+                      const a = await apiClient.checkIfInWishlist(
+                        item.product_id
+                      );
+                      const isInWishlist = a.data.isInWishlist;
+                      if (isInWishlist) {
+                        null;
+                      } else {
+                        setBtnClass(true);
+                        apiClient.addToWishlist(item.product_id);
+                      }
                     }}
                   >
                     {" "}
