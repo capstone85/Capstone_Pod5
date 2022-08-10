@@ -48,18 +48,31 @@ export default function Checkout(props) {
   return (
     <>
       <div className="checkout-banner">
-        <h1>Checkout</h1>
+        <h1>CHECKOUT</h1>
       </div>
       <div className="checkout">
         <div className="delivery-details">{/* delivery forms */}</div>
         <div className="your-order">
           {/* your order information */}
-          <h2>Your Order</h2>
+          <h2 style={{ margin: "10px", transform: "translateX(-10px)" }}>
+            Your Order
+          </h2>
+          <div className="order-header">
+            <p>PRODUCT</p>
+            <div className="total-header">
+              <p>TOTAL</p>
+            </div>
+          </div>
           {product.map((item) => {
             return (
               <div className="product-orders">
                 <p>{item.product_name}</p>
-                <p>{item.product_price}</p>
+                <div
+                  className="item-product-price"
+                  style={{ transform: "translateX(500px)" }}
+                >
+                  <p>${item.product_price}</p>
+                </div>
               </div>
             );
           })}
@@ -68,10 +81,11 @@ export default function Checkout(props) {
             className="checkout-btn"
             onClick={() => {
               checkoutProducts();
+              apiClient.deleteShoppingCart(props.user.id);
               navigate("/confirmation/" + confirmationNum);
             }}
           >
-            CHECKOUT
+            PLACE ORDER
           </button>
         </div>
       </div>

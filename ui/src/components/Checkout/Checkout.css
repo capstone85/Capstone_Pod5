@@ -1,0 +1,22 @@
+.checkout-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-banner h1 {
+  font-family: "DM Serif Display", serif;
+  transform: translateY(30px);
+}
+
+.checkout {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  transform: translateY(50px) translateX(-300px);
+}
+
+/* moving total header to be right next to the product header */
+.checkout .your-order .total-header {
+  transform: translateX(500px) translateY(-35px);
+}

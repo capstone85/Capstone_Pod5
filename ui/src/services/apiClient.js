@@ -75,6 +75,15 @@ class ApiClient {
     });
   }
 
+  async listProduct(productId) {
+    console.log("list product in apiclient is called", productId.productId);
+    return await this.request({
+      endpoint: `product/${productId.productId}`,
+      method: `GET`,
+      data: { productId: productId.productId },
+    });
+  }
+
   async listProducts(store_id) {
     return await this.request({
       endpoint: `:storeId/product`,
@@ -98,12 +107,20 @@ class ApiClient {
     });
   }
 
+  /* * * * WISHLIST HTTP REQUESTS * * * */
   async addToWishlist(product_id) {
-    console.log("this is product id", product_id);
+    // console.log("this is product id", product_id);
     return await this.request({
-      endpoint: `wishlist`,
+      endpoint: `product/wishlist/${product_id}`,
       method: `POST`,
       data: { product_id: product_id },
+    });
+  }
+
+  async removeFromWishlist(productId) {
+    return await this.request({
+      endpoint: `wishlist/delete/${productId}`,
+      method: `DELETE`,
     });
   }
 
@@ -111,7 +128,51 @@ class ApiClient {
     return await this.request({
       endpoint: `wishlist/${userId}`,
       method: `GET`,
-      data: userId,
+    });
+  }
+
+  async checkIfInWishlist(product_id) {
+    console.log("product id in apiclient", product_id);
+    return await this.request({
+      endpoint: `wishlist/product/${product_id}`,
+      method: `GET`,
+    });
+  }
+
+  /* * * * SHOPPING CART HTTP REQUESTS * * * */
+  async deleteShoppingCart(userId) {
+    return await this.request({
+      endpoint: `shoppingCart/${userId}`,
+      method: `DELETE`,
+    });
+  }
+
+  async checkIfInCart(product_id) {
+    console.log("product id in apiclient", product_id);
+    return await this.request({
+      endpoint: `shoppingCart/product/${product_id}`,
+      method: `GET`,
+    });
+  }
+
+  async incrementProductQuantity(productId) {
+    return await this.request({
+      endpoint: `shoppingCart/product/${productId}`,
+      method: `PUT`,
+    });
+  }
+
+  async decrementProductQuantity(productId) {
+    return await this.request({
+      endpoint: `shoppingCart/product/${productId}`,
+      method: `PUT`,
+    });
+  }
+
+  async removeFromCart(productId) {
+    return await this.request({
+      endpoint: `shoppingCart/delete/${productId}`,
+      method: `DELETE`,
     });
   }
 
@@ -131,14 +192,7 @@ class ApiClient {
     });
   }
 
-  async listProduct(productId) {
-    console.log("list product in apiclient is called", productId.productId);
-    return await this.request({
-      endpoint: `product/${productId.productId}`,
-      method: `GET`,
-      data: { productId: productId.productId },
-    });
-  }
+  /* * CHECKOUT HTTP REQUESTS * */
   async addToCheckout(confirmation, product_id) {
     console.log("this is product id", product_id);
     console.log("this is confirmation ", confirmation);
@@ -146,6 +200,14 @@ class ApiClient {
       endpoint: `checkout`,
       method: `POST`,
       data: { confirmation: confirmation, product_id: product_id },
+    });
+  }
+
+  async listCheckoutByOrderId(orderId) {
+    return await this.request({
+      endpoint: `checkout/${orderId}`,
+      method: `GET`,
+      data: orderId,
     });
   }
 

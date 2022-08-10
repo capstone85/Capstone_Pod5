@@ -22,7 +22,7 @@ export default function ProductGrid(props) {
         ) {
           foundSearch = true;
           return (
-            <div>
+            <>
               <ProductCard
                 key={item.id}
                 // category={item.category}
@@ -66,7 +66,7 @@ export default function ProductGrid(props) {
                   <p>{item.description}</p>
                 </div>
               </div> */}
-            </div>
+            </>
           );
         }
       })}

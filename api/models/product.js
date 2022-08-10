@@ -1,3 +1,5 @@
+/* move wishlist stuff to wishlist route/models*/
+
 const db = require("../db");
 const { BadRequestError, NotFoundError } = require("../utils/errors");
 
@@ -136,14 +138,15 @@ class Product {
     return results.rows;
   }
 
-  static async addToWishlist(productId) {
+  static async addToWishlist(userId, productId) {
     const results = await db.query(
       `
-      UPDATE product 
-      SET wishlist = TRUE 
-      WHERE id = ${productId}
-    `
+      INSERT INTO wishlist (user_id, product_id)
+      VALUES ($1, $2)
+    `,
+      [userId, productId]
     );
+
     return results.rows;
   }
 

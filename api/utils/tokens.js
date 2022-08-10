@@ -7,6 +7,7 @@ const generateToken = (data) =>
 const createUserJwt = (user) => {
   const payload = {
     email: user.email,
+    id: user.id,
   };
   return generateToken(payload);
 };

@@ -16,9 +16,8 @@ export default function Confirmation(props) {
     const fetchProducts = async () => {
       if (!(Object.keys(props.user).length === 0)) {
         setIsFetching(true);
-
-        const { data, error } = await apiClient.listAllShoppingCart(
-          props.user.id
+        const { data, error } = await apiClient.listCheckoutByOrderId(
+          confirmation
         );
         if (error) {
           setError(error);
@@ -35,45 +34,23 @@ export default function Confirmation(props) {
     fetchProducts();
   }, [props.user]);
 
-
-
-  //   useEffect(() => {
-  //     const fetchProducts = async () => {
-  //       if (!(Object.keys(props.user).length === 0)) {
-  //         setIsFetching(true);
-  //         const { data, error } = await apiClient.listCheckoutByOrderId(
-  //           confirmation
-  //         );
-  //         if (error) {
-  //           setError(error);
-  //         }
-  //         if (data) {
-  //           // console.log("data", data);
-  //           // console.log("This is data.products" + data.products);
-  //           setProduct(data.products);
-  //         }
-  //         setIsFetching(false);
-  //       }
-  //     };
-
-  //     fetchProducts();
-  //   }, [props.user]);
-
   return (
-    <>
+    <div className="confirmation">
+      <h1>Order Details</h1>
+      <div className="order-confirmation">
+        <h2>&#10004; We've received your order</h2>
+      </div>
       <div className="order-details">
-        <h2>Order Details</h2>
-        {/* {product.map((item) => {
-          apiClient.addToCheckout(confirmation, item.product_id);
+        <p>Confirmation Number: {confirmation}</p>
+        {product.map((item) => {
           return (
             <div className="product-orders">
               <p>{item.product_name}</p>
               <p>{item.product_price}</p>
             </div>
           );
-        })} */}
-        <p>Confirmation Number: {confirmation}</p>
+        })}
       </div>
-    </>
+    </div>
   );
 }
