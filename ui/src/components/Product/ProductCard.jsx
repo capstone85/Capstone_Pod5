@@ -8,6 +8,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState, useEffect } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // //toast alert
 // import { ToastContainer, toast } from "react-toastify";
@@ -38,6 +39,10 @@ export default function ProductCard(props) {
 
   const [btnClass, setBtnClass] = useState(false);
 
+  let navigate = useNavigate();
+
+  console.log("Key: ", props.product.id);
+
   //notify function for the toast popup
   // const notify = () =>
   //   toast("🦄 Wow so easy!", {
@@ -58,7 +63,14 @@ export default function ProductCard(props) {
       <div className="product-details">
         <span className="product-category">{props.product.category}</span>
         <h4>
-          <a href="">{props.product.name}</a>
+          <a
+            href="#"
+            onClick={() => {
+              navigate("/products/" + props.product.id);
+            }}
+          >
+            {props.product.name}
+          </a>
         </h4>
         {/* <p>{props.product.description}</p> */}
         <div className="product-bottom-details">
