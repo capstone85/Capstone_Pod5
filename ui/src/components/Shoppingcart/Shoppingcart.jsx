@@ -174,7 +174,7 @@ export default function ShoppingCart(props) {
               </tr>
               <tr>
                 <td className="subtotal">TAX (8%)</td>
-                <td>${subtotal * 0.08}</td>
+                <td>${(subtotal * 0.08).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
