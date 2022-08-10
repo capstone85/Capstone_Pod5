@@ -170,6 +170,10 @@ export default function ShoppingCart(props) {
                 <td className="delivery">DELIVERY FEE</td>
                 <td>${deliveryFee}</td>
               </tr>
+              <tr>
+                <td className="subtotal">TAX (8%)</td>
+                <td>${subtotal * 0.08}</td>
+              </tr>
             </tbody>
           </table>
           <hr className="checkout-hr"></hr>

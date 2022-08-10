@@ -66,10 +66,11 @@ router.get("/store/:storeId", async (req, res, next) => {
   }
 });
 
-router.get("/wishlist/:productId", async (req, res, next) => {
+router.post("/wishlist/:productId", async (req, res, next) => {
   try {
+    const { id } = res.locals.user;
     const { productId } = req.params;
-    const product = await Product.addToWishlist(productId);
+    const product = await Product.addToWishlist(id, productId);
     return res.status(200).json({ product });
   } catch (err) {
     next(err);

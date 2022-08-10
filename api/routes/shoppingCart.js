@@ -31,4 +31,34 @@ router.get(
   }
 );
 
+router.delete(
+  "/:userId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+      const products = await ShoppingCart.deleteShoppingCart(userId);
+      return res.status(200).json({ products });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.delete(
+  "/product/:productId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { productId } = req.params;
+      const products = await ShoppingCart.deleteShoppingCartByProductId(
+        productId
+      );
+      return res.status(200).json({ products });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 module.exports = router;

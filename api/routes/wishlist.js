@@ -18,6 +18,25 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
 });
 
 router.get(
+  "/product/:productId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { id } = res.locals.user;
+      console.log(res.locals.user);
+      console.log("Hey this is reqparams", req.params.productId);
+      const { productId } = req.params;
+      console.log("PRODUCT ID", productId);
+
+      const isInWishlist = await Wishlist.checkIfInWishlist(id, productId);
+      return res.status(200).json({ isInWishlist });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.get(
   "/:userId",
   security.requireAuthenticatedUser,
   async (req, res, next) => {

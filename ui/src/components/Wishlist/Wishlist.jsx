@@ -46,28 +46,7 @@ export default function Wishlist(props) {
 
     fetchProducts();
   }, [props.user]);
-
-  // useEffect(() => {
-  //   // Makes axios get request to get individual product info
-  //   async function getInfo() {
-  //     props.setIsFetching(true);
-  //     await axios
-  //       .get(`http://localhost:5174/product/wishlist`)
-  //       .then((response) => {
-  //         console.log("data" + response.data.product);
-  //         setProduct(response.data.product);
-  //         props.setIsFetching(false);
-  //         console.log("products: " + product[0].id);
-  //       })
-  //       .catch((error) => {
-  //         <NotFound />;
-  //       });
-  //   }
-  //   getInfo();
-  // }, []);
-
-  // const navigate = useNavigate();
-
+  
   // const productMapping = products.reduce((acc, product) => {
   //   acc[product.id] = product;
   //   return acc;
@@ -78,40 +57,8 @@ export default function Wishlist(props) {
   //   return acc;
   // }, {});
 
-  // const subTotal = Object.values(cartMapping).reduce((acc, product) => {
-  //   return (
-  //     acc +
-  //     calculateItemSubtotal(product.price, getQuantityOfItemInCart(product))
-  //   );
-  // }, 0);
-
-  // const onCheckoutSubmit = async () => {
-  //   const order = await handleOnCheckout();
-  //   if (order) {
-  //     navigate("/orders");
-  //   }
-  // };
-
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
 
-  // return (
-  //   <div className="wishlist">
-  //     {product.map((element, idx) => {
-
-  //       return (
-  //         <div className="wishlist-details">
-
-  //           <img src={element.product_image} alt={element.product_name} />
-
-  //           <p>
-  //             {" "}
-  //             {element.product_name} ${element.product_price}
-  //           </p>
-  //           <br></br>
-  //         </div>
-
-  //       );
-  //     })}
   const [btnClass, setBtnClass] = useState(true);
 
   if (!isFetching) {
@@ -153,7 +100,7 @@ export default function Wishlist(props) {
                   </div>
                   <div className="description">
                     <span className="store">{item.store_name}</span>
-                    <span className="name">{item.product_name}</span>
+                    <span className="product-name">{item.product_name}</span>
                   </div>
                   <span className="price">${item.product_price}</span>
                   <div className="add-to-cart">

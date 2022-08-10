@@ -98,9 +98,9 @@ class ApiClient {
   }
 
   async addToWishlist(product_id) {
-    console.log("this is product id", product_id);
+    // console.log("this is product id", product_id);
     return await this.request({
-      endpoint: `wishlist`,
+      endpoint: `product/wishlist/${product_id}`,
       method: `POST`,
       data: { product_id: product_id },
     });
@@ -110,7 +110,27 @@ class ApiClient {
     return await this.request({
       endpoint: `wishlist/${userId}`,
       method: `GET`,
-      data: userId,
+    });
+  }
+
+  async checkIfInWishlist(product_id) {
+    console.log("product id in apiclient", product_id);
+    return await this.request({
+      endpoint: `wishlist/product/${product_id}`,
+      method: `GET`,
+    });
+  }
+  async deleteShoppingCart(userId) {
+    return await this.request({
+      endpoint: `shoppingCart/${userId}`,
+      method: `DELETE`,
+    });
+  }
+
+  async deleteShoppingCartByProductId(productId) {
+    return await this.request({
+      endpoint: `shoppingCart/product/${productId}`,
+      method: `DELETE`,
     });
   }
 
@@ -146,6 +166,14 @@ class ApiClient {
       endpoint: `checkout`,
       method: `POST`,
       data: { confirmation: confirmation, product_id: product_id },
+    });
+  }
+
+  async listCheckoutByOrderId(orderId) {
+    return await this.request({
+      endpoint: `checkout/${orderId}`,
+      method: `GET`,
+      data: orderId,
     });
   }
 
