@@ -6,9 +6,12 @@ class Wishlist {
   static async createWishlist({ productId, email }) {
     console.log("Wishlist model ", productId, email);
     const results = await db.query(
-      `
+      ` 
             INSERT INTO wishlist (product_id, user_id)
             VALUES($1, (SELECT id FROM users WHERE email = $2))
+            WHERE NOT EXISTS (
+              SELECT * from wishlist WHERE product_id = $1
+            )
             RETURNING id, product_id, user_id
         `,
       [productId, email]
@@ -47,7 +50,26 @@ class Wishlist {
     return results.rows;
   }
 
-  static async deleteWishlistByProductIdy(productId) {
+  static async checkIfInWishlist(userId, product_id) {
+    const results = await db.query(
+      `
+        SELECT COUNT(product_id) 
+        FROM wishlist 
+        WHERE user_id = $1 AND product_id = $2
+        `,
+      [userId, product_id]
+    );
+    const isInWishlist = results.rows[0];
+    console.log(isInWishlist);
+    console.log(isInWishlist.count);
+    if (isInWishlist.count == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  static async deleteCheckoutByProductId(productId) {
     const results = await db.query(
       `
             DELETE FROM wishlist
