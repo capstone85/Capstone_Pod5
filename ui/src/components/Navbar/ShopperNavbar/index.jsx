@@ -52,7 +52,7 @@ export default function ShopperNavbar(props) {
       {/* logo link*/}
       <div className="logo">
         <Link to="/" style={{ color: "white" }}>
-          CLASSY BABES
+          SEQUOIA BABES
         </Link>
       </div>
 

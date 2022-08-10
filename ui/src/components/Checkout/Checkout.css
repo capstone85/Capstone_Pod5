@@ -13,9 +13,10 @@
   display: flex;
   align-items: right;
   justify-content: right;
-  transform: translateY(50px) translateX(-350px);
+  transform: translateY(50px) translateX(-300px);
 }
 
-/* .checkout .delivery-details .your-order h2{
-
-} */
+/* moving total header to be right next to the product header */
+.checkout .your-order .total-header {
+  transform: translateX(500px) translateY(-35px);
+}

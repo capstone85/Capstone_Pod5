@@ -30,7 +30,7 @@ export default function VendorNavbar(props) {
         {/* logo link */}
         <div className="logo">
           <Link to="/store" style={{ color: "white" }}>
-            CLASSY BABES
+            SEQUOIA BABES
           </Link>
         </div>
         {/* vender links */}

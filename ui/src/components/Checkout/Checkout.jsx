@@ -59,13 +59,20 @@ export default function Checkout(props) {
           </h2>
           <div className="order-header">
             <p>PRODUCT</p>
-            <p>TOTAL</p>
+            <div className="total-header">
+              <p>TOTAL</p>
+            </div>
           </div>
           {product.map((item) => {
             return (
               <div className="product-orders">
                 <p>{item.product_name}</p>
-                <p>${item.product_price}</p>
+                <div
+                  className="item-product-price"
+                  style={{ transform: "translateX(500px)" }}
+                >
+                  <p>${item.product_price}</p>
+                </div>
               </div>
             );
           })}
