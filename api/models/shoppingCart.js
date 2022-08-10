@@ -80,7 +80,7 @@ class ShoppingCart {
     );
     const isInshoppingCart = results.rows[0];
     console.log(isInshoppingCart);
-    console.log(isInshoppingCart.count);
+    console.log("THIS IS SHOPPING CART COUNT", isInshoppingCart.count);
     if (isInshoppingCart.count == 0) {
       return false;
     } else {

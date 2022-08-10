@@ -28,10 +28,7 @@ router.get(
       const { productId } = req.params;
       console.log("PRODUCT ID", productId);
 
-      const isInShoppingCart = await ShoppingCart.checkIfInShoppingCart(
-        id,
-        productId
-      );
+      const isInShoppingCart = await ShoppingCart.checkIfInCart(id, productId);
       return res.status(200).json({ isInShoppingCart });
     } catch (err) {
       next(err);
