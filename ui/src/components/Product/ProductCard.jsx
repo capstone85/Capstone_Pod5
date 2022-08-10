@@ -8,11 +8,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState, useEffect } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
-// //toast alert
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
 //import { addToWishlist } from "../../../../api/models/product";
 
 // Renders image, name, price, and category of products.
@@ -35,20 +30,18 @@ export default function ProductCard(props) {
   // };
   // console.log("hello product card");
   // console.log(props.product.name);
+  const isInWishlist = false;
+
+  async () => {
+    const a = await apiClient.checkIfInWishlist(props.product.id);
+    isInWishlist = a.data.isInWishlist;
+  };
 
   const [btnClass, setBtnClass] = useState(false);
 
-  //notify function for the toast popup
-  // const notify = () =>
-  //   toast("🦄 Wow so easy!", {
-  //     position: "top-center",
-  //     autoClose: 5000,
-  //     hideProgressBar: true,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
+  if (isInWishlist) {
+    setBtnClass(true);
+  }
 
   return (
     <div className="product-card">
@@ -58,7 +51,15 @@ export default function ProductCard(props) {
       <div className="product-details">
         <span className="product-category">{props.product.category}</span>
         <h4>
-          <a href="">{props.product.name}</a>
+          <a
+            href="#"
+            onClick={() => {
+              navigate("/products/" + props.product.id);
+            }}
+          >
+            {console.log("Product Name: ", props.product.name)}
+            {props.product.name}
+          </a>
         </h4>
         {/* <p>{props.product.description}</p> */}
         <div className="product-bottom-details">
@@ -66,32 +67,14 @@ export default function ProductCard(props) {
           <div className="product-links">
             <button
               onClick={async () => {
-                console.log(props.product.id);
-                const a = await apiClient.checkIfInWishlist(props.product.id);
-                const isInWishlist = a.data.isInWishlist;
-                console.log("THIS IS API", isInWishlist);
                 if (isInWishlist) {
-                  console.log("LOL ITS ALREADY IN WISHLIST");
+                  null;
                 } else {
+                  setBtnClass(true);
                   apiClient.addToWishlist(props.product.id);
-                  btnClass ? setBtnClass(false) : setBtnClass(true);
                 }
               }}
             >
-              {/* <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              /> */}
-              {/* <Alert variant="outlined" severity="info">
-                This is an info alert — check it out!
-              </Alert> */}
               {/* <FavoriteBorderIcon /> */}
               {btnClass ? (
                 <FavoriteIcon style={{ color: "#B86B77" }} />
@@ -104,20 +87,6 @@ export default function ProductCard(props) {
                 onClick={() => apiClient.addToShoppingCart(props.product.id)}
               />
             </button>
-            {/* <div>
-              <button onClick={notify}>Notify!</button>
-              <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              />
-            </div> */}
           </div>
         </div>
       </div>
