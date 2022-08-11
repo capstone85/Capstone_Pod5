@@ -22,6 +22,7 @@ class ShoppingCart {
           SELECT  w.id,
                   w.product_id AS "product_id",
                   w.user_id AS "user_id",
+                  w.quantity AS "quantity",
                   p.name AS "product_name",
                   p.image AS "product_image",
                   p.price AS "product_price",
@@ -69,6 +70,7 @@ class ShoppingCart {
     }
     return results.rows;
   }
+
   static async checkIfInCart(userId, product_id) {
     const results = await db.query(
       `
@@ -86,6 +88,34 @@ class ShoppingCart {
     } else {
       return true;
     }
+  }
+
+  static async decrementProductQuantity(userId, product_id) {
+    const results = await db.query(
+      `
+        UPDATE shoppingCart
+        SET quantity = quantity - 1
+        WHERE user_id = $1 AND product_id = $2 AND quantity > 0
+        `,
+      [userId, product_id]
+    );
+    const decrementedProduct = results.rows[0];
+    console.log(decrementedProduct);
+    console.log("THIS IS SHOPPING CART COUNT", decrementedProduct);
+  }
+
+  static async incrementProductQuantity(userId, product_id) {
+    const results = await db.query(
+      `
+        UPDATE shoppingCart
+        SET quantity = quantity + 1
+        WHERE user_id = $1 AND product_id = $2
+        `,
+      [userId, product_id]
+    );
+    const decrementedProduct = results.rows[0];
+    console.log(decrementedProduct);
+    console.log("THIS IS SHOPPING CART COUNT", decrementedProduct);
   }
 
   static async deleteShoppingCart(user_id) {

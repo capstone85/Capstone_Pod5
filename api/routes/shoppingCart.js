@@ -23,13 +23,55 @@ router.get(
   async (req, res, next) => {
     try {
       const { id } = res.locals.user;
+      const { productId } = req.params;
+      // console.log("PRODUCT ID", productId);
+
+      const isInShoppingCart = await ShoppingCart.checkIfInCart(id, productId);
+      return res.status(200).json({ isInShoppingCart });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.put(
+  "/decrement/:productId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { id } = res.locals.user;
       console.log(res.locals.user);
       console.log("Hey this is reqparams", req.params.productId);
       const { productId } = req.params;
       console.log("PRODUCT ID", productId);
 
-      const isInShoppingCart = await ShoppingCart.checkIfInCart(id, productId);
-      return res.status(200).json({ isInShoppingCart });
+      const decrementProduct = await ShoppingCart.decrementProductQuantity(
+        id,
+        productId
+      );
+      return res.status(200).json({ decrementProduct });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.put(
+  "/increment/:productId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { id } = res.locals.user;
+      console.log(res.locals.user);
+      console.log("Hey this is reqparams", req.params.productId);
+      const { productId } = req.params;
+      console.log("PRODUCT ID", productId);
+
+      const decrementProduct = await ShoppingCart.incrementProductQuantity(
+        id,
+        productId
+      );
+      return res.status(200).json({ decrementProduct });
     } catch (err) {
       next(err);
     }

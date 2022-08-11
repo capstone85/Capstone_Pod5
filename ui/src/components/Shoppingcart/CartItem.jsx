@@ -22,6 +22,10 @@ export default function CartItem({ item, idx }) {
   //     console.log("cartitem page loaded");
   //   }, []);
 
+  console.log("QUANTITY", item);
+
+  console.log("QUANTITY", item.quantity);
+
   return (
     <div className="item">
       <div className="buttons">
@@ -69,11 +73,30 @@ export default function CartItem({ item, idx }) {
       </div>
       <span className="price">${item.product_price}</span>
       <div className="quantity">
-        <span> Quantity: 1 </span>
-        <button className="minus-btn" type="button" name="button">
+        <span> Quantity: {item.quantity}</span>
+        <button
+          className="minus-btn"
+          type="button"
+          name="button"
+          onClick={() => {
+            apiClient.decrementProductQuantity(item.product_id);
+            if (item.quantity - 1 === 0) {
+              apiClient.removeFromCart(item.product_id);
+            }
+            window.location.href = "";
+          }}
+        >
           -
         </button>
-        <button className="plus-btn" type="button" name="button">
+        <button
+          className="plus-btn"
+          type="button"
+          name="button"
+          onClick={() => {
+            apiClient.incrementProductQuantity(item.product_id);
+            window.location.href = "";
+          }}
+        >
           +
         </button>
       </div>
