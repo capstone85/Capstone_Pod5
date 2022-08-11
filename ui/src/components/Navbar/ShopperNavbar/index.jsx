@@ -33,7 +33,7 @@ export default function ShopperNavbar(props) {
   }, [window.location.pathname]);
 
   useEffect(() => {
-    console.log("navbar", props.isLoggedIn);
+    // console.log("navbar", props.isLoggedIn);
   }, [props.isLoggedIn]);
 
   //dropdown for the profile icon in the navbar
@@ -52,7 +52,7 @@ export default function ShopperNavbar(props) {
       {/* logo link*/}
       <div className="logo">
         <Link to="/" style={{ color: "white" }}>
-          SEQUOIA BABES
+          SEQUOIA
         </Link>
       </div>
 

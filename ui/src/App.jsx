@@ -131,9 +131,9 @@ function App() {
       const { data, error } = await apiClient.fetchUserFromToken();
       if (data) {
         setUser(data.user);
-        console.log("datauser:", data.user);
+        // console.log("datauser:", data.user);
         setIsLoggedIn(true);
-        console.log("user: ", user);
+        // console.log("user: ", user);
       }
       if (error) {
         setError(error);
@@ -141,7 +141,7 @@ function App() {
     };
 
     const token = localStorage.getItem("lifetracker_token");
-    console.log("TOKEN" + token);
+    // console.log("TOKEN" + token);
     if (token) {
       apiClient.setToken(token);
       fetchUser();
@@ -150,7 +150,7 @@ function App() {
 
   const handleLogout = async () => {
     await apiClient.logoutUser();
-    console.log("logged out");
+    // console.log("logged out");
     setUser([]);
     setError(null);
     setIsLoggedIn(false);

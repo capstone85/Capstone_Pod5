@@ -50,4 +50,18 @@ router.get(
   }
 );
 
+router.delete(
+  "/delete/:productId",
+  security.requireAuthenticatedUser,
+  async (req, res, next) => {
+    try {
+      const { productId } = req.params;
+      const products = await Wishlist.deleteWishlistByProductId(productId);
+      return res.status(200).json({ products });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 module.exports = router;

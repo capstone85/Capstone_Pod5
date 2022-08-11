@@ -118,7 +118,7 @@ class ApiClient {
 
   async removeFromWishlist(productId) {
     return await this.request({
-      endpoint: `shoppingCart/product/${productId}`,
+      endpoint: `wishlist/delete/${productId}`,
       method: `DELETE`,
     });
   }
@@ -149,7 +149,7 @@ class ApiClient {
   async checkIfInCart(product_id) {
     console.log("product id in apiclient", product_id);
     return await this.request({
-      endpoint: `wishlist/product/${product_id}`,
+      endpoint: `shoppingCart/product/${product_id}`,
       method: `GET`,
     });
   }
@@ -170,7 +170,7 @@ class ApiClient {
 
   async removeFromCart(productId) {
     return await this.request({
-      endpoint: `shoppingCart/product/${productId}`,
+      endpoint: `shoppingCart/delete/${productId}`,
       method: `DELETE`,
     });
   }

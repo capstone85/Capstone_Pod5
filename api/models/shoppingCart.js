@@ -69,6 +69,24 @@ class ShoppingCart {
     }
     return results.rows;
   }
+  static async checkIfInCart(userId, product_id) {
+    const results = await db.query(
+      `
+        SELECT COUNT(product_id) 
+        FROM shoppingCart 
+        WHERE user_id = $1 AND product_id = $2
+        `,
+      [userId, product_id]
+    );
+    const isInshoppingCart = results.rows[0];
+    console.log(isInshoppingCart);
+    console.log("THIS IS SHOPPING CART COUNT", isInshoppingCart.count);
+    if (isInshoppingCart.count == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   static async deleteShoppingCart(user_id) {
     const results = await db.query(

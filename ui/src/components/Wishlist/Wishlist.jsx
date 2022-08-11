@@ -46,7 +46,7 @@ export default function Wishlist(props) {
 
     fetchProducts();
   }, [props.user]);
-  
+
   // const productMapping = products.reduce((acc, product) => {
   //   acc[product.id] = product;
   //   return acc;
@@ -58,7 +58,6 @@ export default function Wishlist(props) {
   // }, {});
 
   // const cartHasItems = Boolean(Object.keys(cartMapping).length);
-
   const [btnClass, setBtnClass] = useState(true);
 
   if (!isFetching) {
@@ -77,18 +76,16 @@ export default function Wishlist(props) {
                 <div className="item" key={idx}>
                   <div className="buttons">
                     <span
-                      className="like-btn"
+                      className="delete-btn"
                       onClick={() => {
-                        btnClass ? setBtnClass(false) : setBtnClass(true);
+                        apiClient.removeFromWishlist(item.product_id);
+                        window.location.href = "";
                       }}
                     >
-                      {" "}
-                      {btnClass ? (
-                        <FavoriteIcon style={{ color: "#B86B77" }} />
-                      ) : (
-                        <FavoriteBorderIcon />
-                      )}
-                      {/* <FavoriteBorderIcon /> */}
+                      <ClearIcon />
+                    </span>
+                    <span className="like-btn">
+                      <FavoriteIcon style={{ color: "#B86B77" }} />
                     </span>
                   </div>
                   <div className="image">
@@ -106,9 +103,18 @@ export default function Wishlist(props) {
                   <div className="add-to-cart">
                     <button style={{ background: "none", border: "none" }}>
                       <AddShoppingCartIcon
-                        onClick={() =>
-                          apiClient.addToShoppingCart(item.product_id)
-                        }
+                        onClick={async () => {
+                          const a = await apiClient.checkIfInCart(
+                            item.product_id
+                          );
+                          const isInCart = a.data.isInShoppingCart;
+                          if (isInCart) {
+                            // intsead of null, call apiClient.incrementQuantity
+                            null;
+                          } else {
+                            apiClient.addToShoppingCart(item.product_id);
+                          }
+                        }}
                       />
                     </button>
                   </div>
