@@ -63,9 +63,9 @@ export default function Checkout(props) {
               <p>TOTAL</p>
             </div>
           </div>
-          {product.map((item) => {
+          {product.map((item, idx) => {
             return (
-              <div className="product-orders">
+              <div className="product-orders" key={idx}>
                 <p>{item.product_name}</p>
                 <div
                   className="item-product-price"
