@@ -117,6 +117,7 @@ class ApiClient {
   }
 
   async removeFromWishlist(productId) {
+    console.log("")
     return await this.request({
       endpoint: `wishlist/delete/${productId}`,
       method: `DELETE`,
@@ -156,14 +157,14 @@ class ApiClient {
 
   async incrementProductQuantity(productId) {
     return await this.request({
-      endpoint: `shoppingCart/product/${productId}`,
+      endpoint: `shoppingCart/increment/${productId}`,
       method: `PUT`,
     });
   }
 
   async decrementProductQuantity(productId) {
     return await this.request({
-      endpoint: `shoppingCart/product/${productId}`,
+      endpoint: `shoppingCart/decrement/${productId}`,
       method: `PUT`,
     });
   }

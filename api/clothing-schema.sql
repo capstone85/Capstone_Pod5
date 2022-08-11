@@ -28,8 +28,6 @@ CREATE TABLE product (
     price       INT NOT NULL,
     category    TEXT NOT NULL,
     size        TEXT,
-    quantity    TEXT,
-    wishlist    BOOLEAN DEFAULT FALSE,
     store_id    INT NOT NULL,
     created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (store_id) REFERENCES store(id) ON DELETE CASCADE
@@ -39,6 +37,7 @@ CREATE TABLE shoppingCart (
     id          SERIAL PRIMARY KEY,
     user_id     INT NOT NULL,
     product_id  INT NOT NULL,
+    quantity    INT DEFAULT 1,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
 );
