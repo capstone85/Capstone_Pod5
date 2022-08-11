@@ -1,0 +1,20 @@
+/* Order Confirmation title  */
+.confirmation .confirmation-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  transform: translateY(32px);
+  font-family: "DM Serif Display", serif;
+}
+
+.confirmation .order-confirmation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(25px);
+}
+
+.confirmation .order-details {
+  transform: translateX(150px) translateY(70px);
+}

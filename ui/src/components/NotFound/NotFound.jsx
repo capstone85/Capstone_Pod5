@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import "./NotFound.css";
 // import Navbar from "../Navbar/Navbar";
 // import * as React from "react";
@@ -13,10 +13,10 @@ const NotFound = () => {
       <h2>404 ERROR</h2>
       <p>Sorry, we couldn't find that page</p>
 
-      <Box sx={{ "& button": { m: 1 } }}>
+      <Box sx={{ "& button": { m: 1 } }} style={{ color: "#B86B77" }}>
         <div className="HomeButton">
           <Link to="/">
-            <Button variant="outlined" size="large">
+            <Button variant="text" size="large" style={{ color: "#B86B77" }}>
               Home
             </Button>
           </Link>

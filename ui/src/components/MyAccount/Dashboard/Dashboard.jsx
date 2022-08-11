@@ -10,7 +10,7 @@ export default function Dashboard(props) {
   }, [props.user]);
 
   return (
-    <div className="body">
+    <div className="dashboard-body">
       <div className="paragraphOne">
         <p>
           Hello {props.user ? props.user.first_name : null} (not{" "}

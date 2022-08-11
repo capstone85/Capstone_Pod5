@@ -29,7 +29,7 @@ export default function SearchPage(props) {
   }, []);
 
   let foundSearch = false;
-  
+
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const categoriesList = [
     "All Categories",
@@ -45,7 +45,7 @@ export default function SearchPage(props) {
 
   return (
     <>
-      <h1 className="page-head">Search for stores or styles.</h1>
+      <h1 className="page-head">SEARCH FOR STORES OR STYLES</h1>
       <div className="searchbar">
         <SearchBar
           handleOnSearchbarChange={props.handleOnSearchbarChange}
