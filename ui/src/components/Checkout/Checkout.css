@@ -46,3 +46,11 @@
 .checkout .delivery-details {
   transform: translateX(90px);
 }
+
+.checkout .checkout-order-summary .order-header {
+  font-weight: bold;
+}
+
+.checkout .checkout-order-summary .price-totals {
+  font-weight: bold;
+}

@@ -16,6 +16,20 @@ export default function Checkout(props) {
   const [order, setOrder] = useState([]);
   const [confirmation, setConfirmation] = useState([]);
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+
+  //checkout form
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    streetAddress: "",
+    zipCode: "",
+    city: "",
+    phoneNumber: "",
+    emailAddress: "",
+    orderNotes: "",
+  });
 
   //total prices calculations------------
   let subtotal = 0;
@@ -251,6 +265,7 @@ export default function Checkout(props) {
                 transform: "translateY(-10px) translateX(0px)",
               }}
             ></hr>
+            {/* prices section of the order summary - subtotal, tax, and total will be shown (styling was added to this) */}
             <div className="price-totals">
               <tr>
                 <td>SUBTOTAL </td>
@@ -294,6 +309,17 @@ export default function Checkout(props) {
                   ${getTotal(subtotal, taxRate, deliveryFee).toFixed(2)}
                 </td>
               </tr>
+
+              {/* delivery time section - users will be able to schedule a delivery time */}
+              <div
+                className="delivery-time-schedule"
+                style={{ transform: "translateY(70px)" }}
+              >
+                <tr>
+                  <td>SCHEDULE DELIVERY TIME</td>
+                </tr>
+                <tr></tr>
+              </div>
               <button
                 className="checkout-btn"
                 onClick={() => {
@@ -301,7 +327,7 @@ export default function Checkout(props) {
                   apiClient.deleteShoppingCart(props.user.id);
                   navigate("/confirmation/" + confirmationNum);
                 }}
-                style={{ transform: "translateY(65px) translateX(80px)" }}
+                style={{ transform: "translateY(100px) translateX(80px)" }}
               >
                 PLACE ORDER
               </button>
