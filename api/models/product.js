@@ -46,7 +46,6 @@ class Product {
                 p.description,
                 p.price,
                 p.image,
-                p.wishlist,
                 p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
@@ -73,7 +72,6 @@ class Product {
                 p.description,
                 p.price,
                 p.image,
-                p.wishlist,
                 p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
@@ -99,7 +97,6 @@ class Product {
                     p.description,
                     p.price,
                     p.image,
-                    p.wishlist,
                     p.category,
                     s.name AS "store_name",
                     p.store_id AS "store_id",
@@ -124,7 +121,6 @@ class Product {
                 p.description,
                 p.price,
                 p.image,
-                p.wishlist,
                 p.category,
                 s.name AS "store_name",
                 p.store_id AS "store_id",
@@ -150,29 +146,28 @@ class Product {
     return results.rows;
   }
 
-  static async listAllWishlist() {
-    const results = await db.query(
-      `
-      SELECT        p.id,
-                    p.name,
-                    p.description,
-                    p.price,
-                    p.image,
-                    p.wishlist,
-                    p.category,
-                    s.name AS "store_name",
-                    p.store_id AS "store_id",
-                    p.created_at AS "created_at"
-            FROM product AS p
-                JOIN store AS s ON s.id = p.store_id
-                
-            WHERE p.wishlist = true
-            ORDER BY p.created_at DESC
-      `
-    );
-    console.log(results.rows);
-    return results.rows;
-  }
+  //   static async listAllWishlist() {
+  //     const results = await db.query(
+  //       `
+  //       SELECT        p.id,
+  //                     p.name,
+  //                     p.description,
+  //                     p.price,
+  //                     p.image,
+  //                     p.category,
+  //                     s.name AS "store_name",
+  //                     p.store_id AS "store_id",
+  //                     p.created_at AS "created_at"
+  //             FROM product AS p
+  //                 JOIN store AS s ON s.id = p.store_id
+
+  //             WHERE p.wishlist = true
+  //             ORDER BY p.created_at DESC
+  //       `
+  //     );
+  //     console.log(results.rows);
+  //     return results.rows;
+  //   }
 }
 
 module.exports = Product;

@@ -73,7 +73,7 @@ class Wishlist {
     const results = await db.query(
       `
             DELETE FROM wishlist
-                WHERE wishlist.product_id = $1
+                WHERE wishlist.product_id = $1 
         `,
       [productId]
     );
