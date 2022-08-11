@@ -32,5 +32,16 @@ router.get(
   }
 );
 
+router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
+  try {
+    const { id } = res.locals.user;
+    console.log(res.locals.user);
+    const orders = await Checkout.fetchCheckoutByUserId(id);
+    console.log({ orders });
+    return res.status(201).json({ orders });
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
