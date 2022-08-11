@@ -19,14 +19,6 @@ export default function Checkout(props) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
-  //date and time picker------------
-  const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
-
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
-  //------------------------------
-
   //checkout form
   const [form, setForm] = useState({
     firstName: "",
