@@ -55,8 +55,13 @@ router.delete(
   security.requireAuthenticatedUser,
   async (req, res, next) => {
     try {
+      const { id } = res.locals.user;
       const { productId } = req.params;
-      const products = await Wishlist.deleteWishlistByProductId(productId);
+      console.log("THIS IS DELETE REQ USERID", id);
+      console.log("THIS IS DELETE REQ productID", productId);
+
+      const products = await Wishlist.deleteWishlistByProductId(id, productId);
+      console.log("THIS IS PRODUCTS", products);
       return res.status(200).json({ products });
     } catch (err) {
       next(err);
