@@ -13,10 +13,44 @@
   display: flex;
   align-items: right;
   justify-content: right;
-  transform: translateY(50px) translateX(-300px);
+  transform: translateY(80px) translateX(-300px);
 }
 
 /* moving total header to be right next to the product header */
 .checkout .your-order .total-header {
   transform: translateX(500px) translateY(-35px);
+}
+
+.checkout .checkout-order-summary {
+  width: 650px;
+  height: auto;
+  float: right;
+  transform: translateX(200px);
+  margin: 0px auto 0 0;
+  background: #ffffff;
+  box-shadow: 2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1);
+  border-radius: 3px;
+  padding: 40px;
+  padding-bottom: 100px;
+  /* height: 550px; */
+  background-color: rgb(245, 245, 245);
+}
+
+.checkout .checkout-order-summary .checkout-input-fields input {
+  padding: 0 15px;
+  font-size: 16px;
+  width: 440px;
+  height: 60px;
+}
+
+.checkout .delivery-details {
+  transform: translateX(90px);
+}
+
+.checkout .checkout-order-summary .order-header {
+  font-weight: bold;
+}
+
+.checkout .checkout-order-summary .price-totals {
+  font-weight: bold;
 }

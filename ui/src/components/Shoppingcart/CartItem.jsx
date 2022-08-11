@@ -6,9 +6,11 @@ import "./Shoppingcart.css";
 
 import { useState, useEffect } from "react";
 import apiClient from "../../services/apiClient";
+import { useNavigate } from "react-router-dom";
 
 export default function CartItem({ item, idx }) {
   const [isInWishlist, setIsInWishlist] = useState(false);
+  let navigate = useNavigate();
 
   useEffect(() => {
     async function wishlist() {
@@ -21,6 +23,10 @@ export default function CartItem({ item, idx }) {
   //   useEffect(() => {
   //     console.log("cartitem page loaded");
   //   }, []);
+
+  console.log("QUANTITY", item);
+
+  console.log("QUANTITY", item.quantity);
 
   return (
     <div className="item">
@@ -64,16 +70,49 @@ export default function CartItem({ item, idx }) {
         />
       </div>
       <div className="description">
-        <span className="store">{item.store_name}</span>
-        <span className="name">{item.product_name}</span>
+        <span
+          className="store"
+          onClick={() => {
+            navigate("/store-page/" + item.store_id);
+          }}
+        >
+          {item.store_name}
+        </span>
+        <span
+          className="name"
+          onClick={() => {
+            navigate("/products/" + item.product_id);
+          }}
+        >
+          {item.product_name}
+        </span>
       </div>
       <span className="price">${item.product_price}</span>
       <div className="quantity">
-        <span> Quantity: 1 </span>
-        <button className="minus-btn" type="button" name="button">
+        <span> Quantity: {item.quantity}</span>
+        <button
+          className="minus-btn"
+          type="button"
+          name="button"
+          onClick={() => {
+            apiClient.decrementProductQuantity(item.product_id);
+            if (item.quantity - 1 === 0) {
+              apiClient.removeFromCart(item.product_id);
+            }
+            window.location.href = "";
+          }}
+        >
           -
         </button>
-        <button className="plus-btn" type="button" name="button">
+        <button
+          className="plus-btn"
+          type="button"
+          name="button"
+          onClick={() => {
+            apiClient.incrementProductQuantity(item.product_id);
+            window.location.href = "";
+          }}
+        >
           +
         </button>
       </div>

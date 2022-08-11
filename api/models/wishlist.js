@@ -69,13 +69,14 @@ class Wishlist {
     }
   }
 
-  static async deleteWishlistByProductId(productId) {
+  static async deleteWishlistByProductId(userId, productId) {
     const results = await db.query(
       `
-            DELETE FROM wishlist
-                WHERE wishlist.product_id = $1
+          DELETE FROM wishlist
+          WHERE user_id = $1 AND product_id = $2
+     
         `,
-      [productId]
+      [userId, productId]
     );
     return results.rows;
   }

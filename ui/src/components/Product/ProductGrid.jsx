@@ -75,26 +75,5 @@ export default function ProductGrid(props) {
         </div>
       ) : null}
     </div>
-
-    // <>
-    //   <div className="product-grid">
-    //     {props.products.map((currProduct, idx) => {
-    //       let quantity = 0;
-    //       if (typeof props.shoppingCart != "undefined") {
-    //         let currItem = props.shoppingCart.find(
-    //           (cart) => cart["itemId"] === currProduct.id
-    //         );
-    //         if (typeof currItem != "undefined") {
-    //           quantity = currItem["quantity"];
-    //         }
-    //       }
-
-    // if (
-    //   currProduct.name
-    //     .toLowerCase()
-    //     .includes(props.searchbar.toLowerCase())
-    // ) {
-    //   foundSearch = true;
-    //   console.log("hi" + props.product);
   );
 }

@@ -144,7 +144,7 @@ export default function SignUp(props) {
                     id="demo-select-small"
                     name="category"
                     value={selected}
-                    label="Category"
+                    label="Category *"
                     onChange={handleOnInputChange}
                   >
                     <MenuItem value="shopper">Shopper</MenuItem>
@@ -162,7 +162,7 @@ export default function SignUp(props) {
             <div className="input-field">
               <TextField
                 id="standard-basic"
-                label="*Email Address"
+                label="Email Address *"
                 variant="standard"
                 type="email"
                 name="email"
@@ -178,7 +178,7 @@ export default function SignUp(props) {
                 {/* First name input */}
                 <TextField
                   id="standard-basic"
-                  label="*First Name"
+                  label="First Name *"
                   variant="standard"
                   type="firstName"
                   name="firstName"
@@ -194,7 +194,7 @@ export default function SignUp(props) {
                 {/* Last Name input */}
                 <TextField
                   id="standard-basic"
-                  label="*Last Name"
+                  label="Last Name *"
                   variant="standard"
                   type="lastName"
                   name="lastName"
@@ -213,7 +213,7 @@ export default function SignUp(props) {
               {/* password input  */}
               <TextField
                 id="standard-basic"
-                label="*Password"
+                label="Password *"
                 variant="standard"
                 type={passwordShown ? "text" : "password"}
                 name="password"
@@ -244,7 +244,7 @@ export default function SignUp(props) {
               <div className="confirmPassword">
                 <TextField
                   id="standard-basic"
-                  label="*Confirm Password"
+                  label="Confirm Password *"
                   variant="standard"
                   type="password"
                   name="passwordConfirm"
