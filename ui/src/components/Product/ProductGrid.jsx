@@ -23,7 +23,6 @@ export default function ProductGrid(props) {
           foundSearch = true;
           return (
             <div key={idx}>
-
               <ProductCard
                 key={item.id}
                 // category={item.category}
@@ -66,7 +65,7 @@ export default function ProductGrid(props) {
                   <p>{item.description}</p>
                 </div>
               </div> */}
-            </>
+            </div>
           );
         }
       })}
@@ -76,26 +75,5 @@ export default function ProductGrid(props) {
         </div>
       ) : null}
     </div>
-
-    // <>
-    //   <div className="product-grid">
-    //     {props.products.map((currProduct, idx) => {
-    //       let quantity = 0;
-    //       if (typeof props.shoppingCart != "undefined") {
-    //         let currItem = props.shoppingCart.find(
-    //           (cart) => cart["itemId"] === currProduct.id
-    //         );
-    //         if (typeof currItem != "undefined") {
-    //           quantity = currItem["quantity"];
-    //         }
-    //       }
-
-    // if (
-    //   currProduct.name
-    //     .toLowerCase()
-    //     .includes(props.searchbar.toLowerCase())
-    // ) {
-    //   foundSearch = true;
-    //   console.log("hi" + props.product);
   );
 }
