@@ -1,4 +1,5 @@
 import "./Checkout.css";
+import * as React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import apiClient from "../../services/apiClient";
@@ -17,6 +18,14 @@ export default function Checkout(props) {
   const [confirmation, setConfirmation] = useState([]);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+
+  //date and time picker------------
+  const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
+  //------------------------------
 
   //checkout form
   const [form, setForm] = useState({
@@ -206,6 +215,19 @@ export default function Checkout(props) {
             </div>
           </div>
         </div>
+        {/* {product.map((item, idx) => {
+          return (
+            <div className="product-orders" key={idx}>
+              <p>{item.product_name}</p>
+              <div
+                className="item-product-price"
+                style={{ transform: "translateX(500px)" }}
+              >
+                <p>${item.product_price}</p>
+              </div>
+            </div>
+          );
+        })} */}
 
         {/* ------------------------------------------------------------- */}
         {/* your order portion of the page */}
@@ -318,7 +340,6 @@ export default function Checkout(props) {
                 <tr>
                   <td>SCHEDULE DELIVERY TIME</td>
                 </tr>
-                <tr></tr>
               </div>
               <button
                 className="checkout-btn"

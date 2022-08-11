@@ -36,11 +36,14 @@ export default function Confirmation(props) {
 
   return (
     <div className="confirmation">
-      <h1>Order Details</h1>
+      <div className="confirmation-header">
+        <h1>Order Confirmation</h1>
+      </div>
       <div className="order-confirmation">
         <h2>&#10004; We've received your order</h2>
       </div>
       <div className="order-details">
+        <h2>Order Details</h2>
         <p>Confirmation Number: {confirmation}</p>
         {product.map((item) => {
           return (

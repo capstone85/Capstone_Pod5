@@ -12,7 +12,7 @@ export default function MyAccount(props) {
     <div className="MyAccount">
       {props.isLoggedIn ? (
         <main>
-          <div className="header">
+          <div className="MyAccount-header">
             <h1>MY ACCOUNT</h1>
             <hr
               style={{ transform: "translateY(30px) ", width: "1530px" }}
@@ -24,7 +24,7 @@ export default function MyAccount(props) {
               user={props.user}
               setUser={props.setUser}
             /> */}
-          <div className="dashboard">
+          <div className="MyAccount-dashboard">
             <Dashboard user={props.user} handleLogout={props.handleLogout} />
           </div>
           <Footer />

@@ -12,7 +12,7 @@ export default function ViewOrdersPage(props) {
         user={props.user}
         setUser={props.setUser}
       /> */}
-      <div className="header">
+      <div className="Orders-header">
         <h1>MY ORDERS</h1>
       </div>
       <hr style={{ transform: "translateY(60px) ", width: "1530px" }}></hr>
