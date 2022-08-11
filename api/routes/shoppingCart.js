@@ -111,8 +111,10 @@ router.delete(
   security.requireAuthenticatedUser,
   async (req, res, next) => {
     try {
+      const { id } = res.locals.user;
       const { productId } = req.params;
       const products = await ShoppingCart.deleteShoppingCartByProductId(
+        id,
         productId
       );
       return res.status(200).json({ products });

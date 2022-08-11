@@ -199,11 +199,13 @@
 
 .description span:first-child {
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .description span:last-child {
   font-weight: 300;
   margin-top: 8px;
   color: #86939e;
+  cursor: pointer;
 }
 
 @keyframes animate {

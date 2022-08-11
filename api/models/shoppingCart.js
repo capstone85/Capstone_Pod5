@@ -128,13 +128,13 @@ class ShoppingCart {
     );
   }
 
-  static async deleteShoppingCartByProductId(product_id) {
+  static async deleteShoppingCartByProductId(userId, product_id) {
     const results = await db.query(
       `
         DELETE FROM shoppingCart
-        WHERE shoppingCart.product_id = $1
+        WHERE user_id = $1 AND product_id = $2
         `,
-      [product_id]
+      [userId, product_id]
     );
   }
 }

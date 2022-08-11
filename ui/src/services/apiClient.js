@@ -117,6 +117,7 @@ class ApiClient {
   }
 
   async removeFromWishlist(productId) {
+    console.log("")
     return await this.request({
       endpoint: `wishlist/delete/${productId}`,
       method: `DELETE`,
