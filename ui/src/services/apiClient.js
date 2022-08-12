@@ -11,7 +11,6 @@ class ApiClient {
   async setToken(token) {
     this.token = token;
     localStorage.setItem(this.tokenName, token);
-
   }
 
   async request({ endpoint, method = `GET`, data = {} }) {
@@ -217,6 +216,26 @@ class ApiClient {
       endpoint: `checkout/`,
       method: `GET`,
       data: userId,
+    });
+  }
+
+  async addDeliveryDetails(order, confirmNum) {
+    console.log("ORDER", order);
+    console.log("CONFRIM NUM", confirmNum);
+    return await this.request({
+      endpoint: `order/${confirmNum}`,
+      method: `POST`,
+      data: order,
+      confirmNum,
+    });
+  }
+
+  async listDeliveryDetails(confirmNum) {
+    console.log("CONFRIM NUM", confirmNum);
+    return await this.request({
+      endpoint: `order/orders/${confirmNum}`,
+      method: `GET`,
+      data: { confirmNum: confirmNum },
     });
   }
 
