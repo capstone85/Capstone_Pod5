@@ -13,29 +13,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import ProductCard from "./ProductCard";
 import axios from "axios";
+import apiClient from "../../services/apiClient";
 
 // Renders header, searchbar, and product grid
 export default function ProductsPage(props) {
   const [product, setProduct] = useState([]);
   const [store, setStore] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All Categories");
+  const [btnClassCart, setBtnClassCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
   const categories = ["All Categories", "clothing", "accessories", "footwear"];
 
   const currentItems = product.filter((item) => {
     return item.category == activeCategory;
   });
-
-  const [btnClassCart, setBtnClassCart] = useState(false);
-  const [isInWishlist, setIsInWishlist] = useState(false);
-
-  useEffect(() => {
-    async function wishlist() {
-      const a = await apiClient.checkIfInWishlist(props.product.id);
-      setIsInWishlist(a.data.isInWishlist);
-    }
-    wishlist();
-  }, []);
 
   let navigate = useNavigate();
 
@@ -65,6 +57,16 @@ export default function ProductsPage(props) {
         });
     }
     getInfo();
+  }, []);
+
+  useEffect(() => {
+    async function wishlist() {
+      if (product[0] != null) {
+        const a = await apiClient.checkIfInWishlist(product.id);
+        setIsInWishlist(a.data.isInWishlist);
+      }
+    }
+    wishlist();
   }, []);
 
   useEffect(() => {

@@ -27,23 +27,20 @@ export default function StoreCard(props) {
           {props.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          📍 {props.location}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          📍 {props.zipcode}
+          📍 {props.location} {props.zipcode}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           📞 Phone Number
         </Typography>
         <Typography variant="body2" color="text.secondary">
           ⏰ Store Hours:
-          <p>
+          <span>
             Mon-Fri: 10:00 AM - 8 PM
             <br />
             Sat: 10:00 AM - 9 PM
             <br />
             Sun: Closed
-          </p>
+          </span>
         </Typography>
         <hr className="store-card-spacing"></hr>
         <Typography variant="body2" color="text.secondary">
