@@ -306,7 +306,7 @@ function App() {
               />
             }
           />
-          <Route path="/orders" element={<ViewOrdersPage />} />
+          <Route path="/orders" element={<ViewOrdersPage user={user} />} />
 
           <Route
             path="/store"

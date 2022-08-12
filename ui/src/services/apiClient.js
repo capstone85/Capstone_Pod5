@@ -118,7 +118,7 @@ class ApiClient {
   }
 
   async removeFromWishlist(productId) {
-    console.log("")
+    console.log("");
     return await this.request({
       endpoint: `wishlist/delete/${productId}`,
       method: `DELETE`,
@@ -209,6 +209,14 @@ class ApiClient {
       endpoint: `checkout/${orderId}`,
       method: `GET`,
       data: orderId,
+    });
+  }
+
+  async listCheckoutByUserId(userId) {
+    return await this.request({
+      endpoint: `checkout/`,
+      method: `GET`,
+      data: userId,
     });
   }
 
