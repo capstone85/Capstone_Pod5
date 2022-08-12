@@ -27,7 +27,7 @@ export default function Home(props) {
         setError(error);
       }
       if (data) {
-        setStore(data.stores);
+        setStores(data.stores);
       }
       setIsFetching(false);
     };
