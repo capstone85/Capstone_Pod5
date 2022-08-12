@@ -32,18 +32,17 @@ export default function LocationSearchBar(props) {
       <div className="searchinput">
         <TextField
           id="location"
-          label="location"
+          label="Enter your Zip code"
           variant="standard"
           type="userlocation"
           name="userlocation"
-          placeholder="Enter Zip cpde"
           value={props.location.userlocation}
           onChange={handleOnInputChange}
         />
       </div>
 
       <button className="findlocation" onClick={() => navigate("/store-page")}>
-        Shops near You
+        Shop Now
       </button>
       <br />
       <p id="status"></p>

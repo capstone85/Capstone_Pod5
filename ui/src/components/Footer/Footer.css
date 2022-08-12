@@ -1,25 +1,35 @@
 .footer {
-  bottom: 0%;
-  /* position: absolute; */
-  /* padding-top: 50px; */
   padding-bottom: 70px;
-  background-color: white;
-  color: black;
   transform: translateY(45vh);
+}
+
+.footer-links {
   /* height: 200px; */
   /* padding: top; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 hr {
   background-color: black;
   height: 1px;
-  width: 100vh;
+  width: 160vh;
   border: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.line-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
 }
 
 .about {
   padding: 20px;
 }
+
 .terms {
   padding: 20px;
 }
