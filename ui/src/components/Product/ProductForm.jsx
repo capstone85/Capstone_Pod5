@@ -61,7 +61,7 @@ export default function ProductForm(props) {
         category: "",
       });
       props.addProduct(data.product);
-      navigate("/store-page");
+      navigate("/store-page/" + storeId);
     }
     setIsLoading(false);
   };
