@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import LocationSearchBar from "../Search/LocationSearch";
 import Footer from "../Footer/Footer";
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   const [searchBar, setSearchBar] = useState(""); // for search results
 
   // Sets value of search for filtering
@@ -27,6 +27,8 @@ export default function LandingPage() {
           <LocationSearchBar
             handleOnSearchBarChange={handleOnSearchBarChange}
             setSearchBar={setSearchBar}
+            location={props.location}
+            setLocation={props.setLocation}
           />
         </div>
 

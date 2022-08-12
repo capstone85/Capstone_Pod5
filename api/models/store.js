@@ -13,11 +13,11 @@ class Store {
     });
     const results = await db.query(
       `
-            INSERT INTO store (name, location, logo, description, user_id)
-            VALUES ($1, $2, $3, $4, (SELECT id FROM users WHERE email = $5))
-            RETURNING id, name, location, logo, description, user_id, created_at
+            INSERT INTO store (name, location, zipcode, logo, description, user_id)
+            VALUES ($1, $2, $3, $4, $5,(SELECT id FROM users WHERE email = $6))
+            RETURNING id, name, location, zipcode,logo, description, user_id, created_at
             `,
-      [store.name, store.location, store.logo, store.description, user.email]
+      [store.name, store.location, store.zipcode, store.logo, store.description, user.email]
     );
     return results.rows[0];
   }
@@ -28,6 +28,7 @@ class Store {
             SELECT  s.id,
                     s.name,
                     s.location,
+                    s.zipcode,
                     s.logo,
                     s.description,
                     u.email AS "user_email",
@@ -52,6 +53,7 @@ class Store {
             SELECT  s.id,
                     s.name,
                     s.location,
+                    s.zipcode,
                     s.logo,
                     s.description,
                     u.email AS "user_email",
@@ -73,6 +75,7 @@ class Store {
       `SELECT  s.id,
                 s.name,
                 s.location,
+                s.zipcode,
                 s.logo,
                 s.description,
                 s.created_at 

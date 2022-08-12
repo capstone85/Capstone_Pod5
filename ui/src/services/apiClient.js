@@ -11,6 +11,7 @@ class ApiClient {
   async setToken(token) {
     this.token = token;
     localStorage.setItem(this.tokenName, token);
+
   }
 
   async request({ endpoint, method = `GET`, data = {} }) {

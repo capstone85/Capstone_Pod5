@@ -71,11 +71,8 @@ export default function ShoppingCart(props) {
             </div>
           ) : null}
           {product.map((item, idx) => {
-            subtotal += item.product_price;
+            subtotal += item.product_price * item.quantity;
             return <CartItem item={item} key={idx} />;
-            // console.log(item.product_image);
-            // query: if product in cart, check if its in the wishlist.
-            // if product is in BOTH, then make heart red
           })}
         </div>
         <div className="shopping-cart-totals">

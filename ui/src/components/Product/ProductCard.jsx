@@ -10,12 +10,6 @@ import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Navigate, useNavigate } from "react-router-dom";
 
-// //toast alert
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
-//import { addToWishlist } from "../../../../api/models/product";
-
 // Renders image, name, price, and category of products.
 // Buttons allow users to add products to wishlist or shopping cart.
 export default function ProductCard(props) {
@@ -30,13 +24,6 @@ export default function ProductCard(props) {
   //   console.log("data in add to list");
   // }, [isClicked]);
 
-  // const addToWishlist = async () => {
-  //   const { data, error } = await apiClient.addWishlist(props.product.id);
-  // };
-  // console.log("hello product card");
-  // console.log(props.product.name);
-
-  const [btnClassWishlist, setBtnClassWishlist] = useState(false);
   const [btnClassCart, setBtnClassCart] = useState(false);
   const [isInWishlist, setIsInWishlist] = useState(false);
 
@@ -50,17 +37,6 @@ export default function ProductCard(props) {
 
   let navigate = useNavigate();
 
-  //notify function for the toast popup
-  // const notify = () =>
-  //   toast("🦄 Wow so easy!", {
-  //     position: "top-center",
-  //     autoClose: 5000,
-  //     hideProgressBar: true,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -75,7 +51,6 @@ export default function ProductCard(props) {
               navigate("/products/" + props.product.id);
             }}
           >
-            {/* {console.log("Product Name: ", props.product.name)} */}
             {props.product.name}
           </a>
         </h4>
@@ -106,12 +81,11 @@ export default function ProductCard(props) {
                 const a = await apiClient.checkIfInCart(props.product.id);
                 const isInCart = a.data.isInShoppingCart;
                 if (isInCart) {
-                  // intsead of null, call apiClient.incrementQuantity
-                  null;
+                  apiClient.incrementProductQuantity(props.product.id);
                 } else {
-                  setBtnClassCart(true);
                   apiClient.addToShoppingCart(props.product.id);
                 }
+                setBtnClassCart(true);
               }}
             >
               {/* <FavoriteBorderIcon /> */}

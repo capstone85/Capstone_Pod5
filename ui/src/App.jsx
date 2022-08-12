@@ -79,6 +79,9 @@ function App() {
   const handleGetItemQuantity = (item) => getQuantityOfItemInCart(cart, item);
   const handleGetTotalCartItems = () => getTotalItemsInCart(cart);
   const [shownavbar, setshownavbar] = useState(false);
+  const [location, setLocation] = useState({
+    userlocation: "",
+  });
 
   const handleOnSearchInputChange = (event) => {
     setSearchInputValue(event.target.value);
@@ -197,7 +200,12 @@ function App() {
       <main>
         <Routes>
           {/* landing page route */}
-          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/"
+            element={
+              <LandingPage location={location} setLocation={setLocation} />
+            }
+          />
           {/* <Route path="/sidebar" element={<Sidebar />} /> */}
           <Route
             path="/store-page"
@@ -208,6 +216,7 @@ function App() {
                 addToCart={handleAddItemToCart}
                 removeFromCart={handleOnRemoveFromCart}
                 getQuantityOfItemInCart={handleGetItemQuantity}
+                location={location}
               />
             }
           />
@@ -253,8 +262,9 @@ function App() {
             element={
               <SearchPage
                 handleOnSearchbarChange={handleOnSearchbarChange}
-                setSearchBar={setSearchbar}
                 products={products}
+                searchbar={searchbar}
+                setSearchbar={setSearchbar}
               />
             }
           />

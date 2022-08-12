@@ -46,6 +46,7 @@ export default function StoreFeed(props) {
               id={element.id}
               name={element.name}
               location={element.location}
+              zipcode={element.zipcode}
               description={element.description}
               logo={element.logo}
               created_at={enUSFormatter.format(date)}
@@ -56,6 +57,7 @@ export default function StoreFeed(props) {
               id={element.id}
               name={element.name}
               location={element.location}
+              zipcode={element.zipcode}
               description={element.description}
               logo={element.logo}
               created_at={enUSFormatter.format(date)}

@@ -73,7 +73,8 @@ a {
 .product-bottom-details {
   overflow: hidden;
   border-top: 1px solid #eee;
-  padding-top: 20px;
+  padding-top: 15px;
+  max-height: 40px;
 }
 
 .product-bottom-details div {
@@ -102,7 +103,7 @@ a {
 .product-links button {
   display: inline-block;
   margin-left: 15px;
-  color: #e1e1e1;
+  color: #717171;
   transition: 0.3s;
   font-size: 17px;
   border: none;

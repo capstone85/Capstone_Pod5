@@ -95,6 +95,22 @@ class User {
     const user = result.rows[0];
     return user;
   }
+
+  // static async searchLocation(){
+  //   const zip = await db.query(
+  //     `
+  //           INSERT INTO users (
+  //            location
+  //           )
+  //           VALUES ($1)
+  //           RETURNING location;
+  //       `,
+  //     [
+  //     location
+  //     ]
+  //   );
+  //   return zip;
+  // }
 }
 
 module.exports = User;

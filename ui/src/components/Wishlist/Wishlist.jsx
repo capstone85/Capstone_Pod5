@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { formatPrice } from "../../utils/format";
 import {
@@ -8,7 +7,7 @@ import {
 } from "../../utils/calculations";
 import "./Wishlist.css";
 import LoginPage from "../../../Login/LoginPage";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NotFound from "../NotFound/NotFound";
@@ -23,6 +22,7 @@ export default function Wishlist(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -96,8 +96,22 @@ export default function Wishlist(props) {
                     />
                   </div>
                   <div className="description">
-                    <span className="store">{item.store_name}</span>
-                    <span className="product-name">{item.product_name}</span>
+                    <span
+                      className="store"
+                      onClick={() => {
+                        navigate("/store-page/" + item.store_id);
+                      }}
+                    >
+                      {item.store_name}
+                    </span>
+                    <span
+                      className="product-name"
+                      onClick={() => {
+                        navigate("/products/" + item.product_id);
+                      }}
+                    >
+                      {item.product_name}
+                    </span>
                   </div>
                   <span className="price">${item.product_price}</span>
                   <div className="add-to-cart">
