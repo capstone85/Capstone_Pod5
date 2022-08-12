@@ -54,8 +54,11 @@ class Checkout {
                c.order_id AS "order_id",
                c.user_id AS "user_id",
                c.status AS "status",
+               c.product_id AS "product_id",
+               p.price AS "price",
                c.created_at AS "created_at"
         FROM checkout AS c
+            JOIN product AS p ON p.id = c.product_id
         WHERE c.user_id = $1
         ORDER BY c.created_at DESC
         `,
