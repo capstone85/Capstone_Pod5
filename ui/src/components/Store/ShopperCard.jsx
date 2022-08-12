@@ -31,6 +31,9 @@ export default function ShopperCard(props) {
           📍 {props.location}
         </Typography>
         <Typography variant="body2" color="text.secondary">
+          📍 {props.zipcode}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
           📞 Phone Number
         </Typography>
         <Typography variant="body2" color="text.secondary">
