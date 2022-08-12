@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   color: black;
+  transform: translateY(100px);
 }
 
 .MuiButton-outlined {

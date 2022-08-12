@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import { sizing } from "@mui/system";
 import Footer from "../Footer/Footer";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import ProductCard from "./ProductCard";
 import axios from "axios";
@@ -22,15 +22,25 @@ export default function ProductsPage(props) {
 
   const categories = ["All Categories", "clothing", "accessories", "footwear"];
 
-  console.log("products here " + product);
-
   const currentItems = product.filter((item) => {
-    console.log(item.category);
     return item.category == activeCategory;
   });
 
-  console.log(activeCategory);
-  console.log(currentItems);
+  const [btnClassCart, setBtnClassCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+
+  useEffect(() => {
+    async function wishlist() {
+      const a = await apiClient.checkIfInWishlist(props.product.id);
+      setIsInWishlist(a.data.isInWishlist);
+    }
+    wishlist();
+  }, []);
+
+  let navigate = useNavigate();
+
+  // console.log(activeCategory);
+  // console.log(currentItems);
   // if (activeCategory != "All Categories") {
   //   setProduct(product);
   // }
@@ -44,7 +54,7 @@ export default function ProductsPage(props) {
       await axios
         .get(`http://localhost:5174/product/store/${storeId}`)
         .then((response) => {
-          console.log(response.data.product);
+          // console.log(response.data.product);
           setProduct(response.data.product);
 
           props.setIsFetching(false);
@@ -64,10 +74,9 @@ export default function ProductsPage(props) {
       await axios
         .get(`http://localhost:5174/store/${storeId}`)
         .then((response) => {
-          console.log(response.data.store);
+          // console.log(response.data.store);
           setStore(response.data.store);
           props.setIsFetching(false);
-          console.log("stores:" + store[0].name);
         })
         .catch((error) => {
           <NotFound />;
@@ -75,8 +84,6 @@ export default function ProductsPage(props) {
     }
     getInfoStore();
   }, []);
-
-  console.log("store info: ", store);
 
   return (
     <div className="products-page">

@@ -10,16 +10,9 @@ import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Navigate, useNavigate } from "react-router-dom";
 
-// //toast alert
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
-//import { addToWishlist } from "../../../../api/models/product";
-
 // Renders image, name, price, and category of products.
 // Buttons allow users to add products to wishlist or shopping cart.
 export default function ProductCard(props) {
-  // const [isClicked, setIsClicked] = useState(false);
   // useEffect(() => {
   //   const addTolist = async () => {
   //     console.log("isClicked");
@@ -31,27 +24,19 @@ export default function ProductCard(props) {
   //   console.log("data in add to list");
   // }, [isClicked]);
 
-  // const addToWishlist = async () => {
-  //   const { data, error } = await apiClient.addWishlist(props.product.id);
-  // };
-  // console.log("hello product card");
-  // console.log(props.product.name);
-  const [btnClassWishlist, setBtnClassWishlist] = useState(false);
   const [btnClassCart, setBtnClassCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+
+  useEffect(() => {
+    async function wishlist() {
+      const a = await apiClient.checkIfInWishlist(props.product.id);
+      setIsInWishlist(a.data.isInWishlist);
+    }
+    wishlist();
+  }, []);
 
   let navigate = useNavigate();
 
-  //notify function for the toast popup
-  // const notify = () =>
-  //   toast("🦄 Wow so easy!", {
-  //     position: "top-center",
-  //     autoClose: 5000,
-  //     hideProgressBar: true,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
   return (
     <div className="product-card">
       <div className="product-tumb">
@@ -66,28 +51,26 @@ export default function ProductCard(props) {
               navigate("/products/" + props.product.id);
             }}
           >
-            {console.log("Product Name: ", props.product.name)}
             {props.product.name}
           </a>
         </h4>
-        {/* <p>{props.product.description}</p> */}
         <div className="product-bottom-details">
           <div className="product-price">${props.product.price}</div>
           <div className="product-links">
             <button
               onClick={async () => {
                 const a = await apiClient.checkIfInWishlist(props.product.id);
-                const isInWishlist = a.data.isInWishlist;
+                setIsInWishlist(a.data.isInWishlist);
                 if (isInWishlist) {
-                  null;
+                  setIsInWishlist(false);
+                  apiClient.removeFromWishlist(props.product.id);
                 } else {
-                  setBtnClassWishlist(true);
+                  setIsInWishlist(true);
                   apiClient.addToWishlist(props.product.id);
                 }
               }}
             >
-              {/* <FavoriteBorderIcon /> */}
-              {btnClassWishlist ? (
+              {isInWishlist ? (
                 <FavoriteIcon style={{ color: "#B86B77" }} />
               ) : (
                 <FavoriteBorderIcon />
@@ -96,16 +79,13 @@ export default function ProductCard(props) {
             <button
               onClick={async () => {
                 const a = await apiClient.checkIfInCart(props.product.id);
-                console.log("THIS IS A", a);
                 const isInCart = a.data.isInShoppingCart;
-                console.log("THIS IS A", isInCart);
                 if (isInCart) {
-                  // intsead of null, call apiClient.incrementQuantity
-                  null;
+                  apiClient.incrementProductQuantity(props.product.id);
                 } else {
-                  setBtnClassCart(true);
                   apiClient.addToShoppingCart(props.product.id);
                 }
+                setBtnClassCart(true);
               }}
             >
               {/* <FavoriteBorderIcon /> */}

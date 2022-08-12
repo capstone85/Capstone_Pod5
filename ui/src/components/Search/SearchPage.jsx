@@ -5,11 +5,17 @@ import Selector from "../Product/Filter";
 import { useState, useEffect } from "react";
 import apiClient from "../../services/apiClient";
 import ProductCard from "../Product/ProductCard";
+import ProductGrid from "../Product/ProductGrid";
 
 export default function SearchPage(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("All Categories");
+  const categories = ["All Categories", "clothing", "accessories", "footwear"];
+
+  let foundSearch = false;
+
   useEffect(() => {
     const fetchProducts = async () => {
       setIsFetching(true);
@@ -28,16 +34,6 @@ export default function SearchPage(props) {
     fetchProducts();
   }, []);
 
-  let foundSearch = false;
-  
-  const [activeCategory, setActiveCategory] = useState("All Categories");
-  const categoriesList = [
-    "All Categories",
-    "clothing",
-    "accessories",
-    "footwear",
-  ];
-
   const currentItems = product.filter((item) => {
     console.log(item.category);
     return item.category == activeCategory;
@@ -45,7 +41,7 @@ export default function SearchPage(props) {
 
   return (
     <>
-      <h1 className="page-head">Search for stores or styles.</h1>
+      <h1 className="page-head">Search styles across stores near you.</h1>
       <div className="searchbar">
         <SearchBar
           handleOnSearchbarChange={props.handleOnSearchbarChange}
@@ -55,7 +51,7 @@ export default function SearchPage(props) {
       </div>
       <div className="category">
         <ul className="categoryList">
-          {categoriesList.map((category, idx) => (
+          {categories.map((category, idx) => (
             <Selector
               key={idx}
               category={category}
@@ -68,35 +64,15 @@ export default function SearchPage(props) {
         </ul>
       </div>
       <div className="product-gridSearch">
-        {product.map((item, idx) => {
-          {
-            foundSearch = true;
-            return (
-              <ProductCard
-                key={idx}
-                category={item.category}
-                description={item.description}
-                // showDescription={false}
-                image={item.image}
-                name={item.name}
-                price={item.price}
-                // storeId={curr.id}
-                // products={props.products}
-                // quantity={quantity}
-                //  addToCart={() => addToCart(product)}
-                addToCart={props.handleAddItemToCart}
-                handleRemoveItemFromCart={props.handleRemoveItemFromCart}
-                setIsFetching={props.setIsFetching}
-                product={item}
-              />
-            );
-          }
-        })}
-        {!foundSearch ? (
-          <div className="none-found">
-            <h1>No products available.</h1>
-          </div>
-        ) : null}
+        <ProductGrid
+          handleAddItemToCart={props.handleAddItemToCart}
+          handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+          shoppingCart={props.shoppingCart}
+          setIsFetching={props.setIsFetching}
+          searchbar={props.searchbar}
+          store={props.store}
+          product={activeCategory == "All Categories" ? product : currentItems}
+        />
       </div>
     </>
   );

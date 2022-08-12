@@ -1,11 +1,11 @@
-.body a {
+.dashboard-body a {
   text-decoration: none;
   color: #f48498;
 }
 
-.body a:hover {
+.dashboard-body a:hover {
   text-decoration: underline;
 }
-.body {
+.dashboard-body {
   color: black;
 }
