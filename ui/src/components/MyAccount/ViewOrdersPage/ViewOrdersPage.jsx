@@ -52,7 +52,6 @@ export default function ViewOrdersPage(props) {
               <th scope="col">ORDER NUMBER</th>
               <th scope="col">DATE</th>
               <th scope="col">STATUS</th>
-              <th scope="col">TOTAL</th>
               <th scope="col">ACTIONS</th>
             </tr>
           </thead>
@@ -63,7 +62,6 @@ export default function ViewOrdersPage(props) {
                   <th scope="row">#{item.order_id}</th>
                   <td>{item.created_at}</td>
                   <td>{item.status}</td>
-                  <td>${item.price}</td>
                   <td
                     onClick={() => navigate("/confirmation/" + item.order_id)}
                     style={{ color: "#B86B77" }}
