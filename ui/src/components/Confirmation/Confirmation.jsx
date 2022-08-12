@@ -9,9 +9,33 @@ export default function Confirmation(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
+  const [order, setOrder] = useState([]);
 
   //   const confirmation = Math.ceil(Math.random() * 10000);
   let { confirmation } = useParams();
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (!(Object.keys(props.user).length === 0)) {
+        setIsFetching(true);
+
+        const { data, error } = await apiClient.listDeliveryDetails(
+          confirmation
+        );
+        if (error) {
+          setError(error);
+        }
+        if (data) {
+          console.log("DATA", data);
+          console.log("THIS IS DATA ORDERS" + data.order);
+          setOrder(data.order);
+        }
+        setIsFetching(false);
+      }
+    };
+
+    fetchOrders();
+  }, [props.user]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -35,6 +59,8 @@ export default function Confirmation(props) {
     fetchProducts();
   }, [props.user]);
 
+  console.log("ADDRESS", order);
+
   return (
     <div className="confirmation">
       <div className="confirmation-header">
@@ -50,61 +76,71 @@ export default function Confirmation(props) {
           Order Details
         </h2>
         {/* order number and delivery time fram sections  */}
-        <div className="orderDetails-info">
-          <tr>
-            <tr>
-              <b>ORDER NUMBER </b>
-              <td style={{ transform: "translateX(250px)" }}>
-                <b>DELIVERY TIME FRAME</b>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ color: "gray" }}>{confirmation}</td>
-              <td style={{ transform: "translateX(250px)", color: "gray" }}>
-                time(this will change)
-              </td>
-            </tr>
-          </tr>
+        {order.map((item) => {
+          return (
+            <div className="orderDetails-info">
+              <tr>
+                <tr>
+                  <b>ORDER NUMBER </b>
+                  <td style={{ transform: "translateX(250px)" }}>
+                    <b>DELIVERY TIME FRAME</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ color: "gray" }}>{confirmation}</td>
+                  <td style={{ transform: "translateX(250px)", color: "gray" }}>
+                    time(this will change)
+                  </td>
+                </tr>
+              </tr>
 
-          <tr style={{ transform: "translateY(40px)" }}>
-            <tr>
-              <b>EMAIL </b>
-              <td style={{ transform: "translateX(288px)" }}>
-                <b>DELIVERY ADDRESS</b>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ color: "gray" }}>some email</td>
-              <td style={{ transform: "translateX(288px)", color: "gray" }}>
-                some address
-              </td>
-            </tr>
-          </tr>
+              <tr style={{ transform: "translateY(40px)" }}>
+                <tr>
+                  <b>EMAIL </b>
+                  <td style={{ transform: "translateX(288px)" }}>
+                    <b>DELIVERY ADDRESS</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ color: "gray" }}>{item.email}</td>
+                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
+                    {item.address}
+                  </td>
+                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
+                    {item.city}
+                  </td>
+                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
+                    {item.zipcode}
+                  </td>
+                </tr>
+              </tr>
 
-          <tr style={{ transform: "translateY(80px)" }}>
-            <tr>
-              <b>PAYMENT METHOD </b>
-            </tr>
-            <tr>
-              <td style={{ color: "gray" }}>some payment method</td>
-            </tr>
-          </tr>
+              <tr style={{ transform: "translateY(80px)" }}>
+                <tr>
+                  <b>PAYMENT METHOD </b>
+                </tr>
+                <tr>
+                  <td style={{ color: "gray" }}>some payment method</td>
+                </tr>
+              </tr>
 
-          <tr style={{ transform: "translateY(120px)" }}>
-            <tr>
-              <b>ORDER DATE </b>
-              <td style={{ transform: "translateX(275px)" }}>
-                <b>CONTACT NUMBER</b>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ color: "gray" }}>a date</td>
-              <td style={{ transform: "translateX(275px)", color: "gray" }}>
-                some number
-              </td>
-            </tr>
-          </tr>
-        </div>
+              <tr style={{ transform: "translateY(120px)" }}>
+                <tr>
+                  <b>ORDER DATE </b>
+                  <td style={{ transform: "translateX(275px)" }}>
+                    <b>CONTACT NUMBER</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ color: "gray" }}>a date</td>
+                  <td style={{ transform: "translateX(275px)", color: "gray" }}>
+                    {item.number}
+                  </td>
+                </tr>
+              </tr>
+            </div>
+          );
+        })}
 
         {/* order summary portion --> should show all the products purchased */}
         <div className="order-summary">

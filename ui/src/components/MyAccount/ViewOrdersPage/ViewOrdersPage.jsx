@@ -10,6 +10,7 @@ export default function ViewOrdersPage(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -64,6 +65,7 @@ export default function ViewOrdersPage(props) {
                     </thead>
                     <tbody>
                       {product.map((item) => {
+                        
                         return (
                           <tr>
                             <th scope="row">{item.order_id}</th>

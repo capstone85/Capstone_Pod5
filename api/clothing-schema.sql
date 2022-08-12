@@ -61,3 +61,17 @@ CREATE TABLE wishlist (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
 );
+
+CREATE TABLE orderDetails (
+    id          SERIAL PRIMARY KEY,
+    order_id    INT DEFAULT 0,
+    user_id     INT NOT NULL,
+    first_name  TEXT NOT NULL,
+    last_name   TEXT NOT NULL,
+    address     TEXT NOT NULL,
+    zipcode     TEXT NOT NULL,
+    city        TEXT NOT NULL,
+    number      TEXT NOT NULL,
+    email       TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)

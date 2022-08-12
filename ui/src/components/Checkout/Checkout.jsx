@@ -18,19 +18,22 @@ export default function Checkout(props) {
   const [confirmation, setConfirmation] = useState([]);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   //checkout form
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    companyName: "",
-    streetAddress: "",
-    zipCode: "",
+    first_name: "",
+    last_name: "",
+    address: "",
+    zipcode: "",
     city: "",
-    phoneNumber: "",
-    emailAddress: "",
-    orderNotes: "",
+    number: "",
+    email: "",
   });
+
+  const handleOnInputChange = (event) => {
+    setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+  };
 
   //total prices calculations------------
   let subtotal = 0;
@@ -75,6 +78,15 @@ export default function Checkout(props) {
     });
   };
 
+  const handleOnSubmit = async (s) => {
+    console.log("Inside handle on submit");
+    console.log(form);
+    apiClient.addDeliveryDetails(form, confirmationNum);
+    if (error) {
+      setErrors(error);
+    }
+    setIsLoading(false);
+  };
   return (
     <>
       <div className="checkout-banner">
@@ -100,18 +112,22 @@ export default function Checkout(props) {
                   id="standard-basic"
                   label="First Name *"
                   variant="standard"
-                  type="firstName"
-                  name="firstName"
+                  type="first_name"
+                  name="first_name"
                   placeholder="Jane"
+                  value={form.first_name}
+                  onChange={handleOnInputChange}
                 />
                 {/* last name input */}
                 <TextField
                   id="standard-basic"
                   label="Last Name *"
                   variant="standard"
-                  type="lastName"
-                  name="lastName"
+                  type="last_name"
+                  name="last_name"
                   placeholder="Doe"
+                  value={form.last_name}
+                  onChange={handleOnInputChange}
                 />
               </Box>
             </div>
@@ -135,9 +151,11 @@ export default function Checkout(props) {
                 id="standard-basic"
                 label="Street Address *"
                 variant="standard"
-                type="streetAddress"
-                name="streetAddress"
-                placeholder="Street Address"
+                type="address"
+                name="address"
+                placeholder="address"
+                value={form.address}
+                onChange={handleOnInputChange}
               />
             </div>
 
@@ -148,9 +166,11 @@ export default function Checkout(props) {
                 id="standard-basic"
                 label="ZIP Code *"
                 variant="standard"
-                type="zipCode"
-                name="zipCode"
+                type="zipcode"
+                name="zipcode"
                 placeholder="ZIP Code"
+                value={form.zipcode}
+                onChange={handleOnInputChange}
               />
             </div>
 
@@ -164,6 +184,8 @@ export default function Checkout(props) {
                 type="city"
                 name="city"
                 placeholder="City"
+                value={form.city}
+                onChange={handleOnInputChange}
               />
             </div>
 
@@ -174,9 +196,11 @@ export default function Checkout(props) {
                 id="standard-basic"
                 label="Phone Number *"
                 variant="standard"
-                type="phoneNumber"
-                name="phoneNumber"
+                type="number"
+                name="number"
                 placeholder="Phone Number"
+                value={form.number}
+                onChange={handleOnInputChange}
               />
             </div>
 
@@ -187,9 +211,11 @@ export default function Checkout(props) {
                 id="standard-basic"
                 label="Email Address *"
                 variant="standard"
-                type="emailAddress"
-                name="emailAddress"
+                type="email"
+                name="email"
                 placeholder="Email Address"
+                value={form.email}
+                onChange={handleOnInputChange}
               />
             </div>
 
@@ -336,6 +362,7 @@ export default function Checkout(props) {
               <button
                 className="checkout-btn"
                 onClick={() => {
+                  handleOnSubmit();
                   checkoutProducts();
                   apiClient.deleteShoppingCart(props.user.id);
                   navigate("/confirmation/" + confirmationNum);
