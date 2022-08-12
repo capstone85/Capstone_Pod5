@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import axios from "axios";
 
 import ShopperCard from "../Store/ShopperCard";
-import { ContactSupportOutlined } from "@material-ui/icons";
+// import { ContactSupportOutlined } from "@material-ui/icons";
 export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [stores, setStores] = useState([]);
@@ -27,12 +27,8 @@ export default function Home(props) {
         setError(error);
       }
       if (data) {
-<<<<<<< HEAD
         console.log("data", data);
         setStores(data.stores);
-=======
-        setStore(data.stores);
->>>>>>> 59080bb51e9af0a3cb8926886e0195bf02d8d9e3
       }
       setIsFetching(false);
     };
