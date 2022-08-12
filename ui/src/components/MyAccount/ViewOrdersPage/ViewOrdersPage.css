@@ -3,15 +3,28 @@
   flex-direction: column;
 }
 
-.Orders .Orders-header {
+.view-orders-header {
+  height: 120px;
+}
+
+.view-orders-header h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: black;
   transform: translateY(30px);
-}
-
-.Orders .Orders-header h1 {
   font-family: "DM Serif Display", serif;
 }
 
+.my-orders-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-orders-table td {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  /* width: 200px; */
+}
