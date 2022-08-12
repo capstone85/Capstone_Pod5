@@ -1,3 +1,7 @@
+.banner {
+  height: auto;
+}
+
 .home .banner h1 {
   display: flex;
   align-items: center;

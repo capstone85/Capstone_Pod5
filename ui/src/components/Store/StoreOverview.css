@@ -2,12 +2,23 @@
   color: black;
 } */
 
-.header {
+.store-overview-header {
+  height: 30px;
+}
+
+.add-store-btn-wrapper {
+  height: 40px;
+}
+
+.add-store-btn {
   display: flex;
   flex-wrap: wrap;
   float: right;
   margin-top: 40px;
-  margin-right: 50px;
+  margin-right: 100px;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
 }
 
 .add-store {

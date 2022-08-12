@@ -28,10 +28,7 @@ export default function ShopperCard(props) {
           {props.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          📍 {props.location}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          📍 {props.zipcode}
+          📍 {props.location} {props.zipcode}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           📞 Phone Number

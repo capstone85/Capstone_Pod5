@@ -8,9 +8,11 @@ import "./StoreOverview.css";
 export default function StoreOverview(props) {
   return (
     <div className="store-overview">
-      <div>
-        {/* <h3>Overview</h3> */}
-        <button className="header">
+      <div className="store-overview-header">
+        <hr style={{ transform: "translateY(50px)", width: "1530px" }}></hr>
+      </div>
+      <div className="add-store-btn-wrapper">
+        <button className="add-store-btn">
           <Link
             className="add-store"
             to="/store/create"
@@ -20,8 +22,9 @@ export default function StoreOverview(props) {
           </Link>
         </button>
       </div>
-      <hr style={{ transform: "translateY(36px)", width: "1530px" }}></hr>
-      <StoreFeed store={props.store} user={props.user}></StoreFeed>
+      <div>
+        <StoreFeed store={props.store} user={props.user}></StoreFeed>
+      </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function StoreFeed(props) {
     fetchStores();
   }, [props.user]);
   return (
-    <div className="store-feed" style={{ transform: "translateY(-10px)" }}>
+    <>
       {store.length === 0 ? (
         <div className="empty">
           <h2>Nothing here yet.</h2>
@@ -65,6 +65,6 @@ export default function StoreFeed(props) {
           );
         })
       )}
-    </div>
+    </>
   );
 }
