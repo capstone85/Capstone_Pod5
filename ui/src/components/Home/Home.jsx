@@ -9,6 +9,7 @@ import apiClient from "../../services/apiClient";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import ShopperCard from "../Store/ShopperCard";
+// import { ContactSupportOutlined } from "@material-ui/icons";
 
 export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
