@@ -14,7 +14,7 @@ export default function StoreCard(props) {
   const button = styled(Button)(spacing);
 
   return (
-    <Card sx={{ maxHeight: 800, maxWidth: 900 }} className="store-card">
+    <Card sx={{ maxWidth: 900 }} className="store-card">
       <CardMedia
         className="store-card-image"
         component="img"
