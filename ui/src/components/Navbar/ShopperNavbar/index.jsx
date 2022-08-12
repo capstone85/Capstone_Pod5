@@ -38,6 +38,7 @@ export default function ShopperNavbar(props) {
 
   //dropdown for the profile icon in the navbar
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [error, setError] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,7 +47,9 @@ export default function ShopperNavbar(props) {
     setAnchorEl(null);
   };
   //-------------------
-
+  if (error) {
+    setError(error);
+  }
   return (
     <div className="navbar shopper">
       {/* logo link*/}
@@ -91,10 +94,24 @@ export default function ShopperNavbar(props) {
         </li>
 
         {/* store link */}
-        <li className="shop-link">
+        {/* <li className="shop-link">
           <Link to="/store-page">
             <Typography>Shop</Typography>
           </Link>
+        </li> */}
+
+        <li className="shop-link">
+          {props.location ? (
+            <Link to="/store-page">
+              <Typography>Shop</Typography>
+            </Link>
+          ) : (
+            <Tooltip title="Please enter your zip code">
+              <Link to="/">
+                <Typography>Shop</Typography>
+              </Link>
+            </Tooltip>
+          )}
         </li>
 
         {/* search link */}
