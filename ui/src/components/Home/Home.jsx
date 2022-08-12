@@ -8,9 +8,9 @@ import StoreOverview from "../Store/StoreOverview";
 import apiClient from "../../services/apiClient";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-
 import ShopperCard from "../Store/ShopperCard";
 // import { ContactSupportOutlined } from "@material-ui/icons";
+
 export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [stores, setStores] = useState([]);
@@ -27,6 +27,7 @@ export default function Home(props) {
         setError(error);
       }
       if (data) {
+        console.log("data", data);
         setStores(data.stores);
       }
       setIsFetching(false);
