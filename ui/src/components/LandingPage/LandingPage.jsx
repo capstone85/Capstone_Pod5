@@ -15,8 +15,10 @@ export default function LandingPage(props) {
   return (
     <div className="landing">
       <div className="landing-text">
-        <h1>Shop styles from stores near you.</h1>
-        <h1>Enter your location to get started.</h1>
+        <div className="landing-text-headers">
+          <h1>Shop styles from stores near you.</h1>
+          <h1>Enter your location to get started.</h1>
+        </div>
         <div className="landing-image">
           <img
             src="https://t3.ftcdn.net/jpg/03/16/52/70/360_F_316527081_e2tXI5A3Zq9EzyKnFLSYNJXlQGsnTO5y.jpg"

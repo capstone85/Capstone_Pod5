@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import apiClient from "../../services/apiClient";
 import { useNavigate } from "react-router-dom";
 import Confirmation from "../Confirmation/Confirmation";
+import Footer from "../Footer/Footer";
 
 //delivery details input forms
 import Box from "@mui/material/Box";
@@ -348,6 +349,7 @@ export default function Checkout(props) {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

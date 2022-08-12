@@ -109,7 +109,7 @@ export default function ProductView() {
 
             <div className="addToCartButton">
               <Button
-                variant="outlined"
+                variant="text"
                 onClick={async () => {
                   const a = await apiClient.checkIfInCart(product.id);
                   const isInCart = a.data.isInShoppingCart;
