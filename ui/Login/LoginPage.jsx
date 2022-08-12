@@ -41,8 +41,6 @@ export default function LoginPage(props) {
         setIsLoggedIn={props.setIsLoggedIn}
         isLoggedIn={props.isLoggedIn}
       ></Login>
-
-      <Footer></Footer>
     </div>
   );
 }

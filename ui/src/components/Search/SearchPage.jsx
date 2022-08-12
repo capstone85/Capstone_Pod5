@@ -41,7 +41,7 @@ export default function SearchPage(props) {
 
   return (
     <>
-      <h1 className="page-head">Search styles across stores near you.</h1>
+      <h1 className="page-head">Search styles across stores near you</h1>
       <div className="searchbar">
         <SearchBar
           handleOnSearchbarChange={props.handleOnSearchbarChange}

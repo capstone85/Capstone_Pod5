@@ -117,7 +117,7 @@ input {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transform: translateY(100px);
+  transform: translateY(50px);
 }
 .Register .card {
   min-height: 600px;

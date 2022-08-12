@@ -1,6 +1,7 @@
 .Login,
 .Login .card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   font-family: "Recoleta", sans-serif;
   color: black;
