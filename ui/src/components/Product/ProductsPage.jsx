@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import { sizing } from "@mui/system";
 import Footer from "../Footer/Footer";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import ProductCard from "./ProductCard";
 import axios from "axios";
@@ -25,6 +25,19 @@ export default function ProductsPage(props) {
   const currentItems = product.filter((item) => {
     return item.category == activeCategory;
   });
+
+  const [btnClassCart, setBtnClassCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+
+  useEffect(() => {
+    async function wishlist() {
+      const a = await apiClient.checkIfInWishlist(props.product.id);
+      setIsInWishlist(a.data.isInWishlist);
+    }
+    wishlist();
+  }, []);
+
+  let navigate = useNavigate();
 
   // console.log(activeCategory);
   // console.log(currentItems);

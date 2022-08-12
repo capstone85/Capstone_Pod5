@@ -253,8 +253,9 @@ function App() {
             element={
               <SearchPage
                 handleOnSearchbarChange={handleOnSearchbarChange}
-                setSearchBar={setSearchbar}
                 products={products}
+                searchbar={searchbar}
+                setSearchbar={setSearchbar}
               />
             }
           />
