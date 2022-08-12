@@ -114,6 +114,8 @@ export default function Home(props) {
         <div className="banner">
           <h1>STORES NEAR YOU</h1>
           <hr style={{ transform: "translateY(60px) ", width: "1530px" }}></hr>
+        </div>
+        <div>
           {newStores.map((element, idx) => {
             const date = new Date(element.created_at);
             const enUSFormatter = new Intl.DateTimeFormat("en-US");
