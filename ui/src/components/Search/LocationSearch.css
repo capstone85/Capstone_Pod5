@@ -18,7 +18,7 @@
   padding: 10px;
   background-color: white;
   border-radius: 30px;
-  width: 200px;
+  width: 300px;
   /* color: white; */
 }
 input.input {
@@ -49,4 +49,14 @@ input:focus {
 textarea:focus,
 input:focus {
   outline: none;
+}
+
+.findlocation {
+  margin-left: 20px;
+  background-color: black;
+  border: none;
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  cursor: pointer;
 }

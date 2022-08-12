@@ -10,6 +10,7 @@ const productRoutes = require("./routes/product");
 const checkoutRoutes = require("./routes/checkout");
 const wishlistRoutes = require("./routes/wishlist");
 const shoppingRoutes = require("./routes/shoppingCart");
+const orderRoutes = require("./routes/orderDetails");
 
 const app = express();
 // const port = 5173;
@@ -25,6 +26,7 @@ app.use("/product", productRoutes);
 app.use("/checkout", checkoutRoutes);
 app.use("/wishlist", wishlistRoutes);
 app.use("/shoppingCart", shoppingRoutes);
+app.use("/order", orderRoutes);
 
 app.use((req, res, next) => {
   return next(new NotFoundError());
