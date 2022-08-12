@@ -5,12 +5,15 @@ import Footer from "../../Footer/Footer";
 import { useState } from "react";
 import { useEffect } from "react";
 import apiClient from "../../../services/apiClient";
+import { useNavigate } from "react-router-dom";
 
 export default function ViewOrdersPage(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,56 +36,45 @@ export default function ViewOrdersPage(props) {
 
     fetchProducts();
   }, [props.user]);
+
+  console.log(product);
   return (
     <div className="Orders">
-      {/* <DashboardLinks
-        handleLogout={props.handleLogout}
-        isLogin={props.isLogin}
-        user={props.user}
-        setUser={props.setUser}
-      /> */}
-      <div className="header">
+      <div className="view-orders-header">
         <h1>MY ORDERS</h1>
+        <hr style={{ transform: "translateY(55px) ", width: "1530px" }}></hr>
       </div>
-      <hr style={{ transform: "translateY(60px) ", width: "1530px" }}></hr>
 
-      <div class="container py-5">
-        <div class="row">
-          <div class="col-lg-7 mx-auto">
-            <div class="card rounded-0 border-0 shadow">
-              <div class="card-body p-5">
-                {/* <!--  Bootstrap table--> */}
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">ORDER NUMBER</th>
-                        <th scope="col">DATE</th>
-                        <th scope="col">STATUS</th>
-                        <th scope="col">TOTAL</th>
-                        <th scope="col">ACTIONS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {product.map((item) => {
-                        
-                        return (
-                          <tr>
-                            <th scope="row">{item.order_id}</th>
-                            <td>{item.created_at}</td>
-                            <td>{item.status}</td>
-                            <td>${item.price}</td>
-                            <td>VIEW ORDER</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="my-orders-table">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">ORDER NUMBER</th>
+              <th scope="col">DATE</th>
+              <th scope="col">STATUS</th>
+              <th scope="col">TOTAL</th>
+              <th scope="col">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {product.map((item, idx) => {
+              return (
+                <tr key={idx}>
+                  <th scope="row">#{item.order_id}</th>
+                  <td>{item.created_at}</td>
+                  <td>{item.status}</td>
+                  <td>${item.price}</td>
+                  <td
+                    onClick={() => navigate("/confirmation/" + item.order_id)}
+                    style={{ color: "#B86B77" }}
+                  >
+                    VIEW ORDER
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
 
       <Footer />
