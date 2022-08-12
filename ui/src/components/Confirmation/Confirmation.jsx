@@ -10,6 +10,16 @@ export default function Confirmation(props) {
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
 
+  //total prices calculations------------
+  let subtotal = 0;
+  let deliveryFee = 10;
+  let taxRate = 1.08;
+
+  function getTotal(subtotal, taxRate, deliveryFee) {
+    return subtotal * taxRate + deliveryFee;
+  }
+  //-------------------------------------
+
   //   const confirmation = Math.ceil(Math.random() * 10000);
   let { confirmation } = useParams();
 
@@ -135,7 +145,31 @@ export default function Confirmation(props) {
                   }}
                 ></hr>
               </div>
-              {/* -------------------ADD PRODUCT NAME AND PRICE HERE------------------------ */}
+              {/* showing each product on the shopping cart that was purchased  */}
+              {product.map((item) => {
+                subtotal += item.product_price;
+                return (
+                  <div className="product-orders">
+                    <p
+                      style={{
+                        transform: "translateY(-5px)",
+                        lineHeight: "0.1",
+                        color: "gray",
+                      }}
+                    >
+                      {item.product_name}
+                    </p>
+                    <p
+                      style={{
+                        transform: "translateX(490px) translateY(-30px)",
+                        color: "gray",
+                      }}
+                    >
+                      ${item.product_price}
+                    </p>
+                  </div>
+                );
+              })}
               <hr
                 style={{
                   width: "555px",
@@ -146,9 +180,9 @@ export default function Confirmation(props) {
               <div className="price-totals">
                 <tr>
                   <td>SUBTOTAL </td>
-                  <td
-                    style={{ transform: "translateX(428px)", color: "gray" }}
-                  ></td>
+                  <td style={{ transform: "translateX(415px)", color: "gray" }}>
+                    ${subtotal}
+                  </td>
                 </tr>
                 <hr
                   style={{
@@ -159,8 +193,8 @@ export default function Confirmation(props) {
               </div>
               <tr style={{ transform: "translateY(14px)" }}>
                 <td>DELIVERY</td>
-                <td style={{ transform: "translateX(435px)", color: "gray" }}>
-                  {/* ${deliveryFee} */}
+                <td style={{ transform: "translateX(420px)", color: "gray" }}>
+                  ${deliveryFee}
                 </td>
               </tr>
               <hr
@@ -171,8 +205,8 @@ export default function Confirmation(props) {
               ></hr>
               <tr style={{ transform: "translateY(28px)" }}>
                 <td>TAX (8%)</td>
-                <td style={{ transform: "translateX(440px)", color: "gray" }}>
-                  {/* ${(subtotal * 0.08).toFixed(2)} */}
+                <td style={{ transform: "translateX(425px)", color: "gray" }}>
+                  ${(subtotal * 0.08).toFixed(2)}
                 </td>
               </tr>
               <hr
@@ -183,22 +217,22 @@ export default function Confirmation(props) {
               ></hr>
               <tr style={{ transform: "translateY(45px) translateX(3px)" }}>
                 <b>TOTAL</b>
-                <td style={{ transform: "translateX(455px)" }}>
-                  {/* ${getTotal(subtotal, taxRate, deliveryFee).toFixed(2)} */}
+                <td style={{ transform: "translateX(438px)" }}>
+                  ${getTotal(subtotal, taxRate, deliveryFee).toFixed(2)}
                 </td>
               </tr>
             </div>
           </div>
         </div>
 
-        {product.map((item) => {
+        {/* {product.map((item) => {
           return (
             <div className="product-orders">
               <p>{item.product_name}</p>
               <p>{item.product_price}</p>
             </div>
           );
-        })}
+        })} */}
       </div>
       <Footer />
     </div>
