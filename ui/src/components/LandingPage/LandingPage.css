@@ -22,6 +22,11 @@
 .landing .landing-text {
   float: left;
   padding: 200px 0 50px;
+  /* transform: translateX(); */
+}
+
+.landing .landing-text .landing-text-headers {
+  transform: translateX(-400px);
 }
 
 .landing .landing-image {
