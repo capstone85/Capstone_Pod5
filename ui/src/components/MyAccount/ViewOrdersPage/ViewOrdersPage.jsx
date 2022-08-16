@@ -11,7 +11,6 @@ export default function ViewOrdersPage(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
-  
 
   let navigate = useNavigate();
 
@@ -57,19 +56,61 @@ export default function ViewOrdersPage(props) {
           </thead>
           <tbody>
             {product.map((item, idx) => {
-              return (
-                <tr key={idx}>
-                  <th scope="row">#{item.order_id}</th>
-                  <td>{item.created_at}</td>
-                  <td>{item.status}</td>
-                  <td
-                    onClick={() => navigate("/confirmation/" + item.order_id)}
-                    style={{ color: "#B86B77" }}
-                  >
-                    VIEW ORDER
-                  </td>
-                </tr>
-              );
+              var next = product[idx + 1];
+              if (next != null) {
+                console.log("Next product", next.order_id);
+                if (item.order_id == next.order_id) {
+                  return (
+                    <tr key={idx}>
+                      <th scope="row">#{item.order_id}</th>
+                      <td>{item.created_at}</td>
+                      <td>{item.status}</td>
+                      <td
+                        onClick={() =>
+                          navigate("/confirmation/" + item.order_id)
+                        }
+                        style={{ color: "#B86B77" }}
+                      >
+                        VIEW ORDER
+                      </td>
+                    </tr>
+                  );
+                }
+              } else {
+                console.log("nEXT", item);
+                var prev = product[idx - 1];
+                if (item.order_id != prev.order_id || product.length == 1) {
+                  return (
+                    <tr key={idx}>
+                      <th scope="row">#{item.order_id}</th>
+                      <td>{item.created_at}</td>
+                      <td>{item.status}</td>
+                      <td
+                        onClick={() =>
+                          navigate("/confirmation/" + item.order_id)
+                        }
+                        style={{ color: "#B86B77" }}
+                      >
+                        VIEW ORDER
+                      </td>
+                    </tr>
+                  );
+                }
+              }
+
+              // return (
+              //   <tr key={idx}>
+              //     <th scope="row">#{item.order_id}</th>
+              //     <td>{item.created_at}</td>
+              //     <td>{item.status}</td>
+              //     <td
+              //       onClick={() => navigate("/confirmation/" + item.order_id)}
+              //       style={{ color: "#B86B77" }}
+              //     >
+              //       VIEW ORDER
+              //     </td>
+              //   </tr>
+              // );
             })}
           </tbody>
         </table>
@@ -78,40 +119,4 @@ export default function ViewOrdersPage(props) {
       <Footer />
     </div>
   );
-}
-
-{
-  /* <div classNamne="orders-container">
-        <ul className="responsive-table">
-          <li className="table-header">
-            <div className="col col-1">ORDER NUMBER</div>
-            <div className="col col-2">DATE</div>
-            <div className="col col-3">STATUS</div>
-            <div className="col col-4">TOTAL</div>
-            <div className="col col-5">ACTIONS</div>
-          </li>
-
-          {product.map((item) => {
-            return (
-              <li className="table-row">
-                <div className="col col-1" data-label="order number">
-                  {item.order_id}
-                </div>
-                <div className="col col-2" data-label="date">
-                  {item.created_at}
-                </div>
-                <div className="col col-3" data-label="status">
-                  {item.status}
-                </div>
-                <div className="col col-4" data-label="total">
-                  $
-                </div>
-                <div className="col col-5" data-label="actions">
-                  VIEW ORDER
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-        </div> */
 }
