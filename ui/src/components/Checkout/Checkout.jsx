@@ -14,7 +14,7 @@ import TextField from "@mui/material/TextField";
 export default function Checkout(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [product, setProduct] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({});
   const [order, setOrder] = useState([]);
   const [confirmation, setConfirmation] = useState([]);
   const navigate = useNavigate();
@@ -79,13 +79,21 @@ export default function Checkout(props) {
     });
   };
 
-  const handleOnSubmit = async (s) => {
+  const handleOnSubmit = async (event) => {
     console.log("Inside handle on submit");
     console.log(form);
     apiClient.addDeliveryDetails(form, confirmationNum);
-    if (error) {
-      setErrors(error);
+
+    if (form.number.length != 10) {
+      console.log("form", form);
+      setError((e) => ({ ...e, number: "Please enter a valid number." }));
+    } else {
+      setError((e) => ({ ...e, number: null }));
     }
+
+    // if (error) {
+    //   setErrors(error);
+    // }
     setIsLoading(false);
   };
   return (
@@ -203,6 +211,9 @@ export default function Checkout(props) {
                 value={form.number}
                 onChange={handleOnInputChange}
               />
+              {error && error.number && (
+                <span className="error">{error.number}</span>
+              )}
             </div>
 
             {/* email address input form */}
@@ -364,9 +375,12 @@ export default function Checkout(props) {
                 className="checkout-btn"
                 onClick={() => {
                   handleOnSubmit();
-                  checkoutProducts();
-                  apiClient.deleteShoppingCart(props.user.id);
-                  navigate("/confirmation/" + confirmationNum);
+                  console.log("error", error);
+                  if (!error) {
+                    checkoutProducts();
+                    apiClient.deleteShoppingCart(props.user.id);
+                    navigate("/confirmation/" + confirmationNum);
+                  }
                 }}
                 style={{ transform: "translateY(100px) translateX(80px)" }}
               >

@@ -27,8 +27,6 @@ export default function ProductCard(props) {
   const [btnClassCart, setBtnClassCart] = useState(false);
   const [isInWishlist, setIsInWishlist] = useState(false);
 
-  console.log(props.product);
-
   useEffect(() => {
     async function wishlist() {
       const a = await apiClient.checkIfInWishlist(props.product.id);

@@ -348,6 +348,7 @@ function App() {
             path="/store-page/:storeId"
             element={
               <ProductsPage
+              user={user}
                 // products={
                 //   activeCategory == "All Categories" ? products : currentItems
                 // }
