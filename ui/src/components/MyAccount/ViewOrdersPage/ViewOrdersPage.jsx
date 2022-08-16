@@ -60,10 +60,13 @@ export default function ViewOrdersPage(props) {
               if (next != null) {
                 console.log("Next product", next.order_id);
                 if (item.order_id == next.order_id) {
+                  var t = item.created_at.split(/[- : T]/);
+                  console.log(t);
+                  var d = t[1] + "-" + t[2] + "-" + t[0];
                   return (
                     <tr key={idx}>
                       <th scope="row">#{item.order_id}</th>
-                      <td>{item.created_at}</td>
+                      <td>{d}</td>
                       <td>{item.status}</td>
                       <td
                         onClick={() =>
@@ -80,10 +83,13 @@ export default function ViewOrdersPage(props) {
                 console.log("nEXT", item);
                 var prev = product[idx - 1];
                 if (item.order_id != prev.order_id || product.length == 1) {
+                  var t = item.created_at.split(/[- : T]/);
+                  console.log(t);
+                  var d = t[1] + "-" + t[2] + "-" + t[0];
                   return (
                     <tr key={idx}>
                       <th scope="row">#{item.order_id}</th>
-                      <td>{item.created_at}</td>
+                      <td>{d}</td>
                       <td>{item.status}</td>
                       <td
                         onClick={() =>
@@ -97,20 +103,6 @@ export default function ViewOrdersPage(props) {
                   );
                 }
               }
-
-              // return (
-              //   <tr key={idx}>
-              //     <th scope="row">#{item.order_id}</th>
-              //     <td>{item.created_at}</td>
-              //     <td>{item.status}</td>
-              //     <td
-              //       onClick={() => navigate("/confirmation/" + item.order_id)}
-              //       style={{ color: "#B86B77" }}
-              //     >
-              //       VIEW ORDER
-              //     </td>
-              //   </tr>
-              // );
             })}
           </tbody>
         </table>
