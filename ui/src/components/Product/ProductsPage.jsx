@@ -119,6 +119,7 @@ export default function ProductsPage(props) {
       </div>
       <div className="product-grid-container">
         <ProductGrid
+            user={props.user}
           handleAddItemToCart={props.handleAddItemToCart}
           handleRemoveItemFromCart={props.handleRemoveItemFromCart}
           shoppingCart={props.shoppingCart}
