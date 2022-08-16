@@ -107,34 +107,34 @@ export default function Confirmation(props) {
               <tr style={{ transform: "translateY(40px)" }}>
                 <tr>
                   <b>EMAIL </b>
-                  <td style={{ transform: "translateX(288px)" }}>
+                  <td style={{ transform: "translateX(255px)" }}>
                     <b>DELIVERY ADDRESS</b>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ color: "gray" }}>{item.email}</td>
-                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
-                    {item.address}
+                  <td style={{ transform: "translateX(255px)", color: "gray" }}>
+                    {item.address}, {item.city} {item.zipcode}
                   </td>
-                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
+                  {/* <td style={{ transform: "translateX(288px)", color: "gray" }}>
                     {item.city}
-                  </td>
-                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
+                  </td> */}
+                  {/* <td style={{ transform: "translateX(288px)", color: "gray" }}>
                     {item.zipcode}
-                  </td>
+                  </td> */}
                 </tr>
               </tr>
 
-              <tr style={{ transform: "translateY(80px)" }}>
+              {/* <tr style={{ transform: "translateY(80px)" }}>
                 <tr>
                   <b>PAYMENT METHOD </b>
                 </tr>
                 <tr>
                   <td style={{ color: "gray" }}>some payment method</td>
                 </tr>
-              </tr>
+              </tr> */}
 
-              <tr style={{ transform: "translateY(120px)" }}>
+              <tr style={{ transform: "translateY(85px)" }}>
                 <tr>
                   <b>ORDER DATE </b>
                   <td style={{ transform: "translateX(275px)" }}>

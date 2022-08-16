@@ -74,4 +74,4 @@ CREATE TABLE orderDetails (
     number      TEXT NOT NULL,
     email       TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-)
+);
