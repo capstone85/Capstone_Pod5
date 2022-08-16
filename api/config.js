@@ -4,6 +4,8 @@ require("colors");
 const PORT = 5174;
 const SECRET_KEY = process.env.SECRET_KEY || "secret_dev";
 
+const IS_TESTING = process.env.NODE_ENV === "test";
+
 function getDatabaseUri() {
   const dbUser = process.env.DATABASE_USER || "postgres";
   const dbPass = process.env.DATABASE_PASS
@@ -11,7 +13,10 @@ function getDatabaseUri() {
     : "postgres";
   const dbHost = process.env.DATABASE_HOST || "localhost";
   const dbPort = process.env.DATABASE_PORT || 5432;
-  const dbName = process.env.DATABASE_NAME || "clothing";
+  const dbTestName = process.env.DATABASE_TEST_NAME || "clothing_test";
+  const dbProdName = process.env.DATABASE_NAME || "clothing";
+  const dbName = process.env.NODE_ENV === "test" ? dbTestName : dbProdName;
+
 
   return (
     process.env.DATABASE_URL ||
@@ -19,17 +24,20 @@ function getDatabaseUri() {
   );
 }
 
-const BCRYPT_WORK_FACTOR = 13;
+const BCRYPT_WORK_FACTOR = IS_TESTING ? 1 : 13;
 
 console.log("Clothing Config:".red);
 console.log("PORT:".blue, PORT);
 console.log("SECRET_KEY:".blue, SECRET_KEY);
+console.log("IS_TESTING:".blue, IS_TESTING);
+console.log("BCRYPT_WORK_FACTOR".blue, BCRYPT_WORK_FACTOR);
 console.log("Database URI:".blue, getDatabaseUri());
 console.log("---");
 
 module.exports = {
   PORT,
   SECRET_KEY,
+  IS_TESTING,
   BCRYPT_WORK_FACTOR,
   getDatabaseUri,
 };
