@@ -61,15 +61,19 @@ export default function ViewOrdersPage(props) {
                 console.log("Next product", next.order_id);
                 if (item.order_id == next.order_id) {
                   return null;
-                }
-                else{
+                } else {
+                  var t = item.created_at.split(/[- : T]/);
+                  console.log(t);
+                  var d = t[1] + "-" + t[2] + "-" + t[0];
                   return (
                     <tr key={idx}>
                       <th scope="row">#{item.order_id}</th>
-                      <td>{item.created_at}</td>
+                      <td>{d}</td>
                       <td>{item.status}</td>
                       <td
-                        onClick={() => navigate("/confirmation/" + item.order_id)}
+                        onClick={() =>
+                          navigate("/confirmation/" + item.order_id)
+                        }
                         style={{ color: "#B86B77" }}
                       >
                         VIEW ORDER
@@ -78,10 +82,13 @@ export default function ViewOrdersPage(props) {
                   );
                 }
               } else {
+                var t = item.created_at.split(/[- : T]/);
+                console.log(t);
+                var d = t[1] + "-" + t[2] + "-" + t[0];
                 return (
                   <tr key={idx}>
                     <th scope="row">#{item.order_id}</th>
-                    <td>{item.created_at}</td>
+                    <td>{d}</td>
                     <td>{item.status}</td>
                     <td
                       onClick={() => navigate("/confirmation/" + item.order_id)}
