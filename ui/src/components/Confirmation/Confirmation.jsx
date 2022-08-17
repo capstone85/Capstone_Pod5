@@ -99,7 +99,7 @@ export default function Confirmation(props) {
                 <tr>
                   <td style={{ color: "gray" }}>{confirmation}</td>
                   <td style={{ transform: "translateX(250px)", color: "gray" }}>
-                    time(this will change)
+                    4:00-6:00 PM PST
                   </td>
                 </tr>
               </tr>
@@ -107,20 +107,14 @@ export default function Confirmation(props) {
               <tr style={{ transform: "translateY(40px)" }}>
                 <tr>
                   <b>EMAIL </b>
-                  <td style={{ transform: "translateX(288px)" }}>
+                  <td style={{ transform: "translateX(200px)" }}>
                     <b>DELIVERY ADDRESS</b>
                   </td>
                 </tr>
                 <tr>
                   <td style={{ color: "gray" }}>{item.email}</td>
-                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
-                    {item.address}
-                  </td>
-                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
-                    {item.city}
-                  </td>
-                  <td style={{ transform: "translateX(288px)", color: "gray" }}>
-                    {item.zipcode}
+                  <td style={{ transform: "translateX(200px)", color: "gray" }}>
+                    {item.address}, {item.city} {item.zipcode}
                   </td>
                 </tr>
               </tr>
@@ -130,7 +124,7 @@ export default function Confirmation(props) {
                   <b>PAYMENT METHOD </b>
                 </tr>
                 <tr>
-                  <td style={{ color: "gray" }}>some payment method</td>
+                  <td style={{ color: "gray" }}>Paid with VISA ****1234</td>
                 </tr>
               </tr>
 
@@ -142,7 +136,7 @@ export default function Confirmation(props) {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ color: "gray" }}>a date</td>
+                  <td style={{ color: "gray" }}></td>
                   <td style={{ transform: "translateX(275px)", color: "gray" }}>
                     {item.number}
                   </td>

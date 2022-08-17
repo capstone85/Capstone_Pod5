@@ -54,3 +54,7 @@
 .checkout .checkout-order-summary .price-totals {
   font-weight: bold;
 }
+
+.checkout-btn {
+  margin-bottom: 30px;
+}

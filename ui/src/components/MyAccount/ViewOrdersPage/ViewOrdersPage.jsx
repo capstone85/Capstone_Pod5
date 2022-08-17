@@ -56,22 +56,56 @@ export default function ViewOrdersPage(props) {
           </thead>
           <tbody>
             {product.map((item, idx) => {
-              var t = item.created_at.split(/[- : T]/);
-              console.log(t);
-              var d = t[1] + "-" + t[2] + "-" + t[0];
-              return (
-                <tr key={idx}>
-                  <th scope="row">#{item.order_id}</th>
-                  <td>{d}</td>
-                  <td>{item.status}</td>
-                  <td
-                    onClick={() => navigate("/confirmation/" + item.order_id)}
-                    style={{ color: "#B86B77" }}
-                  >
-                    VIEW ORDER
-                  </td>
-                </tr>
-              );
+              var next = product[idx + 1];
+              if (next != null) {
+                console.log("Next product", next.order_id);
+                if (item.order_id == next.order_id) {
+                  return null;
+                }
+                else{
+                  return (
+                    <tr key={idx}>
+                      <th scope="row">#{item.order_id}</th>
+                      <td>{item.created_at}</td>
+                      <td>{item.status}</td>
+                      <td
+                        onClick={() => navigate("/confirmation/" + item.order_id)}
+                        style={{ color: "#B86B77" }}
+                      >
+                        VIEW ORDER
+                      </td>
+                    </tr>
+                  );
+                }
+              } else {
+                return (
+                  <tr key={idx}>
+                    <th scope="row">#{item.order_id}</th>
+                    <td>{item.created_at}</td>
+                    <td>{item.status}</td>
+                    <td
+                      onClick={() => navigate("/confirmation/" + item.order_id)}
+                      style={{ color: "#B86B77" }}
+                    >
+                      VIEW ORDER
+                    </td>
+                  </tr>
+                );
+              }
+
+              // return (
+              //   <tr key={idx}>
+              //     <th scope="row">#{item.order_id}</th>
+              //     <td>{item.created_at}</td>
+              //     <td>{item.status}</td>
+              //     <td
+              //       onClick={() => navigate("/confirmation/" + item.order_id)}
+              //       style={{ color: "#B86B77" }}
+              //     >
+              //       VIEW ORDER
+              //     </td>
+              //   </tr>
+              // );
             })}
           </tbody>
         </table>

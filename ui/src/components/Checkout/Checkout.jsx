@@ -276,7 +276,7 @@ export default function Checkout(props) {
               ></hr>
             </div>
             {product.map((item) => {
-              subtotal += item.product_price;
+              subtotal += item.product_price * item.quantity;
               return (
                 <div className="product-orders">
                   <p
@@ -286,7 +286,7 @@ export default function Checkout(props) {
                       color: "gray",
                     }}
                   >
-                    {item.product_name}
+                    {item.product_name} x {item.quantity}
                   </p>
                   <div
                     className="item-product-price"
@@ -295,7 +295,7 @@ export default function Checkout(props) {
                       color: "gray",
                     }}
                   >
-                    <p>${item.product_price}</p>
+                    <p>${item.product_price * item.quantity}</p>
                   </div>
                 </div>
               );
