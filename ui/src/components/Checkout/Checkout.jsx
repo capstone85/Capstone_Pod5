@@ -365,7 +365,7 @@ export default function Checkout(props) {
                 onClick={() => {
                   handleOnSubmit();
                   checkoutProducts();
-                  apiClient.deleteShoppingCart(props.user.id);
+                  //apiClient.deleteShoppingCart(props.user.id);
                   navigate("/confirmation/" + confirmationNum);
                 }}
                 style={{ transform: "translateY(100px) translateX(80px)" }}

@@ -63,6 +63,7 @@ export default function Confirmation(props) {
           setProduct(data.products);
         }
         setIsFetching(false);
+        apiClient.deleteShoppingCart(props.user.id);
       }
     };
 
@@ -177,7 +178,7 @@ export default function Confirmation(props) {
               </div>
               {/* showing each product on the shopping cart that was purchased  */}
               {product.map((item) => {
-                subtotal += item.product_price;
+                subtotal += item.product_price * item.quantity;
                 return (
                   <div className="product-orders">
                     <p
@@ -187,7 +188,7 @@ export default function Confirmation(props) {
                         color: "gray",
                       }}
                     >
-                      {item.product_name}
+                      {item.product_name} x {item.quantity}
                     </p>
                     <p
                       style={{

@@ -30,11 +30,13 @@ class Checkout {
                   p.store_id AS "store_id",
                   p.description AS "product_description",
                   u.email AS "user_email",
-                  s.name AS "store_name"
+                  s.name AS "store_name",
+                  sc.quantity AS "quantity"
           FROM checkout AS w
               JOIN users AS u ON u.id = w.user_id
               JOIN product AS p ON p.id = w.product_id
               JOIN store AS s ON s.id = p.store_id
+              JOIN shoppingCart AS sc ON sc.user_id = w.user_id
           WHERE w.order_id = $1
           ORDER BY p.store_id DESC
           `,
